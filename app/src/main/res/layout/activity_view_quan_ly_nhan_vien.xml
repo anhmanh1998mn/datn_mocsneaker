@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.ViewQuanLyNhanVIen">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="#fff">
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="#000"
+        android:textAllCaps="true"
+        android:text="quản lý nhân viên"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_themVN"
+        android:textColor="#fff"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custombutton"
+        android:text="thêm mới nhân viên"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:weightSum="5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <EditText
+            android:background="@drawable/customedtsearch"
+            android:hint="Tìm kiếm theo tên"
+            android:layout_weight="3.8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <Button
+            android:layout_marginLeft="4dp"
+            android:textAllCaps="false"
+            android:text="Tìm kiếm"
+            android:layout_weight="1.2"
+            android:layout_width="0dp"
+            android:textColor="#fff"
+            android:background="#626262"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    
+
+</LinearLayout>

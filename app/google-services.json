@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "524121774555",
+    "firebase_url": "https://datnmocsneaker.firebaseio.com",
+    "project_id": "datnmocsneaker",
+    "storage_bucket": "datnmocsneaker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:524121774555:android:f32d0399d34a2f1f326ffe",
+        "android_client_info": {
+          "package_name": "com.example.manhvan.datn_mocsneaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "524121774555-2os52muqmlgsp1lt7jp53qrn49b85i0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.manhvan.datn_mocsneaker",
+            "certificate_hash": "ec4964608f725e5726ce956079ed8587072119b5"
+          }
+        },
+        {
+          "client_id": "524121774555-hhuk32ubdrgbva5nr6dmuotphmru5tje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJBJ7iPWgayOgk6fepxYzHI3Gwq-Y-3uw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "524121774555-hhuk32ubdrgbva5nr6dmuotphmru5tje.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
