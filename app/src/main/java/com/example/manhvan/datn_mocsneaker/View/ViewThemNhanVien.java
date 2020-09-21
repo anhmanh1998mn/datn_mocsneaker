@@ -7,18 +7,29 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.manhvan.datn_mocsneaker.Presenter.PreThemNV;
 import com.example.manhvan.datn_mocsneaker.R;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickListener{
+public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickListener,ThemNhanVienKQ2{
+    private PreThemNV preThemNV;
     private Toolbar toolbar;
     private TextView edtNgaySinhNV;
+    private EditText edtTenNV,edtSoDienThoai,edtDiaChiNV,edtSoCMT,edtTaiKhoanNV,edtMatKhauNV;
+    private Button btnThemNV1,btnHuyNV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +38,26 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
         toolbar=findViewById(R.id.tb2);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        preThemNV=new PreThemNV(this);
         initView();
         clickview();
     }
 
     private void clickview() {
         edtNgaySinhNV.setOnClickListener(this);
+        btnThemNV1.setOnClickListener(this);
     }
 
     private void initView() {
         edtNgaySinhNV=findViewById(R.id.edt_ngaysinhnv);
+        edtTenNV=findViewById(R.id.edt_tenNV);
+        edtSoDienThoai=findViewById(R.id.edt_sdtNV);
+        edtDiaChiNV=findViewById(R.id.edt_diachiNV);
+        edtSoCMT=findViewById(R.id.edt_cmtNV);
+        edtTaiKhoanNV=findViewById(R.id.edt_taikhoanNV);
+        edtMatKhauNV=findViewById(R.id.edt_matkhauNV);
+        btnThemNV1=findViewById(R.id.btn_themNV1);
+        btnHuyNV=findViewById(R.id.btn_huyThemNV);
     }
 
     @Override
@@ -44,6 +65,18 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
         switch (view.getId()){
             case R.id.edt_ngaysinhnv:{
                 chonNgay();
+                break;
+            }
+            case R.id.btn_themNV1:{
+
+                try {
+                    preThemNV.ThemMoiNV(edtTenNV.getText().toString().trim(),edtSoDienThoai.getText().toString().trim(),
+                            edtDiaChiNV.getText().toString().trim(),edtNgaySinhNV.getText().toString().trim(),
+                            edtSoCMT.getText().toString().trim(),edtTaiKhoanNV.getText().toString().trim(),
+                            edtMatKhauNV.getText().toString().trim());
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
                 break;
             }
         }
@@ -58,7 +91,7 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 calendar.set(i, i1, i2);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 edtNgaySinhNV.setText(simpleDateFormat.format(calendar.getTime()));
             }
         }, year, month, day);
@@ -69,5 +102,15 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSuccessed() {
+        Toast.makeText(this,"Thêm nhân viên thành công",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFailed() {
+        Toast.makeText(this,"Thêm nhân viên thất bại",Toast.LENGTH_SHORT).show();
     }
 }
