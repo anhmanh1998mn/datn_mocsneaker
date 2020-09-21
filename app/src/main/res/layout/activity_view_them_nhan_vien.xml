@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:inputType="number"
             android:id="@+id/edt_sdtNV"
             android:layout_marginTop="8dp"
             android:hint="Số điện thoại"
@@ -58,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:inputType="number"
             android:id="@+id/edt_cmtNV"
             android:layout_marginTop="8dp"
             android:hint="Số chứng minh thư"

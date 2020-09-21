@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.View;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -46,6 +47,7 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
     private void clickview() {
         edtNgaySinhNV.setOnClickListener(this);
         btnThemNV1.setOnClickListener(this);
+        btnHuyNV.setOnClickListener(this);
     }
 
     private void initView() {
@@ -79,6 +81,10 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
                 }
                 break;
             }
+            case R.id.btn_huyThemNV:{
+                finish();
+                break;
+            }
         }
     }
 
@@ -107,6 +113,8 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
     @Override
     public void onSuccessed() {
         Toast.makeText(this,"Thêm nhân viên thành công",Toast.LENGTH_SHORT).show();
+        finish();
+        startActivity(new Intent(this,ViewQuanLyNhanVIen.class));
     }
 
     @Override

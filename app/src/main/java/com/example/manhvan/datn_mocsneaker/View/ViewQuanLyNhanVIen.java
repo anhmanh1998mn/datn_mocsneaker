@@ -10,12 +10,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.manhvan.datn_mocsneaker.Model.MoDanhSachNhanVien;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreDanhSachNV;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.adapter.NhanVienAdapter;
 
-public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClickListener{
+public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClickListener,LayDanhSachNVKQ2{
     private Toolbar toolbar;
     private Button btnThemNV;
+    private ListView listviewNhanVien;
+    private PreDanhSachNV preDanhSachNV;
+    private Thread thread;
+    private NhanVienAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +37,20 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
         clickButton();
+
+        thread=new Thread(runnable);
+        thread.start();
+
     }
+    Runnable runnable=new Runnable() {
+        @Override
+        public void run() {
+            preDanhSachNV=new PreDanhSachNV(ViewQuanLyNhanVIen.this);
+            preDanhSachNV.DanhSachNhanVien();
+        }
+    };
+
+
 
     private void clickButton() {
         btnThemNV.setOnClickListener(this);
@@ -35,6 +58,7 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
 
     private void initView() {
         btnThemNV=findViewById(R.id.btn_themVN);
+        listviewNhanVien=findViewById(R.id.lst_nhanvien);
     }
 
     @Override
@@ -51,5 +75,17 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
                 break;
             }
         }
+    }
+
+    @Override
+    public void onSuccessed() {
+        adapter=new NhanVienAdapter(this,R.layout.itemlstnhanvien, MoDanhSachNhanVien.arrayListNV);
+        listviewNhanVien.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onFailed() {
+        Toast.makeText(this,"Lỗi kết nối",Toast.LENGTH_SHORT).show();
     }
 }
