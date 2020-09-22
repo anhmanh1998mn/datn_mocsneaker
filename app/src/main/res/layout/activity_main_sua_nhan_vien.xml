@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.MainSuaNhanVIen">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbsnv"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="#fff">
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:textAllCaps="true"
+        android:text="sửa thông tin nhân viên"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/edt_stennv"
+        android:hint="Tên nhân viên"
+        android:background="@drawable/customedtthem"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <EditText
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/edt_ssdtnv"
+        android:hint="Số điện thoại"
+        android:background="@drawable/customedtthem"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <EditText
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/edt_sdcnv"
+        android:hint="Quê quán"
+        android:background="@drawable/customedtthem"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/edt_snsnv"
+        android:background="@drawable/customedtthem"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <EditText
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/edt_scmtnv"
+        android:hint="Số chứng minh thư"
+        android:background="@drawable/customedtthem"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <Button
+        android:id="@+id/btn_snv"
+        android:textColor="#fff"
+        android:text="sửa nhân viên"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custombutton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <Button
+        android:id="@+id/btn_sknv"
+        android:textColor="#fff"
+        android:text="khóa tài khoản"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custombutton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <Button
+        android:id="@+id/btn_shnv"
+        android:textColor="#fff"
+        android:text="hủy"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custombutton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+</LinearLayout>
