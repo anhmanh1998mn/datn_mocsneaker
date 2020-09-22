@@ -22,7 +22,7 @@ public class PreDanhSachNV implements LayDanhSachNVKQ1{
     }
 
     @Override
-    public void onF() {
-        layDanhSachNVKQ2.onFailed();
+    public void onF(String t) {
+        layDanhSachNVKQ2.onFailed(t);
     }
 }

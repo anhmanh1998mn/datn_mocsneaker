@@ -10,21 +10,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoDanhSachNhanVien;
+import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemNV;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreDanhSachNV;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemNhanVien;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.NhanVienAdapter;
 
-public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClickListener,LayDanhSachNVKQ2{
+public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClickListener,LayDanhSachNVKQ2,TimKiemNVKQ2{
     private Toolbar toolbar;
-    private Button btnThemNV;
-    private ListView listviewNhanVien;
+    private Button btnThemNV,btnSearch;
+    private EditText edtSearch;
+    private ListView listviewNhanVien,listViewNVTimKiem;
     private PreDanhSachNV preDanhSachNV;
     private Thread thread;
     private NhanVienAdapter adapter;
+    private PreTimKiemNhanVien preTimKiemNhanVien;
 
 
     @Override
@@ -40,6 +45,8 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
 
         thread=new Thread(runnable);
         thread.start();
+        preTimKiemNhanVien=new PreTimKiemNhanVien(this);
+
 
     }
     Runnable runnable=new Runnable() {
@@ -54,11 +61,15 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
 
     private void clickButton() {
         btnThemNV.setOnClickListener(this);
+        btnSearch.setOnClickListener(this);
     }
 
     private void initView() {
         btnThemNV=findViewById(R.id.btn_themVN);
         listviewNhanVien=findViewById(R.id.lst_nhanvien);
+        btnSearch=findViewById(R.id.btn_search);
+        edtSearch=findViewById(R.id.edt_search);
+        listViewNVTimKiem=findViewById(R.id.lst_nhanvientimkiem);
     }
 
     @Override
@@ -74,8 +85,15 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(ViewQuanLyNhanVIen.this,ViewThemNhanVien.class));
                 break;
             }
+            case R.id.btn_search:{
+                listviewNhanVien.setVisibility(View.GONE);
+                listViewNVTimKiem.setVisibility(View.VISIBLE);
+                preTimKiemNhanVien.TimKiemNhanVien(edtSearch.getText().toString().trim());
+                break;
+            }
         }
     }
+
 
     @Override
     public void onSuccessed() {
@@ -85,7 +103,29 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public void onFailed() {
-        Toast.makeText(this,"Lỗi kết nối",Toast.LENGTH_SHORT).show();
+    public void onFailed(String t) {
+        Toast.makeText(this,t,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSuccessed1() {
+
+        adapter=new NhanVienAdapter(this,R.layout.itemlstnhanvien, MoTimKiemNV.arrTimKiem);
+        listViewNVTimKiem.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onFailed1() {
+        Toast.makeText(this,"Lỗi tìm kiếm",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFialed2() {
+        listViewNVTimKiem.setVisibility(View.GONE);
+        listviewNhanVien.setVisibility(View.VISIBLE);
+        adapter=new NhanVienAdapter(this,R.layout.itemlstnhanvien, MoDanhSachNhanVien.arrayListNV);
+        listviewNhanVien.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

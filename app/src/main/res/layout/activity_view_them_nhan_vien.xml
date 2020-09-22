@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
+            android:textColor="#000"
             android:id="@+id/edt_tenNV"
             android:layout_marginTop="24dp"
             android:hint="Tên nhân viên"
@@ -36,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:textColor="#000"
             android:inputType="number"
             android:id="@+id/edt_sdtNV"
             android:layout_marginTop="8dp"
@@ -44,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:textColor="#000"
             android:id="@+id/edt_diachiNV"
             android:layout_marginTop="8dp"
             android:hint="Địa chỉ"
@@ -51,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <TextView
+            android:textColor="#000"
             android:textSize="18sp"
             android:id="@+id/edt_ngaysinhnv"
             android:layout_marginTop="8dp"
@@ -59,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:textColor="#000"
             android:inputType="number"
             android:id="@+id/edt_cmtNV"
             android:layout_marginTop="8dp"
@@ -67,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:textColor="#000"
             android:id="@+id/edt_taikhoanNV"
             android:layout_marginTop="8dp"
             android:hint="Tài khoản"
@@ -74,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:textColor="#000"
             android:id="@+id/edt_matkhauNV"
             android:layout_marginTop="8dp"
             android:hint="Mật khẩu"

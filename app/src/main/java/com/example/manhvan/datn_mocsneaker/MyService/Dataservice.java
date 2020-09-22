@@ -20,4 +20,8 @@ public interface Dataservice {
 
     @GET("danhsachnhanvien.php")
     Call<List<NhanVien>> GetNhanVien();
+
+    @FormUrlEncoded
+    @POST("timkiemnhanvien.php")
+    Call<List<NhanVien>> GetNVTimKiem(@Field("staff_name")String tenNV);
 }

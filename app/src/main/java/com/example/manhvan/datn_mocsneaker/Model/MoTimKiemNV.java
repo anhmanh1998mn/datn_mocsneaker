@@ -13,29 +13,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MoDanhSachNhanVien {
-    private LayDanhSachNVKQ1 layDanhSachNVKQ1;
-
-    public MoDanhSachNhanVien(LayDanhSachNVKQ1 layDanhSachNVKQ1) {
-        this.layDanhSachNVKQ1 = layDanhSachNVKQ1;
+public class MoTimKiemNV {
+    private TimKiemNVKQ1 timKiemNVKQ1;
+    public MoTimKiemNV(TimKiemNVKQ1 timKiemNVKQ1) {
+        this.timKiemNVKQ1 = timKiemNVKQ1;
     }
 
-    public static ArrayList<NhanVien> arrayListNV;
-    public void XuLyDanhsachNV(){
-        arrayListNV=new ArrayList<>();
+
+    public static ArrayList<NhanVien> arrTimKiem;
+    public void XuLy(String tenNV){
+        arrTimKiem=new ArrayList<>();
         Dataservice dataservice= APIService.getService();
-        Call<List<NhanVien>> callback=dataservice.GetNhanVien();
-        callback.enqueue(new Callback<List<NhanVien>>() {
+        Call<List<NhanVien>> callbak=dataservice.GetNVTimKiem(tenNV);
+        callbak.enqueue(new Callback<List<NhanVien>>() {
             @Override
             public void onResponse(Call<List<NhanVien>> call, Response<List<NhanVien>> response) {
-                arrayListNV= (ArrayList<NhanVien>) response.body();
-                layDanhSachNVKQ1.onS();
-                Log.d("sizekq",arrayListNV.size()+"");
+                arrTimKiem= (ArrayList<NhanVien>) response.body();
+                Log.d("timkiem",arrTimKiem.size()+"");
+                timKiemNVKQ1.onS();
             }
 
             @Override
             public void onFailure(Call<List<NhanVien>> call, Throwable t) {
-                layDanhSachNVKQ1.onF(t+"");
+                timKiemNVKQ1.onF();
             }
         });
     }
