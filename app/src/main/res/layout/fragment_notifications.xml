@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E8E6E6"
     tools:context=".ui.notifications.NotificationsFragment">
     <FrameLayout
         android:background="#FF5722"
@@ -16,17 +17,15 @@
             android:layout_height="match_parent">
             <ImageView
                 android:layout_marginLeft="8dp"
-                android:layout_gravity="center"
                 android:src="@drawable/icon9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
             <LinearLayout android:layout_gravity="center"
                 android:gravity="end"
                 android:orientation="horizontal"
                 android:layout_height="55dp" android:layout_width="match_parent">
                 <Button
                     android:textAllCaps="false"
-                    android:layout_gravity="center"
                     android:textColor="#FF5722"
                     android:background="@drawable/custombtnlg"
                     android:text="Đăng nhập"
@@ -36,7 +35,6 @@
                     android:textAllCaps="false"
                     android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_gravity="center"
                     android:textColor="#fff"
                     android:background="@drawable/custombtndki"
                     android:text="Đăng ký"
@@ -46,6 +44,34 @@
         </LinearLayout>
 
     </FrameLayout>
-
-
+    <Button
+        android:background="#fff"
+        android:textAlignment="textStart"
+        android:drawableRight="@drawable/icon1"
+        android:drawableLeft="@drawable/icon2"
+        android:text="Đơn mua"
+        android:textAllCaps="false"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:background="#fff"
+        android:textAlignment="textStart"
+        android:drawableRight="@drawable/icon1"
+        android:drawableLeft="@drawable/icon2"
+        android:text="Thông tin cửa hàng"
+        android:textAllCaps="false"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:background="#fff"
+        android:textAlignment="textStart"
+        android:drawableRight="@drawable/icon1"
+        android:drawableLeft="@drawable/icon1"
+        android:text="Thiết lập tài khoản"
+        android:textAllCaps="false"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
