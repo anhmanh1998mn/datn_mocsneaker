@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.MyService;
 
 import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
+import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.util.List;
 
@@ -24,4 +25,7 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("timkiemnhanvien.php")
     Call<List<NhanVien>> GetNVTimKiem(@Field("staff_name")String tenNV);
+
+    @GET("danhsachsanphammoi.php")
+    Call<List<SanPhamMoi>> GetSPMoi();
 }

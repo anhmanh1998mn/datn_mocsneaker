@@ -1,34 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="220dp"
     android:orientation="vertical">
 
     <LinearLayout
-
+        android:gravity="end"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <TextView
+            android:textColor="#FF5722"
+            android:textSize="18sp"
+            android:layout_marginLeft="8dp"
+            android:textAlignment="textStart"
             android:id="@+id/txt_home1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:gravity="start" />
 
         <Button
+            android:textSize="13sp"
+            android:textStyle="normal"
+            android:layout_marginLeft="30sp"
+            android:textAllCaps="false"
+            android:textAlignment="textEnd"
             android:id="@+id/btn_home2"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_gravity="right"
+            android:layout_marginRight="8dp"
             android:background="@null"
-            android:drawableRight="@drawable/icon1"
-            android:text="Xem thêm" />
+            android:drawableRight="@drawable/iconnext"
+            android:text="Xem thêm"
+            android:gravity="end|center" />
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcl_home"
+        android:background="#fff"
+
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp" />
 
 </LinearLayout>
