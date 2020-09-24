@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.notifications.NotificationsFragment">
+    <FrameLayout
+        android:background="#FF5722"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_marginLeft="8dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout android:layout_gravity="center"
+                android:gravity="end"
+                android:orientation="horizontal"
+                android:layout_height="55dp" android:layout_width="match_parent">
+                <Button
+                    android:textAllCaps="false"
+                    android:layout_gravity="center"
+                    android:textColor="#FF5722"
+                    android:background="@drawable/custombtnlg"
+                    android:text="Đăng nhập"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"/>
+                <Button
+                    android:textAllCaps="false"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:background="@drawable/custombtndki"
+                    android:text="Đăng ký"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>
