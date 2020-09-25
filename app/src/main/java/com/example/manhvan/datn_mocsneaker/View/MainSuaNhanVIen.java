@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.View;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -55,6 +56,7 @@ public class MainSuaNhanVIen extends AppCompatActivity implements View.OnClickLi
             btnSKhoaTK.setVisibility(View.GONE);
             btnSNV.setVisibility(View.GONE);
             txtTrangThaiTK.setText("Tài khoản hiện đang bị khóa");
+            txtTrangThaiTK.setTextColor(Color.RED);
         }
     }
 

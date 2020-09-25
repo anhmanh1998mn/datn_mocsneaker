@@ -80,14 +80,14 @@
             android:textAlignment="center"
             android:text="Họ tên"
             android:layout_marginRight="8dp"
-            android:layout_weight="2"
+            android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
         <TextView
             android:textColor="#000"
             android:textAlignment="textStart"
             android:text="Số điện thoại"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
     </LinearLayout>
