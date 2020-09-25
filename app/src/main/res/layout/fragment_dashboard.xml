@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/btn_qlnhanvien"
             android:drawableLeft="@drawable/icon4"
             android:drawableRight="@drawable/icon1"
             android:textAlignment="textStart"

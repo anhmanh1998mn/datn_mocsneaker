@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,7 +23,7 @@ import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.NhanVienAdapter;
 
 public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClickListener,LayDanhSachNVKQ2,TimKiemNVKQ2{
-    private Toolbar toolbar;
+
     private Button btnThemNV,btnSearch;
     private EditText edtSearch;
     private ListView listviewNhanVien,listViewNVTimKiem;
@@ -36,8 +37,8 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_quan_ly_nhan_vien);
-        toolbar=findViewById(R.id.tb1);
-        setSupportActionBar(toolbar);
+
+        getSupportActionBar();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
@@ -57,11 +58,33 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
         }
     };
 
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        thread=new Thread(runnable);
+        thread.start();
+        adapter.notifyDataSetChanged();
+    }
 
     private void clickButton() {
         btnThemNV.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
+
+        listviewNhanVien.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent=new Intent(ViewQuanLyNhanVIen.this,MainSuaNhanVIen.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("id",MoDanhSachNhanVien.arrayListNV.get(i).getId());
+                bundle.putString("tenNV",MoDanhSachNhanVien.arrayListNV.get(i).getStaffName());
+                bundle.putString("soDT",MoDanhSachNhanVien.arrayListNV.get(i).getStaffPhone());
+                bundle.putString("queQuan",MoDanhSachNhanVien.arrayListNV.get(i).getStaffAddress());
+                bundle.putString("ngaySinh",MoDanhSachNhanVien.arrayListNV.get(i).getDateOfBirth());
+                bundle.putString("soCMT",MoDanhSachNhanVien.arrayListNV.get(i).getIdCardNumber());
+                intent.putExtra("thongtinNV",bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView() {

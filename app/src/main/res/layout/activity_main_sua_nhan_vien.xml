@@ -6,14 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.MainSuaNhanVIen">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tbsnv"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:titleTextColor="#fff">
-    </android.support.v7.widget.Toolbar>
+
     <TextView
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"

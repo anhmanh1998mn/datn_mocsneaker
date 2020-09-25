@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAdapter.ViewHolder> {
@@ -37,15 +38,16 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i1) {
 
-        Glide.with(myContext).load("http://192.168.24.7:8080"+lst.get(i).getProductUrl()).into(viewHolder.imageView);
-        viewHolder.txtTen.setText(lst.get(i).getProductName());
-        viewHolder.txtGia.setText(lst.get(i).getPriceOut());
+        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+        viewHolder.txtTen.setText(lst.get(i1).getProductName());
+        DecimalFormat formater=new DecimalFormat("###,###,###");
+        viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i1).getPriceOut()))+" Vnđ");
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(myContext,lst.get(i).getProductName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(myContext,lst.get(i1).getProductName(),Toast.LENGTH_SHORT).show();
             }
         });
     }

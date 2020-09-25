@@ -27,7 +27,7 @@ import java.util.Calendar;
 
 public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickListener,ThemNhanVienKQ2{
     private PreThemNV preThemNV;
-    private Toolbar toolbar;
+
     private TextView edtNgaySinhNV;
     private EditText edtTenNV,edtSoDienThoai,edtDiaChiNV,edtSoCMT,edtTaiKhoanNV,edtMatKhauNV;
     private Button btnThemNV1,btnHuyNV;
@@ -36,8 +36,7 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_them_nhan_vien);
-        toolbar=findViewById(R.id.tb2);
-        setSupportActionBar(toolbar);
+        getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         preThemNV=new PreThemNV(this);
         initView();
@@ -114,7 +113,7 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
     public void onSuccessed() {
         Toast.makeText(this,"Thêm nhân viên thành công",Toast.LENGTH_SHORT).show();
         finish();
-        startActivity(new Intent(this,ViewQuanLyNhanVIen.class));
+//        startActivity(new Intent(this,ViewQuanLyNhanVIen.class));
     }
 
     @Override

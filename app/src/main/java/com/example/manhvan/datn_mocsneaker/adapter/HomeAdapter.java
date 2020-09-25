@@ -33,7 +33,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private Activity myContext;
     private int myLayout;
     private List<String> lst;
-    public static ArrayList<SanPhamMoi> arrSPM,arrSPNB;
+    public static ArrayList<SanPhamMoi> arrSPM,arrSPNB,arrGiayNam,arrGiayNu,arrGiayDoi;
 
 
     public HomeAdapter(Activity myContext, int myLayout, List<String> lst) {
@@ -104,12 +104,72 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 break;
             }
             case 2: {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
+                viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
+                arrGiayNam=new ArrayList<>();
+                Dataservice dataservice= APIService.getService();
+                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                    @Override
+                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                        arrGiayNam= (ArrayList<SanPhamMoi>) response.body();
+
+                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayNam);
+                        viewHolder.recyclerView.setHasFixedSize(true);
+                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                    }
+                });
                 break;
             }
             case 3: {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
+                viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
+                arrGiayNu=new ArrayList<>();
+                Dataservice dataservice= APIService.getService();
+                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                    @Override
+                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                        arrGiayNu= (ArrayList<SanPhamMoi>) response.body();
+
+                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayNu);
+                        viewHolder.recyclerView.setHasFixedSize(true);
+                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                    }
+                });
                 break;
             }
             case 4: {
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
+                viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
+                arrGiayDoi=new ArrayList<>();
+                Dataservice dataservice= APIService.getService();
+                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                    @Override
+                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                        arrGiayDoi= (ArrayList<SanPhamMoi>) response.body();
+
+                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayDoi);
+                        viewHolder.recyclerView.setHasFixedSize(true);
+                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                    }
+                });
                 break;
             }
         }

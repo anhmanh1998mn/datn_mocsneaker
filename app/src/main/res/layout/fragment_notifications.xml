@@ -8,7 +8,7 @@
     android:background="#E8E6E6"
     tools:context=".ui.notifications.NotificationsFragment">
     <FrameLayout
-        android:background="#FF5722"
+        android:background="#0536E1"
         android:layout_width="match_parent"
         android:layout_height="60dp">
         <LinearLayout
@@ -26,7 +26,7 @@
                 android:layout_height="55dp" android:layout_width="match_parent">
                 <Button
                     android:textAllCaps="false"
-                    android:textColor="#FF5722"
+                    android:textColor="#0536E1"
                     android:background="@drawable/custombtnlg"
                     android:text="Đăng nhập"
                     android:layout_width="100dp"

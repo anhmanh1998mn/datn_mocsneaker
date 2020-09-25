@@ -6,18 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.ViewQuanLyNhanVIen">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb1"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:titleTextColor="#fff">
-    </android.support.v7.widget.Toolbar>
+<!--    <android.support.v7.widget.Toolbar-->
+<!--        android:id="@+id/tb1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+<!--        app:titleTextColor="#fff">-->
+<!--    </android.support.v7.widget.Toolbar>-->
     <TextView
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="#000"
+        android:textColor="#0536E1"
         android:textAllCaps="true"
         android:text="quản lý nhân viên"
         android:textSize="20sp"
@@ -56,7 +56,7 @@
             android:layout_weight="1.2"
             android:layout_width="0dp"
             android:textColor="#fff"
-            android:background="#626262"
+            android:background="#0536E1"
             android:layout_height="match_parent" />
     </LinearLayout>
     <LinearLayout

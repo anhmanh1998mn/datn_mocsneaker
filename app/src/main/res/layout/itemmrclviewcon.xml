@@ -14,17 +14,20 @@
         <LinearLayout
             android:background="#ffffff"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="120dp"
+            android:layout_height="160dp">
             <ImageView
                 android:id="@+id/img_rclcon"
                 android:layout_width="120dp"
                 android:layout_height="120dp" />
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/txt_tenrclviewcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textColor="#C30404"
+                android:layout_gravity="center"
                 android:id="@+id/txt_giarclviewcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

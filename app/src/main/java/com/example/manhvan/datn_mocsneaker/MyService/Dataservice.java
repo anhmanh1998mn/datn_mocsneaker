@@ -28,4 +28,10 @@ public interface Dataservice {
 
     @GET("danhsachsanphammoi.php")
     Call<List<SanPhamMoi>> GetSPMoi();
+
+    @FormUrlEncoded
+    @POST("suanhanvien.php")
+    Call<String> SuaNhanVien(@Field("id") int id,@Field("staff_name") String staff_name,@Field("staff_phone")String staff_phone,
+                             @Field("staff_address")String staff_address,@Field("date_of_birth")String date_of_birth,
+                             @Field("id_card_number")String id_card_number);
 }
