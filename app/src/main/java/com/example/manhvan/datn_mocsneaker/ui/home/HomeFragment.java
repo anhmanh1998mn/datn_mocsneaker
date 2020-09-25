@@ -47,5 +47,6 @@ public class HomeFragment extends Fragment {
         arrayList.add("Giày đôi");
         adapter=new HomeAdapter(getActivity(),R.layout.itemrclhome,arrayList);
         recyclerViewHome.setAdapter(adapter);
+        recyclerViewHome.setNestedScrollingEnabled(false);
     }
 }

@@ -85,7 +85,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrSPNB=new ArrayList<>();
                 Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                Call<List<SanPhamMoi>> callback=dataservice.GetSPNB();
                 callback.enqueue(new Callback<List<SanPhamMoi>>() {
                     @Override
                     public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
