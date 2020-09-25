@@ -34,4 +34,7 @@ public interface Dataservice {
     Call<String> SuaNhanVien(@Field("id") int id,@Field("staff_name") String staff_name,@Field("staff_phone")String staff_phone,
                              @Field("staff_address")String staff_address,@Field("date_of_birth")String date_of_birth,
                              @Field("id_card_number")String id_card_number);
+    @FormUrlEncoded
+    @POST("khoatiakhoannhanvien.php")
+    Call<String> KhoaTaiKhoan(@Field("id") int id);
 }

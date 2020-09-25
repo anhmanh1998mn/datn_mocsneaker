@@ -22,6 +22,9 @@ public class NhanVien {
     @SerializedName("id_card_number")
     @Expose
     private String idCardNumber;
+    @SerializedName("user_status")
+    @Expose
+    private String userStatus;
 
     public String getId() {
         return id;
@@ -70,5 +73,14 @@ public class NhanVien {
     public void setIdCardNumber(String idCardNumber) {
         this.idCardNumber = idCardNumber;
     }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
+
 
 }

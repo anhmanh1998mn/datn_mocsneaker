@@ -15,12 +15,13 @@
         android:orientation="horizontal">
 
         <TextView
+            android:textAllCaps="true"
             android:textColor="#0536E1"
             android:textSize="18sp"
             android:layout_marginLeft="8dp"
             android:textAlignment="textStart"
             android:id="@+id/txt_home1"
-            android:layout_width="260dp"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:gravity="start" />
 

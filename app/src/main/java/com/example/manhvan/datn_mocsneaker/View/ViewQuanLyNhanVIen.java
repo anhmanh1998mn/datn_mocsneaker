@@ -75,6 +75,7 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(ViewQuanLyNhanVIen.this,MainSuaNhanVIen.class);
                 Bundle bundle=new Bundle();
+                bundle.putString("TrangThai",MoDanhSachNhanVien.arrayListNV.get(i).getUserStatus());
                 bundle.putString("id",MoDanhSachNhanVien.arrayListNV.get(i).getId());
                 bundle.putString("tenNV",MoDanhSachNhanVien.arrayListNV.get(i).getStaffName());
                 bundle.putString("soDT",MoDanhSachNhanVien.arrayListNV.get(i).getStaffPhone());

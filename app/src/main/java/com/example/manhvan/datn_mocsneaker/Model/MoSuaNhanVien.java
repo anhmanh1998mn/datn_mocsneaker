@@ -8,10 +8,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoSuaNhanVien {
-    private TimKiemNVKQ1 timKiemNVKQ1;
+    private SuaNhanVienKQ1 suaNhanVienKQ1;
 
-    public MoSuaNhanVien(TimKiemNVKQ1 timKiemNVKQ1) {
-        this.timKiemNVKQ1 = timKiemNVKQ1;
+    public MoSuaNhanVien(SuaNhanVienKQ1 suaNhanVienKQ1) {
+        this.suaNhanVienKQ1 = suaNhanVienKQ1;
     }
 
     public void XuLy(int id, String tenNV, String phone, String ngaySinh, String diaChi, String cmt){
@@ -21,15 +21,35 @@ public class MoSuaNhanVien {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.body().toString().trim().equals("thanhcong")){
-                    timKiemNVKQ1.onS();
+                    suaNhanVienKQ1.onS1();
                     return;
                 }
-                timKiemNVKQ1.onF();
+                suaNhanVienKQ1.onF();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                timKiemNVKQ1.onF();
+                suaNhanVienKQ1.onF();
+            }
+        });
+    }
+
+    public void XuLyKhoaTk(int id){
+        Dataservice dataservice=APIService.getService();
+        Call<String> callback=dataservice.KhoaTaiKhoan(id);
+        callback.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.body().toString().trim().equals("thanhcong")){
+                    suaNhanVienKQ1.onS2();
+                    return;
+                }
+                suaNhanVienKQ1.onF();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                suaNhanVienKQ1.onF();
             }
         });
     }

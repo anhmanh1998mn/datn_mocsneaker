@@ -85,7 +85,7 @@
             android:layout_height="match_parent" />
         <TextView
             android:textColor="#000"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:text="Số điện thoại"
             android:layout_weight="2"
             android:layout_width="0dp"

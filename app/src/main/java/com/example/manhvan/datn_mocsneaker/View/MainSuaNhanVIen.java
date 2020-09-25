@@ -22,9 +22,11 @@ import java.util.Calendar;
 public class MainSuaNhanVIen extends AppCompatActivity implements View.OnClickListener,SuaNhanVienKQ2 {
 
     private EditText edtSTenNV,edtSSDT,edtSDiaChi,edtSCMT;
-    private TextView txtSNgaySinh;
+    private TextView txtSNgaySinh,txtTrangThaiTK;
     private Button btnSNV,btnSKhoaTK,btnSHuy;
     private int idnhan=0;
+    private int trangThaiTaiKhoan=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,18 @@ public class MainSuaNhanVIen extends AppCompatActivity implements View.OnClickLi
         edtSDiaChi.setText(bundle.getString("queQuan"));
         txtSNgaySinh.setText(bundle.getString("ngaySinh"));
         edtSCMT.setText(bundle.getString("soCMT"));
+        trangThaiTaiKhoan=Integer.parseInt(bundle.getString("TrangThai"));
+        if (trangThaiTaiKhoan==2){
+            btnSKhoaTK.setVisibility(View.GONE);
+            btnSNV.setVisibility(View.GONE);
+            txtTrangThaiTK.setText("Tài khoản hiện đang bị khóa");
+        }
     }
 
     private void EvenClick() {
         txtSNgaySinh.setOnClickListener(this);
         btnSNV.setOnClickListener(this);
+        btnSKhoaTK.setOnClickListener(this);
     }
 
     private void initView() {
@@ -64,6 +73,7 @@ public class MainSuaNhanVIen extends AppCompatActivity implements View.OnClickLi
         btnSNV=findViewById(R.id.btn_snv);
         btnSHuy=findViewById(R.id.btn_shnv);
         btnSKhoaTK=findViewById(R.id.btn_sknv);
+        txtTrangThaiTK=findViewById(R.id.txt_trangthaitk);
     }
 
     @Override
@@ -104,6 +114,12 @@ public class MainSuaNhanVIen extends AppCompatActivity implements View.OnClickLi
                 PreSuaThongTinNhanVien preSuaThongTinNhanVien=new PreSuaThongTinNhanVien(this);
                 preSuaThongTinNhanVien.SuaThongTin(idnhan,edtSTenNV.getText().toString().trim(),edtSSDT.getText().toString().trim(),
                         txtSNgaySinh.getText().toString().trim(),edtSDiaChi.getText().toString().trim(),edtSCMT.getText().toString().trim());
+                break;
+            }
+            case R.id.btn_sknv:{
+                PreSuaThongTinNhanVien preSuaThongTinNhanVien=new PreSuaThongTinNhanVien(this);
+                preSuaThongTinNhanVien.KhoaTaiKhoan(idnhan);
+                break;
             }
         }
     }
@@ -111,6 +127,12 @@ public class MainSuaNhanVIen extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onSuccess() {
         Toast.makeText(this,"Sửa thành công",Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onSuccesKhoa() {
+        Toast.makeText(this,"Khóa tài khoản thành công",Toast.LENGTH_SHORT).show();
         finish();
     }
 
