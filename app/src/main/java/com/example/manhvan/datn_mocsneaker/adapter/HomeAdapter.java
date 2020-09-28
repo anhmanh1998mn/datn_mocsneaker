@@ -108,7 +108,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayNam=new ArrayList<>();
                 Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                Call<List<SanPhamMoi>> callback=dataservice.GetGiayNam();
                 callback.enqueue(new Callback<List<SanPhamMoi>>() {
                     @Override
                     public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
@@ -131,7 +131,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayNu=new ArrayList<>();
                 Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                Call<List<SanPhamMoi>> callback=dataservice.GetGiayNu();
                 callback.enqueue(new Callback<List<SanPhamMoi>>() {
                     @Override
                     public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
@@ -154,7 +154,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayDoi=new ArrayList<>();
                 Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                Call<List<SanPhamMoi>> callback=dataservice.GetGiayDoi();
                 callback.enqueue(new Callback<List<SanPhamMoi>>() {
                     @Override
                     public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {

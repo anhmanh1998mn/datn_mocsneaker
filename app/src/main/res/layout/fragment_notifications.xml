@@ -58,7 +58,7 @@
         android:background="#fff"
         android:textAlignment="textStart"
         android:drawableRight="@drawable/icon1"
-        android:drawableLeft="@drawable/icon2"
+        android:drawableLeft="@drawable/icongtch"
         android:text="Thông tin cửa hàng"
         android:textAllCaps="false"
         android:layout_marginTop="16dp"
@@ -67,8 +67,8 @@
     <Button
         android:background="#fff"
         android:textAlignment="textStart"
+        android:drawableLeft="@drawable/iconsetting"
         android:drawableRight="@drawable/icon1"
-        android:drawableLeft="@drawable/icon1"
         android:text="Thiết lập tài khoản"
         android:textAllCaps="false"
         android:layout_marginTop="1dp"
