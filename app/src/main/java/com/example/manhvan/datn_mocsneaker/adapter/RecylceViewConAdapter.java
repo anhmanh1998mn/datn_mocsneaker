@@ -40,7 +40,7 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i1) {
 
-        Glide.with(myContext).load("http://192.168.24.7:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load("http://192.168.52.107:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
         viewHolder.txtTen.setText(lst.get(i1).getProductName());
         DecimalFormat formater=new DecimalFormat("###,###,###");
         viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i1).getPriceOut()))+" Vnđ");

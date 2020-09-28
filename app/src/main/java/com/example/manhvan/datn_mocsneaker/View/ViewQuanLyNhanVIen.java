@@ -31,6 +31,7 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
     private Thread thread;
     private NhanVienAdapter adapter;
     private PreTimKiemNhanVien preTimKiemNhanVien;
+    private int tongdanhsachnhanien=0;
 
 
     @Override
@@ -63,6 +64,9 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
         super.onRestart();
         thread=new Thread(runnable);
         thread.start();
+        if(MoDanhSachNhanVien.arrayListNV.size()==tongdanhsachnhanien){
+            return;
+        }
         adapter.notifyDataSetChanged();
     }
 
@@ -123,6 +127,7 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
     public void onSuccessed() {
         adapter=new NhanVienAdapter(this,R.layout.itemlstnhanvien, MoDanhSachNhanVien.arrayListNV);
         listviewNhanVien.setAdapter(adapter);
+        tongdanhsachnhanien=MoDanhSachNhanVien.arrayListNV.size();
         adapter.notifyDataSetChanged();
     }
 
