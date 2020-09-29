@@ -25,6 +25,7 @@
                 android:orientation="horizontal"
                 android:layout_height="55dp" android:layout_width="match_parent">
                 <Button
+                    android:id="@+id/btn_notilogin"
                     android:textAllCaps="false"
                     android:textColor="#0536E1"
                     android:background="@drawable/custombtnlg"
@@ -32,6 +33,7 @@
                     android:layout_width="100dp"
                     android:layout_height="35dp"/>
                 <Button
+                    android:id="@+id/btn_notiRegister"
                     android:textAllCaps="false"
                     android:layout_marginRight="8dp"
                     android:layout_marginLeft="8dp"

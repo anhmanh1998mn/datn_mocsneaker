@@ -61,12 +61,12 @@ public class NhanVienAdapter extends BaseAdapter {
         holder.txt1.setText(String.valueOf(i+1));
         holder.txt2.setText(nhanVien.getStaffName());
         holder.txt3.setText(nhanVien.getStaffPhone());
-        if (Integer.parseInt(nhanVien.getUserStatus())==2){
-//            holder.txt1.setPaintFlags(holder.txt1.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
-//            holder.txt2.setPaintFlags(holder.txt2.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
-//            holder.txt3.setPaintFlags(holder.txt3.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
-            holder.txt3.setError("Khóa tài khoản");
-        }
+//        if (Integer.parseInt(nhanVien.getUserStatus())==2){
+////            holder.txt1.setPaintFlags(holder.txt1.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+////            holder.txt2.setPaintFlags(holder.txt2.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+////            holder.txt3.setPaintFlags(holder.txt3.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+//            holder.txt3.setError("Khóa tài khoản");
+//        }
         return view;
     }
 }
