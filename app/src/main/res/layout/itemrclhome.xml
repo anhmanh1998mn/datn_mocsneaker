@@ -16,7 +16,6 @@
         <TextView
             android:textAllCaps="true"
             android:textColor="#0536E1"
-            android:textSize="18sp"
             android:layout_marginLeft="8dp"
             android:textAlignment="textStart"
             android:id="@+id/txt_home1"
@@ -26,19 +25,18 @@
             android:gravity="start" />
 
         <Button
-            android:textSize="13sp"
             android:textStyle="normal"
             android:layout_weight="2"
             android:textAllCaps="false"
             android:textAlignment="textEnd"
             android:id="@+id/btn_home2"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="match_parent"
             android:layout_marginRight="8dp"
             android:background="@null"
             android:drawableRight="@drawable/iconnext"
             android:text="Xem thêm"
-            android:gravity="end|center" />
+            android:gravity="end" />
 
     </LinearLayout>
 

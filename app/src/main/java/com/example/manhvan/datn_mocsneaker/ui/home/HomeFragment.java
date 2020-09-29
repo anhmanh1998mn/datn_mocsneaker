@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.arch.lifecycle.Observer;
 
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.HomeAdapter;
+import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
 import java.util.ArrayList;
 
@@ -25,6 +27,7 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewHome;
     private ArrayList<String> arrayList;
     private HomeAdapter adapter;
+    private ImageView imageView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,6 +35,11 @@ public class HomeFragment extends Fragment {
 //                ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         initView(root);
+//        int height= AndroidDeviceHelper.getHeighScreen(getContext());
+//        int width=AndroidDeviceHelper.getHeighScreen(getContext());
+//        //imageView.getLayoutParams().height=height/3;
+//        imageView.getLayoutParams().width=width-16;
+//        imageView.requestLayout();
         return root;
     }
 
@@ -48,5 +56,6 @@ public class HomeFragment extends Fragment {
         adapter=new HomeAdapter(getActivity(),R.layout.itemrclhome,arrayList);
         recyclerViewHome.setAdapter(adapter);
         recyclerViewHome.setNestedScrollingEnabled(false);
+        imageView=view.findViewById(R.id.img_homeIMG);
     }
 }
