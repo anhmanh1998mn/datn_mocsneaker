@@ -113,14 +113,24 @@ public class MainSuaNhanVIen extends AppCompatActivity implements View.OnClickLi
                 break;
             }
             case R.id.btn_snv:{
-                PreSuaThongTinNhanVien preSuaThongTinNhanVien=new PreSuaThongTinNhanVien(this);
-                preSuaThongTinNhanVien.SuaThongTin(idnhan,edtSTenNV.getText().toString().trim(),edtSSDT.getText().toString().trim(),
-                        txtSNgaySinh.getText().toString().trim(),edtSDiaChi.getText().toString().trim(),edtSCMT.getText().toString().trim());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        PreSuaThongTinNhanVien preSuaThongTinNhanVien=new PreSuaThongTinNhanVien(MainSuaNhanVIen.this);
+                        preSuaThongTinNhanVien.SuaThongTin(idnhan,edtSTenNV.getText().toString().trim(),edtSSDT.getText().toString().trim(),
+                                txtSNgaySinh.getText().toString().trim(),edtSDiaChi.getText().toString().trim(),edtSCMT.getText().toString().trim());
+                    }
+                }).start();
                 break;
             }
             case R.id.btn_sknv:{
-                PreSuaThongTinNhanVien preSuaThongTinNhanVien=new PreSuaThongTinNhanVien(this);
-                preSuaThongTinNhanVien.KhoaTaiKhoan(idnhan);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        PreSuaThongTinNhanVien preSuaThongTinNhanVien=new PreSuaThongTinNhanVien(MainSuaNhanVIen.this);
+                        preSuaThongTinNhanVien.KhoaTaiKhoan(idnhan);
+                    }
+                }).start();
                 break;
             }
         }

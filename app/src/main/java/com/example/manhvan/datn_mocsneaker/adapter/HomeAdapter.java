@@ -58,22 +58,32 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrSPM=new ArrayList<>();
-                Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
-                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
-                        arrSPM= (ArrayList<SanPhamMoi>) response.body();
+                    public void run() {
+                        Dataservice dataservice= APIService.getService();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetSPMoi();
+                        callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                            @Override
+                            public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                                arrSPM= (ArrayList<SanPhamMoi>) response.body();
 
-                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrSPM);
-                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                final RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrSPM);
+                                viewHolder.recyclerView.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                            }
+                        });
                     }
-
-                    @Override
-                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
-
-                    }
-                });
+                }).start();
 //                PreSanPhamMoiNhat preSanPhamMoiNhat = new PreSanPhamMoiNhat(this);
 //                preSanPhamMoiNhat.SanPhamMoiNhat();
 
@@ -84,92 +94,132 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrSPNB=new ArrayList<>();
-                Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetSPNB();
-                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
-                        arrSPNB= (ArrayList<SanPhamMoi>) response.body();
+                    public void run() {
+                        Dataservice dataservice= APIService.getService();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetSPNB();
+                        callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                            @Override
+                            public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                                arrSPNB= (ArrayList<SanPhamMoi>) response.body();
 
-                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrSPNB);
-                        viewHolder.recyclerView.setHasFixedSize(true);
-                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                final RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrSPNB);
+                                viewHolder.recyclerView.setHasFixedSize(true);
+                                viewHolder.recyclerView.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                            }
+                        });
                     }
-
-                    @Override
-                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
-
-                    }
-                });
+                }).start();
                 break;
             }
             case 2: {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayNam=new ArrayList<>();
-                Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetGiayNam();
-                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
-                        arrGiayNam= (ArrayList<SanPhamMoi>) response.body();
+                    public void run() {
+                        Dataservice dataservice= APIService.getService();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayNam();
+                        callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                            @Override
+                            public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                                arrGiayNam= (ArrayList<SanPhamMoi>) response.body();
 
-                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayNam);
-                        viewHolder.recyclerView.setHasFixedSize(true);
-                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                final RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayNam);
+                                viewHolder.recyclerView.setHasFixedSize(true);
+                                viewHolder.recyclerView.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                            }
+                        });
                     }
-
-                    @Override
-                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
-
-                    }
-                });
+                }).start();
                 break;
             }
             case 3: {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayNu=new ArrayList<>();
-                Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetGiayNu();
-                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
-                        arrGiayNu= (ArrayList<SanPhamMoi>) response.body();
+                    public void run() {
+                        Dataservice dataservice= APIService.getService();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayNu();
+                        callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                            @Override
+                            public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                                arrGiayNu= (ArrayList<SanPhamMoi>) response.body();
 
-                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayNu);
-                        viewHolder.recyclerView.setHasFixedSize(true);
-                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                final RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayNu);
+                                viewHolder.recyclerView.setHasFixedSize(true);
+                                viewHolder.recyclerView.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                            }
+                        });
                     }
-
-                    @Override
-                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
-
-                    }
-                });
+                }).start();
                 break;
             }
             case 4: {
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayDoi=new ArrayList<>();
-                Dataservice dataservice= APIService.getService();
-                Call<List<SanPhamMoi>> callback=dataservice.GetGiayDoi();
-                callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                new Thread(new Runnable() {
                     @Override
-                    public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
-                        arrGiayDoi= (ArrayList<SanPhamMoi>) response.body();
+                    public void run() {
+                        Dataservice dataservice= APIService.getService();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayDoi();
+                        callback.enqueue(new Callback<List<SanPhamMoi>>() {
+                            @Override
+                            public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
+                                arrGiayDoi= (ArrayList<SanPhamMoi>) response.body();
 
-                        RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayDoi);
-                        viewHolder.recyclerView.setHasFixedSize(true);
-                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                final RecylceViewConAdapter recylceViewConAdapter = new RecylceViewConAdapter(myContext, R.layout.itemmrclviewcon, arrGiayDoi);
+                                viewHolder.recyclerView.setHasFixedSize(true);
+                                viewHolder.recyclerView.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        viewHolder.recyclerView.setAdapter(recylceViewConAdapter);
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
+
+                            }
+                        });
                     }
-
-                    @Override
-                    public void onFailure(Call<List<SanPhamMoi>> call, Throwable t) {
-
-                    }
-                });
+                }).start();
                 break;
             }
         }

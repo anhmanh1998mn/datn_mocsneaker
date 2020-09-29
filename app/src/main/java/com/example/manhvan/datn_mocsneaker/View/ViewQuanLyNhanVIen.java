@@ -77,19 +77,30 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
         listviewNhanVien.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent=new Intent(ViewQuanLyNhanVIen.this,MainSuaNhanVIen.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("TrangThai",MoDanhSachNhanVien.arrayListNV.get(i).getUserStatus());
-                bundle.putString("id",MoDanhSachNhanVien.arrayListNV.get(i).getId());
-                bundle.putString("tenNV",MoDanhSachNhanVien.arrayListNV.get(i).getStaffName());
-                bundle.putString("soDT",MoDanhSachNhanVien.arrayListNV.get(i).getStaffPhone());
-                bundle.putString("queQuan",MoDanhSachNhanVien.arrayListNV.get(i).getStaffAddress());
-                bundle.putString("ngaySinh",MoDanhSachNhanVien.arrayListNV.get(i).getDateOfBirth());
-                bundle.putString("soCMT",MoDanhSachNhanVien.arrayListNV.get(i).getIdCardNumber());
-                intent.putExtra("thongtinNV",bundle);
-                startActivity(intent);
+                getListStaff(i);
             }
         });
+
+        listViewNVTimKiem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                getListStaff(i);
+            }
+        });
+    }
+
+    public void getListStaff(int i){
+        Intent intent=new Intent(ViewQuanLyNhanVIen.this,MainSuaNhanVIen.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("TrangThai",MoDanhSachNhanVien.arrayListNV.get(i).getUserStatus());
+        bundle.putString("id",MoDanhSachNhanVien.arrayListNV.get(i).getId());
+        bundle.putString("tenNV",MoDanhSachNhanVien.arrayListNV.get(i).getStaffName());
+        bundle.putString("soDT",MoDanhSachNhanVien.arrayListNV.get(i).getStaffPhone());
+        bundle.putString("queQuan",MoDanhSachNhanVien.arrayListNV.get(i).getStaffAddress());
+        bundle.putString("ngaySinh",MoDanhSachNhanVien.arrayListNV.get(i).getDateOfBirth());
+        bundle.putString("soCMT",MoDanhSachNhanVien.arrayListNV.get(i).getIdCardNumber());
+        intent.putExtra("thongtinNV",bundle);
+        startActivity(intent);
     }
 
     private void initView() {
@@ -116,7 +127,12 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
             case R.id.btn_search:{
                 listviewNhanVien.setVisibility(View.GONE);
                 listViewNVTimKiem.setVisibility(View.VISIBLE);
-                preTimKiemNhanVien.TimKiemNhanVien(edtSearch.getText().toString().trim());
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preTimKiemNhanVien.TimKiemNhanVien(edtSearch.getText().toString().trim());
+                    }
+                }).start();
                 break;
             }
         }
@@ -139,9 +155,16 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
     @Override
     public void onSuccessed1() {
 
-        adapter=new NhanVienAdapter(this,R.layout.itemlstnhanvien, MoTimKiemNV.arrTimKiem);
-        listViewNVTimKiem.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+        listViewNVTimKiem.post(new Runnable() {
+            @Override
+            public void run() {
+                adapter=new NhanVienAdapter(ViewQuanLyNhanVIen.this,R.layout.itemlstnhanvien, MoTimKiemNV.arrTimKiem);
+                listViewNVTimKiem.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
     }
 
     @Override
@@ -151,10 +174,16 @@ public class ViewQuanLyNhanVIen extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onFialed2() {
-        listViewNVTimKiem.setVisibility(View.GONE);
-        listviewNhanVien.setVisibility(View.VISIBLE);
-        adapter=new NhanVienAdapter(this,R.layout.itemlstnhanvien, MoDanhSachNhanVien.arrayListNV);
-        listviewNhanVien.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
+        listViewNVTimKiem.post(new Runnable() {
+            @Override
+            public void run() {
+                listViewNVTimKiem.setVisibility(View.GONE);
+                listviewNhanVien.setVisibility(View.VISIBLE);
+                adapter=new NhanVienAdapter(ViewQuanLyNhanVIen.this,R.layout.itemlstnhanvien, MoDanhSachNhanVien.arrayListNV);
+                listviewNhanVien.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }
