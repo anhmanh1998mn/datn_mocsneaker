@@ -23,6 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <Button
+            android:drawablePadding="8dp"
+            android:paddingLeft="8dp"
             android:drawableLeft="@drawable/icon6"
             android:drawableRight="@drawable/icon1"
             android:textAlignment="textStart"
@@ -33,6 +35,8 @@
             android:layout_height="wrap_content"/>
 
         <Button
+            android:drawablePadding="8dp"
+            android:paddingLeft="8dp"
             android:drawableLeft="@drawable/icon3"
             android:drawableRight="@drawable/icon1"
             android:textAlignment="textStart"
@@ -43,6 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:drawablePadding="8dp"
+            android:paddingLeft="8dp"
             android:id="@+id/btn_qlnhanvien"
             android:drawableLeft="@drawable/icon4"
             android:drawableRight="@drawable/icon1"
@@ -54,6 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:drawablePadding="8dp"
+            android:paddingLeft="8dp"
             android:drawableLeft="@drawable/icon5"
             android:drawableRight="@drawable/icon1"
             android:textAlignment="textStart"
@@ -64,6 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:drawablePadding="8dp"
+            android:paddingLeft="8dp"
             android:drawableLeft="@drawable/icon2"
             android:drawableRight="@drawable/icon1"
             android:textAlignment="textStart"
@@ -74,6 +84,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:drawablePadding="8dp"
+            android:paddingLeft="8dp"
             android:drawableLeft="@drawable/icon7"
             android:drawableRight="@drawable/icon1"
             android:textAlignment="textStart"

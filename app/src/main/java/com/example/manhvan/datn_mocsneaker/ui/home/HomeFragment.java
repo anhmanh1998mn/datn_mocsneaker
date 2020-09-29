@@ -56,6 +56,6 @@ public class HomeFragment extends Fragment {
         adapter=new HomeAdapter(getActivity(),R.layout.itemrclhome,arrayList);
         recyclerViewHome.setAdapter(adapter);
         recyclerViewHome.setNestedScrollingEnabled(false);
-        imageView=view.findViewById(R.id.img_homeIMG);
+        //imageView=view.findViewById(R.id.img_homeIMG);
     }
 }

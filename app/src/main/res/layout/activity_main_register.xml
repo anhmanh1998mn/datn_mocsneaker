@@ -99,20 +99,63 @@
             android:text="show"
             android:visibility="gone" />
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/edt_regisConfirnPass"
+    <LinearLayout
+        android:id="@+id/linear11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:drawableLeft="@drawable/iconpass"
-        android:hint="Xác nhận mật khẩu"
-        android:inputType="textPassword"
+        android:orientation="horizontal"
+        android:weightSum="5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear1" />
+        app:layout_constraintTop_toBottomOf="@+id/linear1">
+
+        <EditText
+            android:id="@+id/edt_confirmPass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="4.5"
+            android:drawableLeft="@drawable/iconpass"
+            android:hint="Xác nhận mật khẩu"
+            android:inputType="textPassword" />
+
+        <ImageButton
+            android:id="@+id/btn_show2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:background="@null"
+            android:src="@drawable/iconshow1"
+            android:text="show" />
+
+        <ImageButton
+            android:id="@+id/btn_hide2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:background="@null"
+            android:src="@drawable/iconhide"
+            android:text="show"
+            android:visibility="gone" />
+    </LinearLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/edt_regisConfirnPass"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:drawableLeft="@drawable/iconpass"-->
+<!--        android:hint="Xác nhận mật khẩu"-->
+<!--        android:inputType="textPassword"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linear1" />-->
 
     <Button
         android:id="@+id/btn_regisSucess"
@@ -127,7 +170,7 @@
         android:textColor="#fff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_regisConfirnPass" />
+        app:layout_constraintTop_toBottomOf="@+id/linear11" />
 
     <Button
         android:id="@+id/btn_regisCancle"

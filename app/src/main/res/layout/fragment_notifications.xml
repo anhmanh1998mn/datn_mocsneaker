@@ -47,6 +47,8 @@
 
     </FrameLayout>
     <Button
+        android:drawablePadding="8dp"
+        android:paddingLeft="8dp"
         android:background="#fff"
         android:textAlignment="textStart"
         android:drawableRight="@drawable/icon1"
@@ -57,6 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
+        android:drawablePadding="8dp"
+        android:paddingLeft="8dp"
         android:background="#fff"
         android:textAlignment="textStart"
         android:drawableRight="@drawable/icon1"
@@ -67,6 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
+        android:drawablePadding="8dp"
+        android:paddingLeft="8dp"
         android:background="#fff"
         android:textAlignment="textStart"
         android:drawableLeft="@drawable/iconsetting"
