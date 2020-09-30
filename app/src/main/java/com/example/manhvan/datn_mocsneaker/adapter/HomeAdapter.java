@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -131,7 +132,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                     @Override
                     public void run() {
                         Dataservice dataservice= APIService.getService();
-                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayNam();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayNam(1);
                         callback.enqueue(new Callback<List<SanPhamMoi>>() {
                             @Override
                             public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
@@ -164,7 +165,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                     @Override
                     public void run() {
                         Dataservice dataservice= APIService.getService();
-                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayNu();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayNam(2);
                         callback.enqueue(new Callback<List<SanPhamMoi>>() {
                             @Override
                             public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {
@@ -197,7 +198,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                     @Override
                     public void run() {
                         Dataservice dataservice= APIService.getService();
-                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayDoi();
+                        Call<List<SanPhamMoi>> callback=dataservice.GetGiayNam(3);
                         callback.enqueue(new Callback<List<SanPhamMoi>>() {
                             @Override
                             public void onResponse(Call<List<SanPhamMoi>> call, Response<List<SanPhamMoi>> response) {

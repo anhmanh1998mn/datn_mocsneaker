@@ -2,6 +2,8 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.MainProductDetail;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.text.DecimalFormat;
@@ -38,17 +40,26 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i1) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i1) {
 
-//        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
-        Glide.with(myContext).load("http://192.168.1.63:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+//        Glide.with(myContext).load("http://192.168.1.63:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
         viewHolder.txtTen.setText(lst.get(i1).getProductName());
         DecimalFormat formater=new DecimalFormat("###,###,###");
         viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i1).getPriceOut()))+" Vnđ");
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(myContext,lst.get(i1).getProductName(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(myContext,MainProductDetail.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("idAnh",(lst.get(i1).getId()));
+                bundle.putString("content",lst.get(i1).getProductName());
+                bundle.putString("name",lst.get(i1).getProductName());
+                bundle.putString("price",lst.get(i1).getPriceOut());
+                intent.putExtra("ProductInfo",bundle);
+                //intent.putExtra("name",lst.get(i1).getProductName());
+                myContext.startActivity(intent);
+                //Toast.makeText(myContext,lst.get(i1).getProductName(),Toast.LENGTH_SHORT).show();
             }
         });
     }

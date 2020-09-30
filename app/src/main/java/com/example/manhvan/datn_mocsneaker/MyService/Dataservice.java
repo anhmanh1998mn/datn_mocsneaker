@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.MyService;
 
 import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
+import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.util.List;
@@ -32,14 +33,15 @@ public interface Dataservice {
     @GET("snaphamnoibat.php")
     Call<List<SanPhamMoi>> GetSPNB();
 
-    @GET("danhsachgiaynam.php")
-    Call<List<SanPhamMoi>> GetGiayNam();
+    @FormUrlEncoded
+    @POST("danhsachgiaynam.php")
+    Call<List<SanPhamMoi>> GetGiayNam(@Field("idnhan") int idnhan);
 
-    @GET("danhsachgiaynu.php")
-    Call<List<SanPhamMoi>> GetGiayNu();
-
-    @GET("danhsachgiaydoi.php")
-    Call<List<SanPhamMoi>> GetGiayDoi();
+//    @GET("danhsachgiaynu.php")
+//    Call<List<SanPhamMoi>> GetGiayNu();
+//
+//    @GET("danhsachgiaydoi.php")
+//    Call<List<SanPhamMoi>> GetGiayDoi();
 
     @FormUrlEncoded
     @POST("suanhanvien.php")
@@ -49,4 +51,8 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("khoatiakhoannhanvien.php")
     Call<String> KhoaTaiKhoan(@Field("id") int id);
+
+    @FormUrlEncoded
+    @POST("chitietsanpham.php")
+    Call<List<ProductImage>> GetProductImage(@Field("idnhan")int idnhan);
 }
