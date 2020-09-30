@@ -7,56 +7,61 @@
     tools:context=".View.MainRegister">
 
     <EditText
+        android:drawablePadding="12dp"
+        android:layout_marginTop="8dp"
         android:id="@+id/edt_regisHoTen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:drawableLeft="@drawable/iconname"
+        android:drawableLeft="@drawable/ic_account_box_black_24dp"
         android:hint="Họ tên"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:drawableTint="#1f98f6"
+        android:layout_marginTop="8dp"
         android:id="@+id/edt_regisPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:drawableLeft="@drawable/iconphone"
+        android:drawableLeft="@drawable/ic_phone_android_black_24dp"
         android:hint="Số điện thoai"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_regisHoTen" />
 
     <EditText
+        android:layout_marginTop="8dp"
         android:id="@+id/edt_regisAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:drawableLeft="@drawable/iconadaress"
+        android:drawableTint="#12568B"
+        android:drawableLeft="@drawable/ic_location_on_black_24dp"
         android:hint="Địa chỉ"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_regisPhone" />
 
     <EditText
+        android:layout_marginTop="8dp"
         android:id="@+id/edt_regisUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:drawableLeft="@drawable/iconuser"
+        android:drawableTint="#b80000"
+        android:drawableLeft="@drawable/ic_person_outline_black_24dp"
         android:hint="Tên tài khoản"
         app:layout_constraintTop_toBottomOf="@+id/edt_regisAddress" />
 
     <LinearLayout
+        android:layout_marginTop="8dp"
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -72,9 +77,9 @@
             android:id="@+id/edt_regisPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_weight="4.5"
-            android:drawableLeft="@drawable/iconpass"
+            android:drawableTint="#006013"
+            android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:hint="Mật khẩu"
             android:inputType="textPassword" />
 
@@ -85,7 +90,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.5"
             android:background="@null"
-            android:src="@drawable/iconshow1"
+            android:src="@drawable/ic_remove_red_eye_black_24dp"
             android:text="show" />
 
         <ImageButton
@@ -95,11 +100,12 @@
             android:layout_gravity="center"
             android:layout_weight="0.5"
             android:background="@null"
-            android:src="@drawable/iconhide"
+            android:src="@drawable/ic_visibility_off_black_24dp"
             android:text="show"
             android:visibility="gone" />
     </LinearLayout>
     <LinearLayout
+        android:layout_marginTop="8dp"
         android:id="@+id/linear11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -115,9 +121,9 @@
             android:id="@+id/edt_confirmPass"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_weight="4.5"
-            android:drawableLeft="@drawable/iconpass"
+            android:drawableTint="#2b496c"
+            android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:hint="Xác nhận mật khẩu"
             android:inputType="textPassword" />
 
@@ -128,7 +134,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.5"
             android:background="@null"
-            android:src="@drawable/iconshow1"
+            android:src="@drawable/ic_remove_red_eye_black_24dp"
             android:text="show" />
 
         <ImageButton
@@ -138,7 +144,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.5"
             android:background="@null"
-            android:src="@drawable/iconhide"
+            android:src="@drawable/ic_visibility_off_black_24dp"
             android:text="show"
             android:visibility="gone" />
     </LinearLayout>
@@ -158,11 +164,11 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/linear1" />-->
 
     <Button
+        android:layout_marginTop="8dp"
         android:id="@+id/btn_regisSucess"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/custombtndki"
         android:text="@string/ng_k"
@@ -173,10 +179,10 @@
         app:layout_constraintTop_toBottomOf="@+id/linear11" />
 
     <Button
+        android:layout_marginTop="8dp"
         android:id="@+id/btn_regisCancle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="@null"
         android:text="Hủy"
         android:textAllCaps="false"

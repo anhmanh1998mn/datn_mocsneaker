@@ -29,6 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <EditText
+            android:drawablePadding="8dp"
+            android:drawableTint="#191994"
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
             android:textColor="#000"
             android:id="@+id/edt_tenNV"
             android:layout_marginTop="24dp"
@@ -37,6 +40,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:drawablePadding="8dp"
+            android:drawableLeft="@drawable/ic_phone_android_black_24dp"
+            android:drawableTint="#af0202"
             android:textColor="#000"
             android:inputType="number"
             android:id="@+id/edt_sdtNV"
@@ -46,6 +52,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:drawablePadding="8dp"
+            android:drawableTint="#00bab0"
+            android:drawableLeft="@drawable/ic_location_on_black_24dp"
             android:textColor="#000"
             android:id="@+id/edt_diachiNV"
             android:layout_marginTop="8dp"
@@ -54,6 +63,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <TextView
+            android:drawablePadding="8dp"
+            android:drawableTint="#4500a5"
+            android:drawableLeft="@drawable/ic_date_range_black_24dp"
             android:textColor="#000"
             android:textSize="18sp"
             android:id="@+id/edt_ngaysinhnv"
@@ -63,6 +75,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:drawablePadding="8dp"
+            android:drawableTint="#700000"
+            android:drawableLeft="@drawable/ic_credit_card_black_24dp"
             android:textColor="#000"
             android:inputType="number"
             android:id="@+id/edt_cmtNV"
@@ -72,6 +87,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:drawablePadding="8dp"
+            android:drawableTint="#836d6d"
+            android:drawableLeft="@drawable/ic_account_box_black_24dp"
             android:textColor="#000"
             android:id="@+id/edt_taikhoanNV"
             android:layout_marginTop="8dp"
@@ -80,6 +98,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:drawablePadding="8dp"
+            android:drawableTint="#dc0000"
+            android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:textColor="#000"
             android:id="@+id/edt_matkhauNV"
             android:layout_marginTop="8dp"
