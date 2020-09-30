@@ -4,4 +4,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Quản lý</string>
     <string name="title_notifications">Cá nhân</string>
+    <string name="ng_k">Đăng ký</string>
+    <string name="thuong_hieu">Thương hiệu: DinCox | Loại: DinCox</string>
+    <string name="hot_line">Hotline hỗ trợ</string>
 </resources>
