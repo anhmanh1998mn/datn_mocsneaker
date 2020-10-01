@@ -27,6 +27,6 @@ public class PreCheckRegister implements TimKiemNVKQ1 {
 
     @Override
     public void onF() {
-        checkRegister.failed();
+        checkRegister.phoneNotRegister();
     }
 }

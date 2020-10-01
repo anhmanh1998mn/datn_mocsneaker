@@ -167,8 +167,15 @@ public class MainRegister extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void failed() {
-        startActivity(new Intent(this,MainVertifyOTP.class));
+    public void phoneNotRegister() {
+        Intent intent=new Intent(this,MainVertifyOTP.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("hoTen",edtFullName.getText().toString().trim());
+        bundle.putString("diaChi",edtAddress.getText().toString().trim());
+        bundle.putString("taiKhoan",edtUserName.getText().toString().trim());
+        bundle.putString("matKhau",edtConfirmPass.getText().toString().trim());
+        intent.putExtra("thongTin",bundle);
+        startActivity(intent);
     }
 
     @Override
