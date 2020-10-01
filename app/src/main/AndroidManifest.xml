@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.MainUserInfo"></activity>
+        <activity android:name=".View.MainDoiMatKhau"></activity>
+        <activity android:name=".View.MainXacNhanMatKhau" />
+        <activity android:name=".View.MainUserInfo" />
         <activity android:name=".View.MainVertifyOTP" />
         <activity android:name=".View.MainProductDetail" />
         <activity android:name=".View.MainRegister" />

@@ -1,27 +1,32 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.manhvan.datn_mocsneaker.R;
 
-public class MainLogin extends AppCompatActivity {
+public class MainDoiMatKhau extends AppCompatActivity {
     private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_loginn);
+        setContentView(R.layout.activity_main_doi_mat_khau);
         actionBar=getSupportActionBar();
+        actionBar.setTitle("Gửi lại mật khẩu");
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setTitle("Đăng nhập.");
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                finish();
+                break;
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
 }

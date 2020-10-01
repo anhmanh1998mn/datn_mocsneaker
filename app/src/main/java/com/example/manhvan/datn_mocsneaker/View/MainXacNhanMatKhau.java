@@ -10,38 +10,30 @@ import android.widget.Button;
 
 import com.example.manhvan.datn_mocsneaker.R;
 
-public class MainUserInfo extends AppCompatActivity implements View.OnClickListener {
-    private Button btnUserThietLapTaiKhoan;
+public class MainXacNhanMatKhau extends AppCompatActivity implements View.OnClickListener {
+    private Button btnTiepTuc;
     private ActionBar actionBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_user_info);
+        setContentView(R.layout.activity_main_xac_nhan_mat_khau);
         actionBar=getSupportActionBar();
-        actionBar.setTitle("Thiết lập tài khoản");
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Gửi lại mật khẩu");
         initView();
         eventClick();
     }
-
-    private void initView() {
-        btnUserThietLapTaiKhoan=findViewById(R.id.btn_ChangePass);
+    private void initView(){
+        btnTiepTuc=findViewById(R.id.btn_tieptucMKDoi);
     }
-
-    public void eventClick(){
-        btnUserThietLapTaiKhoan.setOnClickListener(this);
+    private void eventClick() {
+        btnTiepTuc.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btn_ChangePass:{
-                startActivity(new Intent(MainUserInfo.this,MainXacNhanMatKhau.class));
-                break;
-            }
-        }
+        startActivity(new Intent(this,MainDoiMatKhau.class));
     }
 
     @Override
