@@ -2,23 +2,20 @@ package com.example.manhvan.datn_mocsneaker.ui.notifications;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.arch.lifecycle.Observer;
-
 
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.MainLogin;
 import com.example.manhvan.datn_mocsneaker.View.MainRegister;
+import com.example.manhvan.datn_mocsneaker.View.MainUserInfo;
 
 public class NotificationsFragment extends Fragment implements View.OnClickListener {
-    private Button btnNotiLogin,btnNotiRegister;
+    private Button btnNotiLogin,btnNotiRegister,btnNotiSetting;
 
     private NotificationsViewModel notificationsViewModel;
 
@@ -42,11 +39,13 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     private void EvenClick() {
         btnNotiLogin.setOnClickListener(this);
         btnNotiRegister.setOnClickListener(this);
+        btnNotiSetting.setOnClickListener(this);
     }
 
     private void initView(View root) {
         btnNotiLogin=root.findViewById(R.id.btn_notilogin);
         btnNotiRegister=root.findViewById(R.id.btn_notiRegister);
+        btnNotiSetting=root.findViewById(R.id.btn_notiSetting);
     }
 
     @Override
@@ -59,6 +58,9 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
             case R.id.btn_notiRegister:{
                 startActivity(new Intent(getContext(), MainRegister.class));
                 break;
+            }
+            case R.id.btn_notiSetting:{
+                startActivity(new Intent(getContext(), MainUserInfo.class));
             }
         }
     }
