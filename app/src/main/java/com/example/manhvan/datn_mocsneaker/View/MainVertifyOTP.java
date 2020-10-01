@@ -70,7 +70,7 @@ public class MainVertifyOTP extends AppCompatActivity implements View.OnClickLis
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             //Getting the code sent by SMS
 //            String code = phoneAuthCredential.getSmsCode();
-//            Log.d("Phone",code);
+
         }
 
         @Override
