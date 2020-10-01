@@ -42,7 +42,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         recyclerViewProductDetail=findViewById(R.id.recycle_prdetail);
         txtProductName=findViewById(R.id.txt_tenSPDetail);
         txtProductPrice=findViewById(R.id.txt_giaDetail);
-
+        txtProductContent=findViewById(R.id.txt_ttsanpham);
     }
 
     private void dulieunhan() {
@@ -51,6 +51,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         txtProductName.setText(bundle.getString("name"));
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         txtProductPrice.setText(decimalFormat.format(Integer.parseInt(bundle.getString("price")))+" Vnđ");
+        txtProductContent.setText(bundle.getString("content1"));
 
         final String id=bundle.getString("idAnh");
 //        Toast.makeText(this,intent.getStringExtra("price"), Toast.LENGTH_SHORT).show();
@@ -87,6 +88,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                 //Vuốt ảnh về chính giữa trong recycleView
                 SnapHelper snapHelper=new LinearSnapHelper();
                 snapHelper.attachToRecyclerView(recyclerViewProductDetail);
+                recyclerViewProductDetail.setNestedScrollingEnabled(true);
             }
         });
 

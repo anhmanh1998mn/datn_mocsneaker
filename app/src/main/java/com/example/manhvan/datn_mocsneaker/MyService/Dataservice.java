@@ -55,4 +55,8 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("chitietsanpham.php")
     Call<List<ProductImage>> GetProductImage(@Field("idnhan")int idnhan);
+
+    @FormUrlEncoded
+    @POST("kiemtradangky.php")
+    Call<String> checkRegister(@Field("customer_phone")String customer_phone);
 }
