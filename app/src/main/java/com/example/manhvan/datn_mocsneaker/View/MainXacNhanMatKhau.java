@@ -34,6 +34,7 @@ public class MainXacNhanMatKhau extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         startActivity(new Intent(this,MainDoiMatKhau.class));
+        finish();
     }
 
     @Override
