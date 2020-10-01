@@ -1,11 +1,10 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +15,6 @@ import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Presenter.PreThemNV;
 import com.example.manhvan.datn_mocsneaker.R;
-
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -40,6 +35,7 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         preThemNV=new PreThemNV(this);
         initView();
+        setPhoneUserName();
         clickview();
     }
 
@@ -101,6 +97,25 @@ public class ViewThemNhanVien extends AppCompatActivity implements View.OnClickL
             }
         }, year, month, day);
         datePickerDialog.show();
+    }
+
+    public void setPhoneUserName(){
+        edtSoDienThoai.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                edtTaiKhoanNV.setText(editable.toString().trim());
+            }
+        });
     }
 
     @Override

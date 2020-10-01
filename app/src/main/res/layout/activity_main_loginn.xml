@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <EditText
+        android:drawablePadding="12dp"
         android:drawableLeft="@drawable/ic_account_box_black_24dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
@@ -16,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
+        android:drawablePadding="12dp"
         android:drawableTint="#12568B"
         android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
         android:inputType="textPassword"

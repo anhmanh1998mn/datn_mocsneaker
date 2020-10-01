@@ -7,4 +7,6 @@
     <string name="ng_k">Đăng ký</string>
     <string name="thuong_hieu">Thương hiệu: DinCox | Loại: DinCox</string>
     <string name="hot_line">Hotline hỗ trợ</string>
+    <string name="tt_sanpham">Thông tin sản phẩm</string>
+    <string name="vertify_otp">Mã xác thực sẽ được gửi qua số điện thoại khách hàng đăng ký</string>
 </resources>

@@ -87,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp" />
         <EditText
+            android:enabled="false"
             android:drawablePadding="8dp"
             android:drawableTint="#836d6d"
             android:drawableLeft="@drawable/ic_account_box_black_24dp"
