@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
     <TextView
+        android:id="@+id/txt_tenFrag"
         android:textAllCaps="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -23,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <Button
+            android:id="@+id/btn_kiemTraDonHang"
             android:drawablePadding="8dp"
             android:paddingLeft="8dp"
             android:drawableTint="#8d4444"
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
+            android:id="@+id/btn_quanLySanPham"
             android:drawablePadding="8dp"
             android:paddingLeft="8dp"
             android:drawableLeft="@drawable/ic_content_paste_black_24dp"
@@ -62,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/btn_quanLyKhachHang"
             android:drawablePadding="8dp"
             android:paddingLeft="8dp"
             android:drawableTint="#d45c00"
@@ -75,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/btn_quanLyDonHang"
             android:drawablePadding="8dp"
             android:paddingLeft="8dp"
             android:drawableTint="#1a008e"
@@ -88,6 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:id="@+id/btn_quanLyNhapHang"
             android:drawablePadding="8dp"
             android:paddingLeft="8dp"
             android:drawableTint="#822e2e"

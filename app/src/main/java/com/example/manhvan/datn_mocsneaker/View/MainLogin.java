@@ -1,6 +1,8 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +15,6 @@ import android.widget.Toast;
 import com.example.manhvan.datn_mocsneaker.MainActivity2;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreDangNhap;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.ui.dashboard.DashboardFragment;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -95,11 +96,12 @@ public class MainLogin extends AppCompatActivity implements View.OnClickListener
             }
         });
         Intent intent=new Intent(this, MainActivity2.class);
-        Bundle bundle=new Bundle();
-        bundle.putString("Quyen",quyen);
-        DashboardFragment dashboardFragment=new DashboardFragment();
-        dashboardFragment.setArguments(bundle);
+        SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("quyen",quyen);
+        editor.commit();
         startActivity(intent);
+
         finish();
     }
 
