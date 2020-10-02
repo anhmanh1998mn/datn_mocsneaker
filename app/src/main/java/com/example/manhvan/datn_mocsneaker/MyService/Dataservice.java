@@ -59,4 +59,12 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("kiemtradangky.php")
     Call<String> checkRegister(@Field("customer_phone")String customer_phone);
+
+    @FormUrlEncoded
+    @POST("dangkytaikhoan.php")
+    Call<String> dangKyTaiKhoan(@Field("customer_name")String hoTen,@Field("customer_phone")String soDT,
+                                @Field("customer_address")String diaChi,@Field("user_password")String matKhau);
+    @FormUrlEncoded
+    @POST("login.php")
+    Call<String> loGin(@Field("user_name")String taiKhoan,@Field("user_password")String matKhau);
 }

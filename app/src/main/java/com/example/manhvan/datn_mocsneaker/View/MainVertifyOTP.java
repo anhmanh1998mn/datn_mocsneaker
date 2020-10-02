@@ -3,28 +3,26 @@ package com.example.manhvan.datn_mocsneaker.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.manhvan.datn_mocsneaker.Presenter.PreDangKyTaiKhoanKH;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeUnit;
 
-public class MainVertifyOTP extends AppCompatActivity implements View.OnClickListener {
+public class MainVertifyOTP extends AppCompatActivity implements View.OnClickListener,DangKyTaiKhoanKH {
     private EditText edtOTP;
     private Button btnOTP, btnGuiLaiOTP;
     String hoTen, phone, diaChi, matKhau, mVerificationId;
@@ -99,12 +97,27 @@ public class MainVertifyOTP extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(MainVertifyOTP.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(MainVertifyOTP.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                            dangkyTaiKhoanKhachHang();
                         } else {
                             Toast.makeText(MainVertifyOTP.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    private void dangkyTaiKhoanKhachHang() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                PreDangKyTaiKhoanKH preDangKyTaiKhoanKH=new PreDangKyTaiKhoanKH(MainVertifyOTP.this);
+                try {
+                    preDangKyTaiKhoanKH.dangKyTaiKhoanKH(hoTen,phone,diaChi,matKhau);
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     private void nhanDuLieuGui() {
@@ -134,5 +147,27 @@ public class MainVertifyOTP extends AppCompatActivity implements View.OnClickLis
                 break;
             }
         }
+    }
+
+    @Override
+    public void dangKyThanhCong() {
+        btnGuiLaiOTP.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainVertifyOTP.this,"Đăng ký thành công",Toast.LENGTH_SHORT).show();
+            }
+        });
+        startActivity(new Intent(this,MainLogin.class));
+        finish();
+    }
+
+    @Override
+    public void thatBai() {
+        btnGuiLaiOTP.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainVertifyOTP.this,"Đăng ký thất bại",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
