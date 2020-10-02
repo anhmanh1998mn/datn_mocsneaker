@@ -23,7 +23,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                              ViewGroup container, Bundle savedInstanceState) {
         quyenHienThi();
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        root.setVisibility(View.GONE);
         initView(root);
         eventCleck();
 

@@ -117,6 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_uAddress"
         android:layout_height="wrap_content"/>
     <Button
+        android:id="@+id/btn_dangXuat"
         android:layout_marginTop="4dp"
         android:background="#fff"
         android:drawableRight="@drawable/ic_chevron_right_black_24dp"
