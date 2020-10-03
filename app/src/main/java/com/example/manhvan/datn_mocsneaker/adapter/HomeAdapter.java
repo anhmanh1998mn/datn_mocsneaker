@@ -247,7 +247,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt1;
-        Button btnXemThem;
+        TextView btnXemThem;
         RecyclerView recyclerView;
 
         public ViewHolder(@NonNull View itemView) {

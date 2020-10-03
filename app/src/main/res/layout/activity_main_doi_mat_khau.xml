@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".View.MainDoiMatKhau">
     <EditText
+        android:drawableTint="#0536E1"
+        android:textColor="#000"
         android:drawablePadding="16dp"
         android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
         android:hint="Mật khẩu mới"
@@ -19,8 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
+        android:textColor="#000"
         android:drawablePadding="16dp"
-        android:drawableTint="#1586b8"
+        android:drawableTint="#0536E1"
         android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
         android:hint="Xác nhận mật khẩu"
         android:id="@+id/edt_doimatkhau2"

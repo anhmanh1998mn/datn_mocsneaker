@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.MainProductDetail;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
+import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -41,12 +44,14 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i1) {
+        viewHolder.imageView.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5*2;
+        viewHolder.imageView.requestLayout();
 
-        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
-//        Glide.with(myContext).load("http://192.168.1.63:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+//        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load("http://192.168.89.1:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
         viewHolder.txtTen.setText(lst.get(i1).getProductName());
         DecimalFormat formater=new DecimalFormat("###,###,###");
-        viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i1).getPriceOut()))+" Vnđ");
+        viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i1).getPriceOut()))+ " đ");
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

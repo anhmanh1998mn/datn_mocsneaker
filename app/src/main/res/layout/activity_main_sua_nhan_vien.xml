@@ -8,7 +8,6 @@
     tools:context=".View.MainSuaNhanVIen">
 
     <TextView
-
         android:id="@+id/txt_trangthaitk"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -19,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
+        android:textColor="#000"
         android:drawableTint="#AF0000"
         android:drawablePadding="12dp"
         android:drawableLeft="@drawable/ic_person_outline_black_24dp"
@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp" />
     <EditText
+        android:textColor="#000"
         android:enabled="false"
         android:drawableTint="#006A45"
         android:drawablePadding="12dp"
@@ -44,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp" />
     <EditText
+        android:textColor="#000"
         android:drawableTint="#FF1313"
         android:drawablePadding="12dp"
         android:drawableLeft="@drawable/ic_location_on_black_24dp"
@@ -56,6 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp" />
     <TextView
+        android:textColor="#000"
         android:drawableTint="#096A77"
         android:gravity="center|left"
         android:drawablePadding="12dp"
@@ -68,7 +71,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp" />
     <EditText
-        android:drawableTint="#087A70"
+        android:textColor="#000"
+        android:drawableTint="#0536E1"
         android:drawablePadding="12dp"
         android:drawableLeft="@drawable/ic_credit_card_black_24dp"
         android:layout_marginTop="16dp"

@@ -7,6 +7,8 @@
     tools:context=".View.MainRegister">
 
     <EditText
+        android:drawableTint="#0536E1"
+        android:textColor="#000"
         android:drawablePadding="12dp"
         android:layout_marginTop="8dp"
         android:id="@+id/edt_regisHoTen"
@@ -21,9 +23,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:textColor="#000"
         android:inputType="number"
         android:drawablePadding="12dp"
-        android:drawableTint="#1f98f6"
+        android:drawableTint="#0536E1"
         android:layout_marginTop="8dp"
         android:id="@+id/edt_regisPhone"
         android:layout_width="match_parent"
@@ -37,6 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_regisHoTen" />
 
     <EditText
+        android:textColor="#000"
         android:drawablePadding="12dp"
         android:layout_marginTop="8dp"
         android:id="@+id/edt_regisAddress"
@@ -44,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:drawableTint="#12568B"
+        android:drawableTint="#0536E1"
         android:drawableLeft="@drawable/ic_location_on_black_24dp"
         android:hint="Địa chỉ"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -52,6 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_regisPhone" />
 
     <EditText
+        android:textColor="#000"
         android:enabled="false"
         android:drawablePadding="12dp"
         android:layout_marginTop="8dp"
@@ -60,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:drawableTint="#b80000"
+        android:drawableTint="#0536E1"
         android:drawableLeft="@drawable/ic_person_outline_black_24dp"
         android:hint="Tên tài khoản"
         app:layout_constraintTop_toBottomOf="@+id/edt_regisAddress" />
@@ -79,12 +84,13 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_regisUsername">
 
         <EditText
+            android:textColor="#000"
             android:drawablePadding="12dp"
             android:id="@+id/edt_regisPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4.5"
-            android:drawableTint="#006013"
+            android:drawableTint="#0536E1"
             android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:hint="Mật khẩu"
             android:inputType="textPassword" />
@@ -124,12 +130,13 @@
         app:layout_constraintTop_toBottomOf="@+id/linear1">
 
         <EditText
+            android:textColor="#000"
             android:drawablePadding="12dp"
             android:id="@+id/edt_confirmPass"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4.5"
-            android:drawableTint="#2b496c"
+            android:drawableTint="#0536E1"
             android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:hint="Xác nhận mật khẩu"
             android:inputType="textPassword" />

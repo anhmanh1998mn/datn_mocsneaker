@@ -26,6 +26,7 @@
 
     </FrameLayout>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uFName"
         android:layout_marginLeft="16dp"
@@ -36,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uFName1"
         android:layout_marginLeft="16dp"
@@ -45,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uName"
         android:layout_marginLeft="16dp"
@@ -55,6 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_uFName"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uName1"
         android:layout_marginLeft="16dp"
@@ -64,6 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uPhone"
         android:layout_marginLeft="16dp"
@@ -74,6 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_uName"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uPhone1"
         android:layout_marginLeft="16dp"
@@ -83,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uAddress"
         android:layout_marginLeft="16dp"
@@ -93,6 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_uPhone"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uAddress1"
         android:layout_marginLeft="16dp"

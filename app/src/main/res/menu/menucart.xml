@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/mnusearch"
+        android:title="search"
+        android:iconTint="#fff"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="always"/>
     <item android:id="@+id/mnucart" android:title="Cart"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:iconTint="#fff"
