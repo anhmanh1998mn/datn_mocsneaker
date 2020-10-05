@@ -99,6 +99,7 @@ public class MainLogin extends AppCompatActivity implements View.OnClickListener
         SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("quyen",quyen);
+        editor.putString("phone",edtAccountName.getText().toString().trim());
         editor.commit();
         startActivity(intent);
 

@@ -37,13 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
+        android:layout_marginRight="8dp"
         android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uFName1"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/framelayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
@@ -58,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_uFName"
         android:layout_height="wrap_content"/>
     <TextView
+        android:layout_marginRight="8dp"
         android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uName1"
@@ -79,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_uName"
         android:layout_height="wrap_content"/>
     <TextView
+        android:layout_marginRight="8dp"
         android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uPhone1"
@@ -100,6 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_uPhone"
         android:layout_height="wrap_content"/>
     <TextView
+        android:layout_marginRight="8dp"
         android:textColor="#000"
         android:textSize="15sp"
         android:id="@+id/txt_uAddress1"
@@ -137,6 +141,20 @@
         android:layout_width="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_ChangePass"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_dangXuat"
+        android:id="@+id/txt_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_id"
+        android:id="@+id/txt_mk"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
 </android.support.constraint.ConstraintLayout>

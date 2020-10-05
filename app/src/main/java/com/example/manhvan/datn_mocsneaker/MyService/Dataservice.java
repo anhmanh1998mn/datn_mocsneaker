@@ -3,6 +3,8 @@ package com.example.manhvan.datn_mocsneaker.MyService;
 import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
 import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 
 import java.util.List;
 
@@ -67,4 +69,12 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("login.php")
     Call<String> loGin(@Field("user_name")String taiKhoan,@Field("user_password")String matKhau);
+
+    @FormUrlEncoded
+    @POST("thongtinnguoidung.php")
+    Call<List<ThongTinNV>> thongTinNhanVien(@Field("role")String role,@Field("phone")String phone);
+
+    @FormUrlEncoded
+    @POST("thongtinnguoidung.php")
+    Call<List<ThongTinKhachHang>> thongTinKhachHang(@Field("role")String role,@Field("phone")String phone);
 }
