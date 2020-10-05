@@ -83,10 +83,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 startActivity(new Intent(getContext(), MainUserInfo.class));
                 break;
             }
-            case R.id.btn_thongtintaikhoan:{
-                startActivity(new Intent(getContext(),MainUserInfo.class));
-                break;
-            }
+           
         }
     }
 }

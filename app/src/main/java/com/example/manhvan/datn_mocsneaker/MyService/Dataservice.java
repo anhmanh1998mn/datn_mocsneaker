@@ -77,4 +77,8 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("thongtinnguoidung.php")
     Call<List<ThongTinKhachHang>> thongTinKhachHang(@Field("role")String role,@Field("phone")String phone);
+
+    @FormUrlEncoded
+    @POST("doimatkhau.php")
+    Call<String> doiMatKhau(@Field("id")String id,@Field("user_password")String user_password);
 }
