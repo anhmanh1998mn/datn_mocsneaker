@@ -21,17 +21,22 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        quyenHienThi();
+
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         initView(root);
         eventCleck();
-
+        quyenHienThi();
         return root;
     }
 
     private void quyenHienThi() {
         SharedPreferences sharedPreferences=this.getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
         String quyen=sharedPreferences.getString("quyen","");
+        if (quyen.equals("1")){
+            btnQLNhanVien.setVisibility(View.VISIBLE);
+            btnQuanLySP.setVisibility(View.VISIBLE);
+            return;
+        }
 
     }
 

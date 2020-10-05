@@ -83,7 +83,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 startActivity(new Intent(getContext(), MainUserInfo.class));
                 break;
             }
-           
+
         }
     }
 }

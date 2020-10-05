@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
+            android:visibility="gone"
             android:drawableTint="#0536E1"
             android:id="@+id/btn_quanLySanPham"
             android:drawablePadding="8dp"
@@ -52,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <Button
+            android:visibility="gone"
             android:drawablePadding="8dp"
             android:paddingLeft="8dp"
             android:drawableTint="#0536E1"

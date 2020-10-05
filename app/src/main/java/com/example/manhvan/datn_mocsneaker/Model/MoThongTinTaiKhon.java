@@ -23,7 +23,7 @@ public class MoThongTinTaiKhon {
     public ArrayList<ThongTinKhachHang> arrKH;
     public void xuLy(String role,String phone){
         Dataservice dataservice= APIService.getService();
-        if(role.equals("2")){
+        if(role.equals("2")||role.equals("1")){
             arrNV=new ArrayList<>();
             Call<List<ThongTinNV>> callback=dataservice.thongTinNhanVien(role,phone);
             callback.enqueue(new Callback<List<ThongTinNV>>() {

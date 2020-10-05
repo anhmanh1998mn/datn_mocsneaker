@@ -123,12 +123,12 @@ public class MainUserInfo extends AppCompatActivity implements View.OnClickListe
         txtHoTen.post(new Runnable() {
             @Override
             public void run() {
-                txtHoTen.setText(arrayList.get(0).getCustomerName());
+//                txtHoTen.setText(arrayList.get(0).getCustomerName());
                 txtTaiKhoan.setText(sharedPreferences.getString("phone",""));
                 txtSDT.setText(sharedPreferences.getString("phone",""));
-                txtDiaChi.setText(arrayList.get(0).getCustomerAddress());
-                txtID.setText(arrayList.get(0).getId());
-                txtMK.setText(arrayList.get(0).getUserPassword());
+//                txtDiaChi.setText(arrayList.get(0).getCustomerAddress());
+//                txtID.setText(arrayList.get(0).getId());
+ //               txtMK.setText(arrayList.get(0).getUserPassword());
             }
         });
     }

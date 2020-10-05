@@ -52,6 +52,7 @@ public class MainXacNhanMatKhau extends AppCompatActivity implements View.OnClic
                 Intent intent1=new Intent(this,MainDoiMatKhau.class);
                 intent1.putExtra("MatKhau",bundle.getString("idtaikhoan"));
                 startActivity(intent1);
+                finish();
                 return;
             }
         } catch (NoSuchAlgorithmException e) {

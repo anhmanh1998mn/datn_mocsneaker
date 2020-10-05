@@ -13,8 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import androidx.navigation.NavController;
@@ -81,7 +79,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     private void quyenTaiKhoan() {
 
         SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
-        if (sharedPreferences.getString("quyen","").equals("2")){
+        if (sharedPreferences.getString("quyen","").equals("2")||sharedPreferences.getString("quyen","").equals("1")){
             navView.getMenu().getItem(1).setVisible(true);
             return;
         }
