@@ -100,7 +100,7 @@ public class MainVertifyOTP extends AppCompatActivity implements View.OnClickLis
                             //Toast.makeText(MainVertifyOTP.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                             dangkyTaiKhoanKhachHang();
                         } else {
-                            Toast.makeText(MainVertifyOTP.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainVertifyOTP.this, "Đăng ký thất bại1", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
