@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.MainDoiMatKhau"></activity>
+        <activity android:name=".View.MainQuanLyKhachHang"></activity>
+        <activity android:name=".View.MainDoiMatKhau" />
         <activity android:name=".View.MainXacNhanMatKhau" />
         <activity android:name=".View.MainUserInfo" />
         <activity android:name=".View.MainVertifyOTP" />

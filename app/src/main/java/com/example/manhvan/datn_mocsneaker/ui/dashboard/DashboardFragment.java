@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.MainQuanLyKhachHang;
 import com.example.manhvan.datn_mocsneaker.View.ViewQuanLyNhanVIen;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
@@ -43,6 +44,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     private void eventCleck() {
         btnQLNhanVien.setOnClickListener(this);
+        btnQuanLyKH.setOnClickListener(this);
     }
 
     private void initView(View root) {
@@ -60,6 +62,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         switch (view.getId()){
             case R.id.btn_qlnhanvien:{
                 startActivity(new Intent(getContext(), ViewQuanLyNhanVIen.class));
+                break;
+            }
+            case R.id.btn_quanLyKhachHang:{
+                startActivity(new Intent(getContext(), MainQuanLyKhachHang.class));
                 break;
             }
         }

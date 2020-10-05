@@ -23,20 +23,22 @@
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:layout_height="match_parent" />
-        <AutoCompleteTextView
+        <EditText
             android:layout_marginLeft="8dp"
             android:textColorHint="#c6c5c5"
             android:textColor="#fff"
             android:id="@+id/edt_searchHome"
             android:hint="Tìm kiếm..."
             android:layout_width="0dp"
-            android:layout_weight="6"
+            android:layout_weight="5.5"
             android:layout_height="match_parent" />
         <Button
-            android:drawableRight="@drawable/ic_close_black_24dp"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:text="Search"
             android:background="@null"
             android:layout_marginRight="8dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:visibility="gone"
             android:id="@+id/btn_closeSearch"
             android:layout_width="0dp"

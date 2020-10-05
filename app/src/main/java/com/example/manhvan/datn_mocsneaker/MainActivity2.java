@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.navigation.NavController;
@@ -27,7 +28,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     DashboardFragment dashboardFragment;
     private BottomNavigationView navView;
     private Button btnbackSearch,btnCloseSearch;
-    private AutoCompleteTextView autoCompleteTextView;
+    private EditText autoCompleteTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
