@@ -47,6 +47,7 @@ public class MainQuanLyKhachHang extends AppCompatActivity implements QuanLyKhac
             public void onClick(View view) {
                 if(edtSearchKH.getText().toString().trim().equals("")){
                     recyclerView.setVisibility(View.VISIBLE);
+                    recyclerView1.setVisibility(View.GONE);
                     getData();
                     return;
                 }
