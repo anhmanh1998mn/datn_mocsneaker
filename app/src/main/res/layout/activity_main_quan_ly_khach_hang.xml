@@ -36,14 +36,63 @@
            android:layout_width="0dp"
            android:layout_height="match_parent"/>
    </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleview_qlkh"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
+    <LinearLayout
+        android:layout_marginTop="16dp"
         android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:weightSum="5"
+        android:orientation="horizontal"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout_qlkh"
+        android:id="@+id/li_kh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="40dp">
+        <TextView
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:text="Mã KH"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:text="Họ tên"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:text="Tài khoản"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recylce_KH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/li_kh">
+
+    </android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recylce_KH1"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/li_kh">
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
