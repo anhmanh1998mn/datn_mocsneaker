@@ -63,9 +63,9 @@ public class MainQuanLyKhachHang extends AppCompatActivity implements QuanLyKhac
     }
 
     private void initView() {
-        recyclerView=findViewById(R.id.recylce_KH);
+        recyclerView=findViewById(R.id.recylce_KH1);
 
-        recyclerView1=findViewById(R.id.recylce_KH1);
+        recyclerView1=findViewById(R.id.recylce_KH2);
         btnSearchKH=findViewById(R.id.btn_searchQLKH);
         edtSearchKH=findViewById(R.id.edt_timkiemQLKH);
     }
@@ -94,7 +94,7 @@ public class MainQuanLyKhachHang extends AppCompatActivity implements QuanLyKhac
             public void run() {
                 linearLayoutManager=new LinearLayoutManager(MainQuanLyKhachHang.this, LinearLayout.VERTICAL,false);
                 recyclerView.setLayoutManager(linearLayoutManager);
-                adapter=new KhachHangAdapter(MainQuanLyKhachHang.this,R.layout.itemquanlykhachhang, MoQuanLyKhachHang.lstKH);
+                adapter=new KhachHangAdapter(MainQuanLyKhachHang.this,R.layout.item_quanlykh, MoQuanLyKhachHang.lstKH);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -115,7 +115,7 @@ public class MainQuanLyKhachHang extends AppCompatActivity implements QuanLyKhac
                 recyclerView1.setLayoutManager(linearLayoutManager);
                 recyclerView1.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.GONE);
-                adapter=new KhachHangAdapter(MainQuanLyKhachHang.this,R.layout.itemquanlykhachhang, MoTimKiemKhachHang.lstKHTimKiem);
+                adapter=new KhachHangAdapter(MainQuanLyKhachHang.this,R.layout.item_quanlykh, MoTimKiemKhachHang.lstKHTimKiem);
                 recyclerView1.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 Log.d("timKH:",MoTimKiemKhachHang.lstKHTimKiem.size()+"");
