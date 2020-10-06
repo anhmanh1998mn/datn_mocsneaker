@@ -16,7 +16,7 @@ public class MainChiTietKhachHang extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_chi_tiet_khach_hang);
+        setContentView(R.layout.view_chi_tiet_khach_hang);
         actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Quản lý khách hàng");
