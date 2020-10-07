@@ -42,11 +42,13 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i1) {
-        viewHolder.imageView.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5*2;
+        viewHolder.imageView.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)*10/35;
+        viewHolder.txtTen.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)*10/35;
+        viewHolder.txtTen.requestLayout();
         viewHolder.imageView.requestLayout();
 
 //        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
-        Glide.with(myContext).load("http://192.168.1.63:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load("http://192.168.24.11:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
         viewHolder.txtTen.setText(lst.get(i1).getProductName());
         DecimalFormat formater=new DecimalFormat("###,###,###");
         viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i1).getPriceOut()))+ " đ");

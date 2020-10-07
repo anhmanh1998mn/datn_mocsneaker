@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +21,7 @@ import com.example.manhvan.datn_mocsneaker.MyService.Dataservice;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreSanPhamMoiNhat;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.SanPhamMoiKQ2;
+import com.example.manhvan.datn_mocsneaker.View.ViewSanPham;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.util.ArrayList;
@@ -56,6 +58,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         viewHolder.txt1.setText(lst.get(i));
         switch (i) {
             case 0: {
+                viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                    }
+                });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrSPM=new ArrayList<>();
@@ -92,6 +100,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 break;
             }
             case 1: {
+                viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                    }
+                });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrSPNB=new ArrayList<>();
@@ -125,6 +139,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 break;
             }
             case 2: {
+                viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                    }
+                });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayNam=new ArrayList<>();
@@ -158,6 +178,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 break;
             }
             case 3: {
+                viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                    }
+                });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayNu=new ArrayList<>();
@@ -191,6 +217,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 break;
             }
             case 4: {
+                viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                    }
+                });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
                 viewHolder.recyclerView.setLayoutManager(linearLayoutManager);
                 arrGiayDoi=new ArrayList<>();
