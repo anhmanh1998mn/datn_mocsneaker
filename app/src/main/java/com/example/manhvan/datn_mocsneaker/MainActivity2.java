@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -11,7 +12,6 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,6 +20,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.manhvan.datn_mocsneaker.View.ViewGioHang;
 import com.example.manhvan.datn_mocsneaker.ui.dashboard.DashboardFragment;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener{
@@ -97,6 +98,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.mnucart:{
+                startActivity(new Intent(MainActivity2.this, ViewGioHang.class));
                 break;
             }
             case R.id.mnusearch:{

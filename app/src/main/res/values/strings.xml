@@ -13,4 +13,6 @@
     <string name="ps1">Để giữ an toàn cho tài khoản của bạn, vui lòng xác minh danh tính bằng cách nhập mật khẩu</string>
     <string name="mk_hientai">Mật khẩu hiện tại</string>
     <string name="tt_taikhoan">Cảm ơn quý khách đã tin tưởng và sử dụng ứng dụng bán hàng của Mộc Sneaker</string>
+    <string name="gh_diachinhan">Địa chỉ nhận hàng</string>
+    <string name="gh_chonsan">Chọn sản phẩm muốn sửa</string>
 </resources>

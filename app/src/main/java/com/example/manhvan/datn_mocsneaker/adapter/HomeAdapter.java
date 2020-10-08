@@ -1,26 +1,19 @@
 package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.manhvan.datn_mocsneaker.Model.MoSanPhamMoiNhat;
 import com.example.manhvan.datn_mocsneaker.MyService.APIService;
 import com.example.manhvan.datn_mocsneaker.MyService.Dataservice;
-import com.example.manhvan.datn_mocsneaker.Presenter.PreSanPhamMoiNhat;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.SanPhamMoiKQ2;
 import com.example.manhvan.datn_mocsneaker.View.ViewSanPham;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
@@ -61,7 +54,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                        Intent intent=new Intent(myContext, ViewSanPham.class);
+                        intent.putExtra("idLoaiSanPham",1);
+                        myContext.startActivity(intent);
                     }
                 });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
@@ -103,7 +98,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                        Intent intent=new Intent(myContext, ViewSanPham.class);
+                        intent.putExtra("idLoaiSanPham",2);
+                        myContext.startActivity(intent);
                     }
                 });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
@@ -142,7 +139,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                        Intent intent=new Intent(myContext, ViewSanPham.class);
+                        intent.putExtra("idLoaiSanPham",3);
+                        myContext.startActivity(intent);
                     }
                 });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
@@ -181,7 +180,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                        Intent intent=new Intent(myContext, ViewSanPham.class);
+                        intent.putExtra("idLoaiSanPham",4);
+                        myContext.startActivity(intent);
                     }
                 });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
@@ -220,7 +221,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 viewHolder.btnXemThem.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        myContext.startActivity(new Intent(myContext, ViewSanPham.class));
+                        Intent intent=new Intent(myContext, ViewSanPham.class);
+                        intent.putExtra("idLoaiSanPham",5);
+                        myContext.startActivity(intent);
                     }
                 });
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(myContext, LinearLayout.HORIZONTAL, false);
