@@ -47,8 +47,8 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
         viewHolder.txtTen.requestLayout();
         viewHolder.imageView.requestLayout();
 
-//        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
-        Glide.with(myContext).load("http://192.168.24.11:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+//        Glide.with(myContext).load("http://192.168.24.11:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
         viewHolder.txtTen.setText(lst.get(i1).getProductName());
         DecimalFormat formater=new DecimalFormat("###,###,###");
         viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i1).getPriceOut()))+ " đ");
