@@ -93,5 +93,5 @@ public interface Dataservice {
 
     @FormUrlEncoded
     @POST("sizetheosanpham.php")
-    Call<List<KichCoSP>> kichCoTheoSanPham(@Field("idnhan")String idnhan);
+    Call<List<KichCoSP>> kichCoTheoSanPham(@Field("idnhan")int idnhan);
 }
