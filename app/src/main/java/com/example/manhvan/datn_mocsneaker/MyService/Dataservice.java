@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.MyService;
 
 import com.example.manhvan.datn_mocsneaker.entity.KhachHang;
+import com.example.manhvan.datn_mocsneaker.entity.KichCoSP;
 import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
 import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
@@ -89,4 +90,8 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("timkiemkhachhang.php")
     Call<List<KhachHang>> timKiemKhachHang(@Field("staff_name")String ten);
+
+    @FormUrlEncoded
+    @POST("sizetheosanpham.php")
+    Call<List<KichCoSP>> kichCoTheoSanPham(@Field("idnhan")String idnhan);
 }
