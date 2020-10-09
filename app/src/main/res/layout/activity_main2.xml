@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_weight="0.5"
             android:layout_height="match_parent" />
-        <EditText
+        <android.support.v7.widget.AppCompatAutoCompleteTextView
             android:layout_marginLeft="8dp"
             android:textColorHint="#c6c5c5"
             android:textColor="#fff"

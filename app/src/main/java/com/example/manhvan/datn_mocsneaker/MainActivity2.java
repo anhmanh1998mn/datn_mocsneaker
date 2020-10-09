@@ -7,29 +7,37 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemSanPham;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
+import com.example.manhvan.datn_mocsneaker.View.TimKiemSanPhamInterface;
 import com.example.manhvan.datn_mocsneaker.View.ViewGioHang;
+import com.example.manhvan.datn_mocsneaker.adapter.TimKiemSanPhamAdapter;
 import com.example.manhvan.datn_mocsneaker.ui.dashboard.DashboardFragment;
 
-public class MainActivity2 extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity2 extends AppCompatActivity implements View.OnClickListener, TimKiemSanPhamInterface {
     private ActionBar actionBar;
     private LinearLayout frameLayout;
     DashboardFragment dashboardFragment;
     private BottomNavigationView navView;
     private Button btnbackSearch,btnCloseSearch;
-    private EditText autoCompleteTextView;
+    private AppCompatAutoCompleteTextView autoCompleteTextView;
+    private PreTimKiemSanPham preTimKiemSanPham;
+    private TimKiemSanPhamAdapter timKiemSanPhamAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +63,19 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(final CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence.toString().trim().equals("")){
                     btnCloseSearch.setVisibility(View.GONE);
                     return;
                 }
                 btnCloseSearch.setVisibility(View.VISIBLE);
+                preTimKiemSanPham=new PreTimKiemSanPham(MainActivity2.this);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preTimKiemSanPham.timKiemSanPham(charSequence.toString());
+                    }
+                }).start();
             }
 
             @Override
@@ -124,5 +139,21 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 break;
             }
         }
+    }
+
+    @Override
+    public void onSuceessed() {
+        autoCompleteTextView.post(new Runnable() {
+            @Override
+            public void run() {
+                timKiemSanPhamAdapter=new TimKiemSanPhamAdapter(MainActivity2.this,R.layout.item_timkiem_san_pham, MoTimKiemSanPham.lstTimKiemSP);
+                Log.d("timkiemsp",MoTimKiemSanPham.lstTimKiemSP.size()+"");
+            }
+        });
+    }
+
+    @Override
+    public void onFailed() {
+
     }
 }
