@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -113,6 +114,7 @@ public class MainUserInfo extends AppCompatActivity implements View.OnClickListe
                 txtSDT.setText(sharedPreferences.getString("phone",""));
                 txtDiaChi.setText(arrayList.get(0).getStaffAddress());
                 txtID.setText(arrayList.get(0).getId());
+                Log.d("IdNV",txtID.getText().toString());
                 txtMK.setText(arrayList.get(0).getUserPassword());
             }
         });
@@ -128,6 +130,7 @@ public class MainUserInfo extends AppCompatActivity implements View.OnClickListe
                 txtSDT.setText(sharedPreferences.getString("phone",""));
                 txtDiaChi.setText(arrayList.get(0).getCustomerAddress());
                 txtID.setText(arrayList.get(0).getId());
+                Log.d("IdKH",txtID.getText().toString());
                 txtMK.setText(arrayList.get(0).getUserPassword());
             }
         });

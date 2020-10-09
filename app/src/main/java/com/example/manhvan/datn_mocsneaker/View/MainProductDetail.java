@@ -53,8 +53,58 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         eventClick();
         dulieunhan();
         kiemTraSoLuongSPMua();
+        kiemtr2();
     }
 
+    private void kiemtr2() {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.radiobtn_detail1:{
+                        if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock())){
+                            edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(0).getStock());
+                            Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(0).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        break;
+                    }
+                    case R.id.radiobtn_detail2:{
+                        if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock())){
+                            edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(1).getStock());
+                            Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(1).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        break;
+                    }
+                    case R.id.radiobtn_detail3:{
+                        if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock())){
+                            edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(2).getStock());
+                            Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(2).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        break;
+                    }
+                    case R.id.radiobtn_detail4:{
+                        if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock())){
+                            edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(3).getStock());
+                            Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(3).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        break;
+                    }
+                    case R.id.radiobtn_detail5:{
+                        if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock())){
+                            edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(4).getStock());
+                            Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(4).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        break;
+                    }
+                }
+            }
+        });
+    }
 
 
     private void eventClick() {
@@ -244,4 +294,5 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
             }
         });
     }
+
 }
