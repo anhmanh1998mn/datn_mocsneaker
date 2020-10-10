@@ -8,7 +8,10 @@
     tools:context=".View.ViewSanPham">
     <android.support.design.widget.TabLayout
         android:id="@+id/tb_layout"
+        android:background="#0536E1"
         app:tabMode="scrollable"
+        app:tabSelectedTextColor="#ffffff"
+        app:tabTextColor="#a6a3a3"
         app:tabGravity="fill"
         app:tabMaxWidth="0dp"
         android:layout_width="match_parent"
