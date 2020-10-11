@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +28,11 @@ import com.example.manhvan.datn_mocsneaker.Presenter.PreGetProductImage;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreKichCoTheoSP;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.ProductImageAdapter;
+import com.example.manhvan.datn_mocsneaker.database.Database;
+import com.example.manhvan.datn_mocsneaker.entity.GioHang1;
+import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
+import java.io.File;
 import java.text.DecimalFormat;
 
 public class MainProductDetail extends AppCompatActivity implements ProductDetail, View.OnClickListener {
@@ -41,6 +46,8 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
     private RadioGroup radioGroup;
     private EditText edtSoLuongSP;
     private Button btnThemVaoGioHang,btnMuaSP;
+    private Database database;
+    private String id,trichDoan,duongDan,donGia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,17 +138,21 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         btnThemVaoGioHang=findViewById(R.id.btn_prdetailMua);
         btnMuaSP=findViewById(R.id.btn_prdetailMua2);
         ra39.setChecked(true);
+
     }
 
     private void dulieunhan() {
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("ProductInfo");
         txtProductName.setText(bundle.getString("name"));
+        trichDoan=bundle.getString("trichDoan");
+        duongDan=bundle.getString("duongDan");
+        donGia=bundle.getString("price");
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtProductPrice.setText(decimalFormat.format(Integer.parseInt(bundle.getString("price"))) + " đ");
         txtProductContent.setText(bundle.getString("content1"));
 
-        final String id = bundle.getString("idAnh");
+        id = bundle.getString("idAnh");
         Log.d("Idsanpham", id);
         //Hiện chi tiết ảnh sản phẩm
 //        Toast.makeText(this,intent.getStringExtra("price"), Toast.LENGTH_SHORT).show();
@@ -234,7 +245,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                 break;
             }
             case R.id.btn_prdetailMua:{
-
+                themHangVaoGio();
                 break;
             }
             case R.id.btn_prdetailMua2:{
@@ -242,6 +253,27 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
             }
         }
     }
+
+    private void themHangVaoGio() {
+        if(ra39.isChecked()){
+            GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
+                    Integer.parseInt(donGia),txtProductName.getText().toString(),"39",duongDan));
+//            Log.d("gioHang",GioHang.arrGioHang.get(0).+"");
+        }else if (ra40.isChecked()){
+            GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
+                    Integer.parseInt(donGia),txtProductName.getText().toString(),"40",duongDan));
+        }else if(ra41.isChecked()){
+            GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
+                    Integer.parseInt(donGia),txtProductName.getText().toString(),"41",duongDan));
+        }else if(ra42.isChecked()){
+            GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
+                    Integer.parseInt(donGia),txtProductName.getText().toString(),"42",duongDan));
+        }else if(ra43.isChecked()){
+            GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
+                    Integer.parseInt(donGia),txtProductName.getText().toString(),"43",duongDan));
+        }
+    }
+
     private void kiemTraSoLuongSPMua() {
         edtSoLuongSP.addTextChangedListener(new TextWatcher() {
             @Override

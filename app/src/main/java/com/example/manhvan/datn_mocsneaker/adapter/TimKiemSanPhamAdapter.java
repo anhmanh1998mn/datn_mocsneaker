@@ -50,6 +50,8 @@ public class TimKiemSanPhamAdapter extends RecyclerView.Adapter<TimKiemSanPhamAd
                 bundle.putString("name",lstTimKiem.get(i).getProductName());
                 bundle.putString("price",lstTimKiem.get(i).getPriceOut());
                 bundle.putString("content1",lstTimKiem.get(i).getProductContent());
+                bundle.putString("trichDoan",lstTimKiem.get(i).getDescription());
+                bundle.putString("duongDan",lstTimKiem.get(i).getProductUrl());
                 intent.putExtra("ProductInfo",bundle);
                 myContext.startActivity(intent);
             }

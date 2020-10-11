@@ -62,6 +62,8 @@ public class XemThemSanPhamAdapter extends RecyclerView.Adapter<XemThemSanPhamAd
                 bundle.putString("name",lst.get(i).getProductName());
                 bundle.putString("price",lst.get(i).getPriceOut());
                 bundle.putString("content1",lst.get(i).getProductContent());
+                bundle.putString("trichDoan",lst.get(i).getDescription());
+                bundle.putString("duongDan",lst.get(i).getProductUrl());
                 intent.putExtra("ProductInfo",bundle);
                 //intent.putExtra("name",lst.get(i1).getProductName());
                 myContext.startActivity(intent);

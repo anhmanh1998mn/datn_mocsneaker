@@ -62,6 +62,8 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
                 bundle.putString("name",lst.get(i1).getProductName());
                 bundle.putString("price",lst.get(i1).getPriceOut());
                 bundle.putString("content1",lst.get(i1).getProductContent());
+                bundle.putString("trichDoan",lst.get(i1).getDescription());
+                bundle.putString("duongDan",lst.get(i1).getProductUrl());
                 intent.putExtra("ProductInfo",bundle);
                 //intent.putExtra("name",lst.get(i1).getProductName());
                 myContext.startActivity(intent);
