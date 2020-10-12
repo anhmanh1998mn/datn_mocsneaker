@@ -44,7 +44,7 @@ public class ViewGioHang extends AppCompatActivity {
     private void hienRecycleView() {
         adapter = new GioHangAdapter(this, R.layout.itemgiohang, GioHang.arrGioHang);
         recyclerView.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
 
