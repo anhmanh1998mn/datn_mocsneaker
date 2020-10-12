@@ -1,7 +1,6 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +31,6 @@ import com.example.manhvan.datn_mocsneaker.database.Database;
 import com.example.manhvan.datn_mocsneaker.entity.GioHang1;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
-import java.io.File;
 import java.text.DecimalFormat;
 
 public class MainProductDetail extends AppCompatActivity implements ProductDetail, View.OnClickListener {
@@ -212,7 +210,6 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         radioGroup.post(new Runnable() {
             @Override
             public void run() {
-
                 if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1) {
                     ra39.setVisibility(View.GONE);
                 } else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1) {
@@ -246,9 +243,13 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
             }
             case R.id.btn_prdetailMua:{
                 themHangVaoGio();
+                Toast.makeText(this,"Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.btn_prdetailMua2:{
+                themHangVaoGio();
+                startActivity(new Intent(this,ViewGioHang.class));
+                finish();
                 break;
             }
         }
@@ -256,19 +257,55 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
 
     private void themHangVaoGio() {
         if(ra39.isChecked()){
+            for (int i=0;i<GioHang.arrGioHang.size();i++){
+                if(GioHang.arrGioHang.get(i).getIdSP()==Integer.parseInt(id)&&GioHang.arrGioHang.get(i).getKichCo().equals("39")){
+                    GioHang.arrGioHang.get(i).setSoLuong(GioHang.arrGioHang.get(i).getSoLuong()+Integer.parseInt(edtSoLuongSP.getText().toString().trim()));
+                    return;
+                }
+
+            }
             GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
                     Integer.parseInt(donGia),txtProductName.getText().toString(),"39",duongDan));
+
 //            Log.d("gioHang",GioHang.arrGioHang.get(0).+"");
         }else if (ra40.isChecked()){
+            for (int i=0;i<GioHang.arrGioHang.size();i++){
+                if(GioHang.arrGioHang.get(i).getIdSP()==Integer.parseInt(id)&&GioHang.arrGioHang.get(i).getKichCo().equals("40")){
+                    GioHang.arrGioHang.get(i).setSoLuong(GioHang.arrGioHang.get(i).getSoLuong()+Integer.parseInt(edtSoLuongSP.getText().toString().trim()));
+                    return;
+                }
+
+            }
             GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
                     Integer.parseInt(donGia),txtProductName.getText().toString(),"40",duongDan));
         }else if(ra41.isChecked()){
+            for (int i=0;i<GioHang.arrGioHang.size();i++){
+                if(GioHang.arrGioHang.get(i).getIdSP()==Integer.parseInt(id)&&GioHang.arrGioHang.get(i).getKichCo().equals("41")){
+                    GioHang.arrGioHang.get(i).setSoLuong(GioHang.arrGioHang.get(i).getSoLuong()+Integer.parseInt(edtSoLuongSP.getText().toString().trim()));
+                    return;
+                }
+
+            }
             GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
                     Integer.parseInt(donGia),txtProductName.getText().toString(),"41",duongDan));
         }else if(ra42.isChecked()){
+            for (int i=0;i<GioHang.arrGioHang.size();i++){
+                if(GioHang.arrGioHang.get(i).getIdSP()==Integer.parseInt(id)&&GioHang.arrGioHang.get(i).getKichCo().equals("42")){
+                    GioHang.arrGioHang.get(i).setSoLuong(GioHang.arrGioHang.get(i).getSoLuong()+Integer.parseInt(edtSoLuongSP.getText().toString().trim()));
+                    return;
+                }
+
+            }
             GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
                     Integer.parseInt(donGia),txtProductName.getText().toString(),"42",duongDan));
         }else if(ra43.isChecked()){
+            for (int i=0;i<GioHang.arrGioHang.size();i++){
+                if(GioHang.arrGioHang.get(i).getIdSP()==Integer.parseInt(id)&&GioHang.arrGioHang.get(i).getKichCo().equals("43")){
+                    GioHang.arrGioHang.get(i).setSoLuong(GioHang.arrGioHang.get(i).getSoLuong()+Integer.parseInt(edtSoLuongSP.getText().toString().trim()));
+                    return;
+                }
+
+            }
             GioHang.arrGioHang.add(new GioHang1(Integer.parseInt(id),Integer.parseInt(edtSoLuongSP.getText().toString().trim()),
                     Integer.parseInt(donGia),txtProductName.getText().toString(),"43",duongDan));
         }

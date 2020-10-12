@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="horizontal" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView
-
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="16dp"
         android:id="@+id/img_gioHang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <TextView
-        android:textColor="#000"
-        android:textSize="15sp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/img_gioHang"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/txt_tenSPGH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:textColor="#000"
-        android:textSize="15sp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/img_gioHang"
-        app:layout_constraintTop_toBottomOf="@id/txt_tenSPGH"
-        android:id="@+id/txt_soLuongMuaGH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:textColor="#000"
-        android:textSize="15sp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/img_gioHang"
-        app:layout_constraintTop_toBottomOf="@id/txt_soLuongMuaGH"
-        android:id="@+id/txt_kichCoMuaGH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:textColor="#ff0000"
-        android:textSize="15sp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/img_gioHang"
-        app:layout_constraintTop_toBottomOf="@id/txt_kichCoMuaGH"
-        android:id="@+id/txt_donGiaMuaGH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/txt_soLuongMuaGH"
-        android:id="@+id/txt_thanhTien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/lnGioHang"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/txt_tenSPGH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/lngohang"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/txt_soLuongMuaGH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/txt_thanhTien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/txt_kichCoMuaGH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="8dp"
+            android:textColor="#ff0000"
+            android:textSize="15sp"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/txt_donGiaMuaGH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

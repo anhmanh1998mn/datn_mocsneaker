@@ -41,8 +41,8 @@ public class ProductImageAdapter extends RecyclerView.Adapter<ProductImageAdapte
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.imageView.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext);
         viewHolder.imageView.requestLayout();
-        Glide.with(myContext).load("http://192.168.89.1:8080"+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
-//        Glide.with(myContext).load("http://192.168.42.44"+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
+//        Glide.with(myContext).load("http://192.168.89.1:8080"+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load("http://192.168.42.44"+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
         viewHolder.textView.setText(i+1+"/5");
     }
 

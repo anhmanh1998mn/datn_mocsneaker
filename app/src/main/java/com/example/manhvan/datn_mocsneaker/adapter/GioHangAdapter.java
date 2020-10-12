@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -41,13 +42,20 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.img.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/3;
         viewHolder.img.requestLayout();
+        viewHolder.linearLayout.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext);
+        viewHolder.linearLayout.requestLayout();
+        viewHolder.txt2.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/4;
+        viewHolder.txt2.requestLayout();
+        viewHolder.txt5.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/4*3;
+        viewHolder.txt5.requestLayout();
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         viewHolder.txt1.setText(lst.get(i).getTenSP());
         viewHolder.txt2.setText(lst.get(i).getSoLuong()+"");
         viewHolder.txt3.setText(lst.get(i).getKichCo());
         viewHolder.txt4.setText(decimalFormat.format(lst.get(i).getDonGia())+" đ");
         viewHolder.txt5.setText(decimalFormat.format(lst.get(i).getDonGia()*lst.get(i).getSoLuong())+" đ");
-        Glide.with(myContext).load("http://192.168.89.1:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
+//        Glide.with(myContext).load("http://192.168.89.1:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
+        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i).getDuongDan()).into(viewHolder.img);
     }
 
     @Override
@@ -58,6 +66,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
         private TextView txt1,txt2,txt3,txt4,txt5;
+        private LinearLayout linearLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img=itemView.findViewById(R.id.img_gioHang);
@@ -66,6 +75,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
             txt3=itemView.findViewById(R.id.txt_kichCoMuaGH);
             txt4=itemView.findViewById(R.id.txt_donGiaMuaGH);
             txt5=itemView.findViewById(R.id.txt_thanhTien);
+            linearLayout=itemView.findViewById(R.id.lngohang);
         }
     }
 }
