@@ -37,13 +37,14 @@ public class ViewGioHang extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         hienRecycleView();
+        //Log.d("soluong",GioHang.arrGioHang.get(0).getSoLuong()+"");
         tongTien();
     }
 
     private void hienRecycleView() {
         adapter = new GioHangAdapter(this, R.layout.itemgiohang, GioHang.arrGioHang);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        //adapter.notifyDataSetChanged();
     }
 
 

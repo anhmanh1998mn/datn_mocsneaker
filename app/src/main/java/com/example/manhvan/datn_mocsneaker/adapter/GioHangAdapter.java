@@ -95,9 +95,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                 btnXong.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        for(int i1=0;i<GioHang.arrGioHang.size();i1++){
-                            if(lst.get(i).getKichCo().equals(txtKichCo.getText().toString())){
-                                lst.get(i).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim()));
+                        for(int i1=0;i1<GioHang.arrGioHang.size();i1++){
+                            if(lst.get(i1).getKichCo().equals(txtKichCo.getText().toString())){
+                                lst.get(i1).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim()));
                                 dialog.cancel();
 
                                 return;
