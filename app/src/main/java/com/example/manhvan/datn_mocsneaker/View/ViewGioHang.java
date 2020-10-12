@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.GioHangAdapter;
-import com.example.manhvan.datn_mocsneaker.adapter.XemThemSanPhamAdapter;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.text.DecimalFormat;
@@ -26,34 +25,45 @@ public class ViewGioHang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_gio_hang);
-        actionBar=getSupportActionBar();
+        actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Giỏ hàng");
         initView();
+        hienRecycleView();
         tongTien();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        hienRecycleView();
+        tongTien();
+    }
+
+    private void hienRecycleView() {
+        adapter = new GioHangAdapter(this, R.layout.itemgiohang, GioHang.arrGioHang);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+
     private void tongTien() {
-        int tong=0;
-        if (GioHang.arrGioHang==null){
+        int tong = 0;
+        if (GioHang.arrGioHang == null) {
             return;
         }
-        for(int i=0;i<GioHang.arrGioHang.size();i++){
-            tong+=GioHang.arrGioHang.get(i).getDonGia()*GioHang.arrGioHang.get(i).getSoLuong();
+        for (int i = 0; i < GioHang.arrGioHang.size(); i++) {
+            tong += GioHang.arrGioHang.get(i).getDonGia() * GioHang.arrGioHang.get(i).getSoLuong();
         }
-        DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        btnTongTien.setText("Tổng tiền: "+decimalFormat.format(tong)+" đ");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        btnTongTien.setText("Tổng tiền: " + decimalFormat.format(tong) + " đ");
     }
 
     private void initView() {
-        btnTongTien=findViewById(R.id.btn_tongTien);
-        recyclerView=findViewById(R.id.giohang_recycle);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this, LinearLayout.VERTICAL,false);
+        btnTongTien = findViewById(R.id.btn_tongTien);
+        recyclerView = findViewById(R.id.giohang_recycle);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayout.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter=new GioHangAdapter(this,R.layout.itemgiohang,GioHang.arrGioHang);
-        recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        recyclerView.setNestedScrollingEnabled(false);
     }
 
     @Override

@@ -1,12 +1,16 @@
 package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.entity.GioHang1;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
+import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -23,6 +28,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     private Activity myContext;
     private int myLayout;
     private List<GioHang1> lst;
+    private Dialog dialog;
+    private TextView txtTenSP,txtKichCo;
+    private EditText edtSoLuong;
+    private Button btnXong,btnXoa,btnHuy;
 
     public GioHangAdapter(Activity myContext, int myLayout, List<GioHang1> lst) {
         this.myContext = myContext;
@@ -39,7 +48,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.img.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/3;
         viewHolder.img.requestLayout();
         viewHolder.linearLayout.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext);
@@ -56,7 +65,60 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
         viewHolder.txt5.setText(decimalFormat.format(lst.get(i).getDonGia()*lst.get(i).getSoLuong())+" đ");
 //        Glide.with(myContext).load("http://192.168.89.1:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
         Glide.with(myContext).load("http://192.168.42.44"+lst.get(i).getDuongDan()).into(viewHolder.img);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog=new Dialog(myContext);
+                dialog.setContentView(R.layout.dialogsuagiohang);
+                ConstraintLayout constraintLayout=dialog.findViewById(R.id.dialogGH);
+                constraintLayout.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/4*3;
+                constraintLayout.getLayoutParams().height=AndroidDeviceHelper.getHeighScreen(myContext)/3;
+                constraintLayout.requestLayout();
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+
+                txtTenSP=dialog.findViewById(R.id.txt_ghSuaTenSp);
+                txtKichCo=dialog.findViewById(R.id.txt_kichCoGH);
+                edtSoLuong=dialog.findViewById(R.id.edt_soLuongspGH1);
+                btnXong=dialog.findViewById(R.id.btn_suaGHXong);
+                btnXoa=dialog.findViewById(R.id.btn_suaGHXoa);
+                btnHuy=dialog.findViewById(R.id.btn_suaGHHuy);
+                txtTenSP.setText(lst.get(i).getTenSP());
+                txtKichCo.setText(lst.get(i).getKichCo()+"");
+                edtSoLuong.setText(lst.get(i).getSoLuong()+"");
+                btnHuy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.cancel();
+                    }
+                });
+                btnXong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        for(int i1=0;i<GioHang.arrGioHang.size();i1++){
+                            if(lst.get(i).getKichCo().equals(txtKichCo.getText().toString())){
+                                lst.get(i).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim()));
+                                dialog.cancel();
+
+                                return;
+                            }
+                        }
+
+                    }
+
+                });
+
+                btnXoa.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        GioHang.arrGioHang.remove(i);
+                        dialog.cancel();
+                    }
+                });
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
