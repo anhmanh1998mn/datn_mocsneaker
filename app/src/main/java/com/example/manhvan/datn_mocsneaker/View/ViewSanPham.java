@@ -74,6 +74,7 @@ public class ViewSanPham extends AppCompatActivity {
                 finish();break;
             }
             case R.id.mnucart:{
+                startActivity(new Intent(this,ViewGioHang.class));
                 break;
             }
         }
