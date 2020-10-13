@@ -47,8 +47,8 @@ public class XemThemSanPhamAdapter extends RecyclerView.Adapter<XemThemSanPhamAd
         viewHolder.txtTen.requestLayout();
         viewHolder.imageView.requestLayout();
 
-        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i).getProductUrl()).into(viewHolder.imageView);
-//        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getProductUrl()).into(viewHolder.imageView);
+//        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i).getProductUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getProductUrl()).into(viewHolder.imageView);
         viewHolder.txtTen.setText(lst.get(i).getProductName());
         DecimalFormat formater=new DecimalFormat("###,###,###");
         viewHolder.txtGia.setText(formater.format(Integer.parseInt(lst.get(i).getPriceOut()))+ " đ");

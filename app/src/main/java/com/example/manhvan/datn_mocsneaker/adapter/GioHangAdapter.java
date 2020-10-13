@@ -72,8 +72,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
         viewHolder.txt3.setText(lst.get(i).getKichCo());
         viewHolder.txt4.setText(decimalFormat.format(lst.get(i).getDonGia()) + " đ");
         viewHolder.txt5.setText(decimalFormat.format(lst.get(i).getDonGia() * lst.get(i).getSoLuong()) + " đ");
-//        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
-        Glide.with(myContext).load("http://192.168.42.44" + lst.get(i).getDuongDan()).into(viewHolder.img);
+        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
+//        Glide.with(myContext).load("http://192.168.42.44" + lst.get(i).getDuongDan()).into(viewHolder.img);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
