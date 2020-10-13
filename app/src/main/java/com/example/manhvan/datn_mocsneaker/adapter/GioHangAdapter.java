@@ -24,14 +24,23 @@ import com.example.manhvan.datn_mocsneaker.util.GioHang;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHolder> {
+public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHolder>{
     private Activity myContext;
     private int myLayout;
     private List<GioHang1> lst;
     private Dialog dialog;
     private TextView txtTenSP,txtKichCo;
     private EditText edtSoLuong;
-    private Button btnXong,btnXoa,btnHuy;
+    private Button btnXong,btnXoa,btnHuy,btn39,btn40,btn41,btn42,btn43;
+    private OnDialogCloseListener listener;
+
+    public OnDialogCloseListener getListener() {
+        return listener;
+    }
+
+    public void setListener(OnDialogCloseListener listener) {
+        this.listener = listener;
+    }
 
     public GioHangAdapter(Activity myContext, int myLayout, List<GioHang1> lst) {
         this.myContext = myContext;
@@ -63,8 +72,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
         viewHolder.txt3.setText(lst.get(i).getKichCo());
         viewHolder.txt4.setText(decimalFormat.format(lst.get(i).getDonGia())+" đ");
         viewHolder.txt5.setText(decimalFormat.format(lst.get(i).getDonGia()*lst.get(i).getSoLuong())+" đ");
-        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
-//        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i).getDuongDan()).into(viewHolder.img);
+//        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
+        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i).getDuongDan()).into(viewHolder.img);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,29 +92,85 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                 btnXong=dialog.findViewById(R.id.btn_suaGHXong);
                 btnXoa=dialog.findViewById(R.id.btn_suaGHXoa);
                 btnHuy=dialog.findViewById(R.id.btn_suaGHHuy);
+                btn39=dialog.findViewById(R.id.b_39);
+                btn40=dialog.findViewById(R.id.b_40);
+                btn41=dialog.findViewById(R.id.b_41);
+                btn42=dialog.findViewById(R.id.b_42);
+                btn43=dialog.findViewById(R.id.b_43);
                 txtTenSP.setText(lst.get(i).getTenSP());
                 txtKichCo.setText(lst.get(i).getKichCo()+"");
                 edtSoLuong.setText(lst.get(i).getSoLuong()+"");
+
+                btn39.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        txtKichCo.setText("39");
+                    }
+                });
+                btn40.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        txtKichCo.setText("40");
+                    }
+                });
+                btn41.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        txtKichCo.setText("41");
+                    }
+                });
+                btn42.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        txtKichCo.setText("42");
+                    }
+                });
+                btn43.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        txtKichCo.setText("43");
+                    }
+                });
+
                 btnHuy.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.cancel();
                     }
                 });
+                txtKichCo.setTag(txtKichCo.getText().toString().trim());
                 btnXong.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if(txtKichCo.getTag().equals(txtKichCo.getText().toString())){
+                            for(int i1=0;i1<GioHang.arrGioHang.size();i1++){
+                                if(lst.get(i1).getKichCo().equals(txtKichCo.getText().toString())){
+                                    lst.get(i1).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim()));
+                                    dialog.cancel();
+                                    if(listener != null){
+                                        listener.onDialogClose();
+                                    }
+
+                                    //reload actyvity
+//                                myContext.recreate();
+                                    notifyDataSetChanged();
+                                    return;
+                                }
+                            }
+                            return;
+                        }
                         for(int i1=0;i1<GioHang.arrGioHang.size();i1++){
                             if(lst.get(i1).getKichCo().equals(txtKichCo.getText().toString())){
-                                lst.get(i1).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim()));
+                                lst.get(i1).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim())+lst.get(i1).getSoLuong());
                                 dialog.cancel();
+                                lst.remove(i1);
 
                                 //reload actyvity
-                                myContext.recreate();
+//                                myContext.recreate();
+                                notifyDataSetChanged();
                                 return;
                             }
                         }
-
                     }
 
                 });
@@ -115,10 +180,12 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                     public void onClick(View view) {
                         GioHang.arrGioHang.remove(i);
                         dialog.cancel();
-
+                        if(listener != null){
+                            listener.onDialogClose();
+                        }
                         //reload activity
-                        myContext.recreate();
-
+                        //myContext.recreate();
+                        notifyDataSetChanged();
                     }
                 });
             }
@@ -130,6 +197,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     public int getItemCount() {
         return lst.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView img;
@@ -145,5 +213,10 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
             txt5=itemView.findViewById(R.id.txt_thanhTien);
             linearLayout=itemView.findViewById(R.id.lngohang);
         }
+    }
+
+
+    public interface OnDialogCloseListener {
+        void onDialogClose();
     }
 }

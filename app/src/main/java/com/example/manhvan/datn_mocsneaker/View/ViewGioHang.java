@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +16,7 @@ import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.text.DecimalFormat;
 
-public class ViewGioHang extends AppCompatActivity {
+public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.OnDialogCloseListener{
     private ActionBar actionBar;
     private RecyclerView recyclerView;
     private GioHangAdapter adapter;
@@ -31,18 +32,40 @@ public class ViewGioHang extends AppCompatActivity {
         initView();
         hienRecycleView();
         tongTien();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        hienRecycleView();
-        //Log.d("soluong",GioHang.arrGioHang.get(0).getSoLuong()+"");
         tongTien();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+
+
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private void hienRecycleView() {
         adapter = new GioHangAdapter(this, R.layout.itemgiohang, GioHang.arrGioHang);
+        adapter.setListener(this);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
@@ -71,5 +94,10 @@ public class ViewGioHang extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDialogClose() {
+        tongTien();
     }
 }
