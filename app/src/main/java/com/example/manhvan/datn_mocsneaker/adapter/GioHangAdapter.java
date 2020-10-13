@@ -100,6 +100,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                 txtTenSP.setText(lst.get(i).getTenSP());
                 txtKichCo.setText(lst.get(i).getKichCo() + "");
                 edtSoLuong.setText(lst.get(i).getSoLuong() + "");
+                ///sdfd
 
                 btn39.setOnClickListener(new View.OnClickListener() {
                     @Override
