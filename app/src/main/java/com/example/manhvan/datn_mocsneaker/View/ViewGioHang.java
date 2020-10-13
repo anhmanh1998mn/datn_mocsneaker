@@ -98,6 +98,17 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
 
     @Override
     public void onDialogClose() {
+        for(int i=0;i<GioHang.arrGioHang.size();i++){
+            for(int j=i+1;j<GioHang.arrGioHang.size();j++){
+                if(GioHang.arrGioHang.get(i).getIdSP()==GioHang.arrGioHang.get(j).getIdSP()&&
+                        GioHang.arrGioHang.get(i).getKichCo().equals(GioHang.arrGioHang.get(j).getKichCo())){
+                    GioHang.arrGioHang.get(i).setSoLuong(GioHang.arrGioHang.get(i).getSoLuong()+
+                    GioHang.arrGioHang.get(j).getSoLuong());
+                    GioHang.arrGioHang.remove(j);
+                }
+            }
+        }
+        adapter.notifyDataSetChanged();
         tongTien();
     }
 }

@@ -6,9 +6,13 @@
         android:iconTint="#fff"
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="always"/>
+    <!--<item android:id="@+id/mnucart" android:title="Cart"-->
+        <!--android:icon="@drawable/ic_baseline_shopping_cart_24"-->
+        <!--android:iconTint="#fff"-->
+        <!--app:showAsAction="always"/>-->
+
     <item android:id="@+id/mnucart" android:title="Cart"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:iconTint="#fff"
+        app:actionLayout="@layout/countnumbercart"
         app:showAsAction="always"/>
 
 </menu>

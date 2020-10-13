@@ -1,6 +1,8 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -117,6 +119,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         btnThemSLSP.setOnClickListener(this);
         btnThemVaoGioHang.setOnClickListener(this);
         btnMuaSP.setOnClickListener(this);
+
     }
 
     private void initView() {
@@ -243,6 +246,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
             }
             case R.id.btn_prdetailMua:{
                 themHangVaoGio();
+                int countCartNumber=0;
                 Toast.makeText(this,"Đã thêm vào giỏ hàng",Toast.LENGTH_SHORT).show();
                 break;
             }
@@ -362,6 +366,10 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                 }
             }
         });
+    }
+
+    public interface Cartnumber{
+        public void suc();
     }
 
 }

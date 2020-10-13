@@ -72,8 +72,9 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
         viewHolder.txt3.setText(lst.get(i).getKichCo());
         viewHolder.txt4.setText(decimalFormat.format(lst.get(i).getDonGia()) + " đ");
         viewHolder.txt5.setText(decimalFormat.format(lst.get(i).getDonGia() * lst.get(i).getSoLuong()) + " đ");
-        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
+//        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
 //        Glide.with(myContext).load("http://192.168.42.44" + lst.get(i).getDuongDan()).into(viewHolder.img);
+        Glide.with(myContext).load("http://192.168.89.1:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +82,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                 dialog.setContentView(R.layout.dialogsuagiohang);
                 ConstraintLayout constraintLayout = dialog.findViewById(R.id.dialogGH);
                 constraintLayout.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 4 * 3;
-                constraintLayout.getLayoutParams().height = AndroidDeviceHelper.getHeighScreen(myContext) / 3;
+                constraintLayout.getLayoutParams().height = AndroidDeviceHelper.getHeighScreen(myContext) / 2;
                 constraintLayout.requestLayout();
                 dialog.setCanceledOnTouchOutside(false);
                 dialog.show();
@@ -143,8 +144,22 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                 btnXong.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        lst.get(i).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim()));
+                        if(txtKichCo.getTag().toString().trim().equals(txtKichCo.getText().toString().trim())){
+                            lst.get(i).setSoLuong(Integer.parseInt(edtSoLuong.getText().toString().trim()));
+                            dialog.cancel();
+                            if (listener != null) {
+                                listener.onDialogClose();
+                            }
+                            //reload actyvity
+//                                myContext.recreate();
+                            notifyDataSetChanged();
+                            return;
+                        }
+
+                        lst.add(new GioHang1(lst.get(i).getIdSP(),Integer.parseInt(edtSoLuong.getText().toString().trim()),
+                                lst.get(i).getDonGia(),txtTenSP.getText().toString(),txtKichCo.getText().toString().trim(),lst.get(i).getDuongDan()));
                         dialog.cancel();
+                        lst.remove(i);
                         if (listener != null) {
                             listener.onDialogClose();
                         }

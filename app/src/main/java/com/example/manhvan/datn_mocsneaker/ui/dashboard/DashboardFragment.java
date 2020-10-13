@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.MainQLNhapHangDanhSach;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLyKhachHang;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLySanPham;
 import com.example.manhvan.datn_mocsneaker.View.ViewQuanLyNhanVIen;
@@ -48,6 +49,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         btnQLNhanVien.setOnClickListener(this);
         btnQuanLyKH.setOnClickListener(this);
         btnQuanLySP.setOnClickListener(this);
+        btnQuanLyNhapHang.setOnClickListener(this);
     }
 
     private void initView(View root) {
@@ -73,6 +75,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
             case R.id.btn_quanLySanPham:{
                 startActivity(new Intent(getContext(), MainQuanLySanPham.class));
+                break;
+            }
+            case R.id.btn_quanLyNhapHang:{
+                startActivity(new Intent(getContext(), MainQLNhapHangDanhSach.class));
                 break;
             }
         }

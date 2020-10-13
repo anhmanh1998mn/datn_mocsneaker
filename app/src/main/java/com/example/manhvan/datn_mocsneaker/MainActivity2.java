@@ -10,20 +10,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
+import com.example.manhvan.datn_mocsneaker.View.MainProductDetail;
 import com.example.manhvan.datn_mocsneaker.View.MainTimKiemTenSanPham;
 import com.example.manhvan.datn_mocsneaker.View.ViewGioHang;
 import com.example.manhvan.datn_mocsneaker.adapter.TimKiemSanPhamAdapter;
 import com.example.manhvan.datn_mocsneaker.ui.dashboard.DashboardFragment;
+import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity{
     private ActionBar actionBar;
     private LinearLayout frameLayout;
     DashboardFragment dashboardFragment;
@@ -32,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
     private AppCompatAutoCompleteTextView autoCompleteTextView;
     private PreTimKiemSanPham preTimKiemSanPham;
     private TimKiemSanPhamAdapter timKiemSanPhamAdapter;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,8 @@ public class MainActivity2 extends AppCompatActivity {
 
 
         quyenTaiKhoan();
+
+
         //changeTextSearch();
     }
 
@@ -61,16 +69,31 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menucart, menu);
+        FrameLayout badgeLayout = (FrameLayout)    menu.findItem(R.id.mnucart).getActionView();
+        tv = badgeLayout.findViewById(R.id.txtcount);
+        tv.setText(GioHang.arrGioHang.size()+"");
+        badgeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity2.this, ViewGioHang.class));
+            }
+        });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onRestart() {
+        tv.setText(GioHang.arrGioHang.size()+"");
+        super.onRestart();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.mnucart: {
-                startActivity(new Intent(MainActivity2.this, ViewGioHang.class));
-                break;
-            }
+//            case R.id.mnucart: {
+//                startActivity(new Intent(MainActivity2.this, ViewGioHang.class));
+//                break;
+//            }
             case R.id.mnusearch: {
                 startActivity(new Intent(MainActivity2.this, MainTimKiemTenSanPham.class));
                 break;
