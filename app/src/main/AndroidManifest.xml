@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".View.MainQLThemDonNhapHnag"></activity>
         <activity android:name=".View.MainQuanLySanPham" />
         <activity android:name=".View.MainTimKiemTenSanPham" />
         <activity android:name=".View.ViewGioHang" />
@@ -37,7 +38,7 @@
         <activity android:name=".View.ViewThemNhanVien" />
         <activity android:name=".View.MainSuaNhanVIen" />
         <activity android:name=".View.ViewSanPham" />
-        <activity android:name=".View.MainQLNhapHangDanhSach"></activity>
+        <activity android:name=".View.MainQLNhapHangDanhSach" />
     </application>
 
 </manifest>

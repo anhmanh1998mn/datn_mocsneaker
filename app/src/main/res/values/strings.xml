@@ -15,4 +15,7 @@
     <string name="tt_taikhoan">Cảm ơn quý khách đã tin tưởng và sử dụng ứng dụng bán hàng của Mộc Sneaker</string>
     <string name="gh_diachinhan">Địa chỉ nhận hàng</string>
     <string name="gh_chonsan">Chọn sản phẩm muốn sửa</string>
+    <string name="qlnh">Lập danh sách hàng cần nhập</string>
+    <string name="themdonnhap">Thêm mặt hàng cần nhập</string>
+    <string name="timKiemNhap">Tìm sản phẩm muốn nhập</string>
 </resources>

@@ -12,6 +12,7 @@
         <!--app:showAsAction="always"/>-->
 
     <item android:id="@+id/mnucart" android:title="Cart"
+
         app:actionLayout="@layout/countnumbercart"
         app:showAsAction="always"/>
 

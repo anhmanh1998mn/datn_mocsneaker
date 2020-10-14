@@ -10,14 +10,19 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 public class ViewSanPham extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private PagerAdapter adapter;
     private ActionBar actionBar;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,21 @@ public class ViewSanPham extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menucart,menu);
+        FrameLayout badgeLayout = (FrameLayout)    menu.findItem(R.id.mnucart).getActionView();
+        tv = badgeLayout.findViewById(R.id.txtcount);
+        tv.setText(GioHang.arrGioHang.size()+"");
+        badgeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ViewSanPham.this, ViewGioHang.class));
+            }
+        });
         return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    protected void onRestart() {
+        tv.setText(GioHang.arrGioHang.size()+"");
+        super.onRestart();
     }
 
     @Override
