@@ -7,6 +7,12 @@ public class KichCoSP {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("product_name")
+    @Expose
+    private String productName;
+    @SerializedName("product_url")
+    @Expose
+    private String productUrl;
     @SerializedName("stock")
     @Expose
     private String stock;
@@ -20,6 +26,22 @@ public class KichCoSP {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
     }
 
     public String getStock() {

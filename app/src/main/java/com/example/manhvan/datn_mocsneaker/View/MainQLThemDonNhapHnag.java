@@ -14,12 +14,12 @@ import android.widget.LinearLayout;
 import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.adapter.QLTimKiemSanPhamAdapter;
+import com.example.manhvan.datn_mocsneaker.adapter.NhapHangTimKiemSPAdapter;
 
 public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemSanPhamInterface{
     private ActionBar actionBar;
     private EditText edtTimKiem;
-    private QLTimKiemSanPhamAdapter adapter;
+    private NhapHangTimKiemSPAdapter adapter;
     private PreTimKiemSanPham preTimKiemSanPham;
     private RecyclerView recyclerViewTimKiem;
 
@@ -80,7 +80,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         recyclerViewTimKiem.post(new Runnable() {
             @Override
             public void run() {
-                adapter=new QLTimKiemSanPhamAdapter(MainQLThemDonNhapHnag.this,R.layout.item_timkiem_san_pham, MoTimKiemSanPham.lstTimKiemSP);
+                adapter=new NhapHangTimKiemSPAdapter(MainQLThemDonNhapHnag.this,R.layout.item_timkiem_san_pham, MoTimKiemSanPham.lstTimKiemSP);
                 LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainQLThemDonNhapHnag.this, LinearLayout.VERTICAL,false);
                 recyclerViewTimKiem.setLayoutManager(linearLayoutManager);
                 recyclerViewTimKiem.setAdapter(adapter);
