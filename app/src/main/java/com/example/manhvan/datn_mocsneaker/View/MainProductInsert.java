@@ -19,6 +19,7 @@ import com.example.manhvan.datn_mocsneaker.Presenter.PreKichCoTheoSP;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.entity.ChiTietDonNhap;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
+import com.example.manhvan.datn_mocsneaker.util.DuongDan;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 public class MainProductInsert extends AppCompatActivity implements ProductDetail {
@@ -95,7 +96,7 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
         txtProductName.post(new Runnable() {
             @Override
             public void run() {
-                Glide.with(MainProductInsert.this).load("http://192.168.42.44" + MoKichCoTheoSP.lstKichCo.get(0).getProductUrl()).into(imageView);
+                Glide.with(MainProductInsert.this).load(DuongDan.url + MoKichCoTheoSP.lstKichCo.get(0).getProductUrl()).into(imageView);
                 txtProductName.setText(MoKichCoTheoSP.lstKichCo.get(0).getProductName());
             }
         });

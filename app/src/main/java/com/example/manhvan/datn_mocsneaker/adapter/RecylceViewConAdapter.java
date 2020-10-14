@@ -17,6 +17,7 @@ import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.MainProductDetail;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
+import com.example.manhvan.datn_mocsneaker.util.DuongDan;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -47,7 +48,7 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
         viewHolder.txtTen.requestLayout();
         viewHolder.imageView.requestLayout();
 
-        Glide.with(myContext).load("http://192.168.42.44"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load(DuongDan.url+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
 //        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
 //        Glide.with(myContext).load("http://192.168.89.1:8080"+lst.get(i1).getProductUrl()).into(viewHolder.imageView);
         viewHolder.txtTen.setText(lst.get(i1).getProductName());

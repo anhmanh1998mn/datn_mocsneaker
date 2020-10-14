@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.entity.GioHang1;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
+import com.example.manhvan.datn_mocsneaker.util.DuongDan;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.text.DecimalFormat;
@@ -73,8 +74,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
         viewHolder.txt4.setText(decimalFormat.format(lst.get(i).getDonGia()) + " đ");
         viewHolder.txt5.setText(decimalFormat.format(lst.get(i).getDonGia() * lst.get(i).getSoLuong()) + " đ");
 //        Glide.with(myContext).load("http://192.168.43.91:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
-        Glide.with(myContext).load("http://192.168.42.44" + lst.get(i).getDuongDan()).into(viewHolder.img);
-//        Glide.with(myContext).load("http://192.168.89.1:8080"+lst.get(i).getDuongDan()).into(viewHolder.img);
+//        Glide.with(myContext).load("http://192.168.42.44" + lst.get(i).getDuongDan()).into(viewHolder.img);
+        Glide.with(myContext).load(DuongDan.url+lst.get(i).getDuongDan()).into(viewHolder.img);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

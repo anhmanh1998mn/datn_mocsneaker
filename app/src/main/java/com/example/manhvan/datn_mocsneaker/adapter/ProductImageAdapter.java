@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
+import com.example.manhvan.datn_mocsneaker.util.DuongDan;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class ProductImageAdapter extends RecyclerView.Adapter<ProductImageAdapte
         viewHolder.imageView.requestLayout();
 //        Glide.with(myContext).load("http://192.168.89.1:8080"+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
 //        Glide.with(myContext).load("http://192.168.43.91:8080"+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
-        Glide.with(myContext).load("http://192.168.42.44"+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
+        Glide.with(myContext).load(DuongDan.url+lstImage.get(i).getImageUrl()).into(viewHolder.imageView);
         viewHolder.textView.setText(i+1+"/5");
     }
 
