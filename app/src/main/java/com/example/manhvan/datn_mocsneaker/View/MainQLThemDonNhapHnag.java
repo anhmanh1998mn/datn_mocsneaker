@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDonNhapAdapter;
 import com.example.manhvan.datn_mocsneaker.adapter.NhapHangTimKiemSPAdapter;
 
 public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemSanPhamInterface{
@@ -21,7 +22,8 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     private EditText edtTimKiem;
     private NhapHangTimKiemSPAdapter adapter;
     private PreTimKiemSanPham preTimKiemSanPham;
-    private RecyclerView recyclerViewTimKiem;
+    private RecyclerView recyclerViewTimKiem,recyclerViewChiTietDN;
+    private ChiTietDonNhapAdapter chiTietDonNhapAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         actionBar.setDisplayHomeAsUpEnabled(true);
         initView();
         edtSearchTextChange();
-
+//        getDataDonNhap();
     }
 
     private void edtSearchTextChange() {
@@ -57,6 +59,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     private void initView() {
         edtTimKiem=findViewById(R.id.edt_themNhapHang);
         recyclerViewTimKiem=findViewById(R.id.recycle_timKiem);
+        recyclerViewChiTietDN=findViewById(R.id.recycle_danhsachNhap);
     }
 
     private void timkiemsanpham(final String keySearch) {
@@ -93,4 +96,18 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     public void onFailed() {
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        //getDataDonNhap();
+    }
+
+//    public void getDataDonNhap(){
+//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayout.VERTICAL, false);
+//        recyclerViewChiTietDN.setLayoutManager(linearLayoutManager);
+//        chiTietDonNhapAdapter=new ChiTietDonNhapAdapter(this,R.layout.itemchitietnhaphang, GioHang.arrChiTietDonNhap);
+//        recyclerViewChiTietDN.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
+//    }
 }

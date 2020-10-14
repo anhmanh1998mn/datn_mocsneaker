@@ -27,7 +27,7 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
     private TextView txtProductName;
     private RadioButton radioButton39, radioButton40, radioButton41, radioButton42, radioButton43, radioButtonChecked;
     private EditText edtProductQuantity;
-    private Button btnAdd;
+    private Button btnAdd,btnAddSucess;
     private PreKichCoTheoSP preKichCoTheoSP;
     private int idnhan = 0;
     private RadioGroup radioGroup;
@@ -58,6 +58,7 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
         edtProductQuantity = findViewById(R.id.edt_ProductQuantity);
         btnAdd = findViewById(R.id.btn_Add);
         radioGroup = findViewById(R.id.radiogroup_in);
+        btnAddSucess=findViewById(R.id.btn_AddSucess);
     }
 
     @Override
@@ -124,7 +125,14 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
                         return;
                     }
                 }
-                GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtProductQuantity.getText().toString().trim()),radioButtonChecked.getText().toString()));
+                GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtProductQuantity.getText().toString().trim()),radioButtonChecked.getText().toString(),MoKichCoTheoSP.lstKichCo.get(0).getProductName()));
+            }
+        });
+
+        btnAddSucess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
