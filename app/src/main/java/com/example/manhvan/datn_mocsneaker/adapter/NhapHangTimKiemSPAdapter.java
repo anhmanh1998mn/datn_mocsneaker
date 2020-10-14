@@ -3,7 +3,6 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -43,11 +42,7 @@ public class NhapHangTimKiemSPAdapter extends RecyclerView.Adapter<NhapHangTimKi
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(myContext, MainProductInsert.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("productID",lstTimKiem.get(i).getId());
-                bundle.putString("productName",lstTimKiem.get(i).getProductName());
-                bundle.putString("productURL", "http://192.168.42.44"+lstTimKiem.get(i).getProductUrl());
-                intent.putExtra("ProductInfo",bundle);
+                intent.putExtra("ProductInfoID",lstTimKiem.get(i).getId());
                 myContext.startActivity(intent);
             }
         });
