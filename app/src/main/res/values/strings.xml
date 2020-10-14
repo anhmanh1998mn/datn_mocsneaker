@@ -18,4 +18,5 @@
     <string name="qlnh">Lập danh sách hàng cần nhập</string>
     <string name="themdonnhap">Thêm mặt hàng cần nhập</string>
     <string name="timKiemNhap">Tìm sản phẩm muốn nhập</string>
+    <string name="xacNhanDonNhap">Xác nhận lập đơn nhập hàng</string>
 </resources>
