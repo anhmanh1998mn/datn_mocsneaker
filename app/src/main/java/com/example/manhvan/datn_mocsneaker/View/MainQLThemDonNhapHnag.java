@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
@@ -25,6 +26,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     private PreTimKiemSanPham preTimKiemSanPham;
     private RecyclerView recyclerViewTimKiem,recyclerViewChiTietDN;
     private ChiTietDonNhapAdapter chiTietDonNhapAdapter;
+    private TextView txtSoLuongNhap,txtTongTienNhap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,8 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         edtTimKiem=findViewById(R.id.edt_themNhapHang);
         recyclerViewTimKiem=findViewById(R.id.recycle_timKiem);
         recyclerViewChiTietDN=findViewById(R.id.recycle_danhsachNhap);
+        txtSoLuongNhap=findViewById(R.id.txt_soLuongNhap);
+        txtTongTienNhap=findViewById(R.id.txt_tienNhap);
     }
 
     private void timkiemsanpham(final String keySearch) {
@@ -113,5 +117,11 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
             recyclerViewChiTietDN.setAdapter(chiTietDonNhapAdapter);
             chiTietDonNhapAdapter.notifyDataSetChanged();
         }
+        int soLuong=0;
+        int tongTien=0;
+        for (int i=0;i<GioHang.arrChiTietDonNhap.size();i++){
+            soLuong+=GioHang.arrChiTietDonNhap.get(i).getSoLuong();
+        }
+        txtSoLuongNhap.setText("Tổng số hàng: "+soLuong);
     }
 }
