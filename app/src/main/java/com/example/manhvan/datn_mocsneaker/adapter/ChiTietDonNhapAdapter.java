@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.entity.ChiTietDonNhap;
+import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
 import java.util.List;
 
@@ -35,9 +36,16 @@ public class ChiTietDonNhapAdapter extends RecyclerView.Adapter<ChiTietDonNhapAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        viewHolder.txtTenSP.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5*3;
+        viewHolder.txtSoLuong.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5;
+        viewHolder.txtKichCo.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5;
+        viewHolder.txtTenSP.requestLayout();
+        viewHolder.txtKichCo.requestLayout();
+        viewHolder.txtSoLuong.requestLayout();
         viewHolder.txtTenSP.setText(lstDonNhap.get(i).getTenSP());
         viewHolder.txtKichCo.setText(lstDonNhap.get(i).getKichCo());
         viewHolder.txtSoLuong.setText(lstDonNhap.get(i).getSoLuong()+"");
+
     }
 
     @Override

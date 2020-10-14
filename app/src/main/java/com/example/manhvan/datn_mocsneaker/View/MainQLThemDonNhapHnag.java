@@ -16,6 +16,7 @@ import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDonNhapAdapter;
 import com.example.manhvan.datn_mocsneaker.adapter.NhapHangTimKiemSPAdapter;
+import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemSanPhamInterface{
     private ActionBar actionBar;
@@ -34,7 +35,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         actionBar.setDisplayHomeAsUpEnabled(true);
         initView();
         edtSearchTextChange();
-//        getDataDonNhap();
+        getDataDonNhap();
     }
 
     private void edtSearchTextChange() {
@@ -100,14 +101,17 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     @Override
     protected void onRestart() {
         super.onRestart();
-        //getDataDonNhap();
+        getDataDonNhap();
     }
 
-//    public void getDataDonNhap(){
-//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayout.VERTICAL, false);
-//        recyclerViewChiTietDN.setLayoutManager(linearLayoutManager);
-//        chiTietDonNhapAdapter=new ChiTietDonNhapAdapter(this,R.layout.itemchitietnhaphang, GioHang.arrChiTietDonNhap);
-//        recyclerViewChiTietDN.setAdapter(adapter);
-//        adapter.notifyDataSetChanged();
-//    }
+    public void getDataDonNhap(){
+        if(GioHang.arrChiTietDonNhap!=null){
+
+            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayout.VERTICAL, false);
+            recyclerViewChiTietDN.setLayoutManager(linearLayoutManager);
+            chiTietDonNhapAdapter=new ChiTietDonNhapAdapter(this,R.layout.itemchitietnhaphang, GioHang.arrChiTietDonNhap);
+            recyclerViewChiTietDN.setAdapter(chiTietDonNhapAdapter);
+            chiTietDonNhapAdapter.notifyDataSetChanged();
+        }
+    }
 }
