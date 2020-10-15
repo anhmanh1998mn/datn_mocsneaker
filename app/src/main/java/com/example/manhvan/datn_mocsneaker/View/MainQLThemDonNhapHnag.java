@@ -63,14 +63,21 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     }
     public void eventClick(){
         btnQRCode.setOnClickListener(this);
+
+        //Thêm đơn nhập hàng
         btnXacNhanNhapHang1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
 
-                int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
-                PreThemMoiDonNH preThemMoiDonNH=new PreThemMoiDonNH(MainQLThemDonNhapHnag.this);
-                preThemMoiDonNH.themMoiDNH(id);
+                final int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
+                final PreThemMoiDonNH preThemMoiDonNH=new PreThemMoiDonNH(MainQLThemDonNhapHnag.this);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preThemMoiDonNH.themMoiDNH(id);
+                    }
+                }).start();
             }
         });
     }
@@ -136,12 +143,23 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
 
     @Override
     public void onFailed() {
-
+        txtTongTienNhap.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainQLThemDonNhapHnag.this,"Kiêm tra lại dữ liệu",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void themThanhCong() {
-        Toast.makeText(MainQLThemDonNhapHnag.this,"Click",Toast.LENGTH_SHORT).show();
+        txtTongTienNhap.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainQLThemDonNhapHnag.this,"Thêm thành công",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
     @Override
