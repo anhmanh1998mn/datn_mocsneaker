@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.entity.DonNhapHang;
+import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
 import java.util.List;
 
@@ -35,6 +36,14 @@ public class DanhSachDonNhapAdapter extends RecyclerView.Adapter<DanhSachDonNhap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        viewHolder.txtMaDN.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/6;
+        viewHolder.txtMaDN.requestLayout();
+        viewHolder.txtNgayLap.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/6*25/10;
+        viewHolder.txtNgayLap.requestLayout();
+        viewHolder.txtMaNV.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/6*5/10;
+        viewHolder.txtMaNV.requestLayout();
+        viewHolder.txtTenNV.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/6*2;
+        viewHolder.txtTenNV.requestLayout();
         viewHolder.txtMaDN.setText(lstDonNhapHang.get(i).getId());
         viewHolder.txtNgayLap.setText(lstDonNhapHang.get(i).getCreatedAt());
         viewHolder.txtMaNV.setText(lstDonNhapHang.get(i).getStaffId());
