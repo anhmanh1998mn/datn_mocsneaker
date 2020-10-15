@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.MainChiTietDonNhap;
 import com.example.manhvan.datn_mocsneaker.entity.DonNhapHang;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
@@ -48,6 +50,13 @@ public class DanhSachDonNhapAdapter extends RecyclerView.Adapter<DanhSachDonNhap
         viewHolder.txtNgayLap.setText(lstDonNhapHang.get(i).getCreatedAt());
         viewHolder.txtMaNV.setText(lstDonNhapHang.get(i).getStaffId());
         viewHolder.txtTenNV.setText(lstDonNhapHang.get(i).getStaffName());
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(myContext, MainChiTietDonNhap.class);
+                myContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

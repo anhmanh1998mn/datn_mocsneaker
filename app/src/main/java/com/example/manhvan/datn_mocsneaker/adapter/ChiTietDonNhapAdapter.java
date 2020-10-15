@@ -35,7 +35,7 @@ public class ChiTietDonNhapAdapter extends RecyclerView.Adapter<ChiTietDonNhapAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.txtTenSP.getLayoutParams().width= (AndroidDeviceHelper.getWithScreen(myContext)/5)*25/10;
         viewHolder.txtSoLuong.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5;
         viewHolder.txtKichCo.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5;
@@ -48,6 +48,7 @@ public class ChiTietDonNhapAdapter extends RecyclerView.Adapter<ChiTietDonNhapAd
         viewHolder.txtKichCo.setText(lstDonNhap.get(i).getKichCo());
         viewHolder.txtSoLuong.setText(lstDonNhap.get(i).getSoLuong()+"");
         viewHolder.txtSTT.setText(i+1+"");
+
     }
 
     @Override
