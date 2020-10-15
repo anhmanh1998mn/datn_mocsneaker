@@ -15,7 +15,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -32,6 +31,8 @@ import com.example.manhvan.datn_mocsneaker.adapter.NhapHangTimKiemSPAdapter;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.text.DecimalFormat;
 
 public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemSanPhamInterface,View.OnClickListener{
     private ActionBar actionBar;
@@ -142,8 +143,11 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         int tongTien=0;
         for (int i=0;i<GioHang.arrChiTietDonNhap.size();i++){
             soLuong+=GioHang.arrChiTietDonNhap.get(i).getSoLuong();
+            tongTien+=(GioHang.arrChiTietDonNhap.get(i).getSoLuong()*GioHang.arrChiTietDonNhap.get(i).getGiaSP());
         }
+        DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         txtSoLuongNhap.setText("Tổng số hàng: "+soLuong);
+        txtTongTienNhap.setText("Tổng tiền: "+decimalFormat.format(tongTien)+"đ");
     }
 
     @Override

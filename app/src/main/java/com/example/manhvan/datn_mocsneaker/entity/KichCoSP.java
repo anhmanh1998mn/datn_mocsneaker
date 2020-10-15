@@ -19,6 +19,9 @@ public class KichCoSP {
     @SerializedName("size_id")
     @Expose
     private String sizeId;
+    @SerializedName("price_in")
+    @Expose
+    private String priceIn;
 
     public String getId() {
         return id;
@@ -59,4 +62,13 @@ public class KichCoSP {
     public void setSizeId(String sizeId) {
         this.sizeId = sizeId;
     }
+
+    public String getPriceIn() {
+        return priceIn;
+    }
+
+    public void setPriceIn(String priceIn) {
+        this.priceIn = priceIn;
+    }
+
 }

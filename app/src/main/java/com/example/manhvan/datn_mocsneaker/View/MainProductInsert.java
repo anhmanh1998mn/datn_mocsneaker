@@ -126,7 +126,7 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
                         return;
                     }
                 }
-                GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtProductQuantity.getText().toString().trim()),radioButtonChecked.getText().toString(),MoKichCoTheoSP.lstKichCo.get(0).getProductName()));
+                GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtProductQuantity.getText().toString().trim()),Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getPriceIn()),radioButtonChecked.getText().toString(),MoKichCoTheoSP.lstKichCo.get(0).getProductName()));
             }
         });
 

@@ -36,16 +36,18 @@ public class ChiTietDonNhapAdapter extends RecyclerView.Adapter<ChiTietDonNhapAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.txtTenSP.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5*3;
+        viewHolder.txtTenSP.getLayoutParams().width= (AndroidDeviceHelper.getWithScreen(myContext)/5)*25/10;
         viewHolder.txtSoLuong.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5;
         viewHolder.txtKichCo.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/5;
+        viewHolder.txtSTT.getLayoutParams().width=(AndroidDeviceHelper.getWithScreen(myContext)/5)*5/10;
         viewHolder.txtTenSP.requestLayout();
         viewHolder.txtKichCo.requestLayout();
         viewHolder.txtSoLuong.requestLayout();
+        viewHolder.txtSTT.requestLayout();
         viewHolder.txtTenSP.setText(lstDonNhap.get(i).getTenSP());
         viewHolder.txtKichCo.setText(lstDonNhap.get(i).getKichCo());
         viewHolder.txtSoLuong.setText(lstDonNhap.get(i).getSoLuong()+"");
-
+        viewHolder.txtSTT.setText(i+1+"");
     }
 
     @Override
@@ -54,12 +56,13 @@ public class ChiTietDonNhapAdapter extends RecyclerView.Adapter<ChiTietDonNhapAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtTenSP,txtKichCo,txtSoLuong;
+        TextView txtTenSP,txtKichCo,txtSoLuong,txtSTT;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenSP=itemView.findViewById(R.id.txt_itemTenSP);
             txtKichCo=itemView.findViewById(R.id.txt_itemKichCoSP);
             txtSoLuong=itemView.findViewById(R.id.txt_itemSoLuongSP);
+            txtSTT=itemView.findViewById(R.id.txt_itemSTT);
         }
     }
 }

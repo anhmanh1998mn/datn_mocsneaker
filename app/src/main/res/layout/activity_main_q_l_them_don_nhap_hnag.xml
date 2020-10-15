@@ -88,9 +88,17 @@
         <TextView
             android:textColor="#000"
             android:textSize="15sp"
+            android:text="STT"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:layout_marginLeft="16dp"
+            android:textColor="#000"
+            android:textSize="15sp"
             android:text="Tên sản phẩm"
             android:id="@+id/txt_itemTenSP"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView
@@ -119,10 +127,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <LinearLayout
+        android:layout_marginBottom="8dp"
         android:weightSum="2"
         android:id="@+id/linear_themdonNhap"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/recycle_danhsachNhap"
+        app:layout_constraintBottom_toTopOf="@+id/btn_xacNhanLap"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
