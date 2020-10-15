@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.View;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -42,8 +43,9 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     private RecyclerView recyclerViewTimKiem,recyclerViewChiTietDN;
     private ChiTietDonNhapAdapter chiTietDonNhapAdapter;
     private TextView txtSoLuongNhap,txtTongTienNhap;
-    private Button btnQRCode;
+    private Button btnQRCode,btnXacNhanNhapHang1;
     private static final int CAMERA_CODE=101;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,12 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     }
     public void eventClick(){
         btnQRCode.setOnClickListener(this);
+        btnXacNhanNhapHang1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainQLThemDonNhapHnag.this,"Click",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void edtSearchTextChange() {
@@ -87,6 +95,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         txtSoLuongNhap=findViewById(R.id.txt_soLuongNhap);
         txtTongTienNhap=findViewById(R.id.txt_tienNhap);
         btnQRCode=findViewById(R.id.btn_qrCode);
+        btnXacNhanNhapHang1=findViewById(R.id.btn_xacNhanLap);
     }
 
     private void timkiemsanpham(final String keySearch) {
@@ -165,6 +174,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
                 }
                 break;
             }
+
         }
     }
     private void openScan() {
@@ -214,4 +224,5 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
             }
         }
     }
+
 }

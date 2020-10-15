@@ -19,4 +19,5 @@
     <string name="themdonnhap">Thêm mặt hàng cần nhập</string>
     <string name="timKiemNhap">Tìm sản phẩm muốn nhập</string>
     <string name="xacNhanDonNhap">Xác nhận lập đơn nhập hàng</string>
+    <string name="soLuongIn">Số lượng hiện có trong kho</string>
 </resources>

@@ -102,4 +102,14 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("sanphamxemthem.php")
     Call<List<SanPhamMoi>> sanPhamXemThem(@Field("loaiSP")int loaiSP);
+
+    //Thêm đơn nhập hàng
+    @FormUrlEncoded
+    @POST("themdonnhaphang.php")
+    Call<String> maDonNhap(@Field("staff_id") int maNV);
+
+    @FormUrlEncoded
+    @POST("themchitietdonnhap.php")
+    Call<String> chiTietDonNhap(@Field("donNhap_id")int idDonNhap,@Field("sanPham_id") int idSanPham,
+                                @Field("soLuong") int soLuong,@Field("kichCo") String kichCo);
 }

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.Model.MoKichCoTheoSP;
@@ -25,7 +26,7 @@ import com.example.manhvan.datn_mocsneaker.util.GioHang;
 public class MainProductInsert extends AppCompatActivity implements ProductDetail {
     private ActionBar actionBar;
     private ImageView imageView;
-    private TextView txtProductName;
+    private TextView txtProductName,txtKichCoSoLuong,getTxtKichCoSoLuong2;
     private RadioButton radioButton39, radioButton40, radioButton41, radioButton42, radioButton43, radioButtonChecked;
     private EditText edtProductQuantity;
     private Button btnAdd,btnAddSucess;
@@ -60,6 +61,8 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
         btnAdd = findViewById(R.id.btn_Add);
         radioGroup = findViewById(R.id.radiogroup_in);
         btnAddSucess=findViewById(R.id.btn_AddSucess);
+        txtKichCoSoLuong=findViewById(R.id.txt_KichCoSoLuongIN);
+        getTxtKichCoSoLuong2=findViewById(R.id.txt_KichCoSoLuongIN2);
     }
 
     @Override
@@ -98,6 +101,11 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
             public void run() {
                 Glide.with(MainProductInsert.this).load(DuongDan.url + MoKichCoTheoSP.lstKichCo.get(0).getProductUrl()).into(imageView);
                 txtProductName.setText(MoKichCoTheoSP.lstKichCo.get(0).getProductName());
+                txtKichCoSoLuong.setText("Size 39: "+MoKichCoTheoSP.lstKichCo.get(0).getStock()+
+                        "     Size 40: "+MoKichCoTheoSP.lstKichCo.get(1).getStock());
+                getTxtKichCoSoLuong2.setText("Size 41: "+MoKichCoTheoSP.lstKichCo.get(2).getStock()+
+                        "     Size 42: "+MoKichCoTheoSP.lstKichCo.get(3).getStock()+
+                        "     Size 43: "+MoKichCoTheoSP.lstKichCo.get(4).getStock());
             }
         });
     }
@@ -123,10 +131,12 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
                     if(GioHang.arrChiTietDonNhap.get(i).getIdSanPham()==idnhan&&GioHang.arrChiTietDonNhap.get(i).getKichCo().equals(radioButtonChecked.getText())){
 //                        Log.d("Check:","true");
                         GioHang.arrChiTietDonNhap.get(i).setSoLuong(GioHang.arrChiTietDonNhap.get(i).getSoLuong()+Integer.parseInt(edtProductQuantity.getText().toString()));
+                        Toast.makeText(MainProductInsert.this,"Đã thêm",Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
                 GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtProductQuantity.getText().toString().trim()),Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getPriceIn()),radioButtonChecked.getText().toString(),MoKichCoTheoSP.lstKichCo.get(0).getProductName()));
+                Toast.makeText(MainProductInsert.this,"Đã thêm",Toast.LENGTH_SHORT).show();
             }
         });
 
