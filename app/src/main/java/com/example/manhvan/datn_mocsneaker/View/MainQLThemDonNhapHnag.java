@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemSanPham;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreThemMoiDonNH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDonNhapAdapter;
@@ -64,7 +66,11 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         btnXacNhanNhapHang1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainQLThemDonNhapHnag.this,"Click",Toast.LENGTH_SHORT).show();
+                sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+
+                int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
+                PreThemMoiDonNH preThemMoiDonNH=new PreThemMoiDonNH(MainQLThemDonNhapHnag.this);
+                preThemMoiDonNH.themMoiDNH(id);
             }
         });
     }
@@ -131,6 +137,11 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
     @Override
     public void onFailed() {
 
+    }
+
+    @Override
+    public void themThanhCong() {
+        Toast.makeText(MainQLThemDonNhapHnag.this,"Click",Toast.LENGTH_SHORT).show();
     }
 
     @Override

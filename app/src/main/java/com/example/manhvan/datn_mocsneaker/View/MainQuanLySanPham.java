@@ -84,4 +84,9 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
     public void onFailed() {
 
     }
+
+    @Override
+    public void themThanhCong() {
+
+    }
 }

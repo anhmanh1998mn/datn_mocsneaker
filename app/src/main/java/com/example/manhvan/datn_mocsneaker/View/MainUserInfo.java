@@ -117,9 +117,9 @@ public class MainUserInfo extends AppCompatActivity implements View.OnClickListe
                 Log.d("IdNV",txtID.getText().toString());
                 txtMK.setText(arrayList.get(0).getUserPassword());
 
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.putString("idNhanVien",arrayList.get(0).getId()+"");
-                editor.commit();
+//                SharedPreferences.Editor editor=sharedPreferences.edit();
+//                editor.putString("idNhanVien",arrayList.get(0).getId()+"");
+//                editor.commit();
 
             }
         });

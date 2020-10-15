@@ -12,14 +12,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.manhvan.datn_mocsneaker.Presenter.PreThongTinTaiKhoan;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.MainQLNhapHangDanhSach;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLyKhachHang;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLySanPham;
+import com.example.manhvan.datn_mocsneaker.View.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.View.ViewQuanLyNhanVIen;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 
-public class DashboardFragment extends Fragment implements View.OnClickListener {
+import java.util.ArrayList;
+
+public class DashboardFragment extends Fragment implements View.OnClickListener, ThongTinKHInterKQ2 {
     private TextView txtFragment2;
+    private SharedPreferences sharedPreferences;
+    private PreThongTinTaiKhoan preThongTinTaiKhoan;
     private Button btnQLNhanVien,btnKiemTraDonHang,btnQuanLySP,btnQuanLyKH,btnQuanLyDonHang,btnQuanLyNhapHang;
 
 
@@ -30,7 +38,20 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         initView(root);
         eventCleck();
         quyenHienThi();
+        getData();
         return root;
+    }
+
+    private void getData() {
+        // lấy mã nhân viên dùng cho thêm đơn nhập hàng
+        preThongTinTaiKhoan=new PreThongTinTaiKhoan(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sharedPreferences= getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+                preThongTinTaiKhoan.thongTinTaiKhoan(sharedPreferences.getString("quyen",""),sharedPreferences.getString("phone",""));
+            }
+        }).start();
     }
 
     private void quyenHienThi() {
@@ -84,4 +105,20 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    @Override
+    public void thongTinNhanVien(ArrayList<ThongTinNV> arrayList) {
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("idNhanVien",arrayList.get(0).getId()+"");
+        editor.commit();
+    }
+
+    @Override
+    public void thongTinKhachHang(ArrayList<ThongTinKhachHang> arrayList) {
+
+    }
+
+    @Override
+    public void loi() {
+
+    }
 }

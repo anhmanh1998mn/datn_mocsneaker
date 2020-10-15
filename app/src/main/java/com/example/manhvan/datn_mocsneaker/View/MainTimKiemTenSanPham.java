@@ -111,4 +111,9 @@ public class MainTimKiemTenSanPham extends AppCompatActivity implements View.OnC
     public void onFailed() {
 
     }
+
+    @Override
+    public void themThanhCong() {
+
+    }
 }
