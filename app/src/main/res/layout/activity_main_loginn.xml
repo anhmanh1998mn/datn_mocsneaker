@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <EditText
+        android:inputType="number"
         android:drawableTint="#0536E1"
         android:textColor="#000"
         android:drawablePadding="12dp"
