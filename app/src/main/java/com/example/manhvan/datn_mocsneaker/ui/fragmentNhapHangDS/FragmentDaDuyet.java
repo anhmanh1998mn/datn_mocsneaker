@@ -51,7 +51,7 @@ public class FragmentDaDuyet extends Fragment implements LayDanhSachDonNhapInter
         recyclerViewDaDuyet.post(new Runnable() {
             @Override
             public void run() {
-                adapter=new DanhSachDonNhapAdapter(getActivity(),R.layout.item_don_nhap_hang_ds, MoLayDanhSachDonNH.arrDonNhapHang);
+                adapter=new DanhSachDonNhapAdapter(getActivity(),R.layout.item_don_nhap_hang_ds, MoLayDanhSachDonNH.arrDonDuyet);
                 recyclerViewDaDuyet.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

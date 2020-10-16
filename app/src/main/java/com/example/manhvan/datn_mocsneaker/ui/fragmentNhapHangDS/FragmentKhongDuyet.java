@@ -47,11 +47,17 @@ public class FragmentKhongDuyet extends Fragment implements LayDanhSachDonNhapIn
     }
 
     @Override
+    public void onResume() {
+        danhSachChuaDuyet();
+        super.onResume();
+    }
+
+    @Override
     public void danhSachChuaDuyet() {
         recyclerViewkhongDuyet.post(new Runnable() {
             @Override
             public void run() {
-                adapter=new DanhSachDonNhapAdapter(getActivity(),R.layout.item_don_nhap_hang_ds, MoLayDanhSachDonNH.arrDonNhapHang);
+                adapter=new DanhSachDonNhapAdapter(getActivity(),R.layout.item_don_nhap_hang_ds, MoLayDanhSachDonNH.arrDonKhongNhap);
                 recyclerViewkhongDuyet.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

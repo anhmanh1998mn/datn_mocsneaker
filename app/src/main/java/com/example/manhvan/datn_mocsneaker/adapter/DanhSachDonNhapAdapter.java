@@ -3,8 +3,10 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,7 @@ public class DanhSachDonNhapAdapter extends RecyclerView.Adapter<DanhSachDonNhap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.txtMaDN.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/6;
         viewHolder.txtMaDN.requestLayout();
         viewHolder.txtNgayLap.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/6*25/10;
@@ -54,6 +56,11 @@ public class DanhSachDonNhapAdapter extends RecyclerView.Adapter<DanhSachDonNhap
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(myContext, MainChiTietDonNhap.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("idDonNhap",lstDonNhapHang.get(i).getId());
+                Log.d("idDOnNhap",lstDonNhapHang.get(i).getId());
+                bundle.putString("ngayLap",lstDonNhapHang.get(i).getCreatedAt());
+                intent.putExtra("ttDonNhap",bundle);
                 myContext.startActivity(intent);
             }
         });

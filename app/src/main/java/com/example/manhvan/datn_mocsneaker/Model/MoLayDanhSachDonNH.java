@@ -18,22 +18,61 @@ public class MoLayDanhSachDonNH {
         this.timKiemNVKQ1 = timKiemNVKQ1;
     }
 
-    public static List<DonNhapHang> arrDonNhapHang;
+    public static List<DonNhapHang> arrDonNhapHang,arrDonKhongNhap,arrDonDuyet;
     public void xuLy(int status){
         arrDonNhapHang=new ArrayList<>();
+        arrDonDuyet=new ArrayList<>();
+        arrDonKhongNhap=new ArrayList<>();
         Dataservice dataservice= APIService.getService();
-        Call<List<DonNhapHang>> callback=dataservice.danhSachDonNhap(status);
-        callback.enqueue(new Callback<List<DonNhapHang>>() {
-            @Override
-            public void onResponse(Call<List<DonNhapHang>> call, Response<List<DonNhapHang>> response) {
-                arrDonNhapHang=response.body();
-                timKiemNVKQ1.onS();
-            }
+        switch (status){
+            case 1:{
+                Call<List<DonNhapHang>> callback=dataservice.danhSachDonNhap(status);
+                callback.enqueue(new Callback<List<DonNhapHang>>() {
+                    @Override
+                    public void onResponse(Call<List<DonNhapHang>> call, Response<List<DonNhapHang>> response) {
+                        arrDonNhapHang=response.body();
+                        timKiemNVKQ1.onS();
+                    }
 
-            @Override
-            public void onFailure(Call<List<DonNhapHang>> call, Throwable t) {
-                timKiemNVKQ1.onF();
+                    @Override
+                    public void onFailure(Call<List<DonNhapHang>> call, Throwable t) {
+                        timKiemNVKQ1.onF();
+                    }
+                });
+                break;
             }
-        });
+            case 2:{
+                Call<List<DonNhapHang>> callback=dataservice.danhSachDonNhap(status);
+                callback.enqueue(new Callback<List<DonNhapHang>>() {
+                    @Override
+                    public void onResponse(Call<List<DonNhapHang>> call, Response<List<DonNhapHang>> response) {
+                        arrDonKhongNhap=response.body();
+                        timKiemNVKQ1.onS();
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<DonNhapHang>> call, Throwable t) {
+                        timKiemNVKQ1.onF();
+                    }
+                });
+                break;
+            }
+            case 3:{
+                Call<List<DonNhapHang>> callback=dataservice.danhSachDonNhap(status);
+                callback.enqueue(new Callback<List<DonNhapHang>>() {
+                    @Override
+                    public void onResponse(Call<List<DonNhapHang>> call, Response<List<DonNhapHang>> response) {
+                        arrDonDuyet=response.body();
+                        timKiemNVKQ1.onS();
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<DonNhapHang>> call, Throwable t) {
+                        timKiemNVKQ1.onF();
+                    }
+                });
+                break;
+            }
+        }
     }
 }
