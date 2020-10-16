@@ -89,11 +89,30 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
 
     public void checkRole(){
         SharedPreferences sharedPreferences = getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
-        if (sharedPreferences.getString("quyen", "").equals("2")){
+        if (sharedPreferences.getString("quyen", "").equals("2")&&trangThaiDN.equals("1")){
             spinner.setEnabled(false);
             btnXacNhanYeuCau.setVisibility(View.GONE);
+            btnCapNhatDN.setVisibility(View.VISIBLE);
 
-            return;
+        }else if(sharedPreferences.getString("quyen", "").equals("2")&&trangThaiDN.equals("2")){
+            spinner.setEnabled(false);
+            btnXacNhanYeuCau.setVisibility(View.GONE);
+            recyclerViewCT.setClickable(false);
+            btnCapNhatDN.setVisibility(View.GONE);
+        }else if(sharedPreferences.getString("quyen", "").equals("2")&&trangThaiDN.equals("3")){
+            spinner.setEnabled(false);
+            recyclerViewCT.setClickable(false);
+            btnXacNhanYeuCau.setVisibility(View.GONE);
+            btnCapNhatDN.setVisibility(View.GONE);
+        }else if(sharedPreferences.getString("quyen", "").equals("1")&&trangThaiDN.equals("3")){
+            spinner.setEnabled(false);
+            recyclerViewCT.setClickable(false);
+            btnXacNhanYeuCau.setVisibility(View.GONE);
+            btnCapNhatDN.setVisibility(View.GONE);
+        }else if(sharedPreferences.getString("quyen", "").equals("1")&&trangThaiDN.equals("2")){
+            spinner.setEnabled(true);
+            btnXacNhanYeuCau.setVisibility(View.VISIBLE);
+            btnCapNhatDN.setVisibility(View.GONE);
         }
 
     }

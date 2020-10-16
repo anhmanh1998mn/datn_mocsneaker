@@ -35,7 +35,7 @@ public class ChiTietDNLayDSAdapter extends RecyclerView.Adapter<ChiTietDNLayDSAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.txtTenSP.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/9*4;
         viewHolder.txtKichCoSP.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/9*2;
         viewHolder.txtSoLuongSP.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/9*2;
@@ -49,6 +49,7 @@ public class ChiTietDNLayDSAdapter extends RecyclerView.Adapter<ChiTietDNLayDSAd
         viewHolder.txtKichCoSP.setText(lstChiTietDNLay.get(i).getSize());
         viewHolder.txtSoLuongSP.setText(lstChiTietDNLay.get(i).getQuantity());
         viewHolder.txtSTT.setText(i+1+"");
+
     }
 
     @Override
