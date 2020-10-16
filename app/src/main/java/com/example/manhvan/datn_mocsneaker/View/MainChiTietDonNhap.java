@@ -8,8 +8,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,6 +36,8 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
     private int maDonNhap=0;
     private ChiTietDNLayDSAdapter adapter;
     private PreLayChiTietDonNhap preLayChiTietDonNhap;
+    private Button btnXacNhanYeuCau;
+    private int tinhTrangDuyet=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,7 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         nhanDuLieu();
         layChiTietDN();
 //        tinhToan();
+        clickButtonXacNhanYeuCau();
     }
 
     private void initView() {
@@ -56,6 +63,7 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         recyclerViewCT.setLayoutManager(linearLayoutManager);
         txtTongSL=findViewById(R.id.txt_tongSL);
         txtTongTienCT=findViewById(R.id.txt_tongTienCT);
+        btnXacNhanYeuCau=findViewById(R.id.btn_xacNhanYeuCauDH);
 
         arrSpinner=new ArrayList<>();
         arrSpinner.add("Duyệt");
@@ -74,6 +82,7 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         SharedPreferences sharedPreferences = getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("quyen", "").equals("2")){
             spinner.setEnabled(false);
+            btnXacNhanYeuCau.setVisibility(View.GONE);
             return;
         }
     }
@@ -124,5 +133,31 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         txtTongSL.setText("Tổng số hàng: "+tongSL);
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         txtTongTienCT.setText("Tổng tiền nhập: "+decimalFormat.format(tongTien)+"đ");
+    }
+    public void clickButtonXacNhanYeuCau(){
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                Log.d("spinner",i+"");
+                if(i==0){
+                    tinhTrangDuyet=3;
+                    return;
+                }
+                tinhTrangDuyet=2;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        btnXacNhanYeuCau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("spinner",tinhTrangDuyet+"");
+            }
+        });
     }
 }

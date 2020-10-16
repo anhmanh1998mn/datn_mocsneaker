@@ -130,7 +130,7 @@
         android:weightSum="3"
         android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_xacNhanYeuCauDH"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -153,5 +153,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_xacNhanYeuCauDH"
+        android:textColor="#fff"
+        android:text="Xác nhận yêu cầu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/custombutton"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
 
 </android.support.constraint.ConstraintLayout>
