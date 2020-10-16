@@ -60,6 +60,7 @@ public class DanhSachDonNhapAdapter extends RecyclerView.Adapter<DanhSachDonNhap
                 bundle.putString("idDonNhap",lstDonNhapHang.get(i).getId());
                 Log.d("idDOnNhap",lstDonNhapHang.get(i).getId());
                 bundle.putString("ngayLap",lstDonNhapHang.get(i).getCreatedAt());
+                bundle.putString("trangThai",lstDonNhapHang.get(i).getStatus());
                 intent.putExtra("ttDonNhap",bundle);
                 myContext.startActivity(intent);
             }

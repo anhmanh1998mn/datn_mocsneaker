@@ -30,6 +30,13 @@ public class FragmentDonChuaDuyet extends Fragment implements LayDanhSachDonNhap
         return view;
     }
 
+    //load lại danh sách đơn nhập
+    @Override
+    public void onStart() {
+        getData();
+        super.onStart();
+    }
+
     private void getData() {
         preLayDanhSachDonNH=new PreLayDanhSachDonNH(this);
         new Thread(new Runnable() {

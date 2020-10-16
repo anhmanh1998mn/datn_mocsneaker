@@ -8,7 +8,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoLayChiTietDonNhap;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreDuyetDonNhapHang;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreLayChiTietDonNhap;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDNLayDSAdapter;
@@ -27,7 +27,7 @@ import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDNLayDSAdapter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNhapInterface{
+public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNhapInterface, View.OnClickListener {
     private ActionBar actionBar;
     private TextView txtMaDonNhapCT,txtNgayLapCT,txtTongSL,txtTongTienCT;
     private Spinner spinner;
@@ -36,8 +36,10 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
     private int maDonNhap=0;
     private ChiTietDNLayDSAdapter adapter;
     private PreLayChiTietDonNhap preLayChiTietDonNhap;
-    private Button btnXacNhanYeuCau;
+    private Button btnXacNhanYeuCau,btnCapNhatDN;
     private int tinhTrangDuyet=1;
+    private String trangThaiDN="";
+    private PreDuyetDonNhapHang preDuyetDonNhapHang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,10 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         actionBar.setTitle("Chi tiết đơn nhập hàng");
         actionBar.setDisplayHomeAsUpEnabled(true);
         initView();
-        checkRole();
+        eventClick();
+//        checkRole();
         nhanDuLieu();
+        checkRole();
         layChiTietDN();
 //        tinhToan();
         clickButtonXacNhanYeuCau();
@@ -64,12 +68,17 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         txtTongSL=findViewById(R.id.txt_tongSL);
         txtTongTienCT=findViewById(R.id.txt_tongTienCT);
         btnXacNhanYeuCau=findViewById(R.id.btn_xacNhanYeuCauDH);
+        btnCapNhatDN=findViewById(R.id.btn_capNhatDH);
 
         arrSpinner=new ArrayList<>();
         arrSpinner.add("Duyệt");
         arrSpinner.add("Không duyệt");
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,arrSpinner);
         spinner.setAdapter(adapter);
+    }
+
+    public void eventClick(){
+        btnXacNhanYeuCau.setOnClickListener(this);
     }
 
     @Override
@@ -83,15 +92,19 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         if (sharedPreferences.getString("quyen", "").equals("2")){
             spinner.setEnabled(false);
             btnXacNhanYeuCau.setVisibility(View.GONE);
+
             return;
         }
+
     }
+
     public void nhanDuLieu(){
         Intent intent=getIntent();
         Bundle bundle=intent.getBundleExtra("ttDonNhap");
         maDonNhap=Integer.parseInt(bundle.getString("idDonNhap"));
         txtMaDonNhapCT.setText(bundle.getString("idDonNhap"));
         txtNgayLapCT.setText(bundle.getString("ngayLap",""));
+        trangThaiDN=bundle.getString("trangThai","");
     }
     public void layChiTietDN(){
         preLayChiTietDonNhap=new PreLayChiTietDonNhap(this);
@@ -116,6 +129,17 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         });
 
 
+    }
+
+    @Override
+    public void duyetThanhCong() {
+        btnXacNhanYeuCau.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainChiTietDonNhap.this,"Xác nhận yêu cầu thành công",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -153,11 +177,24 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
             }
         });
 
-        btnXacNhanYeuCau.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("spinner",tinhTrangDuyet+"");
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_xacNhanYeuCauDH:{
+                duyetYeuCau();
+                break;
             }
-        });
+        }
+    }
+    public void duyetYeuCau(){
+        preDuyetDonNhapHang=new PreDuyetDonNhapHang(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preDuyetDonNhapHang.duyetDonNhap(maDonNhap,tinhTrangDuyet);
+            }
+        }).start();
     }
 }

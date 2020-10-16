@@ -161,5 +161,14 @@
         android:background="@drawable/custombutton"
         android:layout_width="match_parent"
         android:layout_height="45dp"/>
+    <Button
+        android:visibility="gone"
+        android:id="@+id/btn_capNhatDH"
+        android:textColor="#fff"
+        android:text="Cập nhật đơn nhập"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/custombutton"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
 
 </android.support.constraint.ConstraintLayout>

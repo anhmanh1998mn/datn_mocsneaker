@@ -33,6 +33,7 @@ public class MainQLNhapHangDanhSach extends AppCompatActivity implements View.On
 
     }
 
+
     private void initViewpager() {
         FragmentManager fragmentManager=getSupportFragmentManager();
         adapter=new QLNhapHangAdapter(fragmentManager);

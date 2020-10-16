@@ -16,6 +16,9 @@ public class DonNhapHang {
     @SerializedName("staff_name")
     @Expose
     private String staffName;
+    @SerializedName("status")
+    @Expose
+    private String status;
 
     public String getId() {
         return id;
@@ -47,5 +50,13 @@ public class DonNhapHang {
 
     public void setStaffName(String staffName) {
         this.staffName = staffName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

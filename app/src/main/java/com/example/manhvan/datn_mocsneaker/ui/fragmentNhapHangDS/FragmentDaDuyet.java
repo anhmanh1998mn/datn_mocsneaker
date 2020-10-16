@@ -29,6 +29,13 @@ public class FragmentDaDuyet extends Fragment implements LayDanhSachDonNhapInter
         getData();
         return view;
     }
+
+    @Override
+    public void onStart() {
+        getData();
+        super.onStart();
+    }
+
     private void getData() {
         preLayDanhSachDonNH=new PreLayDanhSachDonNH(this);
         new Thread(new Runnable() {
