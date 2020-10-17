@@ -129,4 +129,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("duyettrangthaidonnhap.php")
     Call<String> duyetDonNhapHang(@Field("idDonNhap") int maDonNhap,@Field("status") int trangThai);
+
+    //cập nhật số lượng sán phẩm nhập trong chi tiết đơn nhập lấy về
+    @FormUrlEncoded
+    @POST("capnhatchitietdonnhaplaysl.php")
+    Call<String> capNhatChiTietDNLay(@Field("idCTDN") int maChiTiet,@Field("quantity") int soLuong);
 }

@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +28,7 @@ import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDNLayDSAdapter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNhapInterface, View.OnClickListener {
+public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNhapInterface, View.OnClickListener,ChiTietDNLayDSAdapter.onDialogCloseListener1{
     private ActionBar actionBar;
     private TextView txtMaDonNhapCT,txtNgayLapCT,txtTongSL,txtTongTienCT;
     private Spinner spinner;
@@ -135,6 +136,8 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         }).start();
     }
 
+
+
     @Override
     public void onSuccessed() {
         recyclerViewCT.post(new Runnable() {
@@ -142,6 +145,7 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
             public void run() {
                 adapter=new ChiTietDNLayDSAdapter(MainChiTietDonNhap.this,R.layout.item_lay_chi_tiet_don_nhap, MoLayChiTietDonNhap.arrListChiTiet);
                 recyclerViewCT.setAdapter(adapter);
+                adapter.setListener(MainChiTietDonNhap.this);
                 adapter.notifyDataSetChanged();
                 tinhToan();
             }
@@ -215,5 +219,11 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
                 preDuyetDonNhapHang.duyetDonNhap(maDonNhap,tinhTrangDuyet);
             }
         }).start();
+    }
+
+    @Override
+    public void onDialogClose() {
+        Log.d("clodeDialog","sssss");
+        layChiTietDN();
     }
 }

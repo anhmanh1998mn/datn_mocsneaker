@@ -82,8 +82,8 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
                 dialog = new Dialog(myContext);
                 dialog.setContentView(R.layout.dialogsuagiohang);
                 ConstraintLayout constraintLayout = dialog.findViewById(R.id.dialogGH);
-                constraintLayout.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 4 * 3;
-                constraintLayout.getLayoutParams().height = AndroidDeviceHelper.getHeighScreen(myContext) / 2;
+                constraintLayout.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 5 * 4;
+                constraintLayout.getLayoutParams().height = AndroidDeviceHelper.getHeighScreen(myContext) / 3;
                 constraintLayout.requestLayout();
                 dialog.setCanceledOnTouchOutside(false);
                 dialog.show();

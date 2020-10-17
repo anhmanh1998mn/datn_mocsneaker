@@ -27,5 +27,6 @@ public class PreThemMoiDonNH implements ThemNhanVienKQ1 {
 
     @Override
     public void onF() {
+        timKiemSanPhamInterface.onFailed();
     }
 }

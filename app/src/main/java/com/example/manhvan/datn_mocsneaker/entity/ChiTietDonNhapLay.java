@@ -16,6 +16,12 @@ public class ChiTietDonNhapLay {
     @SerializedName("price_in")
     @Expose
     private String priceIn;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("id")
+    @Expose
+    private String id;
 
     public String getQuantity() {
         return quantity;
@@ -47,5 +53,21 @@ public class ChiTietDonNhapLay {
 
     public void setPriceIn(String priceIn) {
         this.priceIn = priceIn;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

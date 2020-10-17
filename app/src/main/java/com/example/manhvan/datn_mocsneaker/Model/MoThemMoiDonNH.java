@@ -1,5 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.Model;
 
+import android.util.Log;
+
 import com.example.manhvan.datn_mocsneaker.MyService.APIService;
 import com.example.manhvan.datn_mocsneaker.MyService.Dataservice;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
@@ -29,12 +31,14 @@ public class MoThemMoiDonNH {
                     return;
                 }
                 idDonNhap = Integer.parseInt(response.body().trim());
+                Log.d("LoiThem",idDonNhap+"");
                 themChiTietDonNhap();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
+                themNhanVienKQ1.onF();
+//                Log.d("LoiThem",t.toString());
             }
         });
     }
@@ -54,6 +58,7 @@ public class MoThemMoiDonNH {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
+                    themNhanVienKQ1.onF();
 
                 }
             });
