@@ -38,21 +38,23 @@ public class MoThongTinTaiKhon {
                     thongTinKhachHangInterface.loi();
                 }
             });
-            return;
-        }
-        arrKH=new ArrayList<>();
-        Call<List<ThongTinKhachHang>> call=dataservice.thongTinKhachHang(role,phone);
-        call.enqueue(new Callback<List<ThongTinKhachHang>>() {
-            @Override
-            public void onResponse(Call<List<ThongTinKhachHang>> call, Response<List<ThongTinKhachHang>> response) {
-                arrKH= (ArrayList<ThongTinKhachHang>) response.body();
-                thongTinKhachHangInterface.thongTinKhachHang(arrKH);
-            }
 
-            @Override
-            public void onFailure(Call<List<ThongTinKhachHang>> call, Throwable t) {
-                thongTinKhachHangInterface.loi();
-            }
-        });
+        }else if(role.equals("3")){
+            arrKH=new ArrayList<>();
+            Call<List<ThongTinKhachHang>> call=dataservice.thongTinKhachHang(role,phone);
+            call.enqueue(new Callback<List<ThongTinKhachHang>>() {
+                @Override
+                public void onResponse(Call<List<ThongTinKhachHang>> call, Response<List<ThongTinKhachHang>> response) {
+                    arrKH= (ArrayList<ThongTinKhachHang>) response.body();
+                    thongTinKhachHangInterface.thongTinKhachHang(arrKH);
+                }
+
+                @Override
+                public void onFailure(Call<List<ThongTinKhachHang>> call, Throwable t) {
+                    thongTinKhachHangInterface.loi();
+                }
+            });
+        }
+
     }
 }

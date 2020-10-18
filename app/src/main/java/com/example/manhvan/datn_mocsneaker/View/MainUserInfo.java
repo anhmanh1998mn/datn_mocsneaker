@@ -75,6 +75,7 @@ public class MainUserInfo extends AppCompatActivity implements View.OnClickListe
                 Intent intent=new Intent(MainUserInfo.this,MainXacNhanMatKhau.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("idtaikhoan",txtID.getText().toString().trim());
+               //Toast.makeText(MainUserInfo.this,txtID.getText().toString().trim(),Toast.LENGTH_SHORT).show();
                 bundle.putString("matkhau",txtMK.getText().toString().trim());
                 intent.putExtra("thongtin",bundle);
                 startActivity(intent);

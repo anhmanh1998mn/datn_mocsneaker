@@ -4,6 +4,7 @@ import com.example.manhvan.datn_mocsneaker.entity.ChiTietDonNhapLay;
 import com.example.manhvan.datn_mocsneaker.entity.DonNhapHang;
 import com.example.manhvan.datn_mocsneaker.entity.KhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.KichCoSP;
+import com.example.manhvan.datn_mocsneaker.entity.MaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
 import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
@@ -134,4 +135,20 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("capnhatchitietdonnhaplaysl.php")
     Call<String> capNhatChiTietDNLay(@Field("idCTDN") int maChiTiet,@Field("quantity") int soLuong);
+
+    //Thêm đơn hàng
+    @FormUrlEncoded
+    @POST("themdonhang.php")
+    Call<String> themDonHang(@Field("address")String diaChi,@Field("customer_id")int idNguoiLap,@Field("role") int quyen);
+
+    //Thêm chi tiết đơn hàng
+    @FormUrlEncoded
+    @POST("themchitietdonhang.php")
+    Call<String> themChiTietDonHang(@Field("donHang_id") int maDonHang,@Field("sanPham_id") int maSanPham,
+                                    @Field("soLuong")int soLuong,@Field("kichCo") String kichCo);
+
+    //lấy mã người dùng lập đơn hàng
+    @FormUrlEncoded
+    @POST("getmanguoidunglapdonhang.php")
+    Call<List<MaNguoiLapDH>> getMaNguoiLapDonHnag(@Field("phone")String phone, @Field("role")int quyen);
 }

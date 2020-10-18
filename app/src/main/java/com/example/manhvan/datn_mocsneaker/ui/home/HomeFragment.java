@@ -1,28 +1,37 @@
 package com.example.manhvan.datn_mocsneaker.ui.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.manhvan.datn_mocsneaker.Presenter.PreThongTinTaiKhoan;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.adapter.HomeAdapter;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment  {
 
     private HomeViewModel homeViewModel;
     private RecyclerView recyclerViewHome;
     private ArrayList<String> arrayList;
     private HomeAdapter adapter;
     private ImageView imageView;
+    private PreThongTinTaiKhoan preThongTinTaiKhoan;
+    private SharedPreferences sharedPreferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +46,8 @@ public class HomeFragment extends Fragment {
 //        imageView.requestLayout();
         return root;
     }
+
+
 
     private void initView(View view) {
         recyclerViewHome=view.findViewById(R.id.home_recycleview);
@@ -53,4 +64,6 @@ public class HomeFragment extends Fragment {
         recyclerViewHome.setNestedScrollingEnabled(false);
         //imageView=view.findViewById(R.id.img_homeIMG);
     }
+
+
 }

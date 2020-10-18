@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
     private void quyenHienThi() {
         SharedPreferences sharedPreferences=this.getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
         String quyen=sharedPreferences.getString("quyen","");
+        Log.d("idNguoiLap",quyen+"");
         if (quyen.equals("1")){
             btnQLNhanVien.setVisibility(View.VISIBLE);
             btnQuanLySP.setVisibility(View.VISIBLE);
