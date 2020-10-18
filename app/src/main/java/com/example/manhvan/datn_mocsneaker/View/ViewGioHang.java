@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreLayMaNguoiLapDH;
@@ -67,17 +69,22 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
         btnDatHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(sharedPreferences.getString("quyen","")==null||sharedPreferences.getString("quyen","").equals("")){
-//                    startActivity(new Intent(ViewGioHang.this, MainLogin.class));
-//                    return;
-//                }
-                //Toast.makeText(ViewGioHang.this,idNguoiLap+"",Toast.LENGTH_SHORT).show();
+                if(sharedPreferences.getString("quyen","")==null||sharedPreferences.getString("quyen","").equals("")){
+                    startActivity(new Intent(ViewGioHang.this, MainLogin.class));
+                    return;
+                }
+//                Toast.makeText(ViewGioHang.this,idNguoiLap+"", Toast.LENGTH_SHORT).show();
 
-//                if(edtDiaChi.getText().toString().trim().equals("")){
-//                    edtDiaChi.setError("Vui lòng nhập địa chỉ nhận hàng");
-//                    return;
-//                }
-
+                if(edtDiaChi.getText().toString().trim().equals("")){
+                    edtDiaChi.setError("Vui lòng nhập địa chỉ nhận hàng");
+                    return;
+                }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preLayMaNguoiLapDH.themDonHang(edtDiaChi.getText().toString(),idNguoiLap,Integer.parseInt(sharedPreferences.getString("quyen","")));
+                    }
+                }).start();
             }
         });
 
@@ -172,6 +179,19 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
     @Override
     public void onFailedID() {
 
+    }
+
+    @Override
+    public void onThemThanhCong() {
+        btnDatHang.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(ViewGioHang.this,"Thêm đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                GioHang.arrGioHang.clear();
+                edtDiaChi.setText("");
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
 

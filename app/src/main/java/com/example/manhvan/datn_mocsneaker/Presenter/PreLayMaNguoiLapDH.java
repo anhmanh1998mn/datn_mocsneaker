@@ -1,10 +1,11 @@
 package com.example.manhvan.datn_mocsneaker.Presenter;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoLayMaNguoiLapDH;
+import com.example.manhvan.datn_mocsneaker.Model.SuaNhanVienKQ1;
 import com.example.manhvan.datn_mocsneaker.Model.TimKiemNVKQ1;
 import com.example.manhvan.datn_mocsneaker.View.MaNguoiLapDHInterface;
 
-public class PreLayMaNguoiLapDH implements TimKiemNVKQ1{
+public class PreLayMaNguoiLapDH implements SuaNhanVienKQ1{
     private MaNguoiLapDHInterface maNguoiLapDHInterface;
 
     public PreLayMaNguoiLapDH(MaNguoiLapDHInterface maNguoiLapDHInterface) {
@@ -16,13 +17,23 @@ public class PreLayMaNguoiLapDH implements TimKiemNVKQ1{
         moLayMaNguoiLapDH.xuLy(phone,role);
     }
 
+    public void themDonHang(String diaChi,int maNguoiLap,int quyen){
+        moLayMaNguoiLapDH.xuLyThem(diaChi,maNguoiLap,quyen);
+    }
+
+
     @Override
-    public void onS() {
+    public void onS1() {
         maNguoiLapDHInterface.onSuccedID();
     }
 
     @Override
+    public void onS2() {
+        maNguoiLapDHInterface.onThemThanhCong();
+    }
+
+    @Override
     public void onF() {
-        maNguoiLapDHInterface.onFailedID();
+
     }
 }
