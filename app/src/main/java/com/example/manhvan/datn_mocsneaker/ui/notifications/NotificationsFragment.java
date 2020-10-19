@@ -13,15 +13,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.manhvan.datn_mocsneaker.Model.MoLayMaNguoiLapDH;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.MaNguoiLapDHInterface;
 import com.example.manhvan.datn_mocsneaker.View.MainLogin;
 import com.example.manhvan.datn_mocsneaker.View.MainRegister;
+import com.example.manhvan.datn_mocsneaker.View.MainShowListOrdersKH;
 import com.example.manhvan.datn_mocsneaker.View.MainUserInfo;
 
-public class NotificationsFragment extends Fragment implements View.OnClickListener {
-    private Button btnNotiLogin,btnNotiRegister,btnNotiSetting;
+public class NotificationsFragment extends Fragment implements View.OnClickListener, MaNguoiLapDHInterface {
+    private Button btnNotiLogin,btnNotiRegister,btnNotiSetting,btnShowOrder;
     private ImageView imageView;
     private TextView txtTen;
+    private PreLayMaNguoiLapDH preLayMaNguoiLapDH;
+    private int idNguoiLap=0;
+    private SharedPreferences sharedPreferences;
 
     private NotificationsViewModel notificationsViewModel;
 
@@ -38,6 +45,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 //            }
 //        });
         initView(root);
+        getMaNguoiDung();
         EvenClick();
         return root;
     }
@@ -47,6 +55,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         btnNotiRegister.setOnClickListener(this);
         btnNotiSetting.setOnClickListener(this);
         imageView.setOnClickListener(this);
+        btnShowOrder.setOnClickListener(this);
     }
 
     private void initView(View root) {
@@ -55,9 +64,10 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         btnNotiSetting=root.findViewById(R.id.btn_notiSetting);
         imageView=root.findViewById(R.id.btn_thongtintaikhoan);
         txtTen=root.findViewById(R.id.txt_ten);
+        btnShowOrder=root.findViewById(R.id.btn_notifiDonMua);
 
         // hiện button thiết lập tài khoản, ẩn button đăng nhập, button đăng ký
-        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("quyen","").equals("")||sharedPreferences.getString("quyen","").isEmpty()){
             return;
         }
@@ -83,7 +93,51 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 startActivity(new Intent(getContext(), MainUserInfo.class));
                 break;
             }
-
+            case R.id.btn_notifiDonMua:{
+                Intent intent=new Intent(getContext(), MainShowListOrdersKH.class);
+                //intent.putExtra("maNguoiDung",idNguoiLap);
+                startActivity(intent);
+                break;
+            }
         }
+    }
+    public void getMaNguoiDung(){
+        sharedPreferences= getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        if(sharedPreferences.getString("quyen","").equals("")){
+            //startActivity(new Intent(ViewGioHang.this, MainLogin.class));
+            return;
+        }
+        preLayMaNguoiLapDH=new PreLayMaNguoiLapDH(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preLayMaNguoiLapDH.layMaNguoiLap(sharedPreferences.getString("phone",""),Integer.parseInt(sharedPreferences.getString("quyen","")));
+            }
+        }).start();
+    }
+
+    @Override
+    public void onSuccedID() {
+        idNguoiLap=Integer.parseInt(MoLayMaNguoiLapDH.lstMaNguoiLap.get(0).getId());
+
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putInt("maNguoiDung",idNguoiLap);
+        editor.commit();
+//        btnShowOrder.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                Toast.makeText(getActivity(),idNguoiLap+"",Toast.LENGTH_SHORT).show();
+//            }
+//        });
+    }
+
+    @Override
+    public void onFailedID() {
+
+    }
+
+    @Override
+    public void onThemThanhCong() {
+
     }
 }
