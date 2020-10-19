@@ -53,6 +53,9 @@ public class OrderShowListAdapter extends RecyclerView.Adapter<OrderShowListAdap
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(myContext, MainOrderDetail.class);
+                intent.putExtra("ngayLap",lstDonHang.get(i).getCreatedAt());
+                intent.putExtra("diaChi",lstDonHang.get(i).getAddress());
+                intent.putExtra("maDH",lstDonHang.get(i).getId());
                 myContext.startActivity(intent);
             }
         });

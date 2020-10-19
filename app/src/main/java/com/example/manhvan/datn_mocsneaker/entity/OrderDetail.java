@@ -19,6 +19,9 @@ public class OrderDetail {
     @SerializedName("product_url")
     @Expose
     private String productUrl;
+    @SerializedName("price_out")
+    @Expose
+    private String priceOut;
 
     public String getId() {
         return id;
@@ -58,5 +61,13 @@ public class OrderDetail {
 
     public void setProductUrl(String productUrl) {
         this.productUrl = productUrl;
+    }
+
+    public String getPriceOut() {
+        return priceOut;
+    }
+
+    public void setPriceOut(String priceOut) {
+        this.priceOut = priceOut;
     }
 }

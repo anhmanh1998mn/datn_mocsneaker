@@ -7,6 +7,7 @@ import com.example.manhvan.datn_mocsneaker.entity.KhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.KichCoSP;
 import com.example.manhvan.datn_mocsneaker.entity.MaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
+import com.example.manhvan.datn_mocsneaker.entity.OrderDetail;
 import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
@@ -157,4 +158,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("showlistorder.php")
     Call<List<DonHang>> showListOrder(@Field("maND") int maND,@Field("quyenND")int quyen,@Field("trangThaiDH") int trangThai);
+
+    //show order detail
+    @FormUrlEncoded
+    @POST("getDataOrderDetail.php")
+    Call<List<OrderDetail>> getDataOrderDetail(@Field("idDonHang")int maDH);
 }

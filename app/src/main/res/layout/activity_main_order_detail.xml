@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
+                android:gravity="center|left"
                 android:drawablePadding="8dp"
                 android:paddingLeft="8dp"
                 android:layout_marginTop="16dp"
@@ -24,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:gravity="center|left"
                 android:drawablePadding="8dp"
                 android:paddingLeft="8dp"
                 android:layout_marginTop="16dp"
@@ -61,6 +63,7 @@
                 android:layout_height="wrap_content"/>
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:id="@+id/recycle_odetail"
                 app:layout_constraintTop_toBottomOf="@+id/txt_odetailTotal"
@@ -74,15 +77,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/recycle_odetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-            <TextView
-                android:textColor="#000"
-                android:text="Thời gian đặt hàng"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="8dp"
-                android:id="@+id/txt_odetailTime"
-                app:layout_constraintTop_toBottomOf="@+id/txt_odetailID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
 
