@@ -3,10 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.RecyclerView
+    <LinearLayout
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:id="@+id/linear_frGH1"
         app:layout_constraintTop_toTopOf="parent"
+        android:weightSum="4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:text="Mã đơn hàng"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"/>
+        <TextView
+            android:layout_marginLeft="24dp"
+            android:text="Địa chỉ nhận"
+            android:id="@+id/txt_itemDiaChiNhan"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"/>
+        <TextView
+            android:layout_marginLeft="8dp"
+            android:text="Ngày lập"
+            android:id="@+id/txt_itemNgayLap"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/linear_frGH1"
         android:id="@+id/recycle_KHDangGiao"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 </android.support.constraint.ConstraintLayout>

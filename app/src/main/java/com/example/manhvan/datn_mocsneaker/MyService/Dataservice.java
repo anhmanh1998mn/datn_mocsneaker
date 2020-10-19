@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.MyService;
 
 import com.example.manhvan.datn_mocsneaker.entity.ChiTietDonNhapLay;
+import com.example.manhvan.datn_mocsneaker.entity.DonHang;
 import com.example.manhvan.datn_mocsneaker.entity.DonNhapHang;
 import com.example.manhvan.datn_mocsneaker.entity.KhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.KichCoSP;
@@ -151,4 +152,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("getmanguoidunglapdonhang.php")
     Call<List<MaNguoiLapDH>> getMaNguoiLapDonHnag(@Field("phone")String phone, @Field("role")int quyen);
+
+    //Show list order
+    @FormUrlEncoded
+    @POST("showlistorder.php")
+    Call<List<DonHang>> showListOrder(@Field("maND") int maND,@Field("quyenND")int quyen,@Field("trangThaiDH") int trangThai);
 }
