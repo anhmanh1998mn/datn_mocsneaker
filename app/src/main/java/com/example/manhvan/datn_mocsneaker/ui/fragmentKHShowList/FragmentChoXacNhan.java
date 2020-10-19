@@ -42,6 +42,13 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
         sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
 //        Toast.makeText(getContext(),sharedPreferences.getInt("maNguoiDung",-1)+"",Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onStart() {
+        getDataOrder();
+        super.onStart();
+    }
+
     private void getDataOrder(){
         preShowListOrder=new PreShowListOrder(this);
         new Thread(new Runnable() {

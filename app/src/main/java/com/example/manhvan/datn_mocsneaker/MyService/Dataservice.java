@@ -163,4 +163,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("getDataOrderDetail.php")
     Call<List<OrderDetail>> getDataOrderDetail(@Field("idDonHang")int maDH);
+
+    //Hủy đơn hnagf
+    @FormUrlEncoded
+    @POST("huydonhang.php")
+    Call<String> huyDonHang(@Field("idDonHang")int maDH);
 }

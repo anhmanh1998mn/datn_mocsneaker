@@ -43,6 +43,12 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
 //        Toast.makeText(getContext(),sharedPreferences.getString("quyen","")+"",Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onStart() {
+        getDataOrder();
+        super.onStart();
+    }
+
     private void getDataOrder(){
         preShowListOrder=new PreShowListOrder(this);
         new Thread(new Runnable() {

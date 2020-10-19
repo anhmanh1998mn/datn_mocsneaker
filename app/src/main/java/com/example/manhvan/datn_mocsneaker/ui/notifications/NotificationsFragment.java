@@ -95,7 +95,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
             }
             case R.id.btn_notifiDonMua:{
                 Intent intent=new Intent(getContext(), MainShowListOrdersKH.class);
-                //intent.putExtra("maNguoiDung",idNguoiLap);
+                //intent.putExtra("donMua","1");
                 startActivity(intent);
                 break;
             }

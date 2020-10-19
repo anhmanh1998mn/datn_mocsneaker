@@ -36,8 +36,26 @@ public class MoOrderDetail {
             }
         });
     }
+    public void xuLyHuyDonHang(int maDH){
+        Dataservice dataservice=APIService.getService();
+        Call<String> callback1=dataservice.huyDonHang(maDH);
+        callback1.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+//                Log.d("HuyDH",response.body());
+                dataOrderDetail.huyThanhCong();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+    }
+
     public interface DataOrderDetail{
         public void onS();
         public void onF();
+        public void huyThanhCong();
     }
 }

@@ -18,6 +18,7 @@ import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.MainQLNhapHangDanhSach;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLyKhachHang;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLySanPham;
+import com.example.manhvan.datn_mocsneaker.View.MainShowListOrdersKH;
 import com.example.manhvan.datn_mocsneaker.View.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.View.ViewQuanLyNhanVIen;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
@@ -73,6 +74,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
         btnQuanLyKH.setOnClickListener(this);
         btnQuanLySP.setOnClickListener(this);
         btnQuanLyNhapHang.setOnClickListener(this);
+        btnKiemTraDonHang.setOnClickListener(this);
     }
 
     private void initView(View root) {
@@ -102,6 +104,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
             }
             case R.id.btn_quanLyNhapHang:{
                 startActivity(new Intent(getContext(), MainQLNhapHangDanhSach.class));
+                break;
+            }
+            case R.id.btn_kiemTraDonHang:{
+                startActivity(new Intent(getContext(), MainShowListOrdersKH.class));
                 break;
             }
         }

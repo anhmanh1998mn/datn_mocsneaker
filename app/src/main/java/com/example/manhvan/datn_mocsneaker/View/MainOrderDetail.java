@@ -1,14 +1,19 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoOrderDetail;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreOrderDetail;
@@ -17,13 +22,15 @@ import com.example.manhvan.datn_mocsneaker.adapter.OrderDetailAdapter;
 
 import java.text.DecimalFormat;
 
-public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail.GetDataOrInterface{
+public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail.GetDataOrInterface, View.OnClickListener {
     private ActionBar actionBar;
     private TextView txtNgayLap,txtDiaChiNhan,txtTongTien,txtMaDH;
     private RecyclerView recyclerOrderDetail;
     private PreOrderDetail preOrderDetail;
     private int maDonHang=0;
     private OrderDetailAdapter adapter;
+    private Button btnHuyDon,btnCapNhatTinhTrang;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +42,15 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
         initView();
         getData();
         getDataOrderDetail();
+        checkRole();
+        onClickButton();
+    }
+    private void checkRole(){
+        sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        if(sharedPreferences.getString("quyen","").equals("3")){
+            btnCapNhatTinhTrang.setVisibility(View.GONE);
 
+        }
     }
 
     private void initView(){
@@ -44,6 +59,12 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
         txtTongTien=findViewById(R.id.txt_odetailTotal);
         txtMaDH=findViewById(R.id.txt_odetailID);
         recyclerOrderDetail=findViewById(R.id.recycle_odetail);
+        btnHuyDon=findViewById(R.id.btn_huyDonHang);
+        btnCapNhatTinhTrang=findViewById(R.id.btn_capNhatTinhTrang);
+    }
+    private void onClickButton(){
+        btnHuyDon.setOnClickListener(this);
+        btnHuyDon.setOnClickListener(this);
     }
 
     @Override
@@ -79,6 +100,7 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
     }
     @Override
     public void onSuccessed() {
+        recyclerOrderDetail.setNestedScrollingEnabled(true);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this, LinearLayout.VERTICAL,false);
         recyclerOrderDetail.setLayoutManager(linearLayoutManager);
         adapter=new OrderDetailAdapter(this,R.layout.itemgiohang, MoOrderDetail.lstOrderDetail);
@@ -95,5 +117,35 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
     @Override
     public void onFailed() {
 
+    }
+
+    @Override
+    public void onHuyThanhCong() {
+        btnHuyDon.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainOrderDetail.this,"Hủy đơn hàng thành công",Toast.LENGTH_SHORT).show();
+                btnHuyDon.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_huyDonHang:{
+                preOrderDetail=new PreOrderDetail(this);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preOrderDetail.huyDonHang(maDonHang);
+                    }
+                }).start();
+                break;
+            }
+            case R.id.btn_capNhatTinhTrang:{
+                break;
+            }
+        }
     }
 }
