@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.MainShowListOrdersKH"></activity>
+        <activity android:name=".View.MainOrderDetail"></activity>
+        <activity android:name=".View.MainShowListOrdersKH" />
         <activity android:name=".View.MainChiTietDonNhap" />
         <activity android:name=".View.MainProductInsert" />
         <activity android:name=".View.MainQLThemDonNhapHnag" />

@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.MainOrderDetail;
 import com.example.manhvan.datn_mocsneaker.entity.DonHang;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
@@ -35,7 +37,7 @@ public class OrderShowListAdapter extends RecyclerView.Adapter<OrderShowListAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.txtMaDH.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/4;
         viewHolder.txtDiaChi.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/4*2;
         viewHolder.txtNgayLap.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/4;
@@ -46,6 +48,14 @@ public class OrderShowListAdapter extends RecyclerView.Adapter<OrderShowListAdap
         viewHolder.txtMaDH.setText(lstDonHang.get(i).getId());
         viewHolder.txtDiaChi.setText(lstDonHang.get(i).getAddress());
         viewHolder.txtNgayLap.setText(lstDonHang.get(i).getCreatedAt());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(myContext, MainOrderDetail.class);
+                myContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
