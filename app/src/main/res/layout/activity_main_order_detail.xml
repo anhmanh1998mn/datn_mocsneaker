@@ -9,6 +9,27 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:id="@+id/linea_DH"
+                android:weightSum="5"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <TextView
+                    android:paddingLeft="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:drawableTint="#0356FF"
+                    android:drawableLeft="@drawable/ic_baseline_filter_list_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Spinner
+                    android:id="@+id/spinner_trangThai"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
             <TextView
                 android:gravity="center|left"
                 android:drawablePadding="8dp"
@@ -18,7 +39,7 @@
                 android:drawableTint="#0356FF"
                 android:drawableLeft="@drawable/ic_date_range_black_24dp"
                 android:id="@+id/txt_odetailDate"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linea_DH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView

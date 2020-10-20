@@ -36,6 +36,7 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
         return view;
     }
 
+
     private void initView(View view) {
         recycleChoXacNhan=view.findViewById(R.id.recycle_KHChoXacNhan);
         recycleChoXacNhan1=view.findViewById(R.id.recycle_KHChoXacNhan1);
@@ -54,6 +55,7 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
     @Override
     public void onStart() {
         getDataOrder();
+        getDataOrder1();
         super.onStart();
     }
 

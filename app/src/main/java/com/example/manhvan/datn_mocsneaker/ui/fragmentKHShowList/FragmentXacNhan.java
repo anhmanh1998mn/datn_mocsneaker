@@ -52,6 +52,7 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
     @Override
     public void onStart() {
         getDataOrder();
+        getDataOrder1();
         super.onStart();
     }
     private void getDataOrder(){

@@ -53,9 +53,26 @@ public class MoOrderDetail {
         });
     }
 
+    public void capNhatDH(int maDH,int trangThai){
+        Dataservice dataservice=APIService.getService();
+        Call<String> callback=dataservice.capNhatDonHang(maDH,trangThai);
+        callback.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                dataOrderDetail.capNhatDHThanhCong();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+    }
+
     public interface DataOrderDetail{
         public void onS();
         public void onF();
         public void huyThanhCong();
+        public void capNhatDHThanhCong();
     }
 }

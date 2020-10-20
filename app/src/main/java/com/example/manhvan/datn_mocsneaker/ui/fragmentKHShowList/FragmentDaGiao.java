@@ -52,6 +52,7 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
     @Override
     public void onStart() {
         getDataOrder();
+        getDataOrder1();
         super.onStart();
     }
 

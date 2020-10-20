@@ -174,4 +174,9 @@ public interface Dataservice {
     @POST("admindsdonhangkiemtra.php")
     Call<List<DonHang>> showListOrder1(@Field("quyenND")int quyen,@Field("trangThaiDH") int trangThai);
 
+    //Cập nhật trạng thái đơn hàng
+    @FormUrlEncoded
+    @POST("capnhattrangthaidonhang.php")
+    Call<String> capNhatDonHang(@Field("idDonHang")int maDH,@Field("trangThai")int trangThai);
+
 }

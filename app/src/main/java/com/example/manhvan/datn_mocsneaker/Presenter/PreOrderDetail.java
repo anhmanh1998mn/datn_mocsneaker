@@ -18,6 +18,10 @@ public class PreOrderDetail implements MoOrderDetail.DataOrderDetail{
         moOrderDetail.xuLyHuyDonHang(maDonHang);
     }
 
+    public void capNhatDonHang(int maDonHang,int trangThai){
+        moOrderDetail.capNhatDH(maDonHang,trangThai);
+    }
+
     @Override
     public void onS() {
         getDataOrInterface.onSuccessed();
@@ -33,9 +37,15 @@ public class PreOrderDetail implements MoOrderDetail.DataOrderDetail{
         getDataOrInterface.onHuyThanhCong();
     }
 
+    @Override
+    public void capNhatDHThanhCong() {
+        getDataOrInterface.onCapNhatDH();
+    }
+
     public interface GetDataOrInterface{
         public void onSuccessed();
         public void onFailed();
         public void onHuyThanhCong();
+        public void onCapNhatDH();
     }
 }
