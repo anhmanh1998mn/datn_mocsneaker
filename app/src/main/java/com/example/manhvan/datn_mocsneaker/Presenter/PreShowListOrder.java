@@ -1,9 +1,8 @@
 package com.example.manhvan.datn_mocsneaker.Presenter;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoShowListOrder;
-import com.example.manhvan.datn_mocsneaker.Model.TimKiemNVKQ1;
 
-public class PreShowListOrder implements TimKiemNVKQ1 {
+public class PreShowListOrder implements MoShowListOrder.KetQuaInterface {
     private ShowListOrderInterface showListOrderInterface;
 
     public PreShowListOrder(ShowListOrderInterface showListOrderInterface) {
@@ -15,6 +14,11 @@ public class PreShowListOrder implements TimKiemNVKQ1 {
         moShowListOrder.xuLy(maND,quyenND,trangThai);
     }
 
+    public void showlistOrder1(int maND,int trangThai){
+        moShowListOrder.xuLy1(maND,trangThai);
+    }
+
+
     @Override
     public void onS() {
         showListOrderInterface.onSuccessed();
@@ -23,5 +27,10 @@ public class PreShowListOrder implements TimKiemNVKQ1 {
     @Override
     public void onF() {
 
+    }
+
+    @Override
+    public void onS1() {
+        showListOrderInterface.onSuccessed1();
     }
 }

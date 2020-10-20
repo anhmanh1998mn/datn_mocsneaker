@@ -32,6 +32,7 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
         initView(view);
         getData();
         getDataOrder();
+
         return view;
     }
 
@@ -42,11 +43,12 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
     public void getData(){
         sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
         //Nhận từ kiểm tra đơn hàng
+        //Toast.makeText(getContext(),sharedPreferences.getString("admin","")+"",Toast.LENGTH_SHORT).show();
         if(sharedPreferences.getString("admin","").equals("Admin")){
             recycleChoXacNhan.setVisibility(View.GONE);
             recycleChoXacNhan1.setVisibility(View.VISIBLE);
+            getDataOrder1();
         }
-//        Toast.makeText(getContext(),sharedPreferences.getInt("maNguoiDung",-1)+"",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -55,15 +57,28 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
         super.onStart();
     }
 
+    private void getDataOrder1(){
+        preShowListOrder=new PreShowListOrder(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preShowListOrder.showlistOrder1(Integer.parseInt(sharedPreferences.getString("quyen","")),1);
+
+            }
+        }).start();
+    }
+
     private void getDataOrder(){
         preShowListOrder=new PreShowListOrder(this);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 preShowListOrder.showListOrder(sharedPreferences.getInt("maNguoiDung",-1),Integer.parseInt(sharedPreferences.getString("quyen","")),1);
+
             }
         }).start();
     }
+
 
     @Override
     public void onSuccessed() {
@@ -81,7 +96,24 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
     }
 
     @Override
+    public void onSuccessed1() {
+
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(), LinearLayout.VERTICAL,false);
+        recycleChoXacNhan1.setLayoutManager(linearLayoutManager);
+        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order,MoShowListOrder.lstDonHangAdmin);
+        recycleChoXacNhan1.post(new Runnable() {
+            @Override
+            public void run() {
+                recycleChoXacNhan1.setAdapter(adapterShowList);
+                adapterShowList.notifyDataSetChanged();
+                Log.d("ThemOrder",MoShowListOrder.lstDonHangAdmin.size()+"");
+            }
+        });
+    }
+
+    @Override
     public void onFailed() {
 
     }
+
 }

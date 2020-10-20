@@ -44,6 +44,7 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
         if(sharedPreferences.getString("admin","").equals("Admin")){
             recycleXacNhan.setVisibility(View.GONE);
             recyclerViewXacNhan1.setVisibility(View.VISIBLE);
+            getDataOrder1();
         }
 //        Toast.makeText(getContext(),sharedPreferences.getInt("maNguoiDung",-1)+"",Toast.LENGTH_SHORT).show();
     }
@@ -59,6 +60,16 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
             @Override
             public void run() {
                 preShowListOrder.showListOrder(sharedPreferences.getInt("maNguoiDung",-1),Integer.parseInt(sharedPreferences.getString("quyen","")),2);
+            }
+        }).start();
+    }
+    private void getDataOrder1(){
+        preShowListOrder=new PreShowListOrder(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preShowListOrder.showlistOrder1(Integer.parseInt(sharedPreferences.getString("quyen","")),2);
+
             }
         }).start();
     }
@@ -79,7 +90,23 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
     }
 
     @Override
+    public void onSuccessed1() {
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(), LinearLayout.VERTICAL,false);
+        recyclerViewXacNhan1.setLayoutManager(linearLayoutManager);
+        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order,MoShowListOrder.lstDonHangAdmin);
+        recyclerViewXacNhan1.post(new Runnable() {
+            @Override
+            public void run() {
+                recyclerViewXacNhan1.setAdapter(adapterShowList);
+                adapterShowList.notifyDataSetChanged();
+                Log.d("ThemOrder",MoShowListOrder.lstDonHangAdmin.size()+"");
+            }
+        });
+    }
+
+    @Override
     public void onFailed() {
 
     }
+
 }

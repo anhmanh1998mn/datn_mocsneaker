@@ -171,7 +171,7 @@ public interface Dataservice {
 
     // Lấy danh sách đơn hàng kiểm tra admin
     @FormUrlEncoded
-    @POST("showlistorder.php")
+    @POST("admindsdonhangkiemtra.php")
     Call<List<DonHang>> showListOrder1(@Field("quyenND")int quyen,@Field("trangThaiDH") int trangThai);
 
 }

@@ -44,8 +44,19 @@ public class FragmentDangGiao extends Fragment implements ShowListOrderInterface
         if(sharedPreferences.getString("admin","").equals("Admin")){
             recycleDangGiao.setVisibility(View.GONE);
             recyclerViewDangGiao1.setVisibility(View.VISIBLE);
+            getDataOrder1();
         }
 //        Toast.makeText(getContext(),sharedPreferences.getInt("maNguoiDung",-1)+"",Toast.LENGTH_SHORT).show();
+    }
+    private void getDataOrder1(){
+        preShowListOrder=new PreShowListOrder(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preShowListOrder.showlistOrder1(Integer.parseInt(sharedPreferences.getString("quyen","")),3);
+
+            }
+        }).start();
     }
 
     @Override
@@ -79,7 +90,23 @@ public class FragmentDangGiao extends Fragment implements ShowListOrderInterface
     }
 
     @Override
+    public void onSuccessed1() {
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(), LinearLayout.VERTICAL,false);
+        recyclerViewDangGiao1.setLayoutManager(linearLayoutManager);
+        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order,MoShowListOrder.lstDonHangAdmin);
+        recyclerViewDangGiao1.post(new Runnable() {
+            @Override
+            public void run() {
+                recyclerViewDangGiao1.setAdapter(adapterShowList);
+                adapterShowList.notifyDataSetChanged();
+                Log.d("ThemOrder",MoShowListOrder.lstDonHangAdmin.size()+"");
+            }
+        });
+    }
+
+    @Override
     public void onFailed() {
 
     }
+
 }
