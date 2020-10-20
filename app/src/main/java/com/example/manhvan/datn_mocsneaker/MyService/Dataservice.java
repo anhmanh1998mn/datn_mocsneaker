@@ -168,4 +168,10 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("huydonhang.php")
     Call<String> huyDonHang(@Field("idDonHang")int maDH);
+
+    // Lấy danh sách đơn hàng kiểm tra admin
+    @FormUrlEncoded
+    @POST("showlistorder.php")
+    Call<List<DonHang>> showListOrder1(@Field("quyenND")int quyen,@Field("trangThaiDH") int trangThai);
+
 }

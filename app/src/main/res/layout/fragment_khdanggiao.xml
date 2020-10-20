@@ -36,5 +36,11 @@
         android:id="@+id/recycle_KHDangGiao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <android.support.v7.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/linear_frGH1"
+        android:id="@+id/recycle_KHDangGiao1"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </android.support.constraint.ConstraintLayout>

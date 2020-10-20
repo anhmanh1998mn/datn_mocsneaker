@@ -21,7 +21,7 @@ import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.OrderShowListAdapter;
 
 public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterface {
-    private RecyclerView recycleChoXacNhan;
+    private RecyclerView recycleChoXacNhan,recycleChoXacNhan1;
     private SharedPreferences sharedPreferences;
     private PreShowListOrder preShowListOrder;
     private OrderShowListAdapter adapterShowList;
@@ -37,9 +37,15 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
 
     private void initView(View view) {
         recycleChoXacNhan=view.findViewById(R.id.recycle_KHChoXacNhan);
+        recycleChoXacNhan1=view.findViewById(R.id.recycle_KHChoXacNhan1);
     }
     public void getData(){
         sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        //Nhận từ kiểm tra đơn hàng
+        if(sharedPreferences.getString("admin","").equals("Admin")){
+            recycleChoXacNhan.setVisibility(View.GONE);
+            recycleChoXacNhan1.setVisibility(View.VISIBLE);
+        }
 //        Toast.makeText(getContext(),sharedPreferences.getInt("maNguoiDung",-1)+"",Toast.LENGTH_SHORT).show();
     }
 

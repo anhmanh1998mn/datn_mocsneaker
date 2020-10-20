@@ -21,7 +21,7 @@ import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.OrderShowListAdapter;
 
 public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
-    private RecyclerView recycleDaGiao;
+    private RecyclerView recycleDaGiao,recyclerViewDaGiao1;
     private SharedPreferences sharedPreferences;
     private PreShowListOrder preShowListOrder;
     private OrderShowListAdapter adapterShowList;
@@ -37,9 +37,14 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
 
     private void initView(View view) {
         recycleDaGiao=view.findViewById(R.id.recycle_KHDaGiao);
+        recyclerViewDaGiao1=view.findViewById(R.id.recycle_KHDaGiao1);
     }
     public void getData(){
         sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        if(sharedPreferences.getString("admin","").equals("Admin")){
+            recycleDaGiao.setVisibility(View.GONE);
+            recyclerViewDaGiao1.setVisibility(View.VISIBLE);
+        }
 //        Toast.makeText(getContext(),sharedPreferences.getString("quyen","")+"",Toast.LENGTH_SHORT).show();
     }
 
