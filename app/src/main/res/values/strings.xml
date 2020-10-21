@@ -20,4 +20,6 @@
     <string name="timKiemNhap">Tìm sản phẩm muốn nhập</string>
     <string name="xacNhanDonNhap">Xác nhận lập đơn nhập hàng</string>
     <string name="soLuongIn">Số lượng hiện có trong kho</string>
+    <string name="spbannhieu">Sản phẩm bán được nhiều nhất</string>
+    <string name="spbanIt">Sản phẩm bán được ít nhất</string>
 </resources>
