@@ -58,7 +58,7 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
 
     @Override
     public void onStart() {
-        MoShowListOrder.lstDonHang.clear();
+//        MoShowListOrder.lstDonHang.clear();
         getDataOrder();
         getDataOrder1();
         super.onStart();
