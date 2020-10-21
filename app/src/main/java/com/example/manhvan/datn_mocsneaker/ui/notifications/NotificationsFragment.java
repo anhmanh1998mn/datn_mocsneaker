@@ -95,6 +95,10 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
             }
             case R.id.btn_notifiDonMua:{
                 Intent intent=new Intent(getContext(), MainShowListOrdersKH.class);
+                SharedPreferences sharedPreferences=this.getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putString("admin","Admin1");
+                editor.commit();
                 //intent.putExtra("donMua","1");
                 startActivity(intent);
                 break;
