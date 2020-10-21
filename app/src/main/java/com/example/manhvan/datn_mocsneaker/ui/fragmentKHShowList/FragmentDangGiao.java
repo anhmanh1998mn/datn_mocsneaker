@@ -45,7 +45,10 @@ public class FragmentDangGiao extends Fragment implements ShowListOrderInterface
             recycleDangGiao.setVisibility(View.GONE);
             recyclerViewDangGiao1.setVisibility(View.VISIBLE);
             getDataOrder1();
+            return;
         }
+        recycleDangGiao.setVisibility(View.VISIBLE);
+        recyclerViewDangGiao1.setVisibility(View.GONE);
 //        Toast.makeText(getContext(),sharedPreferences.getInt("maNguoiDung",-1)+"",Toast.LENGTH_SHORT).show();
     }
     private void getDataOrder1(){
@@ -79,7 +82,7 @@ public class FragmentDangGiao extends Fragment implements ShowListOrderInterface
     public void onSuccessed() {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(), LinearLayout.VERTICAL,false);
         recycleDangGiao.setLayoutManager(linearLayoutManager);
-        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order, MoShowListOrder.lstDonHang);
+        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order, MoShowListOrder.lstDangGiao);
         recycleDangGiao.post(new Runnable() {
             @Override
             public void run() {
@@ -89,6 +92,7 @@ public class FragmentDangGiao extends Fragment implements ShowListOrderInterface
             }
         });
     }
+
 
     @Override
     public void onSuccessed1() {

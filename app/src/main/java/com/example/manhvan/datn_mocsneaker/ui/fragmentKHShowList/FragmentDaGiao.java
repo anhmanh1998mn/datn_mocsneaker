@@ -38,6 +38,7 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
     private void initView(View view) {
         recycleDaGiao=view.findViewById(R.id.recycle_KHDaGiao);
         recyclerViewDaGiao1=view.findViewById(R.id.recycle_KHDaGiao1);
+
     }
     public void getData(){
         sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
@@ -45,7 +46,10 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
             recycleDaGiao.setVisibility(View.GONE);
             recyclerViewDaGiao1.setVisibility(View.VISIBLE);
             getDataOrder1();
+            return;
         }
+        recycleDaGiao.setVisibility(View.VISIBLE);
+        recyclerViewDaGiao1.setVisibility(View.GONE);
 //        Toast.makeText(getContext(),sharedPreferences.getString("quyen","")+"",Toast.LENGTH_SHORT).show();
     }
 
@@ -81,7 +85,7 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
     public void onSuccessed() {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(), LinearLayout.VERTICAL,false);
         recycleDaGiao.setLayoutManager(linearLayoutManager);
-        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order, MoShowListOrder.lstDonHang);
+        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order, MoShowListOrder.lstDaGiao);
         recycleDaGiao.post(new Runnable() {
             @Override
             public void run() {
@@ -91,6 +95,8 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
             }
         });
     }
+
+
 
     @Override
     public void onSuccessed1() {

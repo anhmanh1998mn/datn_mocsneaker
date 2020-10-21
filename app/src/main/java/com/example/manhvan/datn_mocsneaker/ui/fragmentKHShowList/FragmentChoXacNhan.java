@@ -31,7 +31,7 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
         View view=inflater.inflate(R.layout.fragment_kh_cho_xac_nhan,container,false);
         initView(view);
         getData();
-        getDataOrder();
+//        getDataOrder();
 
         return view;
     }
@@ -44,16 +44,21 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
     public void getData(){
         sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
         //Nhận từ kiểm tra đơn hàng
-        //Toast.makeText(getContext(),sharedPreferences.getString("admin","")+"",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(),sharedPreferences.getString("admin","")+"",Toast.LENGTH_SHORT).show();
         if(sharedPreferences.getString("admin","").equals("Admin")){
             recycleChoXacNhan.setVisibility(View.GONE);
             recycleChoXacNhan1.setVisibility(View.VISIBLE);
             getDataOrder1();
+            return;
         }
+        recycleChoXacNhan.setVisibility(View.VISIBLE);
+        recycleChoXacNhan1.setVisibility(View.GONE);
+        getDataOrder();
     }
 
     @Override
     public void onStart() {
+        MoShowListOrder.lstDonHang.clear();
         getDataOrder();
         getDataOrder1();
         super.onStart();
@@ -90,12 +95,13 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
         recycleChoXacNhan.post(new Runnable() {
             @Override
             public void run() {
-                Log.d("SizeList",MoShowListOrder.lstDonHang.size()+"");
+                Log.d("SizeListChoXacNhan",MoShowListOrder.lstDonHang.size()+"");
                 recycleChoXacNhan.setAdapter(adapterShowList);
                 adapterShowList.notifyDataSetChanged();
             }
         });
     }
+
 
     @Override
     public void onSuccessed1() {
@@ -108,7 +114,7 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
             public void run() {
                 recycleChoXacNhan1.setAdapter(adapterShowList);
                 adapterShowList.notifyDataSetChanged();
-                Log.d("ThemOrder",MoShowListOrder.lstDonHangAdmin.size()+"");
+//                Log.d("ThemOrder",MoShowListOrder.lstDonHangAdmin.size()+"");
             }
         });
     }

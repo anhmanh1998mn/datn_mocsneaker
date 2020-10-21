@@ -19,6 +19,7 @@ import com.example.manhvan.datn_mocsneaker.View.MainQLNhapHangDanhSach;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLyKhachHang;
 import com.example.manhvan.datn_mocsneaker.View.MainQuanLySanPham;
 import com.example.manhvan.datn_mocsneaker.View.MainShowListOrdersKH;
+import com.example.manhvan.datn_mocsneaker.View.MainThongKeBaoCao;
 import com.example.manhvan.datn_mocsneaker.View.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.View.ViewQuanLyNhanVIen;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
@@ -75,6 +76,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
         btnQuanLySP.setOnClickListener(this);
         btnQuanLyNhapHang.setOnClickListener(this);
         btnKiemTraDonHang.setOnClickListener(this);
+        btnQuanLyDonHang.setOnClickListener(this);
     }
 
     private void initView(View root) {
@@ -113,6 +115,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener,
                 editor.putString("admin","Admin");
                 editor.commit();
                 startActivity(intent);
+                break;
+            }
+            case R.id.btn_quanLyDonHang:{
+                startActivity(new Intent(getContext(), MainThongKeBaoCao.class));
                 break;
             }
         }

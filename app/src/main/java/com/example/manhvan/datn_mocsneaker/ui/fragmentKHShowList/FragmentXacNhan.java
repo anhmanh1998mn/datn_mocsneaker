@@ -45,7 +45,10 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
             recycleXacNhan.setVisibility(View.GONE);
             recyclerViewXacNhan1.setVisibility(View.VISIBLE);
             getDataOrder1();
+            return;
         }
+        recycleXacNhan.setVisibility(View.VISIBLE);
+        recyclerViewXacNhan1.setVisibility(View.GONE);
 //        Toast.makeText(getContext(),sharedPreferences.getInt("maNguoiDung",-1)+"",Toast.LENGTH_SHORT).show();
     }
 
@@ -79,7 +82,7 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
     public void onSuccessed() {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(), LinearLayout.VERTICAL,false);
         recycleXacNhan.setLayoutManager(linearLayoutManager);
-        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order, MoShowListOrder.lstDonHang);
+        adapterShowList=new OrderShowListAdapter(getActivity(),R.layout.item_show_list_order, MoShowListOrder.lstXacNhan);
         recycleXacNhan.post(new Runnable() {
             @Override
             public void run() {
@@ -89,6 +92,7 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
             }
         });
     }
+
 
     @Override
     public void onSuccessed1() {
