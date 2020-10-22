@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.MainThongKeBaoCao"></activity>
+        <activity android:name=".View.MainQLThemSanPham"></activity>
+        <activity android:name=".View.MainTHongTinCuaHang" />
+        <activity android:name=".View.MainThongKeBaoCao" />
         <activity android:name=".View.MainOrderDetail" />
         <activity android:name=".View.MainShowListOrdersKH" />
         <activity android:name=".View.MainChiTietDonNhap" />

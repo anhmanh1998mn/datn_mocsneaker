@@ -20,10 +20,11 @@ import com.example.manhvan.datn_mocsneaker.View.MaNguoiLapDHInterface;
 import com.example.manhvan.datn_mocsneaker.View.MainLogin;
 import com.example.manhvan.datn_mocsneaker.View.MainRegister;
 import com.example.manhvan.datn_mocsneaker.View.MainShowListOrdersKH;
+import com.example.manhvan.datn_mocsneaker.View.MainTHongTinCuaHang;
 import com.example.manhvan.datn_mocsneaker.View.MainUserInfo;
 
 public class NotificationsFragment extends Fragment implements View.OnClickListener, MaNguoiLapDHInterface {
-    private Button btnNotiLogin,btnNotiRegister,btnNotiSetting,btnShowOrder;
+    private Button btnNotiLogin,btnNotiRegister,btnNotiSetting,btnShowOrder,btnThongTinCuaHang;
     private ImageView imageView;
     private TextView txtTen;
     private PreLayMaNguoiLapDH preLayMaNguoiLapDH;
@@ -56,6 +57,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         btnNotiSetting.setOnClickListener(this);
         imageView.setOnClickListener(this);
         btnShowOrder.setOnClickListener(this);
+        btnThongTinCuaHang.setOnClickListener(this);
     }
 
     private void initView(View root) {
@@ -65,6 +67,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         imageView=root.findViewById(R.id.btn_thongtintaikhoan);
         txtTen=root.findViewById(R.id.txt_ten);
         btnShowOrder=root.findViewById(R.id.btn_notifiDonMua);
+        btnThongTinCuaHang=root.findViewById(R.id.btn_thongTinCuaHang);
 
         // hiện button thiết lập tài khoản, ẩn button đăng nhập, button đăng ký
         sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
@@ -101,6 +104,10 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 editor.commit();
                 //intent.putExtra("donMua","1");
                 startActivity(intent);
+                break;
+            }
+            case R.id.btn_thongTinCuaHang:{
+                startActivity(new Intent(getContext(), MainTHongTinCuaHang.class));
                 break;
             }
         }

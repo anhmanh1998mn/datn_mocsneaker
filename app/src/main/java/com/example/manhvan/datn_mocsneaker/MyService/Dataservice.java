@@ -6,10 +6,12 @@ import com.example.manhvan.datn_mocsneaker.entity.DonNhapHang;
 import com.example.manhvan.datn_mocsneaker.entity.KhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.KichCoSP;
 import com.example.manhvan.datn_mocsneaker.entity.MaNguoiLapDH;
+import com.example.manhvan.datn_mocsneaker.entity.NamThongKe;
 import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
 import com.example.manhvan.datn_mocsneaker.entity.OrderDetail;
 import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
+import com.example.manhvan.datn_mocsneaker.entity.SanPhamThongKe;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 
@@ -179,4 +181,33 @@ public interface Dataservice {
     @POST("capnhattrangthaidonhang.php")
     Call<String> capNhatDonHang(@Field("idDonHang")int maDH,@Field("trangThai")int trangThai);
 
+    //Lấy tổng tiền bán hàng trong tháng
+    @FormUrlEncoded
+    @POST("laydsdonhangtrongthangnam.php")
+    Call<String> tinhTongTienBan(@Field("thang")String thang,@Field("nam")String nam);
+
+    //Lấy tổng tiền nhập hàng trong tháng
+    @FormUrlEncoded
+    @POST("tongtiendonnhaphang.php")
+    Call<String> tinhTongTienNhap(@Field("thang")String thang,@Field("nam")String nam);
+
+    //Lấy danh sách sản phẩm bán được nhiều nhất trong tháng
+    @FormUrlEncoded
+    @POST("sanphambannhieuthongke.php")
+    Call<List<SanPhamThongKe>> sanPhamBanNhieu(@Field("thang")String thang, @Field("nam")String nam);
+
+    //Lấy danh sách sản phẩm bán được ít nhất trong tháng
+    @FormUrlEncoded
+    @POST("sanphambanitthongke.php")
+    Call<List<SanPhamThongKe>> sanPhamBanIt(@Field("thang")String thang, @Field("nam")String nam);
+
+    //Lấy tổng bán theo từng tháng thống kê năm
+    @FormUrlEncoded
+    @POST("thongketheonamtongban.php")
+    Call<List<NamThongKe>> thongKeBan(@Field("nam")String nam);
+
+    //Lấy tổng nhap theo từng tháng thống kê năm
+    @FormUrlEncoded
+    @POST("thongketheonamnhap.php")
+    Call<List<NamThongKe>> thongKeNhap(@Field("nam")String nam);
 }
