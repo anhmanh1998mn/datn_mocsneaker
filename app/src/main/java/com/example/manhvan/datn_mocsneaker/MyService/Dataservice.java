@@ -210,4 +210,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("thongketheonamnhap.php")
     Call<List<NamThongKe>> thongKeNhap(@Field("nam")String nam);
+
+    //Lấy lại mật khẩu
+    @FormUrlEncoded
+    @POST("laylaimatkhau.php")
+    Call<String> layMatKhau(@Field("user_password")String user_password,@Field("soDienThoai")String soDienThoai);
 }

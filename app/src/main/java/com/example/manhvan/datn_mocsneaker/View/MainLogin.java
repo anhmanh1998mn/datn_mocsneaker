@@ -68,6 +68,7 @@ public class MainLogin extends AppCompatActivity implements View.OnClickListener
                 break;
             }
             case R.id.btn_unpassword:{
+                startActivity(new Intent(this,MainQuenMatKhau1.class));
                 break;
             }
         }

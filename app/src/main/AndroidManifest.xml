@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.MainQLThemSanPham"></activity>
+        <activity android:name=".View.MainQLThemSanPham" />
         <activity android:name=".View.MainTHongTinCuaHang" />
         <activity android:name=".View.MainThongKeBaoCao" />
         <activity android:name=".View.MainOrderDetail" />
@@ -47,6 +47,9 @@
         <activity android:name=".View.MainSuaNhanVIen" />
         <activity android:name=".View.ViewSanPham" />
         <activity android:name=".View.MainQLNhapHangDanhSach" />
+        <activity android:name=".View.MainQuenMatKhau1" />
+        <activity android:name=".View.MainGuiMaXacThucQuenMK" />
+        <activity android:name=".View.MainDatLaiMatKhauQuenMK"></activity>
     </application>
 
 </manifest>
