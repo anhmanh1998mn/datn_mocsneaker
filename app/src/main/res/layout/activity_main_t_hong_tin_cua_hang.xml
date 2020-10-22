@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.MainTHongTinCuaHang">
+    <TextView
+        android:drawableTint="#0433DF"
+        android:gravity="center|left"
+        android:layout_marginTop="8dp"
+        android:textColor="#000"
+        android:paddingLeft="8dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_location_on_black_24dp"
+        android:text="@string/diaChiCH"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:drawableTint="#0433DF"
+        android:gravity="center|left"
+        android:layout_marginTop="8dp"
+        android:textColor="#000"
+        android:paddingLeft="8dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_phone_android_black_24dp"
+        android:text="0346017373"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:drawableTint="#0433DF"
+        android:gravity="center|left"
+        android:layout_marginTop="8dp"
+        android:textColor="#000"
+        android:paddingLeft="8dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:text="mocsneaker@gmail.com"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:drawableTint="#0433DF"
+        android:layout_marginTop="8dp"
+        android:textColor="#000"
+        android:paddingLeft="8dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_baseline_error_outline_24"
+        android:text="@string/thongTin"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:drawableTint="#0433DF"
+        android:gravity="center|left"
+        android:layout_marginTop="8dp"
+        android:textColor="#000"
+        android:paddingLeft="8dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_baseline_folder_open_24"
+        android:text="Cửa hàng giày dép"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:drawableTint="#0433DF"
+        android:gravity="center|left"
+        android:layout_marginTop="8dp"
+        android:textColor="#000"
+        android:paddingLeft="8dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_baseline_shopping_cart_24"
+        android:text="Sản phẩm\nGiày thể thao"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -102,6 +102,7 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
             }
             case R.id.btn_thongKe:{
                 tinhDoanhThu();
+                layDSSanPhamBanNhieu();
                 break;
             }
         }

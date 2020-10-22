@@ -1,5 +1,6 @@
 package com.example.manhvan.datn_mocsneaker.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import com.example.manhvan.datn_mocsneaker.adapter.QLTimKiemSanPhamAdapter;
 
 public class MainQuanLySanPham extends AppCompatActivity implements View.OnClickListener,TimKiemSanPhamInterface{
     private PreTimKiemSanPham preTimKiemSanPham;
-    private Button btnSearchSP;
+    private Button btnSearchSP,btnThemSP;
     private RecyclerView recyclerViewSP;
     private EditText edtSearch1;
     private QLTimKiemSanPhamAdapter adapter;
@@ -42,6 +43,7 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
     }
 
     private void initView() {
+        btnThemSP=findViewById(R.id.btn_themSP);
         btnSearchSP=findViewById(R.id.btn_search1);
         recyclerViewSP=findViewById(R.id.recy_qlsp);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
@@ -51,6 +53,7 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
     }
     private void enventClickButton() {
         btnSearchSP.setOnClickListener(this);
+        btnThemSP.setOnClickListener(this);
     }
 
     @Override
@@ -63,6 +66,10 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
                         preTimKiemSanPham.timKiemSanPham(edtSearch1.getText().toString().trim());
                     }
                 }).start();
+                break;
+            }
+            case R.id.btn_themSP:{
+                startActivity(new Intent(MainQuanLySanPham.this,MainQLThemSanPham.class));
                 break;
             }
         }

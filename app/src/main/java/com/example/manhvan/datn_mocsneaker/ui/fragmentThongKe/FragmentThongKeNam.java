@@ -80,6 +80,7 @@ public class FragmentThongKeNam extends Fragment implements View.OnClickListener
     }
     private void onClickButton(){
         txtDate.setOnClickListener(this);
+        btnThongKe.setOnClickListener(this);
     }
 
     @Override
@@ -87,6 +88,10 @@ public class FragmentThongKeNam extends Fragment implements View.OnClickListener
         switch (view.getId()){
             case R.id.txt_dateTK1:{
                 showDatepickerDialog();
+                break;
+            }
+            case R.id.btn_thongKe1:{
+                layDoanhThuHangThang();
                 break;
             }
         }
@@ -151,6 +156,7 @@ public class FragmentThongKeNam extends Fragment implements View.OnClickListener
                 barDataSet.setColor(Color.RED);
                 BarData barData=new BarData();
                 barData.addDataSet(barDataSet);
+                barData.setValueTextSize(13);
                 barChart.setData(barData);
                 barChart.invalidate();
             }
@@ -160,19 +166,19 @@ public class FragmentThongKeNam extends Fragment implements View.OnClickListener
     private ArrayList<BarEntry> dataValues(){
 
         ArrayList<BarEntry> dataV=new ArrayList<>();
-//        for(int i=0;i<arrThongKe.size();i++){
-//            dataV.add(new BarEntry(Integer.parseInt(arrThongKe.get(i).getThang()),Integer.parseInt(arrThongKe.get(i).getTongtien())));
-//        }
-        dataV.add(new BarEntry(1,400000));
-        dataV.add(new BarEntry(2,600000));
-        dataV.add(new BarEntry(3,400000));
-        dataV.add(new BarEntry(4,400000));
-        dataV.add(new BarEntry(5,200000));
+        for(int i=0;i<arrThongKe.size();i++){
+            dataV.add(new BarEntry(Integer.parseInt(arrThongKe.get(i).getThang()),Integer.parseInt(arrThongKe.get(i).getTongtien())));
+        }
+//        dataV.add(new BarEntry(1,400000));
+//        dataV.add(new BarEntry(2,600000));
+//        dataV.add(new BarEntry(3,400000));
+//        dataV.add(new BarEntry(4,400000));
+//        dataV.add(new BarEntry(5,200000));
 //        dataV.add(new BarEntry(6,400000));
 //        dataV.add(new BarEntry(7,400000));
-//        dataV.add(new BarEntry(8,Integer.parseInt(arrThongKe.get(0).getTongtien())));
+//        dataV.add(new BarEntry(8,Integer.parseInt(arrThongKe.get(2).getTongtien())));
 //        dataV.add(new BarEntry(9,Integer.parseInt(arrThongKe.get(1).getTongtien())));
-//        dataV.add(new BarEntry(10,Integer.parseInt(arrThongKe.get(2).getTongtien())));
+//        dataV.add(new BarEntry(10,Integer.parseInt(arrThongKe.get(0).getTongtien())));
 //        dataV.add(new BarEntry(11,300000));
 //        dataV.add(new BarEntry(12,400000));
         return dataV;
