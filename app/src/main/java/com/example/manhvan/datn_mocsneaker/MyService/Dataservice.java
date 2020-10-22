@@ -179,4 +179,14 @@ public interface Dataservice {
     @POST("capnhattrangthaidonhang.php")
     Call<String> capNhatDonHang(@Field("idDonHang")int maDH,@Field("trangThai")int trangThai);
 
+    //Lấy tổng tiền bán hàng trong tháng
+    @FormUrlEncoded
+    @POST("laydsdonhangtrongthangnam.php")
+    Call<String> tinhTongTienBan(@Field("thang")String thang,@Field("nam")String nam);
+
+    //Lấy tổng tiền nhập hàng trong tháng
+    @FormUrlEncoded
+    @POST("tongtiendonnhaphang.php")
+    Call<String> tinhTongTienNhap(@Field("thang")String thang,@Field("nam")String nam);
+
 }

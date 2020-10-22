@@ -1,0 +1,37 @@
+package com.example.manhvan.datn_mocsneaker.MyService;
+
+import com.example.manhvan.datn_mocsneaker.Model.MoThongKeThang;
+
+public class PreThongKeThang implements MoThongKeThang.TongTienInterface {
+    private KetQuaTinhTienInterface ketQuaTinhTienInterface;
+
+    public PreThongKeThang(KetQuaTinhTienInterface ketQuaTinhTienInterface) {
+        this.ketQuaTinhTienInterface = ketQuaTinhTienInterface;
+    }
+
+    private MoThongKeThang moThongKeThang=new MoThongKeThang(this);
+    public void thongKeThang(String thang,String nam){
+        moThongKeThang.xuLyTongBan(thang,nam);
+    }
+
+    public interface KetQuaTinhTienInterface{
+        public void tienBan(String tienBan);
+        public void tienNhap(String tienBan);
+        public void thatbai();
+    }
+
+    @Override
+    public void layTienBanThanhCong(String tienBan) {
+        ketQuaTinhTienInterface.tienBan(tienBan);
+    }
+
+    @Override
+    public void layTienNhapThanhCong(String tienBan) {
+        ketQuaTinhTienInterface.tienNhap(tienBan);
+    }
+
+    @Override
+    public void thatBai() {
+        ketQuaTinhTienInterface.thatbai();
+    }
+}
