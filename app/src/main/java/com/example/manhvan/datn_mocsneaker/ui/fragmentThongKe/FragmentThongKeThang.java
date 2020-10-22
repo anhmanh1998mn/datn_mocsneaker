@@ -90,6 +90,7 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
     }
     private void onClickButton(){
         txtDate.setOnClickListener(this);
+        btnThongKe.setOnClickListener(this);
     }
 
     @Override
@@ -97,6 +98,10 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
         switch (view.getId()){
             case R.id.txt_dateTK:{
                 showDatepickerDialog();
+                break;
+            }
+            case R.id.btn_thongKe:{
+                tinhDoanhThu();
                 break;
             }
         }
