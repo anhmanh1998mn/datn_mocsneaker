@@ -60,6 +60,7 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
         pieChart=view.findViewById(R.id.pie_chart);
         reSanPhamBanNhieu=view.findViewById(R.id.re_thongKe1);
         reSanPhamBanIt=view.findViewById(R.id.re_thongKe2);
+        //aaa
     }
 
     private void getDateNow(){
