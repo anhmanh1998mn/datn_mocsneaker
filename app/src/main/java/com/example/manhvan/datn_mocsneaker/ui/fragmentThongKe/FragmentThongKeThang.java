@@ -6,15 +6,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.manhvan.datn_mocsneaker.Model.MoThongKeThang;
 import com.example.manhvan.datn_mocsneaker.MyService.PreThongKeThang;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.adapter.SanPhamThongKeAdapter;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -33,6 +38,8 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
     private String tiennhapTC="";
     private String tienBanTC="";
     private PieChart pieChart;
+    private SanPhamThongKeAdapter sanPhamThongKeAdapter;
+    private RecyclerView reSanPhamBanNhieu,reSanPhamBanIt;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,6 +48,7 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
         getDateNow();
         onClickButton();
         tinhDoanhThu();
+        layDSSanPhamBanNhieu();
         //Toast.makeText(getContext(),txtTienBan.getText()+"-"+txtTienNhap.getText(),Toast.LENGTH_SHORT).show();
         return view;
     }
@@ -50,6 +58,8 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
         btnThongKe=view.findViewById(R.id.btn_thongKe);
         txtTongDoanhThu=view.findViewById(R.id.txt_tongDoanhThu);
         pieChart=view.findViewById(R.id.pie_chart);
+        reSanPhamBanNhieu=view.findViewById(R.id.re_thongKe1);
+        reSanPhamBanIt=view.findViewById(R.id.re_thongKe2);
     }
 
     private void getDateNow(){
@@ -114,6 +124,16 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
         });
     }
 
+    private void layDSSanPhamBanNhieu(){
+        final String[] date=txtDate.getText().toString().split("/");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preThongKeThang.LaySanPhamBanNhieu(date[0],date[1]);
+            }
+        }).start();
+    }
+
     @Override
     public void tienNhap(final String tienBan) {
         tiennhapTC=tienBan;
@@ -136,7 +156,6 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
         pieChart.invalidate();
         final String[] date=txtDate.getText().toString().split("/");
         pieChart.setCenterText("Tháng "+date[0]);
-        pieChart.setCenterTextRadiusPercent(40);
         pieChart.setHoleRadius(30);
         pieChart.setTransparentCircleRadius(30);
 
@@ -155,5 +174,35 @@ public class FragmentThongKeThang extends Fragment implements View.OnClickListen
     @Override
     public void thatbai() {
 
+    }
+
+    @Override
+    public void dsSanPhamBanNhieu() {
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayout.VERTICAL,false);
+        reSanPhamBanNhieu.setLayoutManager(linearLayoutManager);
+        reSanPhamBanNhieu.setNestedScrollingEnabled(false);
+        reSanPhamBanNhieu.post(new Runnable() {
+            @Override
+            public void run() {
+                sanPhamThongKeAdapter=new SanPhamThongKeAdapter(getActivity(),R.layout.item_san_pham_thong_ke, MoThongKeThang.arrSPBanNhieu);
+                reSanPhamBanNhieu.setAdapter(sanPhamThongKeAdapter);
+                sanPhamThongKeAdapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+    @Override
+    public void dsSanPhamBanIt() {
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayout.VERTICAL,false);
+        reSanPhamBanIt.setLayoutManager(linearLayoutManager);
+        reSanPhamBanIt.setNestedScrollingEnabled(false);
+        reSanPhamBanIt.post(new Runnable() {
+            @Override
+            public void run() {
+                sanPhamThongKeAdapter=new SanPhamThongKeAdapter(getActivity(),R.layout.item_san_pham_thong_ke,MoThongKeThang.arrSPBanIt);
+                reSanPhamBanIt.setAdapter(sanPhamThongKeAdapter);
+                sanPhamThongKeAdapter.notifyDataSetChanged();
+            }
+        });
     }
 }

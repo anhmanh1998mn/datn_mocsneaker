@@ -10,6 +10,7 @@ import com.example.manhvan.datn_mocsneaker.entity.NhanVien;
 import com.example.manhvan.datn_mocsneaker.entity.OrderDetail;
 import com.example.manhvan.datn_mocsneaker.entity.ProductImage;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
+import com.example.manhvan.datn_mocsneaker.entity.SanPhamThongKe;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 
@@ -188,5 +189,15 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("tongtiendonnhaphang.php")
     Call<String> tinhTongTienNhap(@Field("thang")String thang,@Field("nam")String nam);
+
+    //Lấy danh sách sản phẩm bán được nhiều nhất trong tháng
+    @FormUrlEncoded
+    @POST("sanphambannhieuthongke.php")
+    Call<List<SanPhamThongKe>> sanPhamBanNhieu(@Field("thang")String thang, @Field("nam")String nam);
+
+    //Lấy danh sách sản phẩm bán được ít nhất trong tháng
+    @FormUrlEncoded
+    @POST("sanphambanitthongke.php")
+    Call<List<SanPhamThongKe>> sanPhamBanIt(@Field("thang")String thang, @Field("nam")String nam);
 
 }

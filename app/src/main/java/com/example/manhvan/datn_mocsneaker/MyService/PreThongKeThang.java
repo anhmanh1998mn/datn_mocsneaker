@@ -14,10 +14,16 @@ public class PreThongKeThang implements MoThongKeThang.TongTienInterface {
         moThongKeThang.xuLyTongBan(thang,nam);
     }
 
+    public void LaySanPhamBanNhieu(String thang,String nam){
+        moThongKeThang.xuLyBanNhieu(thang,nam);
+    }
+
     public interface KetQuaTinhTienInterface{
         public void tienBan(String tienBan);
         public void tienNhap(String tienBan);
         public void thatbai();
+        public void dsSanPhamBanNhieu();
+        public void dsSanPhamBanIt();
     }
 
     @Override
@@ -28,6 +34,16 @@ public class PreThongKeThang implements MoThongKeThang.TongTienInterface {
     @Override
     public void layTienNhapThanhCong(String tienBan) {
         ketQuaTinhTienInterface.tienNhap(tienBan);
+    }
+
+    @Override
+    public void layDSBanNhieu() {
+        ketQuaTinhTienInterface.dsSanPhamBanNhieu();
+    }
+
+    @Override
+    public void layDSBanIt() {
+        ketQuaTinhTienInterface.dsSanPhamBanIt();
     }
 
     @Override
