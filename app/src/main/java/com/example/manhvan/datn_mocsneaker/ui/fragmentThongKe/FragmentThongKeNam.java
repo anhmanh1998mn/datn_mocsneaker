@@ -118,24 +118,28 @@ public class FragmentThongKeNam extends Fragment implements View.OnClickListener
             @Override
             public void run() {
                 arrThongKe=new ArrayList<>();
-                for(int i=0;i< MoThongKeTheoNam.arrBan.size();i++){
+                for(int i = 0; i< MoThongKeTheoNam.arrBan.size(); i++){
                     for(int j=0;j<MoThongKeTheoNam.arrNhap.size();j++){
-                        if(MoThongKeTheoNam.arrBan.get(i).getThang().equals(MoThongKeTheoNam.arrNhap.get(j).getThang())){
+
+                        if(MoThongKeTheoNam.arrBan.get(i).getThang().contains(MoThongKeTheoNam.arrNhap.get(j).getThang())){
                             arrThongKe.add(new NamThongKe(MoThongKeTheoNam.arrBan.get(i).getThang(),String.valueOf(Integer.parseInt(
                                     MoThongKeTheoNam.arrBan.get(i).getTongtien()
                             )-Integer.parseInt(MoThongKeTheoNam.arrNhap.get(j).getTongtien()))));
-                        }else {
-                            arrThongKe.add(new NamThongKe(MoThongKeTheoNam.arrBan.get(i).getThang(),String.valueOf(Integer.parseInt(
+                        }
+                        else {
+                            arrThongKe.add(
+                                    new NamThongKe(MoThongKeTheoNam.arrBan.get(i).getThang(),String.valueOf(Integer.parseInt(
                                     MoThongKeTheoNam.arrBan.get(i).getTongtien()
                             ))));
 //                            arrThongKe.add(new NamThongKe(MoThongKeTheoNam.arrNhap.get(j).getThang(),String.valueOf(0-Integer.parseInt(MoThongKeTheoNam.arrNhap.get(j).getTongtien()))));
                         }
                     }
                 }
+
                 int tong=0;
                 for(int i=0;i<arrThongKe.size();i++){
                     tong+=Integer.parseInt(arrThongKe.get(i).getTongtien());
-                    Log.d("aaa1",arrThongKe.get(i).getTongtien());
+                    Log.d("W11111",arrThongKe.get(i).getTongtien());
                 }
                 DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
                 txtDoanhThuNam.setText("Tổng doanh thu: "+decimalFormat.format(tong)+"đ");
@@ -164,13 +168,13 @@ public class FragmentThongKeNam extends Fragment implements View.OnClickListener
         dataV.add(new BarEntry(3,400000));
         dataV.add(new BarEntry(4,400000));
         dataV.add(new BarEntry(5,200000));
-        dataV.add(new BarEntry(6,400000));
-        dataV.add(new BarEntry(7,400000));
-        dataV.add(new BarEntry(8,Integer.parseInt(arrThongKe.get(0).getTongtien())));
-        dataV.add(new BarEntry(9,Integer.parseInt(arrThongKe.get(1).getTongtien())));
-        dataV.add(new BarEntry(10,Integer.parseInt(arrThongKe.get(2).getTongtien())));
-        dataV.add(new BarEntry(11,300000));
-        dataV.add(new BarEntry(12,400000));
+//        dataV.add(new BarEntry(6,400000));
+//        dataV.add(new BarEntry(7,400000));
+//        dataV.add(new BarEntry(8,Integer.parseInt(arrThongKe.get(0).getTongtien())));
+//        dataV.add(new BarEntry(9,Integer.parseInt(arrThongKe.get(1).getTongtien())));
+//        dataV.add(new BarEntry(10,Integer.parseInt(arrThongKe.get(2).getTongtien())));
+//        dataV.add(new BarEntry(11,300000));
+//        dataV.add(new BarEntry(12,400000));
         return dataV;
     }
 }
