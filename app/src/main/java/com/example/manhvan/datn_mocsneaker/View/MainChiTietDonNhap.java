@@ -225,5 +225,6 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
     public void onDialogClose() {
         Log.d("clodeDialog","sssss");
         layChiTietDN();
+        //dd
     }
 }
