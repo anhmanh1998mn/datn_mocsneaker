@@ -17,11 +17,14 @@ import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface Dataservice {
     @FormUrlEncoded
@@ -215,4 +218,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("laylaimatkhau.php")
     Call<String> layMatKhau(@Field("user_password")String user_password,@Field("soDienThoai")String soDienThoai);
+
+    //Upload image to server
+    @Multipart
+    @POST("uploadFileToServer.php")
+    Call<String> upLoadIMG(@Part MultipartBody.Part photo);
 }
