@@ -1,9 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLySanPham;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -21,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Presenter.PreThemMoiSanPham;
@@ -31,6 +30,10 @@ import java.io.InputStream;
 
 public class MainQLThemSanPham extends AppCompatActivity implements View.OnClickListener, PreThemMoiSanPham.KetQuaThemMoiSPInterface {
     private ActionBar actionBar;
+    private LinearLayout li1,li2,li3,li4,li5;
+    private ImageView imgAnh1,imgAnh2,imgAnh3,imgAnh4,imgAnh5;
+    private Button btnChon1,btnChon2,btnChon3,btnChon4,btnChon5,btnTiepTuc1,btnTiepTuc2,btnTiepTuc3,btnTiepTuc4,btnTiepTuc5;
+    private Button btnXacNhan1,btnXacNhan2,btnXacNhan3,btnXacNhan4,btnXacNhan5;
     private ImageView imgAnhChinh;
     private Button btnChonAnh,btnThemSP,btnHuyThem;
     private EditText edtTenSP,edtGiaSP,edtSoLuong39,edtSoLuong40,edtSoLuong41,edtSoLuong42,edtSoLuong43,edtNoiDung;
@@ -68,11 +71,54 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
         edtSoLuong42=findViewById(R.id.edt_size42);
         edtSoLuong43=findViewById(R.id.edt_size43);
         edtNoiDung=findViewById(R.id.txt_thongTinSPQL);
+
+        imgAnh1=findViewById(R.id.img_anh1);
+        imgAnh2=findViewById(R.id.img_anh2);
+        imgAnh3=findViewById(R.id.img_anh3);
+        imgAnh4=findViewById(R.id.img_anh4);
+        imgAnh5=findViewById(R.id.img_anh5);
+        btnChon1=findViewById(R.id.btn_chonmota1);
+        btnChon2=findViewById(R.id.btn_chonmota2);
+        btnChon3=findViewById(R.id.btn_chonmota3);
+        btnChon4=findViewById(R.id.btn_chonmota4);
+        btnChon5=findViewById(R.id.btn_chonmota5);
+        btnXacNhan1=findViewById(R.id.btn_xacNhan1);
+        btnXacNhan2=findViewById(R.id.btn_xacNhan2);
+        btnXacNhan3=findViewById(R.id.btn_xacNhan3);
+        btnXacNhan4=findViewById(R.id.btn_xacNhan4);
+        btnXacNhan5=findViewById(R.id.btn_xacNhan5);
+
+        btnTiepTuc1=findViewById(R.id.btn_themmota1);
+        btnTiepTuc2=findViewById(R.id.btn_themmota2);
+        btnTiepTuc3=findViewById(R.id.btn_themmota3);
+        btnTiepTuc4=findViewById(R.id.btn_themmota4);
+        btnTiepTuc5=findViewById(R.id.btn_themmota5);
+
+        li1=findViewById(R.id.li_themanh);
+        li2=findViewById(R.id.li_themanh1);
+        li3=findViewById(R.id.li_themanh2);
+        li4=findViewById(R.id.li_themanh3);
+        li5=findViewById(R.id.li_themanh4);
     }
     public void eventClick(){
         btnChonAnh.setOnClickListener(this);
         btnThemSP.setOnClickListener(this);
         btnHuyThem.setOnClickListener(this);
+        btnChon1.setOnClickListener(this);
+        btnTiepTuc1.setOnClickListener(this);
+        btnXacNhan1.setOnClickListener(this);
+        btnChon2.setOnClickListener(this);
+        btnTiepTuc2.setOnClickListener(this);
+        btnXacNhan2.setOnClickListener(this);
+        btnChon3.setOnClickListener(this);
+        btnTiepTuc3.setOnClickListener(this);
+        btnXacNhan3.setOnClickListener(this);
+        btnChon4.setOnClickListener(this);
+        btnTiepTuc4.setOnClickListener(this);
+        btnXacNhan4.setOnClickListener(this);
+        btnChon5.setOnClickListener(this);
+        btnTiepTuc5.setOnClickListener(this);
+        btnXacNhan5.setOnClickListener(this);
     }
 
     @Override
@@ -95,6 +141,77 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 break;
             }
             case R.id.btn_huyThemXacNhan:{
+                finish();
+                break;
+            }
+            case R.id.btn_chonmota1:{
+                btnXacNhan1.setEnabled(true);
+                btnTiepTuc1.setEnabled(true);
+                break;
+            }
+            case R.id.btn_themmota1:{
+                li2.setVisibility(View.VISIBLE);
+                btnTiepTuc1.setVisibility(View.GONE);
+                btnXacNhan1.setVisibility(View.GONE);
+                break;
+            }
+            case R.id.btn_xacNhan1:{
+                break;
+            }
+            case R.id.btn_chonmota2:{
+                btnTiepTuc2.setEnabled(true);
+                btnXacNhan2.setEnabled(true);
+                break;
+            }
+            case R.id.btn_themmota2:{
+                li3.setVisibility(View.VISIBLE);
+                btnTiepTuc2.setVisibility(View.GONE);
+                btnXacNhan2.setVisibility(View.GONE);
+                break;
+            }
+            case R.id.btn_xacNhan2:{
+                break;
+            }
+
+            case R.id.btn_chonmota3:{
+                btnTiepTuc3.setEnabled(true);
+                btnXacNhan3.setEnabled(true);
+                break;
+            }
+            case R.id.btn_themmota3:{
+                li4.setVisibility(View.VISIBLE);
+                btnTiepTuc3.setVisibility(View.GONE);
+                btnXacNhan3.setVisibility(View.GONE);
+                break;
+            }
+            case R.id.btn_xacNhan3:{
+                break;
+            }
+
+            case R.id.btn_chonmota4:{
+                btnTiepTuc4.setEnabled(true);
+                btnXacNhan4.setEnabled(true);
+                break;
+            }
+            case R.id.btn_themmota4:{
+                li5.setVisibility(View.VISIBLE);
+                btnTiepTuc4.setVisibility(View.GONE);
+                btnXacNhan4.setVisibility(View.GONE);
+                break;
+            }
+            case R.id.btn_xacNhan4:{
+                break;
+            }
+
+            case R.id.btn_chonmota5:{
+                btnTiepTuc5.setEnabled(true);
+                btnXacNhan5.setEnabled(true);
+                break;
+            }
+            case R.id.btn_themmota5:{
+                break;
+            }
+            case R.id.btn_xacNhan5:{
                 break;
             }
         }
@@ -155,21 +272,21 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    public void onSuccessed() {
-        preThemMoiSanPham=new PreThemMoiSanPham(this);
-        SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
-
-        final int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                preThemMoiSanPham.themMoiSanPham2(id,edtTenSP.getText().toString(),edtNoiDung.getText().toString(),
-                        Integer.parseInt(edtGiaSP.getText().toString()),Integer.parseInt(edtSoLuong39.getText().toString()),
-                        Integer.parseInt(edtSoLuong40.getText().toString()),Integer.parseInt(edtSoLuong41.getText().toString()),
-                        Integer.parseInt(edtSoLuong42.getText().toString()),Integer.parseInt(edtSoLuong43.getText().toString()));
-            }
-        }).start();
+    public void onSuccessed(final String path) {
+//        preThemMoiSanPham=new PreThemMoiSanPham(this);
+//        SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+//
+//        final int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                preThemMoiSanPham.themMoiSanPham2(id,edtTenSP.getText().toString(),edtNoiDung.getText().toString(),
+//                        Integer.parseInt(edtGiaSP.getText().toString()),Integer.parseInt(edtSoLuong39.getText().toString()),
+//                        Integer.parseInt(edtSoLuong40.getText().toString()),Integer.parseInt(edtSoLuong41.getText().toString()),
+//                        Integer.parseInt(edtSoLuong42.getText().toString()),Integer.parseInt(edtSoLuong43.getText().toString()),path);
+//            }
+//        }).start();
     }
 
     @Override
@@ -178,6 +295,16 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             @Override
             public void run() {
                 Toast.makeText(MainQLThemSanPham.this,"That bai",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onSuc1() {
+        edtNoiDung.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainQLThemSanPham.this,"Thêm thành công",Toast.LENGTH_SHORT).show();
             }
         });
     }

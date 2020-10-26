@@ -1,5 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.Model;
 
+import android.util.Log;
+
 import com.example.manhvan.datn_mocsneaker.MyService.APIService;
 import com.example.manhvan.datn_mocsneaker.MyService.Dataservice;
 
@@ -11,7 +13,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoThemMoiSanPham {
-    private String path="";
     private ThemMoiSPInterface themMoiSPInterface;
 
     public MoThemMoiSanPham(ThemMoiSPInterface themMoiSPInterface) {
@@ -33,9 +34,10 @@ public class MoThemMoiSanPham {
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response!=null){
                     String messeage=response.body();
-//                    Log.d("PathSend",messeage);
-                    path="image/"+messeage;
-                    themMoiSPInterface.onS();
+                    Log.d("PathSend",messeage);
+                    String path="/datn_mocsneakerapi/image/"+messeage;
+//                    Log.d("PathSend",path);
+                    themMoiSPInterface.onS(path);
                     return;
                 }
                 themMoiSPInterface.onF();
@@ -49,13 +51,29 @@ public class MoThemMoiSanPham {
     }
 
     public void xuLy2(int maNV,String tenSP,String noiDung,int giaBan,int sl39,
-                      int sl40,int sl41,int sl42,int sl43){
+                      int sl40,int sl41,int sl42,int sl43,String path){
         Dataservice dataservice=APIService.getService();
-//        Call<String> callback=dataservice.themMoiSP(maNV)
+        Call<String> callback=dataservice.themMoiSP(maNV,tenSP,path,noiDung,giaBan,sl39,sl40,sl41,sl42,sl43);
+        callback.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.body().trim().equals("thanhcong")){
+                    themMoiSPInterface.onS1();
+                    return;
+                }
+                themMoiSPInterface.onF();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 
     public interface ThemMoiSPInterface{
-        public void onS();
+        public void onS(String path);
         public void onF();
+        public void onS1();
     }
 }

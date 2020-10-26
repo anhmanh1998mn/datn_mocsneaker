@@ -14,13 +14,13 @@ public class PreThemMoiSanPham implements MoThemMoiSanPham.ThemMoiSPInterface {
         moThemMoiSanPham.xuLyUpLoad(realpath);
     }
     public void themMoiSanPham2(int maNV,String tenSP,String noiDung,int giaBan,int sl39,
-                                int sl40,int sl41,int sl42,int sl43){
-        moThemMoiSanPham.xuLy2(maNV,tenSP,noiDung,giaBan,sl39,sl40,sl41,sl42,sl43);
+                                int sl40,int sl41,int sl42,int sl43,String path){
+        moThemMoiSanPham.xuLy2(maNV,tenSP,noiDung,giaBan,sl39,sl40,sl41,sl42,sl43,path);
     }
 
     @Override
-    public void onS() {
-        ketQuaThemMoiSPInterface.onSuccessed();
+    public void onS(String path) {
+        ketQuaThemMoiSPInterface.onSuccessed(path);
     }
 
     @Override
@@ -28,8 +28,14 @@ public class PreThemMoiSanPham implements MoThemMoiSanPham.ThemMoiSPInterface {
         ketQuaThemMoiSPInterface.onFailed();
     }
 
+    @Override
+    public void onS1() {
+        ketQuaThemMoiSPInterface.onSuc1();
+    }
+
     public interface KetQuaThemMoiSPInterface{
-        public void onSuccessed();
+        public void onSuccessed(String path);
         public void onFailed();
+        public void onSuc1();
     }
 }
