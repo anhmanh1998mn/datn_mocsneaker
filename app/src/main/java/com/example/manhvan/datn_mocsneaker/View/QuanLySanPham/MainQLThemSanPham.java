@@ -1,7 +1,9 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLySanPham;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -154,12 +156,20 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onSuccessed() {
-        edtNoiDung.post(new Runnable() {
+        preThemMoiSanPham=new PreThemMoiSanPham(this);
+        SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+
+        final int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
+
+        new Thread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MainQLThemSanPham.this,"Thành cong",Toast.LENGTH_SHORT).show();
+                preThemMoiSanPham.themMoiSanPham2(id,edtTenSP.getText().toString(),edtNoiDung.getText().toString(),
+                        Integer.parseInt(edtGiaSP.getText().toString()),Integer.parseInt(edtSoLuong39.getText().toString()),
+                        Integer.parseInt(edtSoLuong40.getText().toString()),Integer.parseInt(edtSoLuong41.getText().toString()),
+                        Integer.parseInt(edtSoLuong42.getText().toString()),Integer.parseInt(edtSoLuong43.getText().toString()));
             }
-        });
+        }).start();
     }
 
     @Override

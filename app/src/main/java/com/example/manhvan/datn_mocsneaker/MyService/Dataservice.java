@@ -223,4 +223,12 @@ public interface Dataservice {
     @Multipart
     @POST("uploadFileToServer.php")
     Call<String> upLoadIMG(@Part MultipartBody.Part photo);
+
+    //Thêm mới sản phẩm
+    @FormUrlEncoded
+    @POST("themmoisanpham.php")
+    Call<String> themMoiSP(@Field("staff_id") int maNV,@Field("product_name")String tenSP,@Field("product_url")String url,
+                           @Field("product_content")String noiDung,@Field("price_out") int giaBan,@Field("size39")int soLuong39,
+                           @Field("size40")int soLuong40,@Field("size41")int soLuong41,@Field("size42")int soLuong42,
+                           @Field("size43")int soLuong43);
 }
