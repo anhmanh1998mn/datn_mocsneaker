@@ -231,4 +231,9 @@ public interface Dataservice {
                            @Field("product_content")String noiDung,@Field("price_out") int giaBan,@Field("size39")int soLuong39,
                            @Field("size40")int soLuong40,@Field("size41")int soLuong41,@Field("size42")int soLuong42,
                            @Field("size43")int soLuong43);
+
+    //Thêm chi tiết ảnh sản phẩm
+    @FormUrlEncoded
+    @POST("themchitietanhsp.php")
+    Call<String> themCTanh(@Field("idSanPham")int idSanPham,@Field("spURL")String spURL);
 }

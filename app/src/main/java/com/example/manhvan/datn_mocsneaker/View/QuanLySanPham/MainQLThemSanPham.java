@@ -1,7 +1,9 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLySanPham;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Presenter.PreThemMoiSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -37,9 +40,9 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
     private ImageView imgAnhChinh;
     private Button btnChonAnh,btnThemSP,btnHuyThem;
     private EditText edtTenSP,edtGiaSP,edtSoLuong39,edtSoLuong40,edtSoLuong41,edtSoLuong42,edtSoLuong43,edtNoiDung;
-    private final int REQUEST_PICK=123;
+    private final int REQUEST_PICK=123,REQUEST_PICK1=1231,REQUEST_PICK2=1232,REQUEST_PICK3=1233,REQUEST_PICK4=1234,REQUEST_PICK5=1235;
     private boolean chonAnh=false;
-    private String realPath="";
+    private String realPath="",realPath1="",realPath2="",realPath3="",realPath4="",realPath5="";
     private PreThemMoiSanPham preThemMoiSanPham;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -138,6 +141,11 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             }
             case R.id.btn_themSPXacNhan:{
                 themMoiSP();
+
+//                for(int i=0;i<GioHang.arrSanPhamThem.size();i++){
+//                    preThemMoiSanPham.themMoiAnhSPChiTiet(GioHang.arrSanPhamThem.get(i));
+//
+//                }
                 break;
             }
             case R.id.btn_huyThemXacNhan:{
@@ -145,11 +153,15 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 break;
             }
             case R.id.btn_chonmota1:{
+                Intent intent=new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,REQUEST_PICK1);
                 btnXacNhan1.setEnabled(true);
                 btnTiepTuc1.setEnabled(true);
                 break;
             }
             case R.id.btn_themmota1:{
+                GioHang.arrSanPhamThem.add(realPath1);
                 li2.setVisibility(View.VISIBLE);
                 btnTiepTuc1.setVisibility(View.GONE);
                 btnXacNhan1.setVisibility(View.GONE);
@@ -159,11 +171,15 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 break;
             }
             case R.id.btn_chonmota2:{
+                Intent intent=new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,REQUEST_PICK2);
                 btnTiepTuc2.setEnabled(true);
                 btnXacNhan2.setEnabled(true);
                 break;
             }
             case R.id.btn_themmota2:{
+                GioHang.arrSanPhamThem.add(realPath2);
                 li3.setVisibility(View.VISIBLE);
                 btnTiepTuc2.setVisibility(View.GONE);
                 btnXacNhan2.setVisibility(View.GONE);
@@ -174,11 +190,15 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             }
 
             case R.id.btn_chonmota3:{
+                Intent intent=new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,REQUEST_PICK3);
                 btnTiepTuc3.setEnabled(true);
                 btnXacNhan3.setEnabled(true);
                 break;
             }
             case R.id.btn_themmota3:{
+                GioHang.arrSanPhamThem.add(realPath3);
                 li4.setVisibility(View.VISIBLE);
                 btnTiepTuc3.setVisibility(View.GONE);
                 btnXacNhan3.setVisibility(View.GONE);
@@ -189,11 +209,15 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             }
 
             case R.id.btn_chonmota4:{
+                Intent intent=new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,REQUEST_PICK4);
                 btnTiepTuc4.setEnabled(true);
                 btnXacNhan4.setEnabled(true);
                 break;
             }
             case R.id.btn_themmota4:{
+                GioHang.arrSanPhamThem.add(realPath4);
                 li5.setVisibility(View.VISIBLE);
                 btnTiepTuc4.setVisibility(View.GONE);
                 btnXacNhan4.setVisibility(View.GONE);
@@ -204,6 +228,9 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             }
 
             case R.id.btn_chonmota5:{
+                Intent intent=new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,REQUEST_PICK5);
                 btnTiepTuc5.setEnabled(true);
                 btnXacNhan5.setEnabled(true);
                 break;
@@ -212,6 +239,10 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 break;
             }
             case R.id.btn_xacNhan5:{
+                GioHang.arrSanPhamThem.add(realPath5);
+                btnXacNhan5.setVisibility(View.GONE);
+//                Log.d("SPThem",GioHang.arrSanPhamThem.size()+"");
+
                 break;
             }
         }
@@ -219,17 +250,87 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode==REQUEST_PICK&&resultCode==RESULT_OK&&data!=null){
-            Uri uri=data.getData();
-            realPath=getRealPathFromURI(uri);
-            Log.d("path111",realPath);
-            try {
-                InputStream inputStream=getContentResolver().openInputStream(uri);
-                Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
-                imgAnhChinh.setImageBitmap(bitmap);
-                chonAnh=true;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        if(resultCode==RESULT_OK&&data!=null){
+            switch (requestCode) {
+                case REQUEST_PICK: {
+                    Uri uri = data.getData();
+                    realPath = getRealPathFromURI(uri);
+//                    Log.d("path111", realPath);
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        imgAnhChinh.setImageBitmap(bitmap);
+                        chonAnh = true;
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case REQUEST_PICK1:{
+                    Uri uri = data.getData();
+                    realPath1 = getRealPathFromURI(uri);
+//                    Log.d("path111", realPath1);
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        imgAnh1.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case REQUEST_PICK2:{
+                    Uri uri = data.getData();
+                    realPath2 = getRealPathFromURI(uri);
+//                    Log.d("path111", realPath2);
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        imgAnh2.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case REQUEST_PICK3:{
+                    Uri uri = data.getData();
+                    realPath3 = getRealPathFromURI(uri);
+//                    Log.d("path111", realPath3);
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        imgAnh3.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case REQUEST_PICK4:{
+                    Uri uri = data.getData();
+                    realPath4 = getRealPathFromURI(uri);
+//                    Log.d("path111", realPath4);
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        imgAnh4.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                case REQUEST_PICK5:{
+                    Uri uri = data.getData();
+                    realPath5 = getRealPathFromURI(uri);
+//                    Log.d("path111", realPath5);
+                    try {
+                        InputStream inputStream = getContentResolver().openInputStream(uri);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        imgAnh5.setImageBitmap(bitmap);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -273,20 +374,20 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onSuccessed(final String path) {
-//        preThemMoiSanPham=new PreThemMoiSanPham(this);
-//        SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
-//
-//        final int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
-//
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                preThemMoiSanPham.themMoiSanPham2(id,edtTenSP.getText().toString(),edtNoiDung.getText().toString(),
-//                        Integer.parseInt(edtGiaSP.getText().toString()),Integer.parseInt(edtSoLuong39.getText().toString()),
-//                        Integer.parseInt(edtSoLuong40.getText().toString()),Integer.parseInt(edtSoLuong41.getText().toString()),
-//                        Integer.parseInt(edtSoLuong42.getText().toString()),Integer.parseInt(edtSoLuong43.getText().toString()),path);
-//            }
-//        }).start();
+        preThemMoiSanPham=new PreThemMoiSanPham(this);
+        SharedPreferences sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+
+        final int id=Integer.parseInt(sharedPreferences.getString("idNhanVien",""));
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preThemMoiSanPham.themMoiSanPham2(id,edtTenSP.getText().toString(),edtNoiDung.getText().toString(),
+                        Integer.parseInt(edtGiaSP.getText().toString()),Integer.parseInt(edtSoLuong39.getText().toString()),
+                        Integer.parseInt(edtSoLuong40.getText().toString()),Integer.parseInt(edtSoLuong41.getText().toString()),
+                        Integer.parseInt(edtSoLuong42.getText().toString()),Integer.parseInt(edtSoLuong43.getText().toString()),path);
+            }
+        }).start();
     }
 
     @Override
@@ -300,7 +401,21 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    public void onSuc1() {
+    public void onSuc1(final int maSP) {
+        edtNoiDung.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("Mã sản phẩm thêm",maSP+"");
+            }
+        });
+//        for(int i=0;i<GioHang.arrSanPhamThem.size();i++){
+//            preThemMoiSanPham.themMoiAnhSPChiTiet(GioHang.arrSanPhamThem.get(i),maSP);
+//
+//        }
+    }
+
+    @Override
+    public void themThanhCong() {
         edtNoiDung.post(new Runnable() {
             @Override
             public void run() {

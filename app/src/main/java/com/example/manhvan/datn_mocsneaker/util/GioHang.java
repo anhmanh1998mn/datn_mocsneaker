@@ -9,4 +9,7 @@ import java.util.List;
 public class GioHang {
     public static List<GioHang1> arrGioHang=new ArrayList<>();
     public static List<ChiTietDonNhap> arrChiTietDonNhap=new ArrayList<>();
+
+    // thêm ảnh sản phẩm
+    public static List<String> arrSanPhamThem=new ArrayList<>();
 }
