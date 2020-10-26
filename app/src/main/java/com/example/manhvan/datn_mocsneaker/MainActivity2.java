@@ -21,9 +21,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
-import com.example.manhvan.datn_mocsneaker.View.MainProductDetail;
-import com.example.manhvan.datn_mocsneaker.View.MainTimKiemTenSanPham;
-import com.example.manhvan.datn_mocsneaker.View.ViewGioHang;
+import com.example.manhvan.datn_mocsneaker.View.QuanLySanPham.MainTimKiemTenSanPham;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyDonHang.ViewGioHang;
 import com.example.manhvan.datn_mocsneaker.adapter.TimKiemSanPhamAdapter;
 import com.example.manhvan.datn_mocsneaker.ui.dashboard.DashboardFragment;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;

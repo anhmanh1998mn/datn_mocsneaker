@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainVertifyOTP">
+    tools:context=".View.QuanLyTaiKhoan.MainVertifyOTP">
     <TextView
         android:textColor="#000"
         android:id="@+id/txt_otp1"

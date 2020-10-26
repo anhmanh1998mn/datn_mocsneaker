@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainTimKiemTenSanPham">
+    tools:context=".View.QuanLySanPham.MainTimKiemTenSanPham">
     <LinearLayout
         android:id="@+id/timkiem_linear"
         android:background="#0017EC"

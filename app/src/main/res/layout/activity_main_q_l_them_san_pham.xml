@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainQLThemSanPham">
+    tools:context=".View.QuanLySanPham.MainQLThemSanPham">
     <ImageView
         app:srcCompat="@drawable/ic_baseline_image_24"
         android:id="@+id/img_themSP"
@@ -16,6 +16,7 @@
         android:layout_height="200dp"/>
 
     <Button
+        android:id="@+id/btn_chonAnh"
         android:textColor="#fff"
         android:background="@drawable/custombutton"
         android:textAllCaps="false"
@@ -38,9 +39,10 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"/>
     <EditText
+        android:inputType="number"
         android:id="@+id/edt_giaSPQL"
         android:paddingLeft="8dp"
-        android:hint="Tên sản phẩm"
+        android:hint="Giá sản phẩm"
         android:background="@drawable/customedtsearch"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
@@ -75,6 +77,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <EditText
+            android:inputType="number"
+            android:id="@+id/edt_size39"
             android:paddingLeft="8dp"
             android:background="@drawable/customedtsearch"
             android:hint="Số lượng"
@@ -103,6 +107,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <EditText
+            android:inputType="number"
+            android:id="@+id/edt_size40"
             android:paddingLeft="8dp"
             android:background="@drawable/customedtsearch"
             android:hint="Số lượng"
@@ -130,6 +136,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <EditText
+            android:inputType="number"
+            android:id="@+id/edt_size41"
             android:paddingLeft="8dp"
             android:background="@drawable/customedtsearch"
             android:hint="Số lượng"
@@ -157,6 +165,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <EditText
+            android:inputType="number"
+            android:id="@+id/edt_size42"
             android:paddingLeft="8dp"
             android:background="@drawable/customedtsearch"
             android:hint="Số lượng"
@@ -184,6 +194,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <EditText
+            android:inputType="number"
+            android:id="@+id/edt_size43"
             android:paddingLeft="8dp"
             android:background="@drawable/customedtsearch"
             android:hint="Số lượng"
@@ -210,6 +222,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp">
         <Button
+            android:id="@+id/btn_themSPXacNhan"
             android:textColor="#fff"
             android:background="#366DF3"
             android:text="Thêm sản phẩm"
@@ -217,6 +230,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <Button
+            android:id="@+id/btn_huyThemXacNhan"
             android:textColor="#fff"
             android:background="#023FD3"
             android:text="Hủy"

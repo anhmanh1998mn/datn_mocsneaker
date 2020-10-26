@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.MainProductDetail;
+import com.example.manhvan.datn_mocsneaker.View.QuanLySanPham.MainProductDetail;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 import com.example.manhvan.datn_mocsneaker.util.DuongDan;

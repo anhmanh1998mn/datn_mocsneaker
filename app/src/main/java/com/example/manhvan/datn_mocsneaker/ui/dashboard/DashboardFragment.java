@@ -15,13 +15,13 @@ import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.Presenter.PreThongTinTaiKhoan;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.MainQLNhapHangDanhSach;
-import com.example.manhvan.datn_mocsneaker.View.MainQuanLyKhachHang;
-import com.example.manhvan.datn_mocsneaker.View.MainQuanLySanPham;
-import com.example.manhvan.datn_mocsneaker.View.MainShowListOrdersKH;
-import com.example.manhvan.datn_mocsneaker.View.MainThongKeBaoCao;
-import com.example.manhvan.datn_mocsneaker.View.ThongTinKHInterKQ2;
-import com.example.manhvan.datn_mocsneaker.View.ViewQuanLyNhanVIen;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyDonNhapHang.MainQLNhapHangDanhSach;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyKhachHang.MainQuanLyKhachHang;
+import com.example.manhvan.datn_mocsneaker.View.QuanLySanPham.MainQuanLySanPham;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyDonHang.MainShowListOrdersKH;
+import com.example.manhvan.datn_mocsneaker.View.QLThongKeBaoCao.MainThongKeBaoCao;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.ThongTinKHInterKQ2;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyNhanVien.ViewQuanLyNhanVIen;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 

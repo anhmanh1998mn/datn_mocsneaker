@@ -2,7 +2,7 @@ package com.example.manhvan.datn_mocsneaker.Presenter;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoLayDanhSachDonNH;
 import com.example.manhvan.datn_mocsneaker.Model.TimKiemNVKQ1;
-import com.example.manhvan.datn_mocsneaker.View.LayDanhSachDonNhapInter;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.LayDanhSachDonNhapInter;
 
 public class PreLayDanhSachDonNH implements TimKiemNVKQ1 {
     private LayDanhSachDonNhapInter layDanhSachDonNhapInter;

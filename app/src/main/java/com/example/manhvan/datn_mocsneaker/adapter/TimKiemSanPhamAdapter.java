@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.MainProductDetail;
+import com.example.manhvan.datn_mocsneaker.View.QuanLySanPham.MainProductDetail;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.util.List;

@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.example.manhvan.datn_mocsneaker.Model.MoSanPhamXemThemTatCa;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreSanPhamXemThemTatCa;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.SanPhamXemThemInterface;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.SanPhamXemThemInterface;
 import com.example.manhvan.datn_mocsneaker.adapter.XemThemSanPhamAdapter;
 
 public class FragmentSanPhamNoiBat extends Fragment implements SanPhamXemThemInterface{

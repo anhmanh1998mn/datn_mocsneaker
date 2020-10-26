@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.MainChiTietDonNhap;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyDonNhapHang.MainChiTietDonNhap;
 import com.example.manhvan.datn_mocsneaker.entity.DonNhapHang;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 

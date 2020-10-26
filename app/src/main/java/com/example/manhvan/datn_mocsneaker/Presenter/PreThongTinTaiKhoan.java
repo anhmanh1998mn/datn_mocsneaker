@@ -2,7 +2,7 @@ package com.example.manhvan.datn_mocsneaker.Presenter;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoThongTinTaiKhon;
 import com.example.manhvan.datn_mocsneaker.Model.ThongTinKhachHangInterface;
-import com.example.manhvan.datn_mocsneaker.View.ThongTinKHInterKQ2;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 

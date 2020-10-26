@@ -2,7 +2,7 @@ package com.example.manhvan.datn_mocsneaker.Presenter;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoCheckRegister;
 import com.example.manhvan.datn_mocsneaker.Model.TimKiemNVKQ1;
-import com.example.manhvan.datn_mocsneaker.View.CheckRegister;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.CheckRegister;
 
 public class PreCheckRegister implements TimKiemNVKQ1 {
     private CheckRegister checkRegister;

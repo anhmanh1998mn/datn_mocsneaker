@@ -11,10 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoSanPhamXemThemTatCa;
-import com.example.manhvan.datn_mocsneaker.Model.MoXemThemSanPham;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreSanPhamXemThemTatCa;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.SanPhamXemThemInterface;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.SanPhamXemThemInterface;
 import com.example.manhvan.datn_mocsneaker.adapter.XemThemSanPhamAdapter;
 
 public class FragmentTatCa extends Fragment implements SanPhamXemThemInterface{

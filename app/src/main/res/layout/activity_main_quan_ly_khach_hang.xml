@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainQuanLyKhachHang">
+    tools:context=".View.QuanLyKhachHang.MainQuanLyKhachHang">
    <LinearLayout
        app:layout_constraintRight_toRightOf="parent"
        android:id="@+id/linearlayout_qlkh"

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.manhvan.datn_mocsneaker.MyService.APIService;
 import com.example.manhvan.datn_mocsneaker.MyService.Dataservice;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.ViewSanPham;
+import com.example.manhvan.datn_mocsneaker.View.QuanLySanPham.ViewSanPham;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.util.ArrayList;

@@ -2,7 +2,7 @@ package com.example.manhvan.datn_mocsneaker.Presenter;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoDoiMatKhau;
 import com.example.manhvan.datn_mocsneaker.Model.TimKiemNVKQ1;
-import com.example.manhvan.datn_mocsneaker.View.DoiMatKhauInterface;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.DoiMatKhauInterface;
 
 import java.security.NoSuchAlgorithmException;
 

@@ -1,10 +1,8 @@
 package com.example.manhvan.datn_mocsneaker.Presenter;
 
-import android.util.Log;
-
 import com.example.manhvan.datn_mocsneaker.Model.MoSanPhamMoiNhat;
 import com.example.manhvan.datn_mocsneaker.Model.SanPhamMoiKQ1;
-import com.example.manhvan.datn_mocsneaker.View.SanPhamMoiKQ2;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.SanPhamMoiKQ2;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.util.ArrayList;

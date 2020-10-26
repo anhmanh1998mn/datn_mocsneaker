@@ -2,7 +2,7 @@ package com.example.manhvan.datn_mocsneaker.Presenter;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoXemThemSanPham;
 import com.example.manhvan.datn_mocsneaker.Model.TimKiemNVKQ1;
-import com.example.manhvan.datn_mocsneaker.View.SanPhamXemThemInterface;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.SanPhamXemThemInterface;
 
 public class PreXemThemSanPham implements TimKiemNVKQ1{
     private SanPhamXemThemInterface sanPhamXemThemInterface;

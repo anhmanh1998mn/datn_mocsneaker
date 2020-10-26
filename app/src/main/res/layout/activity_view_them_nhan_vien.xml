@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.ViewThemNhanVien">
+    tools:context=".View.QuanLyNhanVien.ViewThemNhanVien">
 <!--    <android.support.v7.widget.Toolbar-->
 <!--        android:id="@+id/tb2"-->
 <!--        android:layout_width="match_parent"-->

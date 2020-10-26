@@ -13,26 +13,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.MainQLThemSanPham" />
+        <activity android:name=".View.QuanLySanPham.MainQLThemSanPham" />
         <activity android:name=".View.MainTHongTinCuaHang" />
-        <activity android:name=".View.MainThongKeBaoCao" />
-        <activity android:name=".View.MainOrderDetail" />
-        <activity android:name=".View.MainShowListOrdersKH" />
-        <activity android:name=".View.MainChiTietDonNhap" />
-        <activity android:name=".View.MainProductInsert" />
-        <activity android:name=".View.MainQLThemDonNhapHnag" />
-        <activity android:name=".View.MainQuanLySanPham" />
-        <activity android:name=".View.MainTimKiemTenSanPham" />
-        <activity android:name=".View.ViewGioHang" />
-        <activity android:name=".View.MainChiTietKhachHang" />
-        <activity android:name=".View.MainQuanLyKhachHang" />
-        <activity android:name=".View.MainDoiMatKhau" />
-        <activity android:name=".View.MainXacNhanMatKhau" />
-        <activity android:name=".View.MainUserInfo" />
-        <activity android:name=".View.MainVertifyOTP" />
-        <activity android:name=".View.MainProductDetail" />
-        <activity android:name=".View.MainRegister" />
-        <activity android:name=".View.MainLogin" />
+        <activity android:name=".View.QLThongKeBaoCao.MainThongKeBaoCao" />
+        <activity android:name=".View.QuanLyDonHang.MainOrderDetail" />
+        <activity android:name=".View.QuanLyDonHang.MainShowListOrdersKH" />
+        <activity android:name=".View.QuanLyDonNhapHang.MainChiTietDonNhap" />
+        <activity android:name=".View.QuanLyDonNhapHang.MainProductInsert" />
+        <activity android:name=".View.QuanLyDonNhapHang.MainQLThemDonNhapHnag" />
+        <activity android:name=".View.QuanLySanPham.MainQuanLySanPham" />
+        <activity android:name=".View.QuanLySanPham.MainTimKiemTenSanPham" />
+        <activity android:name=".View.QuanLyDonHang.ViewGioHang" />
+        <activity android:name=".View.QuanLyKhachHang.MainChiTietKhachHang" />
+        <activity android:name=".View.QuanLyKhachHang.MainQuanLyKhachHang" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainDoiMatKhau" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainXacNhanMatKhau" />
+        <activity android:name=".View.QuanLyKhachHang.MainUserInfo" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainVertifyOTP" />
+        <activity android:name=".View.QuanLySanPham.MainProductDetail" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainRegister" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainLogin" />
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2">
@@ -42,14 +42,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.ViewQuanLyNhanVIen" />
-        <activity android:name=".View.ViewThemNhanVien" />
-        <activity android:name=".View.MainSuaNhanVIen" />
-        <activity android:name=".View.ViewSanPham" />
-        <activity android:name=".View.MainQLNhapHangDanhSach" />
-        <activity android:name=".View.MainQuenMatKhau1" />
-        <activity android:name=".View.MainGuiMaXacThucQuenMK" />
-        <activity android:name=".View.MainDatLaiMatKhauQuenMK"></activity>
+        <activity android:name=".View.QuanLyNhanVien.ViewQuanLyNhanVIen" />
+        <activity android:name=".View.QuanLyNhanVien.ViewThemNhanVien" />
+        <activity android:name=".View.QuanLyNhanVien.MainSuaNhanVIen" />
+        <activity android:name=".View.QuanLySanPham.ViewSanPham" />
+        <activity android:name=".View.QuanLyDonNhapHang.MainQLNhapHangDanhSach" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainQuenMatKhau1" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainGuiMaXacThucQuenMK" />
+        <activity android:name=".View.QuanLyTaiKhoan.MainDatLaiMatKhauQuenMK"></activity>
     </application>
 
 </manifest>

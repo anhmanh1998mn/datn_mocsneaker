@@ -58,6 +58,7 @@
 
     </FrameLayout>
     <Button
+        android:visibility="gone"
         android:id="@+id/btn_notifiDonMua"
         android:drawableTint="#0536E1"
         android:drawablePadding="8dp"

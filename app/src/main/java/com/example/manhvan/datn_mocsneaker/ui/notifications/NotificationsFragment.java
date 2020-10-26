@@ -16,12 +16,12 @@ import android.widget.TextView;
 import com.example.manhvan.datn_mocsneaker.Model.MoLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.MaNguoiLapDHInterface;
-import com.example.manhvan.datn_mocsneaker.View.MainLogin;
-import com.example.manhvan.datn_mocsneaker.View.MainRegister;
-import com.example.manhvan.datn_mocsneaker.View.MainShowListOrdersKH;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.MaNguoiLapDHInterface;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyTaiKhoan.MainLogin;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyTaiKhoan.MainRegister;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyDonHang.MainShowListOrdersKH;
 import com.example.manhvan.datn_mocsneaker.View.MainTHongTinCuaHang;
-import com.example.manhvan.datn_mocsneaker.View.MainUserInfo;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyKhachHang.MainUserInfo;
 
 public class NotificationsFragment extends Fragment implements View.OnClickListener, MaNguoiLapDHInterface {
     private Button btnNotiLogin,btnNotiRegister,btnNotiSetting,btnShowOrder,btnThongTinCuaHang;
@@ -78,6 +78,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         btnNotiSetting.setVisibility(View.VISIBLE);
         btnNotiLogin.setVisibility(View.GONE);
         btnNotiRegister.setVisibility(View.GONE);
+        btnShowOrder.setVisibility(View.VISIBLE);
 
     }
 

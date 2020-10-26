@@ -5,18 +5,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoXemThemSanPham;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreXemThemSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.SanPhamXemThemInterface;
-import com.example.manhvan.datn_mocsneaker.adapter.RecylceViewConAdapter;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.SanPhamXemThemInterface;
 import com.example.manhvan.datn_mocsneaker.adapter.XemThemSanPhamAdapter;
 
 public class FragmentGiayDoi extends Fragment implements SanPhamXemThemInterface{

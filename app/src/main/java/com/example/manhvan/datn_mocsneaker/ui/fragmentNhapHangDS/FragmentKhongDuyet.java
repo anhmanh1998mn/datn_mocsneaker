@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import com.example.manhvan.datn_mocsneaker.Model.MoLayDanhSachDonNH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreLayDanhSachDonNH;
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.LayDanhSachDonNhapInter;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.LayDanhSachDonNhapInter;
 import com.example.manhvan.datn_mocsneaker.adapter.DanhSachDonNhapAdapter;
 
 public class FragmentKhongDuyet extends Fragment implements LayDanhSachDonNhapInter {

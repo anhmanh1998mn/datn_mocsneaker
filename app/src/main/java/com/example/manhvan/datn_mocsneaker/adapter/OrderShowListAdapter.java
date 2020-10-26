@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
-import com.example.manhvan.datn_mocsneaker.View.MainOrderDetail;
+import com.example.manhvan.datn_mocsneaker.View.QuanLyDonHang.MainOrderDetail;
 import com.example.manhvan.datn_mocsneaker.entity.DonHang;
 import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
