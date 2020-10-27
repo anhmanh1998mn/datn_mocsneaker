@@ -55,10 +55,8 @@ public class MoThemMoiSanPham {
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if(response.body().trim().equals("")){
-                    themMoiSPInterface.onF();
-                    return;
-                }
+
+//                Log.d("MSP",response.body().toString()+"");
 //                //int maSp=Integer.parseInt(response.body());
 //                Log.d("Mã sản phẩm thêm",maSp+"");
 //                themMoiSPInterface.onS1(maSp);
@@ -66,7 +64,7 @@ public class MoThemMoiSanPham {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
+//                Log.d("MSP",t.toString()+"");
             }
         });
     }
