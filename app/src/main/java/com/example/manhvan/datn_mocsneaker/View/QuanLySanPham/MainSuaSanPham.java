@@ -34,12 +34,13 @@ import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
+public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,ANhCTSPSuaAdapter.OnClickImageListener {
     private ActionBar actionBar;
     private ImageView imgViewUpdate;
     private EditText edtProductName,edtProductPrice,edtProductContent,edtSize39,edtSize40,edtSize41,edtSize42,edtSize43;
     private Button btnUpdateImage;
     private final int REQUEST_PICK =123;
+    private final int REQUEST_PICK_DETAIL=1234;
     private RecyclerView recyclerView;
     private ANhCTSPSuaAdapter adapter;
     private PreGetProductImage preGetProductImage;
@@ -81,6 +82,7 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
     }
 
     public void showProductInfo(){
+
         Intent intent=getIntent();
         Bundle bundle=intent.getBundleExtra("info");
         Glide.with(this).load(bundle.getString("image")).into(imgViewUpdate);
@@ -123,17 +125,26 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode==REQUEST_PICK&&resultCode==RESULT_OK&&data!=null){
-            Uri uri=data.getData();
-            realPath=getRealPathFromURI(uri);
-            Log.d("ImageUdated",realPath);
-            try {
-                InputStream inputStream=getContentResolver().openInputStream(uri);
-                Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
-                imgViewUpdate.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        if (resultCode==RESULT_OK&&data!=null){
+            if (requestCode==REQUEST_PICK) {
+                Uri uri = data.getData();
+                realPath = getRealPathFromURI(uri);
+//                Log.d("ImageUdated", realPath);
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(uri);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    imgViewUpdate.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }else if(requestCode==REQUEST_PICK_DETAIL){
+                Uri uri = data.getData();
+                realPath = getRealPathFromURI(uri);
+                Log.d("ImageUdated", realPath);
             }
+
+
             //đ
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -168,6 +179,7 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
     @Override
     public void onSuccess() {
         adapter=new ANhCTSPSuaAdapter(this,R.layout.item_sua_san_pham, MogetProductImage.lstIMG);
+        adapter.setListener(this);
         final LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this, LinearLayout.HORIZONTAL,false);
         recyclerView.post(new Runnable() {
             @Override
@@ -197,5 +209,13 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
                 edtSize43.setText(MoKichCoTheoSP.lstKichCo.get(4).getStock());
             }
         });
+    }
+
+    @Override
+    public void onClick(int id) {
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,REQUEST_PICK_DETAIL);
+
     }
 }

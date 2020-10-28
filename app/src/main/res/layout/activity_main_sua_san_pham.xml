@@ -30,6 +30,7 @@
                     android:background="@drawable/custombutton"
                     android:textAllCaps="false"
                     android:text="Chọn ảnh"
+                    android:visibility="gone"
                     android:textSize="15sp"
                     android:layout_gravity="center"
                     android:layout_width="100dp"
@@ -37,6 +38,7 @@
             </FrameLayout>
             <android.support.v7.widget.RecyclerView
                 android:layout_marginTop="8dp"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:id="@+id/recycle_CTAnhSP"
                 app:layout_constraintTop_toBottomOf="@+id/frame_layout"

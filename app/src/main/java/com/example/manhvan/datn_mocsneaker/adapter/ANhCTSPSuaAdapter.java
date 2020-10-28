@@ -2,7 +2,6 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +20,16 @@ public class ANhCTSPSuaAdapter extends RecyclerView.Adapter<ANhCTSPSuaAdapter.Vi
     private Activity myContext;
     private int myLayout;
     private List<ProductImage> lstSPSua;
-    private final int REQUEST_PICK=123;
+
+    private OnClickImageListener listener;
+
+    public OnClickImageListener getListener() {
+        return listener;
+    }
+
+    public void setListener(OnClickImageListener listener) {
+        this.listener = listener;
+    }
 
     public ANhCTSPSuaAdapter(Activity myContext, int myLayout, List<ProductImage> lstSPSua) {
         this.myContext = myContext;
@@ -38,25 +46,28 @@ public class ANhCTSPSuaAdapter extends RecyclerView.Adapter<ANhCTSPSuaAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Glide.with(myContext).load(DuongDan.url+lstSPSua.get(i).getImageUrl()).into(viewHolder.imgView);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                myContext.startActivityForResult(intent,REQUEST_PICK);
+//                Intent intent=new Intent(Intent.ACTION_PICK);
+//                intent.setType("image/*");
+//                myContext.startActivityForResult(intent,REQUEST_PICK);
+                if(listener!=null){
+                    listener.onClick(i);
+                }
             }
         });
 
     }
 
-
-
     @Override
     public int getItemCount() {
         return lstSPSua.size();
     }
+
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgView;
@@ -64,6 +75,9 @@ public class ANhCTSPSuaAdapter extends RecyclerView.Adapter<ANhCTSPSuaAdapter.Vi
             super(itemView);
             imgView=itemView.findViewById(R.id.img_itemSua);
         }
+    }
+    public interface OnClickImageListener{
+        public void onClick(int id);
     }
 
 }
