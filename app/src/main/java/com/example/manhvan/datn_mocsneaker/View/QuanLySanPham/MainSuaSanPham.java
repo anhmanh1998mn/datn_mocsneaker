@@ -109,6 +109,7 @@ public class MainSuaSanPham extends AppCompatActivity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            //đ
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
