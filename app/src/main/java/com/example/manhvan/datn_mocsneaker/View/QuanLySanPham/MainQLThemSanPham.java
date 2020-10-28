@@ -409,21 +409,21 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
         edtNoiDung.post(new Runnable() {
             @Override
             public void run() {
-                Log.d("MaSPThem",maSP+"");
+                Log.d("MaSPThem", maSP + "");
             }
         });
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    preThemMoiSanPham.themSoLuongSize(maSP,Integer.parseInt(edtSoLuong39.getText().toString().trim()),
-                            Integer.parseInt(edtSoLuong40.getText().toString().trim()),Integer.parseInt(edtSoLuong41.getText().toString().trim()),
-                            Integer.parseInt(edtSoLuong42.getText().toString().trim()),Integer.parseInt(edtSoLuong43.getText().toString().trim()));
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preThemMoiSanPham.themSoLuongSize(maSP, Integer.parseInt(edtSoLuong39.getText().toString().trim()),
+                        Integer.parseInt(edtSoLuong40.getText().toString().trim()), Integer.parseInt(edtSoLuong41.getText().toString().trim()),
+                        Integer.parseInt(edtSoLuong42.getText().toString().trim()), Integer.parseInt(edtSoLuong43.getText().toString().trim()));
 
-                    for (int i = 0; i < GioHang.arrSanPhamThem.size(); i++) {
-                        preThemMoiSanPham.themMoiAnhSPChiTiet(GioHang.arrSanPhamThem.get(i), maSP);
-                    }
+                for (int i = 0; i < GioHang.arrSanPhamThem.size(); i++) {
+                    preThemMoiSanPham.themMoiAnhSPChiTiet(GioHang.arrSanPhamThem.get(i), maSP);
                 }
-            }).start();
+            }
+        }).start();
 
 
     }
@@ -438,7 +438,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
         edtNoiDung.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(MainQLThemSanPham.this,"Thêm mới sản phẩm thành công",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainQLThemSanPham.this, "Thêm mới sản phẩm thành công", Toast.LENGTH_SHORT).show();
             }
         });
     }

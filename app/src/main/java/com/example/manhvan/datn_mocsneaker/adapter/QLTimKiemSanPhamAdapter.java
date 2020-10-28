@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.View.QuanLySanPham.MainSuaSanPham;
 import com.example.manhvan.datn_mocsneaker.entity.SanPhamMoi;
 
 import java.util.List;
@@ -36,7 +38,13 @@ public class QLTimKiemSanPhamAdapter extends RecyclerView.Adapter<QLTimKiemSanPh
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.txt1.setText(lstTimKiem.get(i).getProductName());
-
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(myContext, MainSuaSanPham.class);
+                myContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
