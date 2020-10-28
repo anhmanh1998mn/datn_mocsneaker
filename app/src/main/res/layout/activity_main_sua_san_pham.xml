@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/recycle_CTAnhSP"
                 app:layout_constraintTop_toBottomOf="@+id/frame_layout"
-                android:layout_height="150dp"/>
+                android:layout_height="120dp"/>
             <EditText
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"

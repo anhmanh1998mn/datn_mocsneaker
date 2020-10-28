@@ -46,6 +46,7 @@ public class QLTimKiemSanPhamAdapter extends RecyclerView.Adapter<QLTimKiemSanPh
             public void onClick(View view) {
                 Intent intent=new Intent(myContext, MainSuaSanPham.class);
                 Bundle bundle=new Bundle();
+                bundle.putString("idProduct",lstTimKiem.get(i).getId());
                 bundle.putString("image", DuongDan.url+lstTimKiem.get(i).getProductUrl());
                 bundle.putString("productName",lstTimKiem.get(i).getProductName());
                 bundle.putString("productPrice",lstTimKiem.get(i).getPriceOut());

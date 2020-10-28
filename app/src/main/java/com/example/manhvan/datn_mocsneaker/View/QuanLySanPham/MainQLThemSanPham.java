@@ -166,9 +166,14 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 li2.setVisibility(View.VISIBLE);
                 btnTiepTuc1.setVisibility(View.GONE);
                 btnXacNhan1.setVisibility(View.GONE);
+                btnChon1.setVisibility(View.GONE);
                 break;
             }
             case R.id.btn_xacNhan1: {
+                btnChon1.setVisibility(View.GONE);
+                btnTiepTuc1.setVisibility(View.GONE);
+                GioHang.arrSanPhamThem.add(realPath1);
+                btnXacNhan1.setVisibility(View.GONE);
                 break;
             }
             case R.id.btn_chonmota2: {
@@ -184,9 +189,14 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 li3.setVisibility(View.VISIBLE);
                 btnTiepTuc2.setVisibility(View.GONE);
                 btnXacNhan2.setVisibility(View.GONE);
+                btnChon2.setVisibility(View.GONE);
                 break;
             }
             case R.id.btn_xacNhan2: {
+                btnChon2.setVisibility(View.GONE);
+                btnTiepTuc2.setVisibility(View.GONE);
+                GioHang.arrSanPhamThem.add(realPath2);
+                btnXacNhan2.setVisibility(View.GONE);
                 break;
             }
 
@@ -203,9 +213,14 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 li4.setVisibility(View.VISIBLE);
                 btnTiepTuc3.setVisibility(View.GONE);
                 btnXacNhan3.setVisibility(View.GONE);
+                btnChon3.setVisibility(View.GONE);
                 break;
             }
             case R.id.btn_xacNhan3: {
+                btnChon3.setVisibility(View.GONE);
+                btnTiepTuc3.setVisibility(View.GONE);
+                GioHang.arrSanPhamThem.add(realPath3);
+                btnXacNhan3.setVisibility(View.GONE);
                 break;
             }
 
@@ -222,9 +237,14 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 li5.setVisibility(View.VISIBLE);
                 btnTiepTuc4.setVisibility(View.GONE);
                 btnXacNhan4.setVisibility(View.GONE);
+                btnChon4.setVisibility(View.GONE);
                 break;
             }
             case R.id.btn_xacNhan4: {
+                btnChon4.setVisibility(View.GONE);
+                btnTiepTuc4.setVisibility(View.GONE);
+                GioHang.arrSanPhamThem.add(realPath4);
+                btnXacNhan4.setVisibility(View.GONE);
                 break;
             }
 
@@ -242,6 +262,8 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             case R.id.btn_xacNhan5: {
                 GioHang.arrSanPhamThem.add(realPath5);
                 btnXacNhan5.setVisibility(View.GONE);
+                btnChon5.setVisibility(View.GONE);
+                btnTiepTuc5.setVisibility(View.GONE);
 //                Log.d("SPThem",GioHang.arrSanPhamThem.size()+"");
 
                 break;
@@ -340,7 +362,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
     private void themMoiSP() {
         if (chonAnh == false || edtTenSP.getText().toString().trim().equals("") || edtGiaSP.getText().toString().trim().equals("") || edtSoLuong39.getText().toString().trim().equals("")
                 || edtSoLuong40.getText().toString().trim().equals("") || edtSoLuong41.getText().toString().trim().equals("") || edtSoLuong42.getText().toString().trim().equals("") || edtSoLuong43.getText().toString().trim().equals("")
-                || edtNoiDung.equals("")) {
+                || edtNoiDung.equals("")|| GioHang.arrSanPhamThem==null||GioHang.arrSanPhamThem.isEmpty()) {
             Toast.makeText(MainQLThemSanPham.this, "Kiểm tra lại dữ liệu", Toast.LENGTH_SHORT).show();
             return;
         }
