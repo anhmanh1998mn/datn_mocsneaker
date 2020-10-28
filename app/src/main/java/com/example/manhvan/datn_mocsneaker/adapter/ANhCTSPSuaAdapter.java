@@ -2,6 +2,7 @@ package com.example.manhvan.datn_mocsneaker.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ public class ANhCTSPSuaAdapter extends RecyclerView.Adapter<ANhCTSPSuaAdapter.Vi
     private Activity myContext;
     private int myLayout;
     private List<ProductImage> lstSPSua;
+    private final int REQUEST_PICK=123;
 
     public ANhCTSPSuaAdapter(Activity myContext, int myLayout, List<ProductImage> lstSPSua) {
         this.myContext = myContext;
@@ -38,7 +40,18 @@ public class ANhCTSPSuaAdapter extends RecyclerView.Adapter<ANhCTSPSuaAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Glide.with(myContext).load(DuongDan.url+lstSPSua.get(i).getImageUrl()).into(viewHolder.imgView);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                myContext.startActivityForResult(intent,REQUEST_PICK);
+            }
+        });
+
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -52,4 +65,5 @@ public class ANhCTSPSuaAdapter extends RecyclerView.Adapter<ANhCTSPSuaAdapter.Vi
             imgView=itemView.findViewById(R.id.img_itemSua);
         }
     }
+
 }

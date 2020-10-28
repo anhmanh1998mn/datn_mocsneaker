@@ -1,15 +1,18 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLySanPham;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +45,7 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
     private PreGetProductImage preGetProductImage;
     private int idProduct=0;
     private PreKichCoTheoSP preKichCoTheoSP;
+    private String realPath="";
 
 
     @Override
@@ -121,6 +125,8 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode==REQUEST_PICK&&resultCode==RESULT_OK&&data!=null){
             Uri uri=data.getData();
+            realPath=getRealPathFromURI(uri);
+            Log.d("ImageUdated",realPath);
             try {
                 InputStream inputStream=getContentResolver().openInputStream(uri);
                 Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
@@ -143,6 +149,20 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail {
                 preKichCoTheoSP.kichCoTheoSanPham(idProduct);
             }
         }).start();
+
+    }
+
+    private String getRealPathFromURI(Uri uri) {
+        String path = "";
+        String[] proj = {MediaStore.MediaColumns.DATA};
+        Cursor cursor = getContentResolver().query(uri, proj, null, null, null);
+        if (cursor.moveToFirst()) {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+            path = cursor.getString(column_index);
+
+        }
+        cursor.close();
+        return path;
     }
 
     @Override
