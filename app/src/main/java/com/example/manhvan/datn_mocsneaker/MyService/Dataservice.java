@@ -228,12 +228,17 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("themmoisanpham.php")
     Call<String> themMoiSP(@Field("staff_id") int maNV,@Field("product_name")String tenSP,@Field("product_url")String url,
-                           @Field("product_content")String noiDung,@Field("price_out") int giaBan,@Field("size39")int soLuong39,
-                           @Field("size40")int soLuong40,@Field("size41")int soLuong41,@Field("size42")int soLuong42,
-                           @Field("size43")int soLuong43);
+                           @Field("product_content")String noiDung,@Field("price_out") int giaBan);
 
     //Thêm chi tiết ảnh sản phẩm
     @FormUrlEncoded
     @POST("themchitietanhsp.php")
-    Call<String> themCTanh(@Field("idSanPham")int idSanPham,@Field("spURL")String spURL);
+    Call<String> themCTanh(@Field("idSP")int idSanPham,@Field("imgURL")String spURL);
+
+    //Thêm số lượng theo kích cỡ sản phẩm
+    @FormUrlEncoded
+    @POST("themchitietsoluongsanpham.php")
+    Call<String> themSoLuongSize(@Field("idSP")int idSanPham,@Field("size39")int soLuong39,
+                                  @Field("size40")int soLuong40,@Field("size41")int soLuong41,@Field("size42")int soLuong42,
+                                  @Field("size43")int soLuong43);
 }

@@ -1,5 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.Model;
 
+import android.util.Log;
+
 import com.example.manhvan.datn_mocsneaker.MyService.APIService;
 import com.example.manhvan.datn_mocsneaker.MyService.Dataservice;
 
@@ -48,18 +50,17 @@ public class MoThemMoiSanPham {
         });
     }
 
-    public void xuLy2(final int maNV, String tenSP, String noiDung, int giaBan, int sl39,
-                      int sl40, int sl41, int sl42, int sl43, String path){
+    public void xuLy2(int maNV,String tenSP,String noiDung,int giaBan,String path){
         Dataservice dataservice=APIService.getService();
-        Call<String> callback=dataservice.themMoiSP(maNV,tenSP,path,noiDung,giaBan,sl39,sl40,sl41,sl42,sl43);
+        Call<String> callback=dataservice.themMoiSP(maNV,tenSP,path,noiDung,giaBan);
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
 
-//                Log.d("MSP",response.body().toString()+"");
-//                //int maSp=Integer.parseInt(response.body());
+                //Log.d("MSP",response.body().toString()+"");
+                int maSp=Integer.parseInt(response.body());
 //                Log.d("Mã sản phẩm thêm",maSp+"");
-//                themMoiSPInterface.onS1(maSp);
+                themMoiSPInterface.onS1(maSp);
             }
 
             @Override
@@ -86,7 +87,7 @@ public class MoThemMoiSanPham {
                     String messeage=response.body();
 //                    Log.d("PathSend",messeage);
                     String path="/datn_mocsneakerapi/image/"+messeage;
-//                    Log.d("PathSend",path);
+                    Log.d("PathSend",path);
                     Call<String> call1CTAnh=dataservice.themCTanh(maSP,path);
                     call1CTAnh.enqueue(new Callback<String>() {
                         @Override
@@ -114,10 +115,31 @@ public class MoThemMoiSanPham {
         });
     }
 
+    public void themSoLuongSP(int maSP,int size39,int size40,int size41,int size42,int size43){
+        Dataservice dataservice=APIService.getService();
+        Call<String> callbak=dataservice.themSoLuongSize(maSP,size39,size40,size41,size42,size43);
+        callbak.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.body().toString().equals("thanhcong")){
+                    themMoiSPInterface.themSize();
+                    return;
+                }
+                themMoiSPInterface.onF();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d("LoiThem",t.toString());
+            }
+        });
+    }
+
     public interface ThemMoiSPInterface{
         public void onS(String path);
         public void onF();
         public void onS1(int maSP);
         public void themTC();
+        public void themSize();
     }
 }
