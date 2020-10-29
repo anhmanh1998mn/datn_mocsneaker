@@ -92,6 +92,12 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menucheck,menu);
+        MenuItem menuItem=menu.findItem(R.id.mnuCheck);
+        menuItem.setVisible(false);
+        SharedPreferences sharedPreferences = getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        if(sharedPreferences.getString("quyen", "").equals("1")&&trangThaiDN.equals("3")){
+            menuItem.setVisible(true);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
