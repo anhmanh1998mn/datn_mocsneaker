@@ -441,13 +441,19 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                         Integer.parseInt(edtSoLuong40.getText().toString().trim()), Integer.parseInt(edtSoLuong41.getText().toString().trim()),
                         Integer.parseInt(edtSoLuong42.getText().toString().trim()), Integer.parseInt(edtSoLuong43.getText().toString().trim()));
 
-                for (int i = 0; i < GioHang.arrSanPhamThem.size(); i++) {
-                    preThemMoiSanPham.themMoiAnhSPChiTiet(GioHang.arrSanPhamThem.get(i), maSP);
-                }
+
             }
         }).start();
 
-
+        for (int i = 0; i < GioHang.arrSanPhamThem.size(); i++) {
+            final int finalI = i;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    preThemMoiSanPham.themMoiAnhSPChiTiet(GioHang.arrSanPhamThem.get(finalI), maSP);
+                }
+            }).start();
+        }
     }
 
     @Override
