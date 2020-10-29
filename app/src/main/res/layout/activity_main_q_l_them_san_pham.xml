@@ -9,6 +9,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
         <ImageView
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_baseline_image_24"
             android:id="@+id/img_themSP"
             android:layout_marginLeft="8dp"
@@ -39,6 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp">
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/img_anh1"
                 android:layout_marginLeft="8dp"
                 app:srcCompat="@drawable/ic_baseline_image_24"
@@ -82,6 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp">
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/img_anh2"
                 android:layout_marginLeft="8dp"
                 app:srcCompat="@drawable/ic_baseline_image_24"
@@ -124,6 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp">
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/img_anh3"
                 android:layout_marginLeft="8dp"
                 app:srcCompat="@drawable/ic_baseline_image_24"
@@ -166,6 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp">
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/img_anh4"
                 android:layout_marginLeft="8dp"
                 app:srcCompat="@drawable/ic_baseline_image_24"
@@ -208,6 +213,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp">
             <ImageView
+                android:scaleType="centerCrop"
                 android:id="@+id/img_anh5"
                 android:layout_marginLeft="8dp"
                 app:srcCompat="@drawable/ic_baseline_image_24"

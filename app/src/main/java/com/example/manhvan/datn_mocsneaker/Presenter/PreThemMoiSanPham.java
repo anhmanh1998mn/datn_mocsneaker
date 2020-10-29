@@ -18,13 +18,12 @@ public class PreThemMoiSanPham implements MoThemMoiSanPham.ThemMoiSPInterface {
         moThemMoiSanPham.xuLyUpLoadCTAnh(realpath,maSP);
     }
 
-    public void themMoiSanPham2(int maNV,String tenSP,String noiDung,int giaBan,int sl39,
-                                int sl40,int sl41,int sl42,int sl43,String path){
-        moThemMoiSanPham.xuLy2(maNV,tenSP,noiDung,giaBan,sl39,sl40,sl41,sl42,sl43,path);
+    public void themMoiSanPham2(int maNV,String tenSP,String noiDung,int giaBan,String path){
+        moThemMoiSanPham.xuLy2(maNV,tenSP,noiDung,giaBan,path);
     }
-//    public void themChiTiet(int maSP,String url){
-//
-//    }
+    public void themSoLuongSize(int maSP,int size39,int size40,int size41,int size42,int size43){
+        moThemMoiSanPham.themSoLuongSP(maSP,size39,size40,size41,size42,size43);
+    }
     @Override
     public void onS(String path) {
         ketQuaThemMoiSPInterface.onSuccessed(path);
@@ -45,10 +44,16 @@ public class PreThemMoiSanPham implements MoThemMoiSanPham.ThemMoiSPInterface {
         ketQuaThemMoiSPInterface.themThanhCong();
     }
 
+    @Override
+    public void themSize() {
+        ketQuaThemMoiSPInterface.themSizeThanhCong();
+    }
+
     public interface KetQuaThemMoiSPInterface{
         public void onSuccessed(String path);
         public void onFailed();
         public void onSuc1(int maSP);
         public void themThanhCong();
+        public void themSizeThanhCong();
     }
 }

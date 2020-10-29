@@ -44,6 +44,7 @@ public class RecylceViewConAdapter extends RecyclerView.Adapter<RecylceViewConAd
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i1) {
         viewHolder.imageView.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)*10/35;
+        viewHolder.imageView.getLayoutParams().height= AndroidDeviceHelper.getWithScreen(myContext)*10/35;
         viewHolder.txtTen.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)*10/35;
         viewHolder.txtTen.requestLayout();
         viewHolder.imageView.requestLayout();
