@@ -123,6 +123,16 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
         btnChon5.setOnClickListener(this);
         btnTiepTuc5.setOnClickListener(this);
         btnXacNhan5.setOnClickListener(this);
+        int permission = ActivityCompat.checkSelfPermission(MainQLThemSanPham.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    MainQLThemSanPham.this,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+            return;
+        }
     }
 
     @Override
@@ -278,7 +288,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 case REQUEST_PICK: {
                     Uri uri = data.getData();
                     realPath = getRealPathFromURI(uri);
-//                    Log.d("path111", realPath);
+                    Log.d("path111", realPath);
                     try {
                         InputStream inputStream = getContentResolver().openInputStream(uri);
                         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
@@ -367,16 +377,16 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             return;
         }
 
-        int permission = ActivityCompat.checkSelfPermission(MainQLThemSanPham.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                    MainQLThemSanPham.this,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );
-            return;
-        }
+//        int permission = ActivityCompat.checkSelfPermission(MainQLThemSanPham.this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//        if (permission != PackageManager.PERMISSION_GRANTED) {
+//            // We don't have permission so prompt the user
+//            ActivityCompat.requestPermissions(
+//                    MainQLThemSanPham.this,
+//                    PERMISSIONS_STORAGE,
+//                    REQUEST_EXTERNAL_STORAGE
+//            );
+//            return;
+//        }
         preThemMoiSanPham = new PreThemMoiSanPham(this);
 
         preThemMoiSanPham.themMoiSP(realPath);

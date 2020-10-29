@@ -1,5 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.Model;
 
+import android.util.Log;
+
 import com.example.manhvan.datn_mocsneaker.MyService.APIService;
 import com.example.manhvan.datn_mocsneaker.MyService.Dataservice;
 
@@ -31,7 +33,7 @@ public class MoNhapHangVaoKho {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-
+                    Log.d("Fail",t.toString());
                 }
             });
         }
