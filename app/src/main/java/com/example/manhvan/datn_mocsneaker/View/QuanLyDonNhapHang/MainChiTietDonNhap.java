@@ -1,14 +1,18 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLyDonNhapHang;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +26,7 @@ import android.widget.Toast;
 import com.example.manhvan.datn_mocsneaker.Model.MoLayChiTietDonNhap;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreDuyetDonNhapHang;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreLayChiTietDonNhap;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreNhapHangVaoKho;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.PKInterface.LayCTDonNhapInterface;
 import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDNLayDSAdapter;
@@ -29,7 +34,7 @@ import com.example.manhvan.datn_mocsneaker.adapter.ChiTietDNLayDSAdapter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNhapInterface, View.OnClickListener,ChiTietDNLayDSAdapter.onDialogCloseListener1{
+public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNhapInterface, View.OnClickListener,ChiTietDNLayDSAdapter.onDialogCloseListener1, PreNhapHangVaoKho.NhapKhoInterfaeSucc {
     private ActionBar actionBar;
     private TextView txtMaDonNhapCT,txtNgayLapCT,txtTongSL,txtTongTienCT;
     private Spinner spinner;
@@ -42,6 +47,7 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
     private int tinhTrangDuyet=1;
     private String trangThaiDN="";
     private PreDuyetDonNhapHang preDuyetDonNhapHang;
+    private  PreNhapHangVaoKho preNhapHangVaoKho;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +90,51 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menucheck,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                finish();break;
+            }
+            case R.id.mnuCheck:{
+                nhapHangVaoKho();
+                break;
+            }
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void nhapHangVaoKho(){
+        preNhapHangVaoKho=new PreNhapHangVaoKho(this);
+        final AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Xác nhận nhập hàng vào kho?");
+        builder.setMessage("Vui lòng kiểm tra lại đơn hàng nhập để tiến hành nhập hàng vào kho");
+        builder.setNegativeButton("Đồng ý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preNhapHangVaoKho.nhapHangVaoKho();
+                    }
+                }).start();
+//                Toast.makeText(MainChiTietDonNhap.this,"Đồng ý",Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setPositiveButton("Từ chối", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+//                Toast.makeText(MainChiTietDonNhap.this,"Thất bại",Toast.LENGTH_SHORT).show();
+            }
+        });
+        Dialog dialog=builder.create();
+        dialog.show();
     }
 
     public void checkRole(){
@@ -227,5 +275,15 @@ public class MainChiTietDonNhap extends AppCompatActivity implements LayCTDonNha
         Log.d("clodeDialog","sssss");
         layChiTietDN();
         //dd
+    }
+
+    @Override
+    public void onThanhCOngKho() {
+        txtMaDonNhapCT.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainChiTietDonNhap.this,"Thêm hàng vào kho thành công",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

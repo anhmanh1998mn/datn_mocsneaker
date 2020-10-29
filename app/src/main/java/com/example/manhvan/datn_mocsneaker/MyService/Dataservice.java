@@ -246,4 +246,9 @@ public interface Dataservice {
     @POST("suathongtinsanpham.php")
     Call<String> updateProductInfo(@Field("productID") int prodcutID,@Field("sizeID") int sizeID,@Field("productName")String productName,
                                    @Field("productContent")String productContent,@Field("priceOut")int priceOut,@Field("stock")int stock);
+
+    //nhập hàng vào kho
+    @FormUrlEncoded
+    @POST("nhaphanggopsoluong.php")
+    Call<String> nhapHangHopSL(@Field("quantity")int soLuong,@Field("sizeID") int kichCo,@Field("productID") int maSP);
 }
