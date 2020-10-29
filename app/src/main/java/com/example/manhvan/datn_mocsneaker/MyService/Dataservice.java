@@ -241,4 +241,9 @@ public interface Dataservice {
     Call<String> themSoLuongSize(@Field("idSP")int idSanPham,@Field("size39")int soLuong39,
                                   @Field("size40")int soLuong40,@Field("size41")int soLuong41,@Field("size42")int soLuong42,
                                   @Field("size43")int soLuong43);
+    //Update product info
+    @FormUrlEncoded
+    @POST("suathongtinsanpham.php")
+    Call<String> updateProductInfo(@Field("productID") int prodcutID,@Field("sizeID") int sizeID,@Field("productName")String productName,
+                                   @Field("productContent")String productContent,@Field("priceOut")int priceOut,@Field("stock")int stock);
 }

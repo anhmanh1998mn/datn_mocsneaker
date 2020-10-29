@@ -35,6 +35,17 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
         actionBar.setDisplayHomeAsUpEnabled(true);
         initView();
         enventClickButton();
+
+        timkiemSP();
+    }
+
+    private void timkiemSP(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preTimKiemSanPham.timKiemSanPham(edtSearch1.getText().toString().trim());
+            }
+        }).start();
     }
 
     @Override
@@ -61,12 +72,7 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_search1:{
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        preTimKiemSanPham.timKiemSanPham(edtSearch1.getText().toString().trim());
-                    }
-                }).start();
+                timkiemSP();
                 break;
             }
             case R.id.btn_themSP:{
@@ -74,6 +80,14 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
                 break;
             }
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        edtSearch1.setText("");
+        adapter.notifyDataSetChanged();
+        timkiemSP();
+        super.onRestart();
     }
 
     @Override

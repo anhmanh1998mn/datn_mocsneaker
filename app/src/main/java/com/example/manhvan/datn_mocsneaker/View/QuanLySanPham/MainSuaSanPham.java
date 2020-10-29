@@ -16,16 +16,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.Model.MoKichCoTheoSP;
 import com.example.manhvan.datn_mocsneaker.Model.MogetProductImage;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreGetProductImage;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreKichCoTheoSP;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreSuaThongTinSP;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.PKInterface.ProductDetail;
 import com.example.manhvan.datn_mocsneaker.adapter.ANhCTSPSuaAdapter;
@@ -33,20 +38,25 @@ import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
-public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,ANhCTSPSuaAdapter.OnClickImageListener {
+public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,ANhCTSPSuaAdapter.OnClickImageListener, View.OnClickListener, PreSuaThongTinSP.OnResultSuccessInterface {
     private ActionBar actionBar;
     private ImageView imgViewUpdate;
-    private EditText edtProductName,edtProductPrice,edtProductContent,edtSize39,edtSize40,edtSize41,edtSize42,edtSize43;
-    private Button btnUpdateImage;
+    private EditText edtProductName,edtProductPrice,edtProductContent;
+//    private EditText edtSize39,edtSize40,edtSize41,edtSize42,edtSize43;
+    private Button btnUpdateImage,btnXacNhanSua,btnHuySua;
     private final int REQUEST_PICK =123;
     private final int REQUEST_PICK_DETAIL=1234;
     private RecyclerView recyclerView;
     private ANhCTSPSuaAdapter adapter;
     private PreGetProductImage preGetProductImage;
-    private int idProduct=0;
+    private int idProduct=0,idSize=1;
     private PreKichCoTheoSP preKichCoTheoSP;
     private String realPath="";
+    private Spinner spinnerSuaSP;
+    private EditText edtSoLuongSPSua;
+    private PreSuaThongTinSP preSuaThongTinSP;
 
 
     @Override
@@ -60,6 +70,7 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
         showProductInfo();
         getImageFromPick();
         getListImageDetail();
+        onClickButton();
     }
 
     private void initView() {
@@ -69,16 +80,24 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
         edtProductContent=findViewById(R.id.edt_thongTinSPSua);
         btnUpdateImage=findViewById(R.id.btn_chonAnhSua);
         recyclerView=findViewById(R.id.recycle_CTAnhSP);
-        edtSize39=findViewById(R.id.edt_size39Sua);
-        edtSize40=findViewById(R.id.edt_size40Sua);
-        edtSize41=findViewById(R.id.edt_size41Sua);
-        edtSize42=findViewById(R.id.edt_size42Sua);
-        edtSize43=findViewById(R.id.edt_size43Sua);
+        spinnerSuaSP=findViewById(R.id.spiner_suaSP);
+        edtSoLuongSPSua=findViewById(R.id.txt_soLuongSuaSP);
+        btnXacNhanSua=findViewById(R.id.btn_xacNhanSuaSP);
+        btnHuySua=findViewById(R.id.btn_HuySuaSP);
+//        edtSize39=findViewById(R.id.edt_size39Sua);
+//        edtSize40=findViewById(R.id.edt_size40Sua);
+//        edtSize41=findViewById(R.id.edt_size41Sua);
+//        edtSize42=findViewById(R.id.edt_size42Sua);
+//        edtSize43=findViewById(R.id.edt_size43Sua);
 
         imgViewUpdate.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(this);
         imgViewUpdate.getLayoutParams().height=AndroidDeviceHelper.getWithScreen(this);
         imgViewUpdate.requestLayout();
 
+    }
+    private void onClickButton(){
+        btnXacNhanSua.setOnClickListener(this);
+        btnHuySua.setOnClickListener(this);
     }
 
     public void showProductInfo(){
@@ -90,6 +109,15 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
         edtProductPrice.setText(bundle.getString("productPrice"));
         edtProductContent.setText(bundle.getString("productContent"));
         idProduct=Integer.parseInt(bundle.getString("idProduct"));
+
+        ArrayList<String> arrSPN=new ArrayList<>();
+        arrSPN.add("Size 39");
+        arrSPN.add("Size 40");
+        arrSPN.add("Size 41");
+        arrSPN.add("Size 42");
+        arrSPN.add("Size 43");
+        ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.simple_expandable_list_item_1,arrSPN);
+        spinnerSuaSP.setAdapter(arrayAdapter);
     }
 
     @Override
@@ -119,7 +147,7 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menucheck,menu);
+//        getMenuInflater().inflate(R.menu.menucheck,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -193,20 +221,74 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
     }
 
     @Override
-    public void onFailed() {
+    public void onSuccessed() {
+        edtSoLuongSPSua.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainSuaSanPham.this,"Sửa thông tin sản phẩm thành công",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+    }
 
+    @Override
+    public void onFailed() {
+        edtSoLuongSPSua.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainSuaSanPham.this,"Sửa thông tin sản phẩm thất bại",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void kichCoSuccess() {
-        edtSize43.post(new Runnable() {
+        spinnerSuaSP.post(new Runnable() {
             @Override
             public void run() {
-                edtSize39.setText(MoKichCoTheoSP.lstKichCo.get(0).getStock());
-                edtSize40.setText(MoKichCoTheoSP.lstKichCo.get(1).getStock());
-                edtSize41.setText(MoKichCoTheoSP.lstKichCo.get(2).getStock());
-                edtSize42.setText(MoKichCoTheoSP.lstKichCo.get(3).getStock());
-                edtSize43.setText(MoKichCoTheoSP.lstKichCo.get(4).getStock());
+                edtSoLuongSPSua.setText(MoKichCoTheoSP.lstKichCo.get(0).getStock());
+                spinnerSuaSP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        switch (i){
+                            case 0:{
+                                idSize=1;
+                                edtSoLuongSPSua.setText(MoKichCoTheoSP.lstKichCo.get(0).getStock());
+                                break;
+                            }
+                            case 1:{
+                                idSize=2;
+                                edtSoLuongSPSua.setText(MoKichCoTheoSP.lstKichCo.get(1).getStock());
+                                break;
+                            }
+                            case 2:{
+                                idSize=3;
+                                edtSoLuongSPSua.setText(MoKichCoTheoSP.lstKichCo.get(2).getStock());
+                                break;
+                            }
+                            case 3:{
+                                idSize=4;
+                                edtSoLuongSPSua.setText(MoKichCoTheoSP.lstKichCo.get(3).getStock());
+                                break;
+                            }
+                            case 4:{
+                                idSize=5;
+                                edtSoLuongSPSua.setText(MoKichCoTheoSP.lstKichCo.get(4).getStock());
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+//                edtSize39.setText(MoKichCoTheoSP.lstKichCo.get(0).getStock());
+//                edtSize40.setText(MoKichCoTheoSP.lstKichCo.get(1).getStock());
+//                edtSize41.setText(MoKichCoTheoSP.lstKichCo.get(2).getStock());
+//                edtSize42.setText(MoKichCoTheoSP.lstKichCo.get(3).getStock());
+//                edtSize43.setText(MoKichCoTheoSP.lstKichCo.get(4).getStock());
             }
         });
     }
@@ -217,5 +299,27 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
         intent.setType("image/*");
         startActivityForResult(intent,REQUEST_PICK_DETAIL);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_xacNhanSuaSP:{
+                preSuaThongTinSP=new PreSuaThongTinSP(this);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preSuaThongTinSP.suaThongTinSP(idProduct,idSize,edtProductName.getText().toString().trim(),
+                                edtProductContent.getText().toString().toLowerCase(),Integer.parseInt(edtProductPrice.getText().toString().trim()),
+                                Integer.parseInt(edtSoLuongSPSua.getText().toString().trim()));
+                    }
+                }).start();
+                break;
+            }
+            case R.id.btn_HuySuaSP:{
+                finish();
+                break;
+            }
+        }
     }
 }
