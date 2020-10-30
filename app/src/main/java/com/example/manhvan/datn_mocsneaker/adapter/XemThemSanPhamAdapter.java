@@ -44,6 +44,7 @@ public class XemThemSanPhamAdapter extends RecyclerView.Adapter<XemThemSanPhamAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.imageView.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(myContext)/2-8;
+        viewHolder.imageView.getLayoutParams().height= AndroidDeviceHelper.getWithScreen(myContext)/2-8;
         viewHolder.txtTen.getLayoutParams().width=AndroidDeviceHelper.getWithScreen(myContext)/2;
         viewHolder.txtTen.requestLayout();
         viewHolder.imageView.requestLayout();

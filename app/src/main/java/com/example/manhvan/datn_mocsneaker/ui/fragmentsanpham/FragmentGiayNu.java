@@ -50,7 +50,7 @@ public class FragmentGiayNu extends Fragment implements SanPhamXemThemInterface{
             public void run() {
                 GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),2);
                 recyclerView.setLayoutManager(gridLayoutManager);
-                adapter=new XemThemSanPhamAdapter(getActivity(),R.layout.itemxemthemsanpham, MoXemThemSanPham.lstSanPhamXemThem);
+                adapter=new XemThemSanPhamAdapter(getActivity(),R.layout.itemxemthemsanpham, MoXemThemSanPham.lstNu);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

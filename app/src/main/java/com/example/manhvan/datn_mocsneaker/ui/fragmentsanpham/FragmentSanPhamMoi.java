@@ -50,7 +50,7 @@ public class FragmentSanPhamMoi extends Fragment implements SanPhamXemThemInterf
             public void run() {
                 GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),2);
                 recyclerView.setLayoutManager(gridLayoutManager);
-                adapter=new XemThemSanPhamAdapter(getActivity(),R.layout.itemxemthemsanpham, MoSanPhamXemThemTatCa.lst);
+                adapter=new XemThemSanPhamAdapter(getActivity(),R.layout.itemxemthemsanpham, MoSanPhamXemThemTatCa.lstMoi);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

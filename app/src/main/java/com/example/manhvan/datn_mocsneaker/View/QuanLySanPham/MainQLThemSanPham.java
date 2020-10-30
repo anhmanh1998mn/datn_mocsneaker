@@ -50,6 +50,8 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    private int maSanPham=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -435,7 +437,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onSuc1(final int maSP) {
-
+        maSanPham=maSP;
         preThemMoiSanPham = new PreThemMoiSanPham(this);
 
         edtNoiDung.post(new Runnable() {
@@ -477,6 +479,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             @Override
             public void run() {
                 Toast.makeText(MainQLThemSanPham.this, "Thêm mới sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                Log.d("MaPS",maSanPham+"");
             }
         });
     }

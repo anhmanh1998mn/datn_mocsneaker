@@ -60,6 +60,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.img.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 3;
+        viewHolder.img.getLayoutParams().height = AndroidDeviceHelper.getWithScreen(myContext) / 3;
         viewHolder.img.requestLayout();
         viewHolder.linearLayout.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext);
         viewHolder.linearLayout.requestLayout();

@@ -50,7 +50,7 @@ public class FragmentSanPhamNoiBat extends Fragment implements SanPhamXemThemInt
             public void run() {
                 GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),2);
                 recyclerView.setLayoutManager(gridLayoutManager);
-                adapter=new XemThemSanPhamAdapter(getActivity(),R.layout.itemxemthemsanpham, MoSanPhamXemThemTatCa.lst);
+                adapter=new XemThemSanPhamAdapter(getActivity(),R.layout.itemxemthemsanpham, MoSanPhamXemThemTatCa.lstNoiBat);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

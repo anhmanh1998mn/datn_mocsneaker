@@ -29,6 +29,12 @@ public class FragmentGiayNam extends Fragment implements SanPhamXemThemInterface
         return view;
     }
 
+    @Override
+    public void onStart() {
+        getData();
+        super.onStart();
+    }
+
     private void getData() {
         preXemThemSanPham=new PreXemThemSanPham(this);
         new Thread(new Runnable() {
