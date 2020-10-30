@@ -345,6 +345,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
         });
 
     }
+    //dđ
 
     private void shareQRCode() {
         imgQR.setDrawingCacheEnabled(true);
