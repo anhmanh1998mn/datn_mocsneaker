@@ -22,15 +22,19 @@ public class MoShowListOrder {
 
     public void xuLy(int maND,int quyenND,int trangThai){
         lstDonHang=new ArrayList<>();
-        lstDaGiao=new ArrayList<>();
         lstXacNhan=new ArrayList<>();
         lstDangGiao=new ArrayList<>();
+        lstDaGiao=new ArrayList<>();
+
         Dataservice dataservice= APIService.getService();
 //        Log.d("info",maND+"-"+quyenND+"-"+trangThai);
         switch (trangThai){
             case 1:{
-
-
+//                lstDonHang=new ArrayList<>();
+                lstDaGiao.clear();
+                lstDonHang.clear();
+                lstXacNhan.clear();
+                lstDangGiao.clear();
                 Call<List<DonHang>> callback=dataservice.showListOrder(maND,quyenND,trangThai);
                 callback.enqueue(new Callback<List<DonHang>>() {
                     @Override
@@ -47,6 +51,11 @@ public class MoShowListOrder {
                 break;
             }
             case 2:{
+//                lstXacNhan=new ArrayList<>();
+                lstDaGiao.clear();
+                lstDonHang.clear();
+                lstXacNhan.clear();
+                lstDangGiao.clear();
                 Call<List<DonHang>> callback=dataservice.showListOrder(maND,quyenND,trangThai);
                 callback.enqueue(new Callback<List<DonHang>>() {
                     @Override
@@ -63,6 +72,11 @@ public class MoShowListOrder {
                 break;
             }
             case 3:{
+//                lstDangGiao=new ArrayList<>();
+                lstDaGiao.clear();
+                lstDonHang.clear();
+                lstXacNhan.clear();
+                lstDangGiao.clear();
                 Call<List<DonHang>> callback=dataservice.showListOrder(maND,quyenND,trangThai);
                 callback.enqueue(new Callback<List<DonHang>>() {
                     @Override
@@ -79,6 +93,12 @@ public class MoShowListOrder {
                 break;
             }
             case 5:{
+//                lstDaGiao=new ArrayList<>();
+                lstDaGiao.clear();
+                lstDonHang.clear();
+                lstXacNhan.clear();
+                lstDangGiao.clear();
+
                 Call<List<DonHang>> callback=dataservice.showListOrder(maND,quyenND,trangThai);
                 callback.enqueue(new Callback<List<DonHang>>() {
                     @Override
@@ -113,6 +133,7 @@ public class MoShowListOrder {
     }
     public void xuLy1(int quyenND,int trangThai){
         lstDonHangAdmin=new ArrayList<>();
+        lstDonHangAdmin.clear();
         Dataservice dataservice= APIService.getService();
         Call<List<DonHang>> callback=dataservice.showListOrder1(quyenND,trangThai);
         callback.enqueue(new Callback<List<DonHang>>() {

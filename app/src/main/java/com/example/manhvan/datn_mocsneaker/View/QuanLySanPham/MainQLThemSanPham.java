@@ -1,6 +1,7 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLySanPham;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,10 +10,15 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,12 +32,22 @@ import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Presenter.PreThemMoiSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
+import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class MainQLThemSanPham extends AppCompatActivity implements View.OnClickListener, PreThemMoiSanPham.KetQuaThemMoiSPInterface {
+    private static final int FILE_SHARE_PER =102 ;
     private ActionBar actionBar;
     private LinearLayout li1, li2, li3, li4, li5;
     private ImageView imgAnh1, imgAnh2, imgAnh3, imgAnh4, imgAnh5;
@@ -49,6 +65,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+    private ImageView imgQR;
 
     private int maSanPham=0;
 
@@ -186,6 +203,9 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
                 btnTiepTuc1.setVisibility(View.GONE);
                 GioHang.arrSanPhamThem.add(realPath1);
                 btnXacNhan1.setVisibility(View.GONE);
+
+
+
                 break;
             }
             case R.id.btn_chonmota2: {
@@ -280,6 +300,89 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
 
                 break;
             }
+        }
+    }
+
+    private void showDialogCreateQRCode(String maSP) {
+        Dialog dialog=new Dialog(MainQLThemSanPham.this);
+        dialog.setContentView(R.layout.dialog_create_qrcode);
+        dialog.show();
+        Button btnShare=dialog.findViewById(R.id.btn_qrCode);
+        btnShare.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(this);
+        ConstraintLayout con=dialog.findViewById(R.id.con_qr);
+        con.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(this);
+        imgQR=dialog.findViewById(R.id.img_qrcode);
+        imgQR.getLayoutParams().height=AndroidDeviceHelper.getWithScreen(this);
+        imgQR.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(this);
+        imgQR.requestLayout();
+        con.requestLayout();
+        btnShare.requestLayout();
+
+        MultiFormatWriter multiFormatWriter=new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix=multiFormatWriter.encode(maSP, BarcodeFormat.QR_CODE,250,250);
+            BarcodeEncoder barcodeEncoder=new BarcodeEncoder();
+            Bitmap bitmap=barcodeEncoder.createBitmap(bitMatrix);
+            imgQR.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+        //Chia sẻ mã QR sản phẩm
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Build.VERSION.SDK_INT>=23){
+                    if(checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                        shareQRCode();
+                    }else {
+                        requestPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,FILE_SHARE_PER);
+                    }
+                }else {
+                    shareQRCode();
+                }
+            }
+        });
+
+    }
+
+    private void shareQRCode() {
+        imgQR.setDrawingCacheEnabled(true);
+        Bitmap bitmap=imgQR.getDrawingCache();
+        File file=new File(Environment.getExternalStorageDirectory(),"barcode.jpg");
+        try {
+            file.createNewFile();
+            FileOutputStream fileOutputStream=new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,fileOutputStream);
+            fileOutputStream.close();
+
+            //share file
+            Intent intent=new Intent(Intent.ACTION_SEND);
+            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+                intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                intent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(MainQLThemSanPham.this,"com.example.manhvan.datn_mocsneaker",file));
+            }else {
+                intent.putExtra(Intent.EXTRA_STREAM,Uri.fromFile(file));
+
+            }
+            intent.setType("image/*");
+            startActivity(intent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean checkPermission(String permission){
+        int result= ContextCompat.checkSelfPermission(MainQLThemSanPham.this,permission);
+        if(result== PackageManager.PERMISSION_GRANTED){
+            return  true;
+        }else return false;
+    }
+    private void requestPermission(String permission,int code){
+        if(ActivityCompat.shouldShowRequestPermissionRationale(MainQLThemSanPham.this,permission)){
+
+        }else {
+            ActivityCompat.requestPermissions(MainQLThemSanPham.this,new String[]{permission},code);
         }
     }
 
@@ -480,6 +583,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             public void run() {
                 Toast.makeText(MainQLThemSanPham.this, "Thêm mới sản phẩm thành công", Toast.LENGTH_SHORT).show();
                 Log.d("MaPS",maSanPham+"");
+                showDialogCreateQRCode(String.valueOf(maSanPham));
             }
         });
     }

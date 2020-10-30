@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/con_qr"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:textColor="#0050D5"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/txt_qr1"
+        android:textAlignment="center"
+        android:text="@string/maqr"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" />
+    <ImageView
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="16dp"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_qr1"
+        android:id="@+id/img_qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#fff"
+        android:background="#0050D5"
+        android:text="Chia sẻ mã QR"
+        android:id="@+id/btn_qrCode"
+        app:layout_constraintTop_toBottomOf="@+id/img_qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"/>
+
+</android.support.constraint.ConstraintLayout>

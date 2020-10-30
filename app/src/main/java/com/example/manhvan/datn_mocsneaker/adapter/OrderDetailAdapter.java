@@ -41,6 +41,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.img.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 3;
+        viewHolder.img.getLayoutParams().height = AndroidDeviceHelper.getWithScreen(myContext) / 3;
         viewHolder.img.requestLayout();
 
         viewHolder.txt2.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 4;
