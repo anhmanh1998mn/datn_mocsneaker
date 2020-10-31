@@ -36,7 +36,7 @@ public class MoThemMoiSanPham {
                     String messeage=response.body();
 //                    Log.d("PathSend",messeage);
                     String path="/datn_mocsneakerapi/image/"+messeage;
-                    Log.d("PathSend",path);
+//                    Log.d("PathSend",path);
                     themMoiSPInterface.onS(path);
                     return;
                 }
