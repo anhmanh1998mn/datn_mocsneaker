@@ -45,7 +45,8 @@ public class MoThemMoiSanPham {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
+                Log.d("ThatBaiUpload",t.toString());
+//                themMoiSPInterface.onF();
             }
         });
     }

@@ -45,6 +45,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         View view = inflater.inflate(myLayout, null);
         return new ViewHolder(view);
     }
+    //llll
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
