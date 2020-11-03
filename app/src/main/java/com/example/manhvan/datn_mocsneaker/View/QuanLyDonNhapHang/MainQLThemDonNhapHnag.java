@@ -169,8 +169,16 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         getDataDonNhap();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getDataDonNhap();
+    }
+
     public void getDataDonNhap(){
+
         if(GioHang.arrChiTietDonNhap!=null){
+
 
             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayout.VERTICAL, false);
             recyclerViewChiTietDN.setLayoutManager(linearLayoutManager);
@@ -178,6 +186,12 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
             recyclerViewChiTietDN.setAdapter(chiTietDonNhapAdapter);
             chiTietDonNhapAdapter.notifyDataSetChanged();
         }
+        for(int i=0;i<GioHang.arrChiTietDonNhap.size();i++){
+            if(GioHang.arrChiTietDonNhap.get(i).getSoLuong()==0){
+                GioHang.arrChiTietDonNhap.remove(i);
+            }
+        }
+        chiTietDonNhapAdapter.notifyDataSetChanged();
         int soLuong=0;
         int tongTien=0;
         for (int i=0;i<GioHang.arrChiTietDonNhap.size();i++){
@@ -187,6 +201,8 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         txtSoLuongNhap.setText("Tổng số hàng: "+soLuong);
         txtTongTienNhap.setText("Tổng tiền: "+decimalFormat.format(tongTien)+"đ");
+
+
     }
 
     @Override

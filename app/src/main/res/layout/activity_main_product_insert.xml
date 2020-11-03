@@ -171,6 +171,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <EditText
+                    android:text="0"
                     android:inputType="number"
                     android:id="@+id/edt_size39Nhap"
                     android:paddingLeft="8dp"
@@ -201,6 +202,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <EditText
+                    android:text="0"
                     android:inputType="number"
                     android:id="@+id/edt_size40Nhap"
                     android:paddingLeft="8dp"
@@ -231,6 +233,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <EditText
+                    android:text="0"
                     android:inputType="number"
                     android:id="@+id/edt_size41Nhap"
                     android:paddingLeft="8dp"
@@ -260,6 +263,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <EditText
+                    android:text="0"
                     android:inputType="number"
                     android:id="@+id/edt_size42Nhap"
                     android:paddingLeft="8dp"
@@ -289,6 +293,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <EditText
+                    android:text="0"
                     android:inputType="number"
                     android:id="@+id/edt_size43Nhap"
                     android:paddingLeft="8dp"
@@ -309,7 +314,7 @@
                 android:layout_width="match_parent">
                 <Button
                     android:layout_weight="2"
-                    android:text="Thêm"
+                    android:text="Xong"
                     android:textColor="#fff"
                     android:background="#126AC8"
                     android:id="@+id/btn_Add"
@@ -317,7 +322,7 @@
                     android:layout_height="match_parent"/>
                 <Button
                     android:layout_weight="1"
-                    android:text="Xong"
+                    android:text="Hủy"
                     android:textColor="#fff"
                     android:background="#0034F4"
                     android:id="@+id/btn_AddSucess"
