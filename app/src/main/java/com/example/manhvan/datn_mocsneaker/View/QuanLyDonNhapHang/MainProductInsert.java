@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +26,13 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
     private ActionBar actionBar;
     private ImageView imageView;
     private TextView txtProductName,txtKichCoSoLuong,getTxtKichCoSoLuong2;
-    private RadioButton radioButton39, radioButton40, radioButton41, radioButton42, radioButton43, radioButtonChecked;
-    private EditText edtProductQuantity;
+//    private RadioButton radioButton39, radioButton40, radioButton41, radioButton42, radioButton43, radioButtonChecked;
+//    private EditText edtProductQuantity;
     private Button btnAdd,btnAddSucess;
     private PreKichCoTheoSP preKichCoTheoSP;
     private int idnhan = 0;
-    private RadioGroup radioGroup;
+    private EditText edtS39Nhap,edtS40Nhap,edtS41Nhap,edtS42Nhap,edtS43Nhap;
+//    private RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +52,22 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
         imageView.requestLayout();
 
         txtProductName = findViewById(R.id.txt_ProductInName);
-        radioButton39 = findViewById(R.id.rad_btn39);
-        radioButton40 = findViewById(R.id.rad_btn40);
-        radioButton41 = findViewById(R.id.rad_btn41);
-        radioButton42 = findViewById(R.id.rad_btn42);
-        radioButton43 = findViewById(R.id.rad_btn43);
-        edtProductQuantity = findViewById(R.id.edt_ProductQuantity);
+//        radioButton39 = findViewById(R.id.rad_btn39);
+//        radioButton40 = findViewById(R.id.rad_btn40);
+//        radioButton41 = findViewById(R.id.rad_btn41);
+//        radioButton42 = findViewById(R.id.rad_btn42);
+//        radioButton43 = findViewById(R.id.rad_btn43);
+//        edtProductQuantity = findViewById(R.id.edt_ProductQuantity);
         btnAdd = findViewById(R.id.btn_Add);
-        radioGroup = findViewById(R.id.radiogroup_in);
+//        radioGroup = findViewById(R.id.radiogroup_in);
         btnAddSucess=findViewById(R.id.btn_AddSucess);
         txtKichCoSoLuong=findViewById(R.id.txt_KichCoSoLuongIN);
         getTxtKichCoSoLuong2=findViewById(R.id.txt_KichCoSoLuongIN2);
+        edtS39Nhap=findViewById(R.id.edt_size39Nhap);
+        edtS40Nhap=findViewById(R.id.edt_size40Nhap);
+        edtS41Nhap=findViewById(R.id.edt_size41Nhap);
+        edtS42Nhap=findViewById(R.id.edt_size42Nhap);
+        edtS43Nhap=findViewById(R.id.edt_size43Nhap);
     }
 
     @Override
@@ -112,32 +116,48 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
     }
 
     public void saveData() {
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup1, int i) {
-//                int id=radioGroup1.getCheckedRadioButtonId();
-                radioButtonChecked = findViewById(i);
 
-//                Log.d("Value:",rb.getText().toString());
-            }
-        });
+
+
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup radioGroup1, int i) {
+////                int id=radioGroup1.getCheckedRadioButtonId();
+//                radioButtonChecked = findViewById(i);
+//
+////                Log.d("Value:",rb.getText().toString());
+//            }
+//        });
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtProductQuantity.getText().toString().trim().equals("")){
-                    edtProductQuantity.setError("Mời nhập số lượng");
+                if(edtS39Nhap.getText().toString().trim().equals("")&&edtS40Nhap.getText().toString().trim().equals("")&&
+                edtS41Nhap.getText().toString().trim().equals("")&&edtS42Nhap.getText().toString().trim().equals("")&&
+                edtS43Nhap.getText().toString().trim().equals("")){
+                    Toast.makeText(MainProductInsert.this,"Vui lòng nhập số lượng kích cỡ muốn nhập",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                for(int i=0;i<GioHang.arrChiTietDonNhap.size();i++){
-                    if(GioHang.arrChiTietDonNhap.get(i).getIdSanPham()==idnhan&&GioHang.arrChiTietDonNhap.get(i).getKichCo().equals(radioButtonChecked.getText())){
-//                        Log.d("Check:","true");
-                        GioHang.arrChiTietDonNhap.get(i).setSoLuong(GioHang.arrChiTietDonNhap.get(i).getSoLuong()+Integer.parseInt(edtProductQuantity.getText().toString()));
-                        Toast.makeText(MainProductInsert.this,"Đã thêm",Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+                if(edtS39Nhap.getText().length()>0){
+
+                    GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtS39Nhap.getText().toString().trim()),
+                            Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getPriceIn()),
+                            "39",MoKichCoTheoSP.lstKichCo.get(0).getProductName()));
+                    return;
                 }
-                GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtProductQuantity.getText().toString().trim()),Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getPriceIn()),radioButtonChecked.getText().toString(),MoKichCoTheoSP.lstKichCo.get(0).getProductName()));
-                Toast.makeText(MainProductInsert.this,"Đã thêm",Toast.LENGTH_SHORT).show();
+//                if(edtProductQuantity.getText().toString().trim().equals("")){
+//                    edtProductQuantity.setError("Mời nhập số lượng");
+//                    return;
+//                }
+//                for(int i=0;i<GioHang.arrChiTietDonNhap.size();i++){
+//                    if(GioHang.arrChiTietDonNhap.get(i).getIdSanPham()==idnhan&&GioHang.arrChiTietDonNhap.get(i).getKichCo().equals(radioButtonChecked.getText())){
+////                        Log.d("Check:","true");
+//                        GioHang.arrChiTietDonNhap.get(i).setSoLuong(GioHang.arrChiTietDonNhap.get(i).getSoLuong()+Integer.parseInt(edtProductQuantity.getText().toString()));
+//                        Toast.makeText(MainProductInsert.this,"Đã thêm",Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
+//                }
+//                GioHang.arrChiTietDonNhap.add(new ChiTietDonNhap(idnhan,Integer.parseInt(edtProductQuantity.getText().toString().trim()),Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getPriceIn()),radioButtonChecked.getText().toString(),MoKichCoTheoSP.lstKichCo.get(0).getProductName()));
+//                Toast.makeText(MainProductInsert.this,"Đã thêm",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -148,4 +168,6 @@ public class MainProductInsert extends AppCompatActivity implements ProductDetai
             }
         });
     }
+
+
 }

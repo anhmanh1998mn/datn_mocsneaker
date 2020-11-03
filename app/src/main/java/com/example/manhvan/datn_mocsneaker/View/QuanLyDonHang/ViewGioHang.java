@@ -18,15 +18,20 @@ import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreLayMaNguoiLapDH;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreThongTinTaiKhoan;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.PKInterface.MaNguoiLapDHInterface;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.View.QuanLyTaiKhoan.MainLogin;
 import com.example.manhvan.datn_mocsneaker.adapter.GioHangAdapter;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
+import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
-public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.OnDialogCloseListener, MaNguoiLapDHInterface {
+public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.OnDialogCloseListener, MaNguoiLapDHInterface, ThongTinKHInterKQ2 {
     private ActionBar actionBar;
     private RecyclerView recyclerView;
     private GioHangAdapter adapter;
@@ -34,7 +39,7 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
     private EditText edtDiaChi;
     private PreLayMaNguoiLapDH preLayMaNguoiLapDH;
     private SharedPreferences sharedPreferences;
-
+    private PreThongTinTaiKhoan preThongTinTaiKhoan;
     private int idNguoiLap=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,22 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
         tongTien();
         getMaNguoiLap();
         datHangSP();
+
+        getAddressOrder();
+    }
+
+    private void getAddressOrder() {
+        sharedPreferences=getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+        if(sharedPreferences.getString("quyen","").isEmpty()){
+            return;
+        }
+        preThongTinTaiKhoan=new PreThongTinTaiKhoan(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preThongTinTaiKhoan.thongTinTaiKhoan(sharedPreferences.getString("quyen",""),sharedPreferences.getString("phone",""));
+            }
+        }).start();
     }
 
     private void getMaNguoiLap() {
@@ -197,4 +218,28 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
     }
 
 
+    @Override
+    public void thongTinNhanVien(final ArrayList<ThongTinNV> arrayList) {
+        edtDiaChi.post(new Runnable() {
+            @Override
+            public void run() {
+                edtDiaChi.setText(arrayList.get(0).getStaffAddress());
+            }
+        });
+    }
+
+    @Override
+    public void thongTinKhachHang(final ArrayList<ThongTinKhachHang> arrayList) {
+        edtDiaChi.post(new Runnable() {
+            @Override
+            public void run() {
+                edtDiaChi.setText(arrayList.get(0).getCustomerAddress());
+            }
+        });
+    }
+
+    @Override
+    public void loi() {
+
+    }
 }
