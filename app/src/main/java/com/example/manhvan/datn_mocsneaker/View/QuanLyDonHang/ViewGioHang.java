@@ -9,20 +9,29 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.manhvan.datn_mocsneaker.Model.MoGetAddressOrderCustomer;
 import com.example.manhvan.datn_mocsneaker.Model.MoLayMaNguoiLapDH;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreGetAddressOrderCustomer;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreGetAddressOrderCustomer.AddressOrder2Interface;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreInsertOrderAddessCustomer;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreThongTinTaiKhoan;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.PKInterface.MaNguoiLapDHInterface;
 import com.example.manhvan.datn_mocsneaker.View.PKInterface.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.View.QuanLyTaiKhoan.MainLogin;
+import com.example.manhvan.datn_mocsneaker.adapter.AddressOrderAdapter;
 import com.example.manhvan.datn_mocsneaker.adapter.GioHangAdapter;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
 import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
@@ -31,7 +40,7 @@ import com.example.manhvan.datn_mocsneaker.util.GioHang;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.OnDialogCloseListener, MaNguoiLapDHInterface, ThongTinKHInterKQ2 {
+public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.OnDialogCloseListener, MaNguoiLapDHInterface,AddressOrder2Interface,PreInsertOrderAddessCustomer.ThemDiaCHiInterface2 {
     private ActionBar actionBar;
     private RecyclerView recyclerView;
     private GioHangAdapter adapter;
@@ -41,6 +50,11 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
     private SharedPreferences sharedPreferences;
     private PreThongTinTaiKhoan preThongTinTaiKhoan;
     private int idNguoiLap=0;
+    private PreGetAddressOrderCustomer preGetAddressOrderCustomer;
+    private Spinner spinnerCart;
+    private AddressOrderAdapter addressOrderAdapter;
+    private TextView txtChonDiaChi,txtHoacDiaChi;
+    private PreInsertOrderAddessCustomer preInsertOrderAddessCustomer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,13 +76,28 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
         if(sharedPreferences.getString("quyen","").isEmpty()){
             return;
         }
-        preThongTinTaiKhoan=new PreThongTinTaiKhoan(this);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                preThongTinTaiKhoan.thongTinTaiKhoan(sharedPreferences.getString("quyen",""),sharedPreferences.getString("phone",""));
-            }
-        }).start();
+//        preThongTinTaiKhoan=new PreThongTinTaiKhoan(this);
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                preThongTinTaiKhoan.thongTinTaiKhoan(sharedPreferences.getString("quyen",""),sharedPreferences.getString("phone",""));
+//            }
+//        }).start();
+
+        if(sharedPreferences.getString("quyen","").equals("3")){
+            spinnerCart.setVisibility(View.VISIBLE);
+            txtHoacDiaChi.setVisibility(View.VISIBLE);
+            txtChonDiaChi.setVisibility(View.VISIBLE);
+            preGetAddressOrderCustomer=new PreGetAddressOrderCustomer(this);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    preGetAddressOrderCustomer.GetAddressOrder(sharedPreferences.getString("phone",""));
+                }
+            }).start();
+            return;
+        }
+
     }
 
     private void getMaNguoiLap() {
@@ -169,6 +198,9 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
         recyclerView.setLayoutManager(linearLayoutManager);
         edtDiaChi=findViewById(R.id.txtDiaChiNhan_giohnag);
         btnDatHang=findViewById(R.id.btn_DatHang);
+        spinnerCart=findViewById(R.id.spn_gioHang);
+        txtChonDiaChi=findViewById(R.id.txt_ghCHon);
+        txtHoacDiaChi=findViewById(R.id.txt_hoac);
     }
 
     @Override
@@ -215,31 +247,59 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
                 adapter.notifyDataSetChanged();
             }
         });
+        preInsertOrderAddessCustomer=new PreInsertOrderAddessCustomer(this);
+//        if(MoGetAddressOrderCustomer.arrAdressOrder.size()<1){
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    preInsertOrderAddessCustomer.ThemDiaChi(Integer.parseInt(MoGetAddressOrderCustomer.arrAdressOrder.get(0).getCustomerId()),edtDiaChi.getText().toString().trim());
+//                }
+//            }).start();
+//            return;
+//        }
+        for(int i=0;i<MoGetAddressOrderCustomer.arrAdressOrder.size();i++){
+            if(edtDiaChi.getText().toString().trim().toLowerCase().equals(MoGetAddressOrderCustomer.arrAdressOrder.get(i).getAOrderAddress().toLowerCase())){
+                return;
+            }
+
+        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preInsertOrderAddessCustomer.ThemDiaChi(Integer.parseInt(MoGetAddressOrderCustomer.arrAdressOrder.get(0).getCustomerId()),edtDiaChi.getText().toString().trim());
+            }
+        }).start();
     }
 
 
+
+
     @Override
-    public void thongTinNhanVien(final ArrayList<ThongTinNV> arrayList) {
-        edtDiaChi.post(new Runnable() {
+    public void GetAddressSuccess() {
+        spinnerCart.post(new Runnable() {
             @Override
             public void run() {
-                edtDiaChi.setText(arrayList.get(0).getStaffAddress());
+                Log.d("kich:",MoGetAddressOrderCustomer.arrAdressOrder.size()+"");
+                addressOrderAdapter=new AddressOrderAdapter(ViewGioHang.this,R.layout.item_address_order_customer,MoGetAddressOrderCustomer.arrAdressOrder);
+                spinnerCart.setAdapter(addressOrderAdapter);
+
+                spinnerCart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        edtDiaChi.setText(MoGetAddressOrderCustomer.arrAdressOrder.get(i).getAOrderAddress());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
             }
         });
     }
 
     @Override
-    public void thongTinKhachHang(final ArrayList<ThongTinKhachHang> arrayList) {
-        edtDiaChi.post(new Runnable() {
-            @Override
-            public void run() {
-                edtDiaChi.setText(arrayList.get(0).getCustomerAddress());
-            }
-        });
-    }
-
-    @Override
-    public void loi() {
+    public void themDiaChiThanhCong() {
 
     }
 }

@@ -1,5 +1,6 @@
 package com.example.manhvan.datn_mocsneaker.MyService;
 
+import com.example.manhvan.datn_mocsneaker.entity.AddressOrder;
 import com.example.manhvan.datn_mocsneaker.entity.ChiTietDonNhapLay;
 import com.example.manhvan.datn_mocsneaker.entity.DonHang;
 import com.example.manhvan.datn_mocsneaker.entity.DonNhapHang;
@@ -251,4 +252,14 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("nhaphanggopsoluong.php")
     Call<String> nhapHangHopSL(@Field("quantity")int soLuong,@Field("sizeID") int kichCo,@Field("productID") int maSP);
+
+    //get address order
+    @FormUrlEncoded
+    @POST("getAddressOderCustomer.php")
+    Call<List<AddressOrder>> getListAddress(@Field("phone")String phone);
+
+    //insert address order customer
+    @FormUrlEncoded
+    @POST("insertaddressordercustomer.php")
+    Call<String> insertOrderAddress(@Field("idKH")int maKH,@Field("diaChi")String diaChi);
 }

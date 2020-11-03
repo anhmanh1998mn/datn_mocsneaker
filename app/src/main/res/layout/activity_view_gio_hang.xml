@@ -6,8 +6,37 @@
     android:id="@+id/autoCompleteToStart1"
     android:layout_height="match_parent"
     tools:context=".View.QuanLyDonHang.ViewGioHang">
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/txt_ghCHon"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:text="Chọn địa chỉ đã đặt"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:visibility="gone"
+        android:layout_marginRight="8sp"
+        android:layout_marginTop="8sp"
+        android:layout_marginLeft="8sp"
+        android:id="@+id/spn_gioHang"
+        app:layout_constraintTop_toBottomOf="@+id/txt_ghCHon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+    <TextView
+        android:visibility="gone"
+        android:textColor="#000"
+        android:layout_marginLeft="8sp"
+        android:layout_marginTop="8sp"
+        android:text="Hoặc nhập địa chỉ mới"
+        app:layout_constraintTop_toBottomOf="@+id/spn_gioHang"
+        android:id="@+id/txt_hoac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <EditText
-
+        app:layout_constraintTop_toBottomOf="@+id/txt_hoac"
         android:drawablePadding="8dp"
         android:drawableTint="#004CE4"
         android:drawableLeft="@drawable/ic_location_on_black_24dp"
@@ -18,7 +47,6 @@
         android:layout_marginTop="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/txtDiaChiNhan_giohnag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
