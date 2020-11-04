@@ -46,14 +46,14 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
         viewHolder.txt2.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 4;
         viewHolder.txt2.requestLayout();
-        viewHolder.txt5.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 4 * 3;
-        viewHolder.txt5.requestLayout();
+//        viewHolder.txt5.getLayoutParams().width = AndroidDeviceHelper.getWithScreen(myContext) / 4 * 3;
+//        viewHolder.txt5.requestLayout();
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         viewHolder.txt1.setText(lstOrderDetail.get(i).getProductName());
         viewHolder.txt2.setText(lstOrderDetail.get(i).getQuantity() + "");
         viewHolder.txt3.setText(lstOrderDetail.get(i).getSize());
         viewHolder.txt4.setText(decimalFormat.format(Integer.parseInt(lstOrderDetail.get(i).getPriceOut()))+"đ");
-        viewHolder.txt5.setText(Integer.parseInt(lstOrderDetail.get(i).getPriceOut())*Integer.parseInt(lstOrderDetail.get(i).getQuantity())+"đ");
+//        viewHolder.txt5.setText(Integer.parseInt(lstOrderDetail.get(i).getPriceOut())*Integer.parseInt(lstOrderDetail.get(i).getQuantity())+"đ");
         Glide.with(myContext).load(DuongDan.url+lstOrderDetail.get(i).getProductUrl()).into(viewHolder.img);
     }
 
@@ -72,7 +72,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
             txt2 = itemView.findViewById(R.id.txt_soLuongMuaGH);
             txt3 = itemView.findViewById(R.id.txt_kichCoMuaGH);
             txt4 = itemView.findViewById(R.id.txt_donGiaMuaGH);
-            txt5 = itemView.findViewById(R.id.txt_thanhTien);
+//            txt5 = itemView.findViewById(R.id.txt_thanhTien);
         }
     }
 }
