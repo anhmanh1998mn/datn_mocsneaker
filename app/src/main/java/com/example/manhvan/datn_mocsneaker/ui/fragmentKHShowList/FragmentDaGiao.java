@@ -52,6 +52,7 @@ public class FragmentDaGiao extends Fragment implements ShowListOrderInterface {
         recyclerViewDaGiao1.setVisibility(View.GONE);
 //        Toast.makeText(getContext(),sharedPreferences.getString("quyen","")+"",Toast.LENGTH_SHORT).show();
     }
+    //fffff
 
     @Override
     public void onStart() {
