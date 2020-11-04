@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoOrderDetail;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreHuyHangTangSoLuong;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreOrderDetail;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.OrderDetailAdapter;
@@ -26,7 +27,7 @@ import com.example.manhvan.datn_mocsneaker.adapter.OrderDetailAdapter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail.GetDataOrInterface, View.OnClickListener {
+public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail.GetDataOrInterface, View.OnClickListener, PreHuyHangTangSoLuong.HuyTangSLInterface {
     private ActionBar actionBar;
     private TextView txtNgayLap,txtDiaChiNhan,txtTongTien,txtMaDH;
     private RecyclerView recyclerOrderDetail;
@@ -37,6 +38,7 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
     private SharedPreferences sharedPreferences;
     private Spinner spinner;
     private LinearLayout linearLayoutDH;
+    private PreHuyHangTangSoLuong preHuyHangTangSoLuong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +173,13 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
                 btnHuyDon.setVisibility(View.GONE);
             }
         });
+        preHuyHangTangSoLuong=new PreHuyHangTangSoLuong(this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preHuyHangTangSoLuong.HuyHangTangSoLuong();
+            }
+        }).start();
     }
 
     @Override
@@ -208,5 +217,10 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
             }
 
         }
+    }
+
+    @Override
+    public void HuyTangSlThanhCong() {
+
     }
 }

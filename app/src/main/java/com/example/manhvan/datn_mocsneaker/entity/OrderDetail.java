@@ -22,6 +22,9 @@ public class OrderDetail {
     @SerializedName("price_out")
     @Expose
     private String priceOut;
+    @SerializedName("maSP")
+    @Expose
+    private String maSP;
 
     public String getId() {
         return id;
@@ -70,4 +73,13 @@ public class OrderDetail {
     public void setPriceOut(String priceOut) {
         this.priceOut = priceOut;
     }
+
+    public String getMaSP() {
+        return maSP;
+    }
+
+    public void setMaSP(String maSP) {
+        this.maSP = maSP;
+    }
+
 }
