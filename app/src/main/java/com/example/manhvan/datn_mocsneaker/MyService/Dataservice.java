@@ -262,4 +262,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("insertaddressordercustomer.php")
     Call<String> insertOrderAddress(@Field("idKH")int maKH,@Field("diaChi")String diaChi);
+
+    //Đặt hàng trừ số lượng trong kho
+    @FormUrlEncoded
+    @POST("datHangTruSoLuong.php")
+    Call<String> truSoLuongDatHang(@Field("quantity")int soLuong,@Field("sizeID") int kichCo,@Field("productID") int maSP);
 }

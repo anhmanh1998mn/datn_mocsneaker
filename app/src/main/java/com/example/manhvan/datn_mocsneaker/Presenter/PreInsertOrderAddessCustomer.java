@@ -14,11 +14,22 @@ public class PreInsertOrderAddessCustomer implements MoInsertOrderAddressCustome
         moInsertOrderAddressCustomer.xuLy(maKH,diaChi);
     }
 
+    public void truSoLuongDatHang(){
+        moInsertOrderAddressCustomer.xuLyTruSoLuongTronKho();
+    }
+
     @Override
     public void onS() {
         themDiaCHiInterface2.themDiaChiThanhCong();
     }
+
+    @Override
+    public void truSoLuong() {
+        themDiaCHiInterface2.truSoLuongSuccess();
+    }
+
     public interface ThemDiaCHiInterface2{
         public void themDiaChiThanhCong();
+        public void truSoLuongSuccess();
     }
 }

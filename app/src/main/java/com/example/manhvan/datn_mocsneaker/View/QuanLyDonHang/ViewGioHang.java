@@ -29,16 +29,12 @@ import com.example.manhvan.datn_mocsneaker.Presenter.PreLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreThongTinTaiKhoan;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.PKInterface.MaNguoiLapDHInterface;
-import com.example.manhvan.datn_mocsneaker.View.PKInterface.ThongTinKHInterKQ2;
 import com.example.manhvan.datn_mocsneaker.View.QuanLyTaiKhoan.MainLogin;
 import com.example.manhvan.datn_mocsneaker.adapter.AddressOrderAdapter;
 import com.example.manhvan.datn_mocsneaker.adapter.GioHangAdapter;
-import com.example.manhvan.datn_mocsneaker.entity.ThongTinKhachHang;
-import com.example.manhvan.datn_mocsneaker.entity.ThongTinNV;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.OnDialogCloseListener, MaNguoiLapDHInterface,AddressOrder2Interface,PreInsertOrderAddessCustomer.ThemDiaCHiInterface2 {
     private ActionBar actionBar;
@@ -252,11 +248,17 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
 //            new Thread(new Runnable() {
 //                @Override
 //                public void run() {
-//                    preInsertOrderAddessCustomer.ThemDiaChi(Integer.parseInt(MoGetAddressOrderCustomer.arrAdressOrder.get(0).getCustomerId()),edtDiaChi.getText().toString().trim());
+//                    preInsertOrderAddessCustomer.ThemDiaChi(idNguoiLap,edtDiaChi.getText().toString().trim());
 //                }
 //            }).start();
 //            return;
 //        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preInsertOrderAddessCustomer.truSoLuongDatHang();
+            }
+        }).start();
         for(int i=0;i<MoGetAddressOrderCustomer.arrAdressOrder.size();i++){
             if(edtDiaChi.getText().toString().trim().toLowerCase().equals(MoGetAddressOrderCustomer.arrAdressOrder.get(i).getAOrderAddress().toLowerCase())){
                 return;
@@ -269,6 +271,13 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
                 preInsertOrderAddessCustomer.ThemDiaChi(Integer.parseInt(MoGetAddressOrderCustomer.arrAdressOrder.get(0).getCustomerId()),edtDiaChi.getText().toString().trim());
             }
         }).start();
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                preInsertOrderAddessCustomer.truSoLuongDatHang();
+//            }
+//        }).start();
     }
 
 
@@ -300,6 +309,11 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
 
     @Override
     public void themDiaChiThanhCong() {
+
+    }
+
+    @Override
+    public void truSoLuongSuccess() {
 
     }
 }
