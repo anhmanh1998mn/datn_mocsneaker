@@ -54,16 +54,16 @@ public class FragmentXacNhan extends Fragment implements ShowListOrderInterface 
 
     @Override
     public void onStart() {
-        sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
-        if(sharedPreferences.getString("admin","").equals("Admin")){
-            recycleXacNhan.setVisibility(View.GONE);
-            recyclerViewXacNhan1.setVisibility(View.VISIBLE);
-            getDataOrder1();
-            return;
-        }
-        recycleXacNhan.setVisibility(View.VISIBLE);
-        recyclerViewXacNhan1.setVisibility(View.GONE);
-        getDataOrder();
+//        sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+//        if(sharedPreferences.getString("admin","").equals("Admin")){
+//            recycleXacNhan.setVisibility(View.GONE);
+//            recyclerViewXacNhan1.setVisibility(View.VISIBLE);
+//            getDataOrder1();
+//            return;
+//        }
+//        recycleXacNhan.setVisibility(View.VISIBLE);
+//        recyclerViewXacNhan1.setVisibility(View.GONE);
+//        getDataOrder();
 //        getDataOrder1();
         super.onStart();
     }

@@ -58,21 +58,20 @@ public class FragmentChoXacNhan extends Fragment implements ShowListOrderInterfa
 
     @Override
     public void onStart() {
-//        MoShowListOrder.lstDonHang.clear();
-        sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
-        //Nhận từ kiểm tra đơn hàng
-//        Toast.makeText(getContext(),sharedPreferences.getString("admin","")+"",Toast.LENGTH_SHORT).show();
-        if(sharedPreferences.getString("admin","").equals("Admin")){
-            recycleChoXacNhan.setVisibility(View.GONE);
-            recycleChoXacNhan1.setVisibility(View.VISIBLE);
-            getDataOrder1();
-            return;
-        }
-        recycleChoXacNhan.setVisibility(View.VISIBLE);
-        recycleChoXacNhan1.setVisibility(View.GONE);
-        getDataOrder();
+
+//        sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+//        //Nhận từ kiểm tra đơn hàng
+////        Toast.makeText(getContext(),sharedPreferences.getString("admin","")+"",Toast.LENGTH_SHORT).show();
+//        if(sharedPreferences.getString("admin","").equals("Admin")){
+//            recycleChoXacNhan.setVisibility(View.GONE);
+//            recycleChoXacNhan1.setVisibility(View.VISIBLE);
+//            getDataOrder1();
+//            return;
+//        }
+//        recycleChoXacNhan.setVisibility(View.VISIBLE);
+//        recycleChoXacNhan1.setVisibility(View.GONE);
 //        getDataOrder();
-//        getDataOrder1();
+
         super.onStart();
     }
 

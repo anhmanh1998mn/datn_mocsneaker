@@ -64,17 +64,17 @@ public class FragmentDangGiao extends Fragment implements ShowListOrderInterface
 
     @Override
     public void onStart() {
-        sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
-        if(sharedPreferences.getString("admin","").equals("Admin")){
-            recycleDangGiao.setVisibility(View.GONE);
-            recyclerViewDangGiao1.setVisibility(View.VISIBLE);
-            getDataOrder1();
-            return;
-        }
-        recycleDangGiao.setVisibility(View.VISIBLE);
-        recyclerViewDangGiao1.setVisibility(View.GONE);
-        getDataOrder();
-//        getDataOrder1();
+//        sharedPreferences=getActivity().getSharedPreferences("QuyenTK", Context.MODE_PRIVATE);
+//        if(sharedPreferences.getString("admin","").equals("Admin")){
+//            recycleDangGiao.setVisibility(View.GONE);
+//            recyclerViewDangGiao1.setVisibility(View.VISIBLE);
+//            getDataOrder1();
+//            return;
+//        }
+//        recycleDangGiao.setVisibility(View.VISIBLE);
+//        recyclerViewDangGiao1.setVisibility(View.GONE);
+//        getDataOrder();
+////        getDataOrder1();
         super.onStart();
     }
     private void getDataOrder(){
