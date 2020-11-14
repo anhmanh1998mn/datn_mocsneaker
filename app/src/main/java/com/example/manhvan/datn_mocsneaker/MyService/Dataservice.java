@@ -267,4 +267,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("datHangTruSoLuong.php")
     Call<String> truSoLuongDatHang(@Field("quantity")int soLuong,@Field("sizeID") int kichCo,@Field("productID") int maSP);
+
+    //Ẩn sản phẩm
+    @FormUrlEncoded
+    @POST("anSanPham.php")
+    Call<String> anSP(@Field("productID")int idSP);
 }

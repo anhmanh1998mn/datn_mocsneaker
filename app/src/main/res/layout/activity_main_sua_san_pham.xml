@@ -269,13 +269,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp">
                 <Button
+                    android:id="@+id/btn_xacNhanAnSP"
+                    android:textSize="15sp"
+                    android:textAllCaps="false"
+                    android:text="Ẩn sản phẩm"
+                    android:textColor="#fff"
+                    android:background="#a4abe2"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"/>
+                <Button
                     android:id="@+id/btn_xacNhanSuaSP"
                     android:textSize="15sp"
                     android:textAllCaps="false"
                     android:text="Xác nhận sửa"
                     android:textColor="#fff"
                     android:background="#6E7CF3"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"/>
                 <Button

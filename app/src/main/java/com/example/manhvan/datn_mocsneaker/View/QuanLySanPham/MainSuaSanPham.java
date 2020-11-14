@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.manhvan.datn_mocsneaker.Model.MoKichCoTheoSP;
 import com.example.manhvan.datn_mocsneaker.Model.MogetProductImage;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreAnSanPham;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreGetProductImage;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreKichCoTheoSP;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreSuaThongTinSP;
@@ -40,12 +41,12 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,ANhCTSPSuaAdapter.OnClickImageListener, View.OnClickListener, PreSuaThongTinSP.OnResultSuccessInterface {
+public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,ANhCTSPSuaAdapter.OnClickImageListener, View.OnClickListener, PreSuaThongTinSP.OnResultSuccessInterface,PreAnSanPham.AnSanPhamInterface {
     private ActionBar actionBar;
     private ImageView imgViewUpdate;
     private EditText edtProductName,edtProductPrice,edtProductContent;
 //    private EditText edtSize39,edtSize40,edtSize41,edtSize42,edtSize43;
-    private Button btnUpdateImage,btnXacNhanSua,btnHuySua;
+    private Button btnUpdateImage,btnXacNhanSua,btnHuySua,btnAnSanPham;
     private final int REQUEST_PICK =123;
     private final int REQUEST_PICK_DETAIL=1234;
     private RecyclerView recyclerView;
@@ -84,6 +85,7 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
         edtSoLuongSPSua=findViewById(R.id.txt_soLuongSuaSP);
         btnXacNhanSua=findViewById(R.id.btn_xacNhanSuaSP);
         btnHuySua=findViewById(R.id.btn_HuySuaSP);
+        btnAnSanPham=findViewById(R.id.btn_xacNhanAnSP);
 //        edtSize39=findViewById(R.id.edt_size39Sua);
 //        edtSize40=findViewById(R.id.edt_size40Sua);
 //        edtSize41=findViewById(R.id.edt_size41Sua);
@@ -98,6 +100,7 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
     private void onClickButton(){
         btnXacNhanSua.setOnClickListener(this);
         btnHuySua.setOnClickListener(this);
+        btnAnSanPham.setOnClickListener(this);
     }
 
     public void showProductInfo(){
@@ -320,6 +323,26 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
                 finish();
                 break;
             }
+            case R.id.btn_xacNhanAnSP:{
+                final PreAnSanPham preAnSanPham=new PreAnSanPham(this);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        preAnSanPham.anSanPham(idProduct);
+                    }
+                }).start();
+            }
         }
+    }
+
+    @Override
+    public void anSPThanhCong() {
+        btnAnSanPham.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainSuaSanPham.this,"Ẩn sản phẩm thành công",Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 }
