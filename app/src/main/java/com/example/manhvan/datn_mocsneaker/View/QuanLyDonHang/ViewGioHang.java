@@ -259,19 +259,23 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
                 preInsertOrderAddessCustomer.truSoLuongDatHang();
             }
         }).start();
-        for(int i=0;i<MoGetAddressOrderCustomer.arrAdressOrder.size();i++){
-            if(edtDiaChi.getText().toString().trim().toLowerCase().equals(MoGetAddressOrderCustomer.arrAdressOrder.get(i).getAOrderAddress().toLowerCase())){
-                return;
+        if(sharedPreferences.getString("quyen","").equals("3")) {
+
+
+            for (int i = 0; i < MoGetAddressOrderCustomer.arrAdressOrder.size(); i++) {
+                if (edtDiaChi.getText().toString().trim().toLowerCase().equals(MoGetAddressOrderCustomer.arrAdressOrder.get(i).getAOrderAddress().toLowerCase())) {
+                    return;
+                }
+
             }
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    preInsertOrderAddessCustomer.ThemDiaChi(Integer.parseInt(MoGetAddressOrderCustomer.arrAdressOrder.get(0).getCustomerId()), edtDiaChi.getText().toString().trim());
+                }
+            }).start();
 
         }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                preInsertOrderAddessCustomer.ThemDiaChi(Integer.parseInt(MoGetAddressOrderCustomer.arrAdressOrder.get(0).getCustomerId()),edtDiaChi.getText().toString().trim());
-            }
-        }).start();
-
 //        new Thread(new Runnable() {
 //            @Override
 //            public void run() {
