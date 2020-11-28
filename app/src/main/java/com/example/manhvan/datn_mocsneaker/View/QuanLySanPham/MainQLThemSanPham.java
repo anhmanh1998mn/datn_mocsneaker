@@ -1,8 +1,10 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLySanPham;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -171,6 +173,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
             }
             case R.id.btn_themSPXacNhan: {
                 themMoiSP();
+
 
 //                for(int i=0;i<GioHang.arrSanPhamThem.size();i++){
 //                    preThemMoiSanPham.themMoiAnhSPChiTiet(GioHang.arrSanPhamThem.get(i));
@@ -494,8 +497,25 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
 //            return;
 //        }
         preThemMoiSanPham = new PreThemMoiSanPham(this);
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Xác nhận thêm mới sản phẩm");
+        builder.setMessage("Tên sản phẩm: "+edtTenSP.getText().toString()+
+                "   Giá: "+edtGiaSP.getText().toString());
+        builder.setNegativeButton("Đồng ý", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                preThemMoiSanPham.themMoiSP(realPath);
+            }
+        });
+        builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-        preThemMoiSanPham.themMoiSP(realPath);
+            }
+        });
+        Dialog dialog=builder.create();
+        dialog.show();
+
 
 
     }

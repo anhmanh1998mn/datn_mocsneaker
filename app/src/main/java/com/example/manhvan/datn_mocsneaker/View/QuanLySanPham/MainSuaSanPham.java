@@ -39,6 +39,7 @@ import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,ANhCTSPSuaAdapter.OnClickImageListener, View.OnClickListener, PreSuaThongTinSP.OnResultSuccessInterface,PreAnSanPham.AnSanPhamInterface {
@@ -109,7 +110,9 @@ public class MainSuaSanPham extends AppCompatActivity implements ProductDetail,A
         Bundle bundle=intent.getBundleExtra("info");
         Glide.with(this).load(bundle.getString("image")).into(imgViewUpdate);
         edtProductName.setText(bundle.getString("productName"));
-        edtProductPrice.setText(bundle.getString("productPrice"));
+        DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
+
+        edtProductPrice.setText(decimalFormat.format(Integer.parseInt(bundle.getString("productPrice")))+" đ");
         edtProductContent.setText(bundle.getString("productContent"));
         idProduct=Integer.parseInt(bundle.getString("idProduct"));
 

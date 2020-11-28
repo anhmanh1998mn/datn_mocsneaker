@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -58,8 +59,10 @@ public class MainQuanLySanPham extends AppCompatActivity implements View.OnClick
         btnThemSP=findViewById(R.id.btn_themSP);
         btnSearchSP=findViewById(R.id.btn_search1);
         recyclerViewSP=findViewById(R.id.recy_qlsp);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
-        recyclerViewSP.setLayoutManager(linearLayoutManager);
+        recyclerViewSP.setNestedScrollingEnabled(false);
+//        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,LinearLayout.VERTICAL,false);
+        GridLayoutManager gridLayoutManager=new GridLayoutManager(this,3);
+        recyclerViewSP.setLayoutManager(gridLayoutManager);
         edtSearch1=findViewById(R.id.edt_search1);
         preTimKiemSanPham=new PreTimKiemSanPham(this);
     }
