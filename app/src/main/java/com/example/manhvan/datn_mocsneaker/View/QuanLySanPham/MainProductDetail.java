@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,20 +24,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoKichCoTheoSP;
+import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.Model.MogetProductImage;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreGetProductImage;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreKichCoTheoSP;
+import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.View.PKInterface.ProductDetail;
+import com.example.manhvan.datn_mocsneaker.View.PKInterface.TimKiemSanPhamInterface;
 import com.example.manhvan.datn_mocsneaker.View.QuanLyDonHang.ViewGioHang;
 import com.example.manhvan.datn_mocsneaker.adapter.ProductImageAdapter;
+import com.example.manhvan.datn_mocsneaker.adapter.XemThemSanPhamAdapter;
 import com.example.manhvan.datn_mocsneaker.database.Database;
 import com.example.manhvan.datn_mocsneaker.entity.GioHang1;
+import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 import com.example.manhvan.datn_mocsneaker.util.GioHang;
 
 import java.text.DecimalFormat;
 
-public class MainProductDetail extends AppCompatActivity implements ProductDetail, View.OnClickListener {
+public class MainProductDetail extends AppCompatActivity implements ProductDetail, View.OnClickListener,TimKiemSanPhamInterface {
     private ActionBar actionBar;
     private RecyclerView recyclerViewProductDetail;
     private PreGetProductImage preGetProductImage;
@@ -48,6 +55,10 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
     private Button btnThemVaoGioHang,btnMuaSP;
     private Database database;
     private String id,trichDoan,duongDan,donGia;
+    private TextView txtSoLuongKichCoChon;
+    private RecyclerView recyclerViewSanPhamLienQuan;
+    private PreTimKiemSanPham preTimKiemSanPham;
+    private XemThemSanPhamAdapter adapterXemThem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +72,17 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         dulieunhan();
         kiemTraSoLuongSPMua();
         kiemtr2();
+
     }
 
     private void kiemtr2() {
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
                     case R.id.radiobtn_detail1:{
+                        txtSoLuongKichCoChon.setText("Còn "+MoKichCoTheoSP.lstKichCo.get(0).getStock()+" sản phẩm");
                         if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock())){
                             edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(0).getStock());
                             Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(0).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
@@ -77,6 +91,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                         break;
                     }
                     case R.id.radiobtn_detail2:{
+                        txtSoLuongKichCoChon.setText("Còn "+MoKichCoTheoSP.lstKichCo.get(1).getStock()+" sản phẩm");
                         if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock())){
                             edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(1).getStock());
                             Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(1).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
@@ -85,6 +100,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                         break;
                     }
                     case R.id.radiobtn_detail3:{
+                        txtSoLuongKichCoChon.setText("Còn "+MoKichCoTheoSP.lstKichCo.get(2).getStock()+" sản phẩm");
                         if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock())){
                             edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(2).getStock());
                             Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(2).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
@@ -93,6 +109,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                         break;
                     }
                     case R.id.radiobtn_detail4:{
+                        txtSoLuongKichCoChon.setText("Còn "+MoKichCoTheoSP.lstKichCo.get(3).getStock()+" sản phẩm");
                         if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock())){
                             edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(3).getStock());
                             Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(3).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
@@ -101,6 +118,7 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                         break;
                     }
                     case R.id.radiobtn_detail5:{
+                        txtSoLuongKichCoChon.setText("Còn "+MoKichCoTheoSP.lstKichCo.get(4).getStock()+" sản phẩm");
                         if (Integer.parseInt(edtSoLuongSP.getText().toString())>Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock())){
                             edtSoLuongSP.setText(MoKichCoTheoSP.lstKichCo.get(4).getStock());
                             Toast.makeText(MainProductDetail.this,"Quý khách chỉ được mua tối đa "+MoKichCoTheoSP.lstKichCo.get(4).getStock()+" sản phẩm",Toast.LENGTH_SHORT).show();
@@ -139,6 +157,12 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         btnThemVaoGioHang=findViewById(R.id.btn_prdetailMua);
         btnMuaSP=findViewById(R.id.btn_prdetailMua2);
         ra39.setChecked(true);
+        txtSoLuongKichCoChon=findViewById(R.id.txt_SoLuongSPChon);
+        recyclerViewSanPhamLienQuan=findViewById(R.id.recycle_SanPhamLienQuan);
+
+        ImageView imageView=findViewById(R.id.img_huongDan);
+        imageView.getLayoutParams().width= AndroidDeviceHelper.getWithScreen(this);
+        imageView.requestLayout();
 
     }
 
@@ -169,6 +193,15 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
 
         //lấy số lượng sản phẩm theo kích cỡ
 
+        // get sản phẩm liên quan
+        final String[] date=txtProductName.getText().toString().split(" ");
+        preTimKiemSanPham=new PreTimKiemSanPham(MainProductDetail.this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                preTimKiemSanPham.timKiemSanPham(date[0]);
+            }
+        }).start();
 
     }
 
@@ -203,8 +236,27 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
     }
 
     @Override
+    public void onSuceessed() {
+        recyclerViewSanPhamLienQuan.post(new Runnable() {
+            @Override
+            public void run() {
+                adapterXemThem=new XemThemSanPhamAdapter(MainProductDetail.this,R.layout.itemxemthemsanpham, MoTimKiemSanPham.lstTimKiemSP);
+                LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainProductDetail.this,LinearLayout.HORIZONTAL,false);
+//                GridLayoutManager gridLayoutManager=new GridLayoutManager(MainProductDetail.this,2);
+                recyclerViewSanPhamLienQuan.setLayoutManager(linearLayoutManager);
+                recyclerViewSanPhamLienQuan.setAdapter(adapterXemThem);
+            }
+        });
+    }
+
+    @Override
     public void onFailed() {
         Toast.makeText(this, "Lỗi", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void themThanhCong() {
+
     }
 
     @Override
@@ -225,6 +277,12 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
                     ra43.setVisibility(View.GONE);
                 }
 
+            }
+        });
+        txtSoLuongKichCoChon.post(new Runnable() {
+            @Override
+            public void run() {
+                txtSoLuongKichCoChon.setText("Còn "+MoKichCoTheoSP.lstKichCo.get(0).getStock()+" sản phẩm");
             }
         });
     }

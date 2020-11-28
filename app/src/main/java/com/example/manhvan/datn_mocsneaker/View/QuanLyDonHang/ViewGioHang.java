@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.manhvan.datn_mocsneaker.MainActivity2;
 import com.example.manhvan.datn_mocsneaker.Model.MoGetAddressOrderCustomer;
 import com.example.manhvan.datn_mocsneaker.Model.MoLayMaNguoiLapDH;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreGetAddressOrderCustomer;
@@ -51,6 +52,7 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
     private AddressOrderAdapter addressOrderAdapter;
     private TextView txtChonDiaChi,txtHoacDiaChi;
     private PreInsertOrderAddessCustomer preInsertOrderAddessCustomer;
+    private TextView txtTiepTucMuaHang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,7 +137,13 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
                 }).start();
             }
         });
-
+        txtTiepTucMuaHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ViewGioHang.this, MainActivity2.class));
+                finish();
+            }
+        });
     }
 
 
@@ -197,6 +205,7 @@ public class ViewGioHang extends AppCompatActivity implements  GioHangAdapter.On
         spinnerCart=findViewById(R.id.spn_gioHang);
         txtChonDiaChi=findViewById(R.id.txt_ghCHon);
         txtHoacDiaChi=findViewById(R.id.txt_hoac);
+        txtTiepTucMuaHang=findViewById(R.id.txt_tiepTucMuaHang);
     }
 
     @Override
