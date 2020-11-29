@@ -133,7 +133,7 @@ public class MainQLThemDonNhapHnag extends AppCompatActivity implements TimKiemS
         recyclerViewTimKiem.post(new Runnable() {
             @Override
             public void run() {
-                adapter=new NhapHangTimKiemSPAdapter(MainQLThemDonNhapHnag.this,R.layout.item_timkiem_san_pham, MoTimKiemSanPham.lstTimKiemSP);
+                adapter=new NhapHangTimKiemSPAdapter(MainQLThemDonNhapHnag.this,R.layout.item_search_san_pham_home, MoTimKiemSanPham.lstTimKiemSP);
                 LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainQLThemDonNhapHnag.this, LinearLayout.VERTICAL,false);
                 recyclerViewTimKiem.setLayoutManager(linearLayoutManager);
                 recyclerViewTimKiem.setAdapter(adapter);

@@ -99,7 +99,7 @@ public class MainTimKiemTenSanPham extends AppCompatActivity implements View.OnC
         edtSearchSP.post(new Runnable() {
             @Override
             public void run() {
-                timKiemSanPhamAdapter=new TimKiemSanPhamAdapter(MainTimKiemTenSanPham.this,R.layout.item_timkiem_san_pham, MoTimKiemSanPham.lstTimKiemSP);
+                timKiemSanPhamAdapter=new TimKiemSanPhamAdapter(MainTimKiemTenSanPham.this,R.layout.item_search_san_pham_home, MoTimKiemSanPham.lstTimKiemSP);
                 Log.d("timkiemsp",MoTimKiemSanPham.lstTimKiemSP.size()+"");
                 LinearLayoutManager linearLayoutManager=new LinearLayoutManager(MainTimKiemTenSanPham.this, LinearLayout.VERTICAL,false);
                 recyclerViewTimKiem.setLayoutManager(linearLayoutManager);

@@ -57,7 +57,7 @@ public class NhapHangTimKiemSPAdapter extends RecyclerView.Adapter<NhapHangTimKi
         private TextView txt1;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            txt1=itemView.findViewById(R.id.txt_itemtimkiemSP);
+            txt1=itemView.findViewById(R.id.txt_search_home);
         }
     }
 }
