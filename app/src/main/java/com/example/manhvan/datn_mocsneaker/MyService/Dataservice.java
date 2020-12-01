@@ -272,4 +272,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("anSanPham.php")
     Call<String> anSP(@Field("productID")int idSP);
+
+    //Lọc theo khoảng giá
+    @FormUrlEncoded
+    @POST("timkiemtheokhoangia.php")
+    Call<List<SanPhamMoi>> timKiemKhoangGia(@Field("price1")int gia1,@Field("price2") int gia2);
 }

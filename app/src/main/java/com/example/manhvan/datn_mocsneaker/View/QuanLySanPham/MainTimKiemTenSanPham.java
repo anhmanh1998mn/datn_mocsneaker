@@ -1,5 +1,6 @@
 package com.example.manhvan.datn_mocsneaker.View.QuanLySanPham;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.manhvan.datn_mocsneaker.Model.MoTimKiemSanPham;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreTimKiemSanPham;
@@ -26,6 +28,7 @@ public class MainTimKiemTenSanPham extends AppCompatActivity implements View.OnC
     private PreTimKiemSanPham preTimKiemSanPham;
     private TimKiemSanPhamAdapter timKiemSanPhamAdapter;
     private RecyclerView recyclerViewTimKiem;
+    private TextView txtFil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainTimKiemTenSanPham extends AppCompatActivity implements View.OnC
     private void evenClick() {
         btnBackSP.setOnClickListener(this);
         btnhuySearch.setOnClickListener(this);
+        txtFil.setOnClickListener(this);
     }
 
     private void edtChenageText() {
@@ -78,6 +82,7 @@ public class MainTimKiemTenSanPham extends AppCompatActivity implements View.OnC
         btnhuySearch=findViewById(R.id.btn_searchSP);
         edtSearchSP=findViewById(R.id.edt_searchSP);
         recyclerViewTimKiem=findViewById(R.id.timkeim_recycleview);
+        txtFil=findViewById(R.id.txt_fil);
     }
 
     @Override
@@ -89,6 +94,10 @@ public class MainTimKiemTenSanPham extends AppCompatActivity implements View.OnC
             }
             case R.id.btn_searchSP:{
                 edtSearchSP.setText("");
+                break;
+            }
+            case R.id.txt_fil:{
+                startActivity(new Intent(MainTimKiemTenSanPham.this,MainLocSanPham.class));
                 break;
             }
         }
