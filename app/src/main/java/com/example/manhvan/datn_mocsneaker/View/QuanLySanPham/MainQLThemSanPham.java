@@ -480,7 +480,7 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
 
     private void themMoiSP() {
         if (chonAnh == false || edtTenSP.getText().toString().trim().equals("") || edtGiaSP.getText().toString().trim().equals("") || edtSoLuong39.getText().toString().trim().equals("")
-                || edtSoLuong40.getText().toString().trim().equals("") || edtSoLuong41.getText().toString().trim().equals("") || edtSoLuong42.getText().toString().trim().equals("") || edtSoLuong43.getText().toString().trim().equals("")
+                && edtSoLuong40.getText().toString().trim().equals("") && edtSoLuong41.getText().toString().trim().equals("") && edtSoLuong42.getText().toString().trim().equals("") && edtSoLuong43.getText().toString().trim().equals("")
                 || edtNoiDung.equals("")|| GioHang.arrSanPhamThem==null||GioHang.arrSanPhamThem.isEmpty()) {
             Toast.makeText(MainQLThemSanPham.this, "Kiểm tra lại dữ liệu", Toast.LENGTH_SHORT).show();
             return;
@@ -573,9 +573,11 @@ public class MainQLThemSanPham extends AppCompatActivity implements View.OnClick
         new Thread(new Runnable() {
             @Override
             public void run() {
-                preThemMoiSanPham.themSoLuongSize(maSP, Integer.parseInt(edtSoLuong39.getText().toString().trim()),
-                        Integer.parseInt(edtSoLuong40.getText().toString().trim()), Integer.parseInt(edtSoLuong41.getText().toString().trim()),
-                        Integer.parseInt(edtSoLuong42.getText().toString().trim()), Integer.parseInt(edtSoLuong43.getText().toString().trim()));
+                preThemMoiSanPham.themSoLuongSize(maSP, Integer.parseInt(edtSoLuong39.getText().toString().trim().equals("")?"0":edtSoLuong39.getText().toString().trim()),
+                        Integer.parseInt(edtSoLuong40.getText().toString().trim().equals("")?"0":edtSoLuong40.getText().toString().trim()),
+                        Integer.parseInt(edtSoLuong41.getText().toString().trim().equals("")?"0":edtSoLuong41.getText().toString().trim()),
+                        Integer.parseInt(edtSoLuong42.getText().toString().trim().equals("")?"0":edtSoLuong42.getText().toString().trim()),
+                        Integer.parseInt(edtSoLuong43.getText().toString().trim().equals("")?"0":edtSoLuong43.getText().toString().trim()));
 
 
             }

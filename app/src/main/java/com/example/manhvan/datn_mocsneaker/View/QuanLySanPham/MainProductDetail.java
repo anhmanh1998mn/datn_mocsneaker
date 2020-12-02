@@ -265,6 +265,108 @@ public class MainProductDetail extends AppCompatActivity implements ProductDetai
         radioGroup.post(new Runnable() {
             @Override
             public void run() {
+                if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra41.setVisibility(View.GONE);
+                    ra40.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra40.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra40.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra41.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra40.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1){
+                    ra40.setVisibility(View.GONE);
+                    ra41.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra40.setVisibility(View.GONE);
+                    ra41.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra40.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra41.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if(Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1
+                        &&Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra40.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra41.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra39.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1){
+                    ra40.setVisibility(View.GONE);
+                    ra41.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1){
+                    ra40.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra40.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1){
+                    ra41.setVisibility(View.GONE);
+                    ra42.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(2).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra41.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(3).getStock()) < 1&&
+                        Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(4).getStock()) < 1){
+                    ra42.setVisibility(View.GONE);
+                    ra43.setVisibility(View.GONE);
+                }
+                else
                 if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(0).getStock()) < 1) {
                     ra39.setVisibility(View.GONE);
                 } else if (Integer.parseInt(MoKichCoTheoSP.lstKichCo.get(1).getStock()) < 1) {
