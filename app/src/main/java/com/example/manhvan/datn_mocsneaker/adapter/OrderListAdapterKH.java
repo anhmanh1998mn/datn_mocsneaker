@@ -17,12 +17,11 @@ import com.example.manhvan.datn_mocsneaker.util.AndroidDeviceHelper;
 
 import java.util.List;
 
-public class OrderShowListAdapter extends RecyclerView.Adapter<OrderShowListAdapter.ViewHolder> {
+public class OrderListAdapterKH extends RecyclerView.Adapter<OrderListAdapterKH.ViewHolder> {
     private Activity myContext;
     private int myLayout;
     private List<DonHang> lstDonHang;
-
-    public OrderShowListAdapter(Activity myContext, int myLayout, List<DonHang> lstDonHang) {
+    public OrderListAdapterKH(Activity myContext, int myLayout, List<DonHang> lstDonHang) {
         this.myContext = myContext;
         this.myLayout = myLayout;
         this.lstDonHang = lstDonHang;
@@ -33,7 +32,7 @@ public class OrderShowListAdapter extends RecyclerView.Adapter<OrderShowListAdap
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater=(LayoutInflater)myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view=layoutInflater.inflate(myLayout,null);
-        return new ViewHolder(view);
+        return new OrderListAdapterKH.ViewHolder(view);
     }
 
     @Override

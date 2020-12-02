@@ -13,6 +13,9 @@ public class DonHang {
     @SerializedName("created_at")
     @Expose
     private String createdAt;
+    @SerializedName("order_status")
+    @Expose
+    private String orderStatus;
 
     public String getId() {
         return id;
@@ -36,5 +39,13 @@ public class DonHang {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

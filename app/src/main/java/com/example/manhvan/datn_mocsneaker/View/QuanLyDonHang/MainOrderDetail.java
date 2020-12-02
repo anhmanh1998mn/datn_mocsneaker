@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,9 +24,11 @@ import com.example.manhvan.datn_mocsneaker.Presenter.PreHuyHangTangSoLuong;
 import com.example.manhvan.datn_mocsneaker.Presenter.PreOrderDetail;
 import com.example.manhvan.datn_mocsneaker.R;
 import com.example.manhvan.datn_mocsneaker.adapter.OrderDetailAdapter;
+import com.example.manhvan.datn_mocsneaker.adapter.OrderListAdapterKH;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail.GetDataOrInterface, View.OnClickListener, PreHuyHangTangSoLuong.HuyTangSLInterface {
     private ActionBar actionBar;
@@ -39,6 +42,8 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
     private Spinner spinner;
     private LinearLayout linearLayoutDH;
     private PreHuyHangTangSoLuong preHuyHangTangSoLuong;
+    private List<String> arrSpiner;;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,34 +61,76 @@ public class MainOrderDetail extends AppCompatActivity implements PreOrderDetail
     }
 
     private void loadDataSpinner() {
-        ArrayList<String> arrSpiner=new ArrayList<>();
-        arrSpiner.add("Xác nhận");
-        arrSpiner.add("Đang giao");
-        arrSpiner.add("Đã giao");
-        ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,arrSpiner);
-        spinner.setAdapter(arrayAdapter);
+        Intent intent1=getIntent();
+        String trangThai1=intent1.getStringExtra("trangThaiDH");
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i){
-                    case 0:{
-                        trangThai=2;break;
-                    }
-                    case 1:{
-                        trangThai=3;break;
-                    }
-                    case 2:{
-                        trangThai=5;break;
-                    }
+        if(trangThai1!=null){
+            switch ((trangThai1)) {
+                case "1": {
+                    arrSpiner = new ArrayList<>();
+                    arrSpiner.add("Chờ xác nhận");
+                    arrSpiner.add("Xác nhận");
+                    arrSpiner.add("Đang giao");
+                    arrSpiner.add("Đã giao");
+                    break;
                 }
+                case "2": {
+                    arrSpiner = new ArrayList<>();
+                    arrSpiner.add("Xác nhận");
+                    arrSpiner.add("Đang giao");
+                    arrSpiner.add("Đã giao");
+                    break;
+                }
+                case "3": {
+                    arrSpiner = new ArrayList<>();
+                    arrSpiner.add("Đang giao");
+                    arrSpiner.add("Đã giao");
+                    break;
+                }
+                case "5": {
+                    arrSpiner = new ArrayList<>();
+                    arrSpiner.add("Đã giao");
+                    break;
+                }
+
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1,arrSpiner);
+            spinner.setAdapter(arrayAdapter);
 
-            }
-        });
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                Log.d("spinner",arrSpiner.get(i));
+                    if(arrSpiner.get(i).equals("Xác nhận")){
+                        trangThai=2;
+                    }else if(arrSpiner.get(i).equals("Đang giao")){
+                        trangThai=3;
+                    }else if(arrSpiner.get(i).equals("Đã giao")){
+                        trangThai=5;
+                    }
+//                    switch (i){
+//                        case 0:{
+//                            trangThai=2;break;
+//                        }
+//                        case 1:{
+//                            trangThai=3;break;
+//                        }
+//                        case 2:{
+//                            trangThai=5;break;
+//                        }
+//                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
+        return;
+
+
     }
 
     private void checkRole(){
